@@ -184,18 +184,13 @@ function spawnBossCabinet(config: DungeonSpec): void {
         . . 6 6 6 6 . .
     `, SpriteKind.Cabinet);
     
-    // DECISION: Use custom position if provided, otherwise try tile-based spawning
+    // DECISION: Use custom position if provided in config, otherwise fallback to default
+    // Tile-based spawning would require TILE_BOSS_SPAWN to be defined in assets, which is a placeholder
     if (config.bossCabinetX !== undefined && config.bossCabinetY !== undefined) {
         cab.setPosition(config.bossCabinetX, config.bossCabinetY);
     } else {
-        // Try to find TILE_BOSS_SPAWN tile in tilemap
-        const bossTiles = tiles.getTilesByType(assets.tile`TILE_BOSS_SPAWN`);
-        if (bossTiles.length > 0) {
-            tiles.placeOnTile(cab, bossTiles[0]);
-        } else {
-            // Fallback to default position
-            cab.setPosition(100, 80);
-        }
+        // Fallback to default center-bottom position
+        cab.setPosition(100, 80);
     }
     
     dungeonCabinets.push({ sprite: cab, encounter: config.bossEncounter });

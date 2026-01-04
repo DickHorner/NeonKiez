@@ -27,7 +27,6 @@ interface EncounterSpec {
 const encounters: { [id: number]: EncounterSpec } = {};
 let currentEncounterCtx: EncounterContext = null;
 let encounterUpdateRegistered = false;
-let encounterUpdateIntervalId: number = 0;
 
 function registerEncounters(): void {
     // DECISION: All 9 encounters registered with exact IDs from agents.md spec

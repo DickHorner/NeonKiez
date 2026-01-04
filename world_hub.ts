@@ -34,7 +34,8 @@ function placeHubSpawns(): void {
     hubSpawns["SPAWN_HUB_ARCADE_EXIT"] = tiles.getTileLocation(3, 2);
     hubSpawns["SPAWN_HUB_VIDEO_STORE_EXIT"] = tiles.getTileLocation(2, 1);
     hubSpawns["SPAWN_HUB_CONSTRUCTION_EXIT"] = tiles.getTileLocation(1, 1);
-    hubSpawns["SPAWN_HUB_FINAL_EXIT"] = tiles.getTileLocation(1, 1);
+    // DECISION: Final exit returns to center (safehouse) for dramatic effect after game completion
+    hubSpawns["SPAWN_HUB_FINAL_EXIT"] = tiles.getTileLocation(2, 2);
 }
 
 function setupHubNPCs(): void {
