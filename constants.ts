@@ -95,4 +95,12 @@ const DECOY_TOY_RADIUS = 80;
 // Dungeon parameters
 const DUNGEON_ENEMY_SPAWN_CHANCE = 50; // Percentage chance for third enemy
 
+// Tile tags for spawning
+namespace TileTags {
+    export const BOSS_CABINET_SPAWN = "TILE_BOSS_SPAWN";
+    export const ENEMY_SPAWN_1 = "TILE_ENEMY_SPAWN_1";
+    export const ENEMY_SPAWN_2 = "TILE_ENEMY_SPAWN_2";
+    export const ENEMY_SPAWN_3 = "TILE_ENEMY_SPAWN_3";
+}
+
 // MANUAL TEST PASSED: Constants and enums match agents.md specification

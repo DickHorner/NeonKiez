@@ -26,6 +26,8 @@ interface EncounterSpec {
 
 const encounters: { [id: number]: EncounterSpec } = {};
 let currentEncounterCtx: EncounterContext = null;
+let encounterUpdateRegistered = false;
+let encounterUpdateIntervalId: number = 0;
 
 function registerEncounters(): void {
     // DECISION: All 9 encounters registered with exact IDs from agents.md spec
@@ -128,6 +130,9 @@ function createScaffoldEncounter(id: EncounterType, name: string, timeLimit: num
             // DECISION: Scaffold encounters auto-win after 5 seconds for testing purposes
             control.runInParallel(function () {
                 pause(5000);
+                // Ensure the encounter is still active before auto-completing
+                if (getState().mode !== GameMode.Encounter) return;
+                if (ctx !== currentEncounterCtx || ctx.completed) return;
                 ctx.completed = true;
                 ctx.success = true;
             });
@@ -168,24 +173,30 @@ function startEncounter(type: EncounterType, params: any): void {
     
     spec.setup(currentEncounterCtx);
     
-    // Run encounter loop
-    game.onUpdateInterval(100, function () {
-        if (getState().mode !== GameMode.Encounter) return;
-        if (!currentEncounterCtx || currentEncounterCtx.completed) return;
-        
-        spec.coreLoop(currentEncounterCtx);
-        
-        if (spec.winCondition(currentEncounterCtx)) {
-            currentEncounterCtx.completed = true;
-            currentEncounterCtx.success = true;
-            spec.rewards(currentEncounterCtx);
-            spec.returnExit(currentEncounterCtx);
-        } else if (spec.loseCondition(currentEncounterCtx)) {
-            currentEncounterCtx.completed = true;
-            currentEncounterCtx.success = false;
-            spec.returnExit(currentEncounterCtx);
-        }
-    });
+    // DECISION: Use registration flag to prevent multiple update intervals from accumulating
+    if (!encounterUpdateRegistered) {
+        encounterUpdateRegistered = true;
+        game.onUpdateInterval(100, function () {
+            if (getState().mode !== GameMode.Encounter) return;
+            if (!currentEncounterCtx || currentEncounterCtx.completed) return;
+            
+            const activeSpec = encounters[getState().currentEncounter];
+            if (!activeSpec) return;
+            
+            activeSpec.coreLoop(currentEncounterCtx);
+            
+            if (activeSpec.winCondition(currentEncounterCtx)) {
+                currentEncounterCtx.completed = true;
+                currentEncounterCtx.success = true;
+                activeSpec.rewards(currentEncounterCtx);
+                activeSpec.returnExit(currentEncounterCtx);
+            } else if (activeSpec.loseCondition(currentEncounterCtx)) {
+                currentEncounterCtx.completed = true;
+                currentEncounterCtx.success = false;
+                activeSpec.returnExit(currentEncounterCtx);
+            }
+        });
+    }
 }
 
 function completeEncounter(type: EncounterType, success: boolean): void {

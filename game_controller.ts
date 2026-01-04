@@ -2,13 +2,6 @@
 
 // DECISION: GameController is the single source of truth for mode transitions because it prevents race conditions and ensures clean state management
 
-interface ModeTransition {
-    from: GameMode;
-    to: GameMode;
-    onExit?: () => void;
-    onEnter?: () => void;
-}
-
 let inputLocked = false;
 
 function lockInput(): void {
@@ -37,15 +30,17 @@ function transitionMode(newMode: GameMode, onComplete?: () => void): void {
     // Cleanup current mode
     performModeExit(current);
     
-    // Small delay for visual transition
-    pause(100);
-    
-    // Enter new mode
-    setMode(newMode);
-    performModeEnter(newMode);
-    
-    unlockInput();
-    if (onComplete) onComplete();
+    // DECISION: Use non-blocking async transition to avoid freezing the game
+    control.runInParallel(function () {
+        pause(100);
+        
+        // Enter new mode
+        setMode(newMode);
+        performModeEnter(newMode);
+        
+        unlockInput();
+        if (onComplete) onComplete();
+    });
 }
 
 function performModeExit(mode: GameMode): void {

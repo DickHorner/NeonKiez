@@ -34,6 +34,7 @@ function placeHubSpawns(): void {
     hubSpawns["SPAWN_HUB_ARCADE_EXIT"] = tiles.getTileLocation(3, 2);
     hubSpawns["SPAWN_HUB_VIDEO_STORE_EXIT"] = tiles.getTileLocation(2, 1);
     hubSpawns["SPAWN_HUB_CONSTRUCTION_EXIT"] = tiles.getTileLocation(1, 1);
+    hubSpawns["SPAWN_HUB_FINAL_EXIT"] = tiles.getTileLocation(1, 1);
 }
 
 function setupHubNPCs(): void {
@@ -46,16 +47,21 @@ function setupHubNPCs(): void {
 }
 
 function setupHubDungeonDoors(): void {
-    // DECISION: Create cabinet doors for all 9 dungeons in hub for easy access
-    createHubCabinet(DungeonId.DUN_LAUNDROMAT_LABYRINTH, 120, 60);
-    createHubCabinet(DungeonId.DUN_ROOFTOP_INVADERS, 40, 100);
-    createHubCabinet(DungeonId.DUN_WAREHOUSE_BLOCKWORKS, 100, 100);
-    createHubCabinet(DungeonId.DUN_SUBWAY_TIMING, 60, 60);
-    createHubCabinet(DungeonId.DUN_SCHOOL_PONG_COURT, 80, 40);
-    createHubCabinet(DungeonId.DUN_ARCADE_MUSEUM_ASTEROIDS, 140, 80);
-    createHubCabinet(DungeonId.DUN_VIDEO_STORE_PLATFORM_TRIAL, 40, 40);
-    createHubCabinet(DungeonId.DUN_CONSTRUCTION_DONKEY_TOWER, 120, 40);
-    createHubCabinet(DungeonId.DUN_FINAL_GLITCH_PANOPTICON, 80, 100);
+    // DECISION: Use grid-based layout for cabinet doors to ensure proper spacing
+    // Cabinet positions are in a 3x3 grid pattern centered on the hub
+    const gridSize = 40;
+    const baseX = 60;
+    const baseY = 40;
+    
+    createHubCabinet(DungeonId.DUN_LAUNDROMAT_LABYRINTH, baseX, baseY);
+    createHubCabinet(DungeonId.DUN_ROOFTOP_INVADERS, baseX + gridSize, baseY);
+    createHubCabinet(DungeonId.DUN_WAREHOUSE_BLOCKWORKS, baseX + gridSize * 2, baseY);
+    createHubCabinet(DungeonId.DUN_SUBWAY_TIMING, baseX, baseY + gridSize);
+    createHubCabinet(DungeonId.DUN_SCHOOL_PONG_COURT, baseX + gridSize, baseY + gridSize);
+    createHubCabinet(DungeonId.DUN_ARCADE_MUSEUM_ASTEROIDS, baseX + gridSize * 2, baseY + gridSize);
+    createHubCabinet(DungeonId.DUN_VIDEO_STORE_PLATFORM_TRIAL, baseX, baseY + gridSize * 2);
+    createHubCabinet(DungeonId.DUN_CONSTRUCTION_DONKEY_TOWER, baseX + gridSize, baseY + gridSize * 2);
+    createHubCabinet(DungeonId.DUN_FINAL_GLITCH_PANOPTICON, baseX + gridSize * 2, baseY + gridSize * 2);
 }
 
 function createHubCabinet(dungeon: DungeonId, x: number, y: number): void {
