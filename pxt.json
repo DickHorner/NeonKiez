@@ -1,25 +1,28 @@
 {
     "name": "neon-kiez",
-    "version": "0.0.0",
-    "description": "",
+    "description": "Story-driven retro action adventure scaffold for MakeCode Arcade.",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "arcade-background-scroll": "github:microsoft/arcade-background-scroll",
+        "arcade-overworld": "github:riknoll/arcade-overworld",
+        "arcade-storytelling": "github:microsoft/arcade-storytelling",
+        "arcade-mini-menu": "github:riknoll/arcade-mini-menu"
     },
     "files": [
-        "README.md",
-        "main.blocks",
-        "main.ts"
-    ],
-    "testFiles": [
-        "test.ts"
-    ],
-    "public": true,
-    "targetVersions": {
-        "target": "2.0.63",
-        "targetId": "arcade"
-    },
-    "supportedTargets": [
-        "arcade"
-    ],
-    "preferredEditor": "blocksprj"
+        "main.ts",
+        "constants.ts",
+        "state.ts",
+        "save.ts",
+        "assets_stub.ts",
+        "player.ts",
+        "combat_tools.ts",
+        "ui_hud.ts",
+        "ui_menu.ts",
+        "dialogue.ts",
+        "quests.ts",
+        "world_hub.ts",
+        "world_dungeons.ts",
+        "encounters.ts",
+        "debug.ts"
+    ]
 }
