@@ -235,14 +235,3 @@ Credits:
 ## Contact
 Maintainer: DickHorner  
 Repo: https://github.com/DickHorner/Neon-Kiez
-
----
-
-Next steps — pick one:
-- I can commit this README.md to a new branch and open a PR for you.
-- I can regenerate the README to match the exact engine/build tool you use (Phaser? Pixi? Three.js? pure Canvas? Unity/WebGL export?).
-- I can also add:
-  - package.json scripts and devDependencies scaffold
-  - a starter Vite + Phaser template (basic scene + player)
-  - GitHub Actions workflow
-Tell me which of the three above you want me to do and provide any engine/build-tool choices if different from the assumptions above.
