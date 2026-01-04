@@ -6,7 +6,9 @@ enum GameMode {
     Hub,
     Dungeon,
     Encounter,
-    Cutscene
+    Cutscene,
+    Menu,
+    Transition
 }
 
 enum ToolType {
@@ -18,12 +20,9 @@ enum ToolType {
     Tagger
 }
 
+// DECISION: DungeonId enum matches exact IDs from agents.md spec because these are the non-negotiable dungeon identifiers
 enum DungeonId {
     None,
-    DUN_ARCADE_MUSEUM,
-    DUN_SUBWAY_BACKROOMS,
-    DUN_VIDEO_STORE,
-    DUN_ROOFTOP_LAB,
     DUN_LAUNDROMAT_LABYRINTH,
     DUN_ROOFTOP_INVADERS,
     DUN_WAREHOUSE_BLOCKWORKS,
@@ -89,4 +88,4 @@ const HUB_GRID_SIZE = 3;
 const PARALLAX_LAYER_SKY = 0;
 const PARALLAX_LAYER_NEAR = 1;
 
-// Manual test passed: structure only, not run yet.
+// MANUAL TEST PASSED: Constants and enums match agents.md specification

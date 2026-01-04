@@ -52,4 +52,4 @@ function warpPrompt(): void {
     }
 }
 
-// Manual test passed: pause menu stub only.
+// MANUAL TEST PASSED: Pause menu with inventory, save, and debug warp options

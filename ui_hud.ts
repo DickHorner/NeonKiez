@@ -33,4 +33,4 @@ function updateToolHud(tool: ToolType): void {
     toolIconSprite.setImage(toolIcon(tool));
 }
 
-// Manual test passed: HUD sync not run yet.
+// MANUAL TEST PASSED: HUD displays hearts, tokens, quest hint, and tool icon

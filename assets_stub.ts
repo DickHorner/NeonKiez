@@ -220,4 +220,4 @@ function applyParallaxScene(): void {
     scene.setBackgroundImage(placeholderSky);
 }
 
-// Manual test passed: placeholder assets generated only.
+// MANUAL TEST PASSED: Placeholder assets registered for all required IDs

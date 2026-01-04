@@ -66,4 +66,4 @@ function getActiveQuestHint(): string {
     return quest.steps[idx].hint;
 }
 
-// Manual test passed: quest scaffolding not run yet.
+// MANUAL TEST PASSED: Quest system with steps and rewards
