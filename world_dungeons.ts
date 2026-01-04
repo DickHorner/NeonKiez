@@ -155,7 +155,7 @@ function spawnDungeonEnemies(): void {
     // DECISION: Spawn 2-3 enemies per dungeon for basic challenge without overwhelming player
     createEnemy(60, 60, 30);
     createEnemy(100, 40, 30);
-    if (Math.percentChance(50)) {
+    if (Math.percentChance(DUNGEON_ENEMY_SPAWN_CHANCE)) {
         createEnemy(80, 100, 30);
     }
 }

@@ -88,4 +88,11 @@ const HUB_GRID_SIZE = 3;
 const PARALLAX_LAYER_SKY = 0;
 const PARALLAX_LAYER_NEAR = 1;
 
+// Tool parameters
+const CONFETTI_BOMB_RADIUS = 48;
+const DECOY_TOY_RADIUS = 80;
+
+// Dungeon parameters
+const DUNGEON_ENEMY_SPAWN_CHANCE = 50; // Percentage chance for third enemy
+
 // MANUAL TEST PASSED: Constants and enums match agents.md specification

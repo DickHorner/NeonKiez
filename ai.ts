@@ -57,13 +57,20 @@ function registerAIUpdate(): void {
         const mode = getState().mode;
         if (mode !== GameMode.Hub && mode !== GameMode.Dungeon) return;
         
+        // DECISION: Clean up destroyed enemies from array to prevent memory leaks
+        for (let i = enemies.length - 1; i >= 0; i--) {
+            if (!enemies[i].sprite || enemies[i].sprite.flags & SpriteFlag.Destroyed) {
+                enemies.splice(i, 1);
+            }
+        }
+        
         for (let ai of enemies) {
-            if (!ai.sprite || ai.sprite.flags & SpriteFlag.Destroyed) continue;
             updateEnemyAI(ai);
         }
     });
 }
 
+// DECISION: AI updates skip destroyed enemies; cleanup happens in main loop to prevent memory leaks
 function updateEnemyAI(ai: EnemyAI): void {
     const now = game.runtime();
     
