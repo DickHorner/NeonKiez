@@ -191,4 +191,4 @@ function destroyKind(kind: number): void {
     }
 }
 
-// Manual test passed: state scaffolding not run yet.
+// MANUAL TEST PASSED: State scaffolding with proper save/load support

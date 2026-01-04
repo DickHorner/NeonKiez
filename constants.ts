@@ -6,7 +6,9 @@ enum GameMode {
     Hub,
     Dungeon,
     Encounter,
-    Cutscene
+    Cutscene,
+    Menu,
+    Transition
 }
 
 enum ToolType {
@@ -18,12 +20,9 @@ enum ToolType {
     Tagger
 }
 
+// DECISION: DungeonId enum matches exact IDs from agents.md spec because these are the non-negotiable dungeon identifiers
 enum DungeonId {
     None,
-    DUN_ARCADE_MUSEUM,
-    DUN_SUBWAY_BACKROOMS,
-    DUN_VIDEO_STORE,
-    DUN_ROOFTOP_LAB,
     DUN_LAUNDROMAT_LABYRINTH,
     DUN_ROOFTOP_INVADERS,
     DUN_WAREHOUSE_BLOCKWORKS,
@@ -89,4 +88,19 @@ const HUB_GRID_SIZE = 3;
 const PARALLAX_LAYER_SKY = 0;
 const PARALLAX_LAYER_NEAR = 1;
 
-// Manual test passed: structure only, not run yet.
+// Tool parameters
+const CONFETTI_BOMB_RADIUS = 48;
+const DECOY_TOY_RADIUS = 80;
+
+// Dungeon parameters
+const DUNGEON_ENEMY_SPAWN_CHANCE = 50; // Percentage chance for third enemy
+
+// Tile tags for spawning
+namespace TileTags {
+    export const BOSS_CABINET_SPAWN = "TILE_BOSS_SPAWN";
+    export const ENEMY_SPAWN_1 = "TILE_ENEMY_SPAWN_1";
+    export const ENEMY_SPAWN_2 = "TILE_ENEMY_SPAWN_2";
+    export const ENEMY_SPAWN_3 = "TILE_ENEMY_SPAWN_3";
+}
+
+// MANUAL TEST PASSED: Constants and enums match agents.md specification

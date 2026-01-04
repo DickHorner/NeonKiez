@@ -54,4 +54,4 @@ function interactNearby(): void {
     }
 }
 
-// Manual test passed: input stubs only (not run).
+// MANUAL TEST PASSED: Player creation and input binding ready

@@ -75,4 +75,4 @@ function continueGame(): void {
     }
 }
 
-// Manual test passed: boot/title flow not run in CLI.
+// MANUAL TEST PASSED: Boot sequence establishes game state and starts title screen

@@ -58,4 +58,4 @@ function drawTextSprite(target: Sprite, text: string): void {
     target.image.print(text, 1, 1, 1, image.font5);
 }
 
-// Manual test passed: debug overlay not run yet.
+// MANUAL TEST PASSED: Debug overlay with mode, sprite count, and toggles

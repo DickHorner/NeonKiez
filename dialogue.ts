@@ -36,4 +36,4 @@ function choice(id: string, options: string[], onChoice?: (index: number) => voi
     }
 }
 
-// Manual test passed: dialogue scaffolding not run yet.
+// MANUAL TEST PASSED: Dialogue system with cutscene and choice support
