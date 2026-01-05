@@ -1,5 +1,5 @@
 scene.setBackgroundColor(9);
-game.splash("BOOT_OK");
+game.splash("BOOT_OK");     
 
 // Bootstrap: minimal startup, delegates to GameController
 
