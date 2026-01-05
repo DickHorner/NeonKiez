@@ -33,8 +33,6 @@ const KIND_DEBRIS = SpriteKind.create()
 const KIND_PLATFORM_MOVING = SpriteKind.create()
 const KIND_TARGET = SpriteKind.create()
 const KIND_TOOL_EFFECT = SpriteKind.create()
-const SPRITE_KIND_BASE = SpriteKind // exported for type usage in other files
-
 // Tile Tags
 const TILE_SPAWN_PLAYER = 1
 const TILE_SPAWN_STAGE = 2

@@ -66,7 +66,8 @@ function cleanupCurrentPlayMode() {
     for (const s of allSprites) {
 
         if (s.flags & SpriteFlag.RelativeToCamera) continue
-        s.destroy()
+        const sprite = s as Sprite
+        sprite.destroy()
     }
     
     // Reset camera
@@ -155,7 +156,8 @@ function setupPlatformMode(payload: any) {
     const spec = DUNGEON_SPECS.find(d => d.id === dungeonId)
     if (!spec) return
     
-    const stageId = spec.stages[stageIndex]
+    const idx = stageIndex | 0
+    const stageId = spec.stages[idx]
     const tm = getTilemapByID(stageId)
     if (tm) {
         tiles.setCurrentTilemap(tm)
@@ -186,7 +188,8 @@ function setupShooterMode(payload: any) {
     const spec = DUNGEON_SPECS.find(d => d.id === dungeonId)
     if (!spec) return
     
-    const stageId = spec.stages[stageIndex]
+    const idx = stageIndex | 0
+    const stageId = spec.stages[idx]
     const tm = getTilemapByID(stageId)
     if (tm) {
         tiles.setCurrentTilemap(tm)
@@ -218,7 +221,8 @@ function setupAsteroidsMode(payload: any) {
     const spec = DUNGEON_SPECS.find(d => d.id === dungeonId)
     if (!spec) return
     
-    const stageId = spec.stages[stageIndex]
+    const idx = stageIndex | 0
+    const stageId = spec.stages[idx]
     // No tilemap for asteroids (open space)
     scene.setBackgroundColor(1)
     
@@ -247,7 +251,8 @@ function setupRhythmMode(payload: any) {
     const spec = DUNGEON_SPECS.find(d => d.id === dungeonId)
     if (!spec) return
     
-    const stageId = spec.stages[stageIndex]
+    const idx = stageIndex | 0
+    const stageId = spec.stages[idx]
     const tm = getTilemapByID(stageId)
     if (tm) {
         tiles.setCurrentTilemap(tm)
@@ -284,7 +289,8 @@ function setupPuzzleMode(payload: any) {
     const spec = DUNGEON_SPECS.find(d => d.id === dungeonId)
     if (!spec) return
     
-    const stageId = spec.stages[stageIndex]
+    const idx = stageIndex | 0
+    const stageId = spec.stages[idx]
     const tm = getTilemapByID(stageId)
     if (tm) {
         tiles.setCurrentTilemap(tm)
@@ -370,12 +376,12 @@ function handleInteract() {
     function handleInteractable(s: Sprite) {
         if (s.kind() === KIND_DOOR) {
             // Enter dungeon
-            const dungeonId = s.getDataString("dungeonId")
-            enterDungeon(dungeonId)
+            const dungeonId = (s as any).dungeonId as string
+            if (dungeonId) enterDungeon(dungeonId)
         } else if (s.kind() === KIND_NPC) {
             // Talk to NPC
-            const dialogId = s.getDataString("dialogId")
-            showDialog(dialogId)
+            const dialogId = (s as any).dialogId as string
+            if (dialogId) showDialog(dialogId)
         }
     }
 
@@ -387,7 +393,7 @@ function handleInteract() {
     
     // Transition → Cutscene → Dungeon
     setGameMode(GameMode.Transition)
-    game.pause(TRANSITION_PAUSE_MS)
+    pause(TRANSITION_PAUSE_MS)
     
     setGameMode(GameMode.Cutscene)
     playCutscene(spec.introCutsceneId, () => {
@@ -473,7 +479,7 @@ function updatePlatformMode() {
 
     const loc = playerSprite.tilemapLocation()
     if (!loc) return
-    const goalTile = tiles.getTileImage(TILE_GOAL_FLAG)
+    const goalTile = tiles.getTileImage(TILE_GOAL_FLAG as any)
     
     // Platform movement (handled via controller in player_modes)
     // Check for goal

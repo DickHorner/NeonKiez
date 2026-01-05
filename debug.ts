@@ -12,7 +12,8 @@ function initDebug() {
 function toggleGodMode() {
     godMode = !godMode
     if (godMode) {
-        state.invincibleUntil = Number.MAX_SAFE_INTEGER
+        // Use a large timestamp instead of MAX_SAFE_INTEGER (not defined in Arcade runtime)
+        state.invincibleUntil = 0x7fffffff
         showHint("[GODMODE_ON]", 2000)
     } else {
         state.invincibleUntil = 0

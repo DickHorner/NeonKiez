@@ -223,5 +223,6 @@ function getTilemapByID(id: string): tiles.TileMapData {
     if (id === "TM_DUN_09_STAGE_04_STABILIZE") return tmDun09Stage04()
     
     // Unknown id fallback: surface error to avoid null tilemaps later
-    throw new Error("Unknown tilemap ID: " + id)
+    control.fail("Unknown tilemap ID: " + id)
+    return createEmptyTilemap()
 }

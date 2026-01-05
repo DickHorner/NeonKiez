@@ -22,7 +22,7 @@ function spawnHubContent(roomRow: number, roomCol: number) {
 function spawnNPC(npcId: string, x: number, y: number, dialogId: string) {
     const npc = sprites.create(imgNpc(npcId), KIND_NPC)
     npc.setPosition(x, y)
-    npc.setDataString("dialogId", dialogId)
+    ;(npc as any).dialogId = dialogId
 }
 
 function spawnDungeonDoors(roomRow: number, roomCol: number) {
@@ -53,7 +53,7 @@ function spawnDungeonDoors(roomRow: number, roomCol: number) {
 function spawnDoor(dungeonId: string, x: number, y: number) {
     const door = sprites.create(imgDoor(dungeonId), KIND_DOOR)
     door.setPosition(x, y)
-    door.setDataString("dungeonId", dungeonId)
+    ;(door as any).dungeonId = dungeonId
 }
 
 function interactWithSavehouse() {

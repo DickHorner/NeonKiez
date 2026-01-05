@@ -124,11 +124,11 @@ function handleRhythmTap() {
     
     if (Math.abs(now - nextBeat) < windowMs) {
         // Good hit
-        state.dungeonStageData.streak++
+        state.dungeonStageData.streak += 1
         showHint("[RHYTHM_GOOD]", 500)
     } else {
         // Miss
-        state.dungeonStageData.misses++
+        state.dungeonStageData.misses += 1
         state.dungeonStageData.streak = 0
         showHint("[RHYTHM_MISS]", 500)
     }
@@ -156,7 +156,7 @@ function handlePuzzleInteract() {
     const loc = plyr.tilemapLocation()
     if (!loc || !game.currentScene().tileMap) return
 
-    const switchTile = tiles.getTileImage(TILE_SWITCH)
+    const switchTile = tiles.getTileImage(TILE_SWITCH as any)
     if (switchTile && tiles.tileAtLocationEquals(loc, switchTile)) {
         markInteract()
         toggleSwitch(loc)
@@ -166,7 +166,7 @@ function handlePuzzleInteract() {
 function toggleSwitch(loc: tiles.Location) {
     // Toggle gate state
     if (state.dungeonStageData) {
-        state.dungeonStageData.switchesActivated++
+        state.dungeonStageData.switchesActivated += 1
     }
     showHint("[SWITCH_ACTIVATED]", 1000)
     sfxInteract()
