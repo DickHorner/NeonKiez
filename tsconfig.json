@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "allowUnreachableCode": false
+    },
+    "exclude": ["pxt_modules/**/*test.ts"]
+}
