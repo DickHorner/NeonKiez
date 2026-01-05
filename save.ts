@@ -3,7 +3,7 @@
 
 // DECISION: Using settings block for persistence (simple key-value)
 
-export function saveGame() {
+function saveGame() {
     // Serialize state to JSON
     const data = {
         hearts: state.hearts,
@@ -18,7 +18,7 @@ export function saveGame() {
     settings.writeString("NEON_KIEZ_SAVE", JSON.stringify(data))
 }
 
-export function loadGame(): boolean {
+function loadGame(): boolean {
     const json = settings.readString("NEON_KIEZ_SAVE")
     if (!json || json.length === 0) {
         return false
@@ -39,11 +39,11 @@ export function loadGame(): boolean {
     }
 }
 
-export function hasSaveData(): boolean {
+function hasSaveData(): boolean {
     const json = settings.readString("NEON_KIEZ_SAVE")
     return json && json.length > 0
 }
 
-export function deleteSave() {
+function deleteSave() {
     settings.writeString("NEON_KIEZ_SAVE", "")
 }
