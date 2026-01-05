@@ -4,9 +4,10 @@
     "dependencies": {
         "device": "*",
         "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
-        "arcade-overworld": "github:riknoll/arcade-overworld#v0.0.4",
+        "arcade-overworld": "github:riknoll/arcade-overworld#v0.0.5",
         "arcade-storytelling": "github:microsoft/arcade-storytelling#v1.0.0",
-        "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.0.1"
+        "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.0.1",
+        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3"
     },
     "files": [
         "main.ts",
@@ -29,7 +30,7 @@
     ],
     "testFiles": [],
     "targetVersions": {
-        "target": "1.12.30",
+        "target": "2.0.63",
         "targetId": "arcade"
     },
     "supportedTargets": [
