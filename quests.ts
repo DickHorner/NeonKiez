@@ -3,7 +3,7 @@
 
 // DECISION: Simple flag-based quest tracking for now
 
-export interface QuestSpec {
+interface QuestSpec {
     id: string
     title: string
     description: string
@@ -23,14 +23,14 @@ const QUESTS: QuestSpec[] = [
     }
 ]
 
-export function getActiveQuests(): QuestSpec[] {
+function getActiveQuests(): QuestSpec[] {
     return QUESTS.filter(q => {
         // Check if all require flags are set
         return q.requireFlags.every(f => hasFlag(f)) && !hasFlag(q.rewardFlags[0])
     })
 }
 
-export function completeQuest(questId: string) {
+function completeQuest(questId: string) {
     const quest = QUESTS.find(q => q.id === questId)
     if (!quest) return
     

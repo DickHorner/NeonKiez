@@ -4,7 +4,7 @@
 // DECISION: Using storytelling extension (story.* API)
 // All texts are placeholder IDs, humans will replace
 
-export function playCutscene(cutsceneId: string, onComplete?: () => void) {
+function playCutscene(cutsceneId: string, onComplete?: () => void) {
     // Placeholder: show text briefly
     game.showLongText("[" + cutsceneId + "]", DialogLayout.Bottom)
     if (onComplete) onComplete()

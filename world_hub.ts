@@ -8,7 +8,7 @@ const HUB_DOOR_X = 80
 const HUB_DOOR_Y = 80
 const HUB_FINAL_DOOR_Y = 100
 
-export function spawnHubContent(roomRow: number, roomCol: number) {
+function spawnHubContent(roomRow: number, roomCol: number) {
     // Spawn NPCs
     if (roomRow === 1 && roomCol === 1) {
         // Center room: savehouse + main NPCs
@@ -56,7 +56,7 @@ function spawnDoor(dungeonId: string, x: number, y: number) {
     door.setDataString("dungeonId", dungeonId)
 }
 
-export function interactWithSavehouse() {
+function interactWithSavehouse() {
     healPlayer(state.maxHearts)
     saveGame()
     showHint("[SAVEHOUSE_SAVED]", 2000)

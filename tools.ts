@@ -1,7 +1,7 @@
 // Tools: FreezeCam/Confetti/Soap/Decoy/Tagger (global, may be disabled per mode)
 // NOTE: Arcade runtime globals (game, sprites) are available without imports.
 
-export function useTool(toolId: string) {
+function useTool(toolId: string) {
     // Check cooldown
     if (game.runtime() < state.toolCooldownUntil) {
         return
@@ -55,7 +55,7 @@ function useTagger() {
     showHint("[TOOL_TAGGER_USED]", 1000)
 }
 
-export function cycleToolSelection() {
+function cycleToolSelection() {
     if (state.unlockedTools.length === 0) {
         state.currentTool = null
         return

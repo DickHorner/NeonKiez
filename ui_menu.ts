@@ -1,7 +1,7 @@
 // UI Menu: Pause/Inventory/Questlog/Debug-Warp (mini-menu)
 // NOTE: Uses Arcade runtime globals (game, DialogLayout); imports are unnecessary.
 
-export function showPauseMenu() {
+function showPauseMenu() {
     // Placeholder: simple menu
     const choice = game.askForNumber("PAUSE 0=Continue 1=Save 2=Exit", 0)
 
@@ -13,7 +13,7 @@ export function showPauseMenu() {
     }
 }
 
-export function showInventory() {
+function showInventory() {
     // Placeholder: list items
     let text = "INVENTORY:\n"
     for (const itemId in state.inventory) {
@@ -22,11 +22,11 @@ export function showInventory() {
     game.showLongText(text, DialogLayout.Center)
 }
 
-export function showQuestLog() {
+function showQuestLog() {
     game.showLongText("[QUEST_LOG_PLACEHOLDER]", DialogLayout.Center)
 }
 
-export function showDebugWarpMenu() {
+function showDebugWarpMenu() {
     // Placeholder: warp to dungeons
     game.showLongText("[DEBUG_WARP_MENU]", DialogLayout.Center)
 }

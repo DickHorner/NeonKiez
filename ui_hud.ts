@@ -6,7 +6,7 @@ let hudEnergy: TextSprite = null as any
 let hudTool: TextSprite = null as any
 let hudHint: TextSprite = null as any
 
-export function initHUD() {
+function initHUD() {
     hudHearts = textsprite.create("", 0, 1)
     hudHearts.setFlag(SpriteFlag.RelativeToCamera, true)
     hudHearts.left = 2
@@ -29,7 +29,7 @@ export function initHUD() {
     hudHint.bottom = scene.screenHeight() - 2
 }
 
-export function updateHUD() {
+function updateHUD() {
     if (!hudHearts) return
     
     // Hearts
@@ -50,7 +50,7 @@ export function updateHUD() {
     }
 }
 
-export function showHint(text: string, durationMs: number = 2000) {
+function showHint(text: string, durationMs: number = 2000) {
     if (!hudHint) return
     hudHint.setText(text)
 
@@ -60,14 +60,14 @@ export function showHint(text: string, durationMs: number = 2000) {
     })
 }
 
-export function hideHUD() {
+function hideHUD() {
     if (hudHearts) hudHearts.setFlag(SpriteFlag.Invisible, true)
     if (hudEnergy) hudEnergy.setFlag(SpriteFlag.Invisible, true)
     if (hudTool) hudTool.setFlag(SpriteFlag.Invisible, true)
     if (hudHint) hudHint.setFlag(SpriteFlag.Invisible, true)
 }
 
-export function showHUD() {
+function showHUD() {
     if (hudHearts) hudHearts.setFlag(SpriteFlag.Invisible, false)
     if (hudEnergy) hudEnergy.setFlag(SpriteFlag.Invisible, false)
     if (hudTool) hudTool.setFlag(SpriteFlag.Invisible, false)
