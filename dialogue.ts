@@ -10,12 +10,12 @@ export function playCutscene(cutsceneId: string, onComplete?: () => void) {
     if (onComplete) onComplete()
 }
 
-export function showDialog(dialogId: string, onComplete?: () => void) {
+function showDialog(dialogId: string, onComplete?: () => void) {
     game.showLongText("[" + dialogId + "]", DialogLayout.Bottom)
     if (onComplete) onComplete()
 }
 
-export function showChoice(promptId: string, options: string[], onSelect: (index: number) => void) {
+function showChoice(promptId: string, options: string[], onSelect: (index: number) => void) {
     // Placeholder: just pick first option for now
     game.showLongText("[" + promptId + "]", DialogLayout.Bottom)
     onSelect(0)

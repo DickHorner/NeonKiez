@@ -3,13 +3,13 @@
 let debugMode = false
 let godMode = false
 
-export function initDebug() {
+function initDebug() {
     // Toggle debug with controller combo (e.g., hold Menu + Down)
     // Placeholder: always available for testing
     debugMode = true
 }
 
-export function toggleGodMode() {
+function toggleGodMode() {
     godMode = !godMode
     if (godMode) {
         state.invincibleUntil = Number.MAX_SAFE_INTEGER
@@ -20,11 +20,11 @@ export function toggleGodMode() {
     }
 }
 
-export function warpToDungeon(dungeonId: string) {
+function warpToDungeon(dungeonId: string) {
     GameController.enterDungeon(dungeonId)
 }
 
-export function warpToHub() {
+function warpToHub() {
     setGameMode(GameMode.Hub)
     GameController.switchPlayMode(PlayMode.HUB_TOPDOWN, {
         hubRoom: state.hubRoom,
@@ -32,7 +32,7 @@ export function warpToHub() {
     })
 }
 
-export function showDebugOverlay() {
+function showDebugOverlay() {
     let text = "DEBUG\n"
     text += "Mode: " + state.playMode + "\n"
     text += "Hearts: " + state.hearts + "\n"

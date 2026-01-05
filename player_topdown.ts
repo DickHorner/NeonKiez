@@ -4,7 +4,7 @@
 // Hub player is controlled via controller.moveSprite in game_controller.ts
 // This file handles additional hub-specific logic
 
-export function initHubPlayer(player: Sprite) {
+function initHubPlayer(player: Sprite) {
     // Set collision detection
     player.setFlag(SpriteFlag.Ghost, false)
     

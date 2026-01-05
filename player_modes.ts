@@ -8,7 +8,7 @@ const ASTEROIDS_THRUST_SCALE = 10
 
 // ============ PLATFORM MODE ============
 
-export function initPlatformPlayer(player: Sprite) {
+function initPlatformPlayer(player: Sprite) {
     controller.moveSprite(player, PLAYER_PLATFORM_SPEED, 0)
     scene.cameraFollowSprite(player)
     
@@ -29,7 +29,7 @@ export function initPlatformPlayer(player: Sprite) {
 
 // ============ SHOOTER MODE ============
 
-export function initShooterPlayer(player: Sprite) {
+function initShooterPlayer(player: Sprite) {
     controller.moveSprite(player, PLAYER_SHOOTER_SPEED, PLAYER_SHOOTER_SPEED)
     
     // Shoot
@@ -59,7 +59,7 @@ let asteroidRotation = 0
 let asteroidVx = 0
 let asteroidVy = 0
 
-export function initAsteroidsPlayer(player: Sprite) {
+function initAsteroidsPlayer(player: Sprite) {
     asteroidRotation = 0
     asteroidVx = 0
     asteroidVy = 0
@@ -105,7 +105,7 @@ function updateAsteroidsControls() {
 
 // ============ RHYTHM MODE ============
 
-export function initRhythmPlayer(player: Sprite) {
+function initRhythmPlayer(player: Sprite) {
     controller.moveSprite(player, 50, 50)  // slow movement
     
     // Tap in window
@@ -136,7 +136,7 @@ function handleRhythmTap() {
 
 // ============ PUZZLE MODE ============
 
-export function initPuzzlePlayer(player: Sprite) {
+function initPuzzlePlayer(player: Sprite) {
     controller.moveSprite(player, 60, 60)
     
     // Interact with switches/objects

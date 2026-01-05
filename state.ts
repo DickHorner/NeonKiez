@@ -41,9 +41,9 @@ interface GameState {
     invincibleUntil: number
 }
 
-export let state: GameState = null as any
+let state: GameState = null as any
 
-export function initState() {
+function initState() {
     state = {
         gameMode: 0,  // Boot
         playMode: 0,  // HUB_TOPDOWN
@@ -75,44 +75,44 @@ export function initState() {
     }
 }
 
-export function setGameMode(mode: number) {
+function setGameMode(mode: number) {
     state.gameMode = mode
 }
 
-export function setPlayMode(mode: number) {
+function setPlayMode(mode: number) {
     state.playMode = mode
 }
 
-export function setFlag(flag: string, value: boolean = true) {
+function setFlag(flag: string, value: boolean = true) {
     state.flags[flag] = value
 }
 
-export function hasFlag(flag: string): boolean {
+function hasFlag(flag: string): boolean {
     return !!state.flags[flag]
 }
 
-export function unlockTool(toolId: string) {
+function unlockTool(toolId: string) {
     if (state.unlockedTools.indexOf(toolId) < 0) {
         state.unlockedTools.push(toolId)
     }
 }
 
-export function hasTool(toolId: string): boolean {
+function hasTool(toolId: string): boolean {
     return state.unlockedTools.indexOf(toolId) >= 0
 }
 
-export function addItem(itemId: string, qty: number) {
+function addItem(itemId: string, qty: number) {
     if (!state.inventory[itemId]) {
         state.inventory[itemId] = 0
     }
     state.inventory[itemId] += qty
 }
 
-export function getItemCount(itemId: string): number {
+function getItemCount(itemId: string): number {
     return state.inventory[itemId] || 0
 }
 
-export function damagePlayer(amount: number) {
+function damagePlayer(amount: number) {
     if (game.runtime() < state.invincibleUntil) return
     
     state.hearts -= amount
@@ -123,15 +123,15 @@ export function damagePlayer(amount: number) {
     // TODO: feedback (flash, sound)
 }
 
-export function healPlayer(amount: number) {
+function healPlayer(amount: number) {
     state.hearts += amount
     if (state.hearts > state.maxHearts) state.hearts = state.maxHearts
 }
 
-export function canInteract(): boolean {
+function canInteract(): boolean {
     return game.runtime() > state.lastInteractTime + INTERACT_DEBOUNCE_MS
 }
 
-export function markInteract() {
+function markInteract() {
     state.lastInteractTime = game.runtime()
 }
