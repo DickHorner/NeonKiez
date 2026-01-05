@@ -12,7 +12,14 @@ export function isDungeonCleared(dungeonId: string): boolean {
     const spec = getDungeonSpec(dungeonId)
     if (!spec) return false
     
-    const clearFlag = (spec.rewards?.flagsSet || []).find(f => f.includes("CLEARED"))
+    let clearFlag = null
+    const flagsSet = (spec.rewards && spec.rewards.flagsSet) || []
+    for (let i = 0; i < flagsSet.length; i++) {
+        if (flagsSet[i].includes("CLEARED")) {
+            clearFlag = flagsSet[i]
+            break
+        }
+    }
     return clearFlag ? hasFlag(clearFlag) : false
 }
 

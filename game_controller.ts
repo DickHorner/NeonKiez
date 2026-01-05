@@ -261,7 +261,7 @@ function setupRhythmMode(payload: any) {
     initRhythmPlayer(playerSprite)
     
     // Stage data
-    const bpm = (spec.params?.bpm) ?? 120
+    const bpm = (spec.params && spec.params.bpm) || 120
     const beatIntervalMs = 60000 / bpm
     
     state.dungeonStageData = {
