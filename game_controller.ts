@@ -1,7 +1,10 @@
 // GameController: GameMode/PlayMode StateMachine, transitions, cleanup
+// NOTE: Arcade runtime exposes globals (game, tiles, controller, sprites); imports are not required.
 
 namespace GameController {
     let playerSprite: Sprite = null
+    const TRANSITION_PAUSE_MS = 100
+    const CONTINUE_YES = 1
 
     export function start() {
     // Initialize
@@ -22,8 +25,8 @@ function showTitle() {
     
     // Check for save
     if (hasSaveData()) {
-        const cont = game.ask("Continue?", "Yes|New Game")
-        if (cont) {
+        const cont = game.askForNumber("Continue? 1=Yes 0=New", 1)
+        if (cont === CONTINUE_YES) {
             loadGame()
         }
     }
@@ -61,7 +64,7 @@ function cleanupCurrentPlayMode() {
     // Destroy all sprites except HUD elements
     const allSprites = game.currentScene().allSprites
     for (const s of allSprites) {
-        if (s.kind() === SpriteKind.Text) continue  // keep HUD
+
         if (s.flags & SpriteFlag.RelativeToCamera) continue
         s.destroy()
     }
@@ -258,7 +261,7 @@ function setupRhythmMode(payload: any) {
     initRhythmPlayer(playerSprite)
     
     // Stage data
-    const bpm = spec.params?.bpm || 120
+    const bpm = (spec.params?.bpm) ?? 120
     const beatIntervalMs = 60000 / bpm
     
     state.dungeonStageData = {
@@ -356,7 +359,7 @@ function handleInteract() {
     // Placeholder: check overlaps
     const nearby = sprites.allOfKind(KIND_DOOR).concat(sprites.allOfKind(KIND_NPC))
     for (const s of nearby) {
-        if (Math.abs(playerSprite.x - s.x) < 20 && Math.abs(playerSprite.y - s.y) < 20) {
+        if (Math.abs(playerSprite.x - s.x) < INTERACT_DISTANCE && Math.abs(playerSprite.y - s.y) < INTERACT_DISTANCE) {
             markInteract()
             handleInteractable(s)
             return
@@ -367,11 +370,11 @@ function handleInteract() {
     function handleInteractable(s: Sprite) {
         if (s.kind() === KIND_DOOR) {
             // Enter dungeon
-            const dungeonId = s.data as string
+            const dungeonId = s.getDataString("dungeonId")
             enterDungeon(dungeonId)
         } else if (s.kind() === KIND_NPC) {
             // Talk to NPC
-            const dialogId = s.data as string
+            const dialogId = s.getDataString("dialogId")
             showDialog(dialogId)
         }
     }
@@ -384,7 +387,7 @@ function handleInteract() {
     
     // Transition → Cutscene → Dungeon
     setGameMode(GameMode.Transition)
-    pause(100)
+    game.pause(TRANSITION_PAUSE_MS)
     
     setGameMode(GameMode.Cutscene)
     playCutscene(spec.introCutsceneId, () => {
@@ -466,11 +469,15 @@ function updateGameLoop() {
 
 function updatePlatformMode() {
     if (!playerSprite || !state.dungeonStageData) return
+    if (!game.currentScene().tileMap) return
+
+    const loc = playerSprite.tilemapLocation()
+    if (!loc) return
+    const goalTile = tiles.getTileImage(TILE_GOAL_FLAG)
     
     // Platform movement (handled via controller in player_modes)
     // Check for goal
-    const goalTile = tiles.getTileAt(playerSprite.tilemapLocation().column, playerSprite.tilemapLocation().row)
-    if (goalTile && goalTile === TILE_GOAL_FLAG && !state.dungeonStageData.reachedGoal) {
+    if (goalTile && tiles.tileAtLocationEquals(loc, goalTile) && !state.dungeonStageData.reachedGoal) {
         state.dungeonStageData.reachedGoal = true
         onStageComplete()
     }

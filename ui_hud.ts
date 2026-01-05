@@ -1,4 +1,5 @@
 // UI HUD: hearts, energy, tool, hint
+// NOTE: Relies on Arcade globals (textsprite, SpriteFlag, scene, game); no imports needed.
 
 let hudHearts: TextSprite = null as any
 let hudEnergy: TextSprite = null as any
@@ -52,10 +53,11 @@ export function updateHUD() {
 export function showHint(text: string, durationMs: number = 2000) {
     if (!hudHint) return
     hudHint.setText(text)
-    
-    setTimeout(() => {
+
+    control.runInParallel(() => {
+        pause(durationMs)
         if (hudHint) hudHint.setText("")
-    }, durationMs)
+    })
 }
 
 export function hideHUD() {

@@ -33,6 +33,7 @@ export const KIND_DEBRIS = SpriteKind.create()
 export const KIND_PLATFORM_MOVING = SpriteKind.create()
 export const KIND_TARGET = SpriteKind.create()
 export const KIND_TOOL_EFFECT = SpriteKind.create()
+export const SPRITE_KIND_BASE = SpriteKind // exported for type usage in other files
 
 // Tile Tags
 export const TILE_SPAWN_PLAYER = 1
@@ -45,6 +46,9 @@ export const TILE_GOAL_FLAG = 7
 export const TILE_HAZARD = 8
 export const TILE_SWITCH = 9
 export const TILE_GATE = 10
+
+// Interaction distances
+export const INTERACT_DISTANCE = 20
 
 // Spawn Caps
 export const CAP_MAX_ENEMIES = 12

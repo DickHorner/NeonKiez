@@ -1,4 +1,5 @@
 // Tools: FreezeCam/Confetti/Soap/Decoy/Tagger (global, may be disabled per mode)
+// NOTE: Arcade runtime globals (game, sprites) are available without imports.
 
 export function useTool(toolId: string) {
     // Check cooldown

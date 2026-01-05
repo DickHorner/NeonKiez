@@ -1,4 +1,5 @@
 // Quests: QuestSpec + Progress + Rewards (placeholder)
+// NOTE: Relies on shared globals (state, flags) available without imports in Arcade.
 
 // DECISION: Simple flag-based quest tracking for now
 

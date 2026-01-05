@@ -1,4 +1,5 @@
 // Story wrapper: playCutscene/say/choice with placeholder texts
+// NOTE: MakeCode Arcade supplies game/DialogLayout globals; no imports required here.
 
 // DECISION: Using storytelling extension (story.* API)
 // All texts are placeholder IDs, humans will replace

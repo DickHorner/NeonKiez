@@ -1,4 +1,5 @@
 // Save/Load: serialize/deserialize, persist, continue/new game
+// NOTE: MakeCode Arcade provides settings/JSON globals; imports are intentionally omitted.
 
 // DECISION: Using settings block for persistence (simple key-value)
 

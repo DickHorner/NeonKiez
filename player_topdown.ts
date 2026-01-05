@@ -1,4 +1,5 @@
 // Top-Down Player for Hub: movement + interact
+// NOTE: Arcade globals (scene, SpriteFlag) are available without imports.
 
 // Hub player is controlled via controller.moveSprite in game_controller.ts
 // This file handles additional hub-specific logic

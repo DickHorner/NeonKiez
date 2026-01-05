@@ -1,14 +1,15 @@
 // UI Menu: Pause/Inventory/Questlog/Debug-Warp (mini-menu)
+// NOTE: Uses Arcade runtime globals (game, DialogLayout); imports are unnecessary.
 
 export function showPauseMenu() {
     // Placeholder: simple menu
-    const choice = game.ask("PAUSE", "Continue|Save|Exit")
-    
-    if (choice) {
-        // Continue
-    } else {
-        // Save or exit
+    const choice = game.askForNumber("PAUSE 0=Continue 1=Save 2=Exit", 0)
+
+    if (choice === 1) {
         saveGame()
+    } else if (choice === 2) {
+        saveGame()
+        game.reset()
     }
 }
 

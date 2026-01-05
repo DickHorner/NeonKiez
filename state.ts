@@ -1,4 +1,5 @@
 // GameState: flags, inventory, unlocked tools, current hub room, playMode
+// NOTE: MakeCode Arcade exposes game/runtime globals; imports are intentionally omitted.
 
 interface GameState {
     // Flow
@@ -117,7 +118,7 @@ export function damagePlayer(amount: number) {
     state.hearts -= amount
     if (state.hearts < 0) state.hearts = 0
     
-    state.invincibleUntil = game.runtime() + 1000  // PLAYER_INVINCIBILITY_MS
+    state.invincibleUntil = game.runtime() + PLAYER_INVINCIBILITY_MS
     
     // TODO: feedback (flash, sound)
 }
@@ -128,7 +129,7 @@ export function healPlayer(amount: number) {
 }
 
 export function canInteract(): boolean {
-    return game.runtime() > state.lastInteractTime + 300  // INTERACT_DEBOUNCE_MS
+    return game.runtime() > state.lastInteractTime + INTERACT_DEBOUNCE_MS
 }
 
 export function markInteract() {

@@ -1,4 +1,10 @@
 // Mode-specific Player/Inputs: platformer/shooter/asteroids/rhythm/puzzle
+// NOTE: Uses Arcade globals (controller, sprites, tiles, game); imports not required in Arcade projects.
+
+const PLAYER_PLATFORM_GROUND_THRESHOLD = 10
+const RHYTHM_GOOD_WINDOW_MS = 200
+const SHOOTER_BULLET_SPEED_Y = -100
+const ASTEROIDS_THRUST_SCALE = 10
 
 // ============ PLATFORM MODE ============
 
@@ -13,8 +19,8 @@ export function initPlatformPlayer(player: Sprite) {
         const plyr = GameController.getPlayerSprite()
         if (!plyr) return
         
-        // Check if on ground (simple check: vy near 0 and ay > 0)
-        if (Math.abs(plyr.vy) < 10) {
+        // Check if on ground using tile collision
+        if (plyr.isHittingTile(CollisionDirection.Bottom) || Math.abs(plyr.vy) < PLAYER_PLATFORM_GROUND_THRESHOLD) {
             plyr.vy = PLAYER_PLATFORM_JUMP_VY
             sfxJump()
         }
@@ -40,7 +46,7 @@ function shootBullet() {
     // Cap check
     if (sprites.allOfKind(KIND_PROJECTILE).length >= CAP_MAX_PROJECTILES) return
     
-    const bullet = sprites.createProjectileFromSprite(imgProjectile("BULLET"), plyr, 0, -100)
+    const bullet = sprites.createProjectileFromSprite(imgProjectile("BULLET"), plyr, 0, SHOOTER_BULLET_SPEED_Y)
     bullet.setKind(KIND_PROJECTILE)
     bullet.lifespan = 2000
     
@@ -79,8 +85,8 @@ function updateAsteroidsControls() {
     // Thrust
     if (controller.up.isPressed()) {
         const rad = asteroidRotation * Math.PI / 180
-        asteroidVx += Math.sin(rad) * PLAYER_ASTEROIDS_THRUST / 10
-        asteroidVy -= Math.cos(rad) * PLAYER_ASTEROIDS_THRUST / 10
+        asteroidVx += Math.sin(rad) * PLAYER_ASTEROIDS_THRUST / ASTEROIDS_THRUST_SCALE
+        asteroidVy -= Math.cos(rad) * PLAYER_ASTEROIDS_THRUST / ASTEROIDS_THRUST_SCALE
     }
     
     // Apply velocity
@@ -148,9 +154,10 @@ function handlePuzzleInteract() {
     
     // Check tile at player location
     const loc = plyr.tilemapLocation()
-    const tile = tiles.getTileAt(loc.column, loc.row)
-    
-    if (tile === TILE_SWITCH) {
+    if (!loc || !game.currentScene().tileMap) return
+
+    const switchTile = tiles.getTileImage(TILE_SWITCH)
+    if (switchTile && tiles.tileAtLocationEquals(loc, switchTile)) {
         markInteract()
         toggleSwitch(loc)
     }

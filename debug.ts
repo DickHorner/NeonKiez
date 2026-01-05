@@ -12,7 +12,7 @@ export function initDebug() {
 export function toggleGodMode() {
     godMode = !godMode
     if (godMode) {
-        state.invincibleUntil = 999999999
+        state.invincibleUntil = Number.MAX_SAFE_INTEGER
         showHint("[GODMODE_ON]", 2000)
     } else {
         state.invincibleUntil = 0

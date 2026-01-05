@@ -1,4 +1,5 @@
 // DungeonRegistry: 9 Specs, Dungeon entry/return wiring
+// NOTE: Uses shared globals from constants/state; imports are unnecessary in Arcade projects.
 
 // All dungeon specs are in constants.ts (DUNGEON_SPECS)
 // This file contains helper functions for dungeon management
@@ -11,7 +12,7 @@ export function isDungeonCleared(dungeonId: string): boolean {
     const spec = getDungeonSpec(dungeonId)
     if (!spec) return false
     
-    const clearFlag = spec.rewards.flagsSet.find(f => f.includes("CLEARED"))
+    const clearFlag = (spec.rewards?.flagsSet || []).find(f => f.includes("CLEARED"))
     return clearFlag ? hasFlag(clearFlag) : false
 }
 
@@ -22,7 +23,7 @@ export function checkAllDungeonsClearExceptFinal(): boolean {
             count++
         }
     }
-    return count >= 8
+    return count >= (DUNGEON_SPECS.length - 1)
 }
 
 // MANUAL TEST PASSED: Dungeon registry helpers

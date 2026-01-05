@@ -56,71 +56,81 @@ export function imgToolEffect(toolId: string): Image {
 
 // ============ TILEMAPS ============
 
+function createEmptyTilemap(): tiles.TileMapData {
+    // Single-tile placeholder to avoid null references at runtime
+    return tiles.createTilemap(
+        hex`0`,
+        img`.`,
+        [],
+        TileScale.Sixteen
+    )
+}
+
 // Hub rooms (3x3 grid)
-export function tmHub00(): tiles.TileMapData { return null as any }
-export function tmHub01(): tiles.TileMapData { return null as any }
-export function tmHub02(): tiles.TileMapData { return null as any }
-export function tmHub10(): tiles.TileMapData { return null as any }
-export function tmHub11(): tiles.TileMapData { return null as any }
-export function tmHub12(): tiles.TileMapData { return null as any }
-export function tmHub20(): tiles.TileMapData { return null as any }
-export function tmHub21(): tiles.TileMapData { return null as any }
-export function tmHub22(): tiles.TileMapData { return null as any }
+export function tmHub00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmHub01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmHub02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmHub10(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmHub11(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmHub12(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmHub20(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmHub21(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmHub22(): tiles.TileMapData { return createEmptyTilemap() }
 
 // Dungeon 1 stages
-export function tmDun01Stage00(): tiles.TileMapData { return null as any }
-export function tmDun01Stage01(): tiles.TileMapData { return null as any }
-export function tmDun01Stage02(): tiles.TileMapData { return null as any }
-export function tmDun01Stage03(): tiles.TileMapData { return null as any }
+export function tmDun01Stage00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun01Stage01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun01Stage02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun01Stage03(): tiles.TileMapData { return createEmptyTilemap() }
 
 // Dungeon 2 stages
-export function tmDun02Stage00(): tiles.TileMapData { return null as any }
-export function tmDun02Stage01(): tiles.TileMapData { return null as any }
-export function tmDun02Stage02(): tiles.TileMapData { return null as any }
-export function tmDun02Stage03(): tiles.TileMapData { return null as any }
+export function tmDun02Stage00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun02Stage01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun02Stage02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun02Stage03(): tiles.TileMapData { return createEmptyTilemap() }
 
 // Dungeon 3 stages
-export function tmDun03Stage00(): tiles.TileMapData { return null as any }
-export function tmDun03Stage01(): tiles.TileMapData { return null as any }
-export function tmDun03Stage02(): tiles.TileMapData { return null as any }
-export function tmDun03Stage03(): tiles.TileMapData { return null as any }
+export function tmDun03Stage00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun03Stage01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun03Stage02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun03Stage03(): tiles.TileMapData { return createEmptyTilemap() }
 
 // Dungeon 4 stages
-export function tmDun04Stage00(): tiles.TileMapData { return null as any }
-export function tmDun04Stage01(): tiles.TileMapData { return null as any }
-export function tmDun04Stage02(): tiles.TileMapData { return null as any }
-export function tmDun04Stage03(): tiles.TileMapData { return null as any }
+export function tmDun04Stage00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun04Stage01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun04Stage02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun04Stage03(): tiles.TileMapData { return createEmptyTilemap() }
 
 // Dungeon 5 stages
-export function tmDun05Stage00(): tiles.TileMapData { return null as any }
-export function tmDun05Stage01(): tiles.TileMapData { return null as any }
-export function tmDun05Stage02(): tiles.TileMapData { return null as any }
-export function tmDun05Stage03(): tiles.TileMapData { return null as any }
+export function tmDun05Stage00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun05Stage01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun05Stage02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun05Stage03(): tiles.TileMapData { return createEmptyTilemap() }
 
 // Dungeon 6 stages
-export function tmDun06Stage00(): tiles.TileMapData { return null as any }
-export function tmDun06Stage01(): tiles.TileMapData { return null as any }
-export function tmDun06Stage02(): tiles.TileMapData { return null as any }
-export function tmDun06Stage03(): tiles.TileMapData { return null as any }
+export function tmDun06Stage00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun06Stage01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun06Stage02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun06Stage03(): tiles.TileMapData { return createEmptyTilemap() }
 
 // Dungeon 7 stages
-export function tmDun07Stage00(): tiles.TileMapData { return null as any }
-export function tmDun07Stage01(): tiles.TileMapData { return null as any }
-export function tmDun07Stage02(): tiles.TileMapData { return null as any }
-export function tmDun07Stage03(): tiles.TileMapData { return null as any }
+export function tmDun07Stage00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun07Stage01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun07Stage02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun07Stage03(): tiles.TileMapData { return createEmptyTilemap() }
 
 // Dungeon 8 stages
-export function tmDun08Stage00(): tiles.TileMapData { return null as any }
-export function tmDun08Stage01(): tiles.TileMapData { return null as any }
-export function tmDun08Stage02(): tiles.TileMapData { return null as any }
-export function tmDun08Stage03(): tiles.TileMapData { return null as any }
+export function tmDun08Stage00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun08Stage01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun08Stage02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun08Stage03(): tiles.TileMapData { return createEmptyTilemap() }
 
 // Dungeon 9 stages
-export function tmDun09Stage00(): tiles.TileMapData { return null as any }
-export function tmDun09Stage01(): tiles.TileMapData { return null as any }
-export function tmDun09Stage02(): tiles.TileMapData { return null as any }
-export function tmDun09Stage03(): tiles.TileMapData { return null as any }
-export function tmDun09Stage04(): tiles.TileMapData { return null as any }
+export function tmDun09Stage00(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun09Stage01(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun09Stage02(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun09Stage03(): tiles.TileMapData { return createEmptyTilemap() }
+export function tmDun09Stage04(): tiles.TileMapData { return createEmptyTilemap() }
 
 // ============ SOUNDS ============
 
@@ -212,5 +222,6 @@ export function getTilemapByID(id: string): tiles.TileMapData {
     if (id === "TM_DUN_09_STAGE_03_MICRO_RHYTHM") return tmDun09Stage03()
     if (id === "TM_DUN_09_STAGE_04_STABILIZE") return tmDun09Stage04()
     
-    return null as any  // fallback
+    // Unknown id fallback: surface error to avoid null tilemaps later
+    throw new Error("Unknown tilemap ID: " + id)
 }
