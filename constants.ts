@@ -1,6 +1,6 @@
 // Constants: IDs, Enums, Tuning Parameters, SpriteKinds, TileTags, Caps
 
-export enum GameMode {
+enum GameMode {
     Boot,
     Title,
     Hub,
@@ -10,7 +10,7 @@ export enum GameMode {
     Transition
 }
 
-export enum PlayMode {
+enum PlayMode {
     HUB_TOPDOWN,
     DUN_PLATFORM,
     DUN_SHOOTER,
@@ -21,65 +21,65 @@ export enum PlayMode {
 }
 
 // SpriteKinds per mode (extend as needed)
-export const KIND_PLAYER = SpriteKind.Player
-export const KIND_ENEMY = SpriteKind.Enemy
-export const KIND_PROJECTILE = SpriteKind.Projectile
-export const KIND_NPC = SpriteKind.create()
-export const KIND_DOOR = SpriteKind.create()
-export const KIND_INTERACTABLE = SpriteKind.create()
-export const KIND_COLLECTIBLE = SpriteKind.create()
-export const KIND_HAZARD = SpriteKind.create()
-export const KIND_DEBRIS = SpriteKind.create()
-export const KIND_PLATFORM_MOVING = SpriteKind.create()
-export const KIND_TARGET = SpriteKind.create()
-export const KIND_TOOL_EFFECT = SpriteKind.create()
-export const SPRITE_KIND_BASE = SpriteKind // exported for type usage in other files
+const KIND_PLAYER = SpriteKind.Player
+const KIND_ENEMY = SpriteKind.Enemy
+const KIND_PROJECTILE = SpriteKind.Projectile
+const KIND_NPC = SpriteKind.create()
+const KIND_DOOR = SpriteKind.create()
+const KIND_INTERACTABLE = SpriteKind.create()
+const KIND_COLLECTIBLE = SpriteKind.create()
+const KIND_HAZARD = SpriteKind.create()
+const KIND_DEBRIS = SpriteKind.create()
+const KIND_PLATFORM_MOVING = SpriteKind.create()
+const KIND_TARGET = SpriteKind.create()
+const KIND_TOOL_EFFECT = SpriteKind.create()
+const SPRITE_KIND_BASE = SpriteKind // exported for type usage in other files
 
 // Tile Tags
-export const TILE_SPAWN_PLAYER = 1
-export const TILE_SPAWN_STAGE = 2
-export const TILE_WALL = 3
-export const TILE_DOOR = 4
-export const TILE_INTERACT = 5
-export const TILE_LADDER = 6
-export const TILE_GOAL_FLAG = 7
-export const TILE_HAZARD = 8
-export const TILE_SWITCH = 9
-export const TILE_GATE = 10
+const TILE_SPAWN_PLAYER = 1
+const TILE_SPAWN_STAGE = 2
+const TILE_WALL = 3
+const TILE_DOOR = 4
+const TILE_INTERACT = 5
+const TILE_LADDER = 6
+const TILE_GOAL_FLAG = 7
+const TILE_HAZARD = 8
+const TILE_SWITCH = 9
+const TILE_GATE = 10
 
 // Interaction distances
-export const INTERACT_DISTANCE = 20
+const INTERACT_DISTANCE = 20
 
 // Spawn Caps
-export const CAP_MAX_ENEMIES = 12
-export const CAP_MAX_PROJECTILES = 20
-export const CAP_MAX_DEBRIS = 15
-export const CAP_MAX_COLLECTIBLES = 30
+const CAP_MAX_ENEMIES = 12
+const CAP_MAX_PROJECTILES = 20
+const CAP_MAX_DEBRIS = 15
+const CAP_MAX_COLLECTIBLES = 30
 
 // Tuning
-export const PLAYER_TOPDOWN_SPEED = 80
-export const PLAYER_PLATFORM_SPEED = 100
-export const PLAYER_PLATFORM_JUMP_VY = -150
-export const PLAYER_SHOOTER_SPEED = 100
-export const PLAYER_ASTEROIDS_THRUST = 30
-export const PLAYER_ASTEROIDS_ROTATE_SPEED = 3
+const PLAYER_TOPDOWN_SPEED = 80
+const PLAYER_PLATFORM_SPEED = 100
+const PLAYER_PLATFORM_JUMP_VY = -150
+const PLAYER_SHOOTER_SPEED = 100
+const PLAYER_ASTEROIDS_THRUST = 30
+const PLAYER_ASTEROIDS_ROTATE_SPEED = 3
 
-export const PLAYER_MAX_HEARTS = 5
-export const PLAYER_INVINCIBILITY_MS = 1000
-export const PLAYER_ENERGY_MAX = 100
-export const TOOL_COOLDOWN_MS = 500
+const PLAYER_MAX_HEARTS = 5
+const PLAYER_INVINCIBILITY_MS = 1000
+const PLAYER_ENERGY_MAX = 100
+const TOOL_COOLDOWN_MS = 500
 
-export const INTERACT_DEBOUNCE_MS = 300
-export const OVERLAP_COOLDOWN_MS = 200
+const INTERACT_DEBOUNCE_MS = 300
+const OVERLAP_COOLDOWN_MS = 200
 
 // Dungeon Specs
-export interface DungeonReward {
+interface DungeonReward {
     flagsSet: string[]
     toolUnlocks?: string[]
     items?: { id: string; qty: number }[]
 }
 
-export interface DungeonSpec {
+interface DungeonSpec {
     id: string
     playMode: PlayMode
     introCutsceneId: string
@@ -90,7 +90,7 @@ export interface DungeonSpec {
 }
 
 // Dungeon Registry (9 dungeons)
-export const DUNGEON_SPECS: DungeonSpec[] = [
+const DUNGEON_SPECS: DungeonSpec[] = [
     {
         id: "DUN_LAUNDROMAT_LABYRINTH",
         playMode: PlayMode.DUN_PUZZLE,
@@ -254,17 +254,17 @@ export const DUNGEON_SPECS: DungeonSpec[] = [
 ]
 
 // Hub Room Grid (3x3)
-export const HUB_ROOM_IDS = [
+const HUB_ROOM_IDS = [
     ["TM_HUB_00", "TM_HUB_01", "TM_HUB_02"],
     ["TM_HUB_10", "TM_HUB_11", "TM_HUB_12"],
     ["TM_HUB_20", "TM_HUB_21", "TM_HUB_22"]
 ]
 
-export const HUB_START_ROOM = { row: 1, col: 1 } // center room
+const HUB_START_ROOM = { row: 1, col: 1 } // center room
 
 // Tools
-export const TOOL_FREEZECAM = "TOOL_FREEZECAM"
-export const TOOL_CONFETTI_BOMB = "TOOL_CONFETTI_BOMB"
-export const TOOL_SOAP_SLIDE = "TOOL_SOAP_SLIDE"
-export const TOOL_DECOY_TOY = "TOOL_DECOY_TOY"
-export const TOOL_TAGGER = "TOOL_TAGGER"
+const TOOL_FREEZECAM = "TOOL_FREEZECAM"
+const TOOL_CONFETTI_BOMB = "TOOL_CONFETTI_BOMB"
+const TOOL_SOAP_SLIDE = "TOOL_SOAP_SLIDE"
+const TOOL_DECOY_TOY = "TOOL_DECOY_TOY"
+const TOOL_TAGGER = "TOOL_TAGGER"
