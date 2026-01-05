@@ -3,10 +3,10 @@
     "description": "Story-driven retro game with Hub world and multiple dungeon modes",
     "dependencies": {
         "device": "*",
-        "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.3.0",
+        "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
         "arcade-overworld": "github:riknoll/arcade-overworld#v0.0.4",
         "arcade-storytelling": "github:microsoft/arcade-storytelling#v1.0.0",
-        "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.1.0"
+        "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.0.1"
     },
     "files": [
         "main.ts",
