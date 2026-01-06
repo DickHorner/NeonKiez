@@ -59,8 +59,8 @@ function imgToolEffect(toolId: string): Image {
 function createEmptyTilemap(): tiles.TileMapData {
     // Single-tile placeholder to avoid null references at runtime
     return tiles.createTilemap(
-        hex`0`,
-        img`.`,
+        hex`00`,
+        img`1`,
         [],
         TileScale.Sixteen
     )

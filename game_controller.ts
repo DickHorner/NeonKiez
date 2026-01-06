@@ -11,12 +11,15 @@ namespace GameController {
     initState()
     initHUD()
     
-    // Register global event handlers (once only)
-    registerGlobalHandlers()
-    
-    // Show title
+    // Show title immediately, register handlers after first game loop
     setGameMode(GameMode.Title)
-    showTitle()
+    
+    // Defer handler registration to let Arcade runtime initialize
+    control.runInParallel(() => {
+        pause(100)
+        registerGlobalHandlers()
+        showTitle()
+    })
 }
 
 function showTitle() {
