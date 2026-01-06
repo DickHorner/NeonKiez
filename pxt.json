@@ -6,7 +6,8 @@
         "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
         "arcade-overworld": "github:riknoll/arcade-overworld#v0.0.5",
         "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.0.1",
-        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3"
+        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3",
+        "arcade-storytelling": "github:microsoft/arcade-storytelling#v1.0.0"
     },
     "files": [
         "main.ts",
