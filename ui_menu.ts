@@ -16,7 +16,9 @@ function showPauseMenu() {
 function showInventory() {
     // Placeholder: list items
     let text = "INVENTORY:\n"
-    for (const itemId in state.inventory) {
+    const itemIds = Object.keys(state.inventory)
+    for (let i = 0; i < itemIds.length; i++) {
+        const itemId = itemIds[i]
         text += itemId + ": " + state.inventory[itemId] + "\n"
     }
     game.showLongText(text, DialogLayout.Center)
