@@ -1,75 +1,55 @@
 // UI HUD: hearts, energy, tool, hint
-// NOTE: Relies on Arcade globals (textsprite, SpriteFlag, scene, game); no imports needed.
+// NOTE: Uses Arcade rendering API instead of textsprite extension (which may not be loaded)
 
-let hudHearts: TextSprite = null as any
-let hudEnergy: TextSprite = null as any
-let hudTool: TextSprite = null as any
-let hudHint: TextSprite = null as any
+let hudHeartsText = ""
+let hudToolText = ""
+let hudHintText = ""
+let hudHintEndTime = 0
 
 function initHUD() {
-    hudHearts = textsprite.create("", 0, 1)
-    hudHearts.setFlag(SpriteFlag.RelativeToCamera, true)
-    hudHearts.left = 2
-    hudHearts.top = 2
-    
-    hudEnergy = textsprite.create("", 0, 1)
-    hudEnergy.setFlag(SpriteFlag.RelativeToCamera, true)
-    hudEnergy.left = 2
-    hudEnergy.top = 12
-    
-    hudTool = textsprite.create("", 0, 1)
-    hudTool.setFlag(SpriteFlag.RelativeToCamera, true)
-    hudTool.right = scene.screenWidth() - 2
-    hudTool.top = 2
-    
-    hudHint = textsprite.create("", 0, 1)
-    hudHint.setFlag(SpriteFlag.RelativeToCamera, true)
-    hudHint.setMaxFontHeight(7)
-    hudHint.left = 2
-    hudHint.bottom = scene.screenHeight() - 2
+    // HUD uses screen text rendering instead of sprite-based text
+    hudHeartsText = ""
+    hudToolText = ""
+    hudHintText = ""
+    hudHintEndTime = 0
 }
 
 function updateHUD() {
-    if (!hudHearts) return
-    
-    // Hearts
+    // Hearts display
     let heartStr = ""
     for (let i = 0; i < state.hearts; i++) {
         heartStr += "♥"
     }
-    hudHearts.setText(heartStr)
+    hudHeartsText = heartStr
     
-    // Energy (if needed)
-    // hudEnergy.setText("E:" + state.energy)
-    
-    // Tool
+    // Tool display
     if (state.currentTool) {
-        hudTool.setText("[" + state.currentTool + "]")
+        hudToolText = "[" + state.currentTool + "]"
     } else {
-        hudTool.setText("")
+        hudToolText = ""
+    }
+    
+    // Render HUD on screen
+    screen.print(hudHeartsText, 2, 2, 1, image.font8)
+    if (hudToolText) {
+        screen.print(hudToolText, scene.screenWidth() - 50, 2, 1, image.font8)
+    }
+    
+    // Show hint if active
+    if (game.runtime() < hudHintEndTime) {
+        screen.print(hudHintText, 2, scene.screenHeight() - 10, 1, image.font5)
     }
 }
 
 function showHint(text: string, durationMs: number = 2000) {
-    if (!hudHint) return
-    hudHint.setText(text)
-
-    control.runInParallel(() => {
-        pause(durationMs)
-        if (hudHint) hudHint.setText("")
-    })
+    hudHintText = text
+    hudHintEndTime = game.runtime() + durationMs
 }
 
 function hideHUD() {
-    if (hudHearts) hudHearts.setFlag(SpriteFlag.Invisible, true)
-    if (hudEnergy) hudEnergy.setFlag(SpriteFlag.Invisible, true)
-    if (hudTool) hudTool.setFlag(SpriteFlag.Invisible, true)
-    if (hudHint) hudHint.setFlag(SpriteFlag.Invisible, true)
+    // No-op: HUD is screen-rendered, not sprite-based
 }
 
 function showHUD() {
-    if (hudHearts) hudHearts.setFlag(SpriteFlag.Invisible, false)
-    if (hudEnergy) hudEnergy.setFlag(SpriteFlag.Invisible, false)
-    if (hudTool) hudTool.setFlag(SpriteFlag.Invisible, false)
-    if (hudHint) hudHint.setFlag(SpriteFlag.Invisible, false)
+    // No-op: HUD is screen-rendered, not sprite-based
 }
