@@ -63,8 +63,6 @@ All texts, sprites, tilemaps, and sounds are **placeholders** with ID-based nami
 - Texts: `[CUT_DUN_01_ENTRY_BEAT_...]`, `[DIALOG_NPC_...]`
 - Assets: `SPR_*`, `TM_*`, `SFX_*`, `BGM_*`
 
-Humans will replace these manually.
-
 ## Implementation Status
 
 ### Completed (Scaffold)
@@ -90,7 +88,6 @@ Humans will replace these manually.
 
 ## Development Notes
 
-- **Rückfragen**: Agent may ask questions or document decisions as `// DECISION: ...`
 - **Stability**: Caps on spawns, auto-destroy, cleanup on mode switch
 - **Event Handlers**: Registered once, check `state.playMode` at start
 - **Debouncing**: Interact/overlap cooldowns enforced
@@ -107,4 +104,4 @@ Run in MakeCode Arcade simulator:
 
 ## License
 
-Placeholder assets are for development only. Replace before distribution.
+MIT License. 
