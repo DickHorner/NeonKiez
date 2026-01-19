@@ -1,0 +1,14 @@
+{
+    "name": "arcade-extension-utils",
+    "version": "0.0.1",
+    "dependencies": {
+        "device": "*"
+    },
+    "files": [
+        "main.ts"
+    ],
+    "testDependencies": {},
+    "supportedTargets": [
+        "arcade"
+    ]
+}
