@@ -5,32 +5,32 @@
 // This file contains helper functions for dungeon management
 
 function getDungeonSpec(dungeonId: string) {
-    return DUNGEON_SPECS.find(d => d.id === dungeonId)
+  return DUNGEON_SPECS.find((d) => d.id === dungeonId);
 }
 
 function isDungeonCleared(dungeonId: string): boolean {
-    const spec = getDungeonSpec(dungeonId)
-    if (!spec) return false
-    
-    let clearFlag = null
-    const flagsSet = (spec.rewards && spec.rewards.flagsSet) || []
-    for (let i = 0; i < flagsSet.length; i++) {
-        if (flagsSet[i].includes("CLEARED")) {
-            clearFlag = flagsSet[i]
-            break
-        }
+  const spec = getDungeonSpec(dungeonId);
+  if (!spec) return false;
+
+  let clearFlag = null;
+  const flagsSet = (spec.rewards && spec.rewards.flagsSet) || [];
+  for (let i = 0; i < flagsSet.length; i++) {
+    if (flagsSet[i].includes("CLEARED")) {
+      clearFlag = flagsSet[i];
+      break;
     }
-    return clearFlag ? hasFlag(clearFlag) : false
+  }
+  return clearFlag ? hasFlag(clearFlag) : false;
 }
 
 function checkAllDungeonsClearExceptFinal(): boolean {
-    let count = 0
-    for (let i = 0; i < DUNGEON_SPECS.length - 1; i++) {
-        if (isDungeonCleared(DUNGEON_SPECS[i].id)) {
-            count++
-        }
+  let count = 0;
+  for (let i = 0; i < DUNGEON_SPECS.length - 1; i++) {
+    if (isDungeonCleared(DUNGEON_SPECS[i].id)) {
+      count++;
     }
-    return count >= (DUNGEON_SPECS.length - 1)
+  }
+  return count >= DUNGEON_SPECS.length - 1;
 }
 
 // MANUAL TEST PASSED: Dungeon registry helpers

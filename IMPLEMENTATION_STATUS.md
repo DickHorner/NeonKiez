@@ -3,12 +3,14 @@
 ## Completed ✅
 
 ### Core Architecture
+
 - **constants.ts**: All enums, sprite kinds, tile tags, caps, tuning parameters, and 9 complete dungeon specs
 - **state.ts**: Full game state management with flags, inventory, tools, dungeon progress
 - **save.ts**: Save/load system using settings block
 - **game_controller.ts**: Complete mode switching system with cleanup, all 7 PlayModes scaffolded
 
 ### Player Systems
+
 - **player_topdown.ts**: Hub top-down movement
 - **player_modes.ts**: All mode-specific inputs implemented:
   - Platform: jump, gravity
@@ -18,22 +20,26 @@
   - Puzzle: interact with switches
 
 ### World & Content
+
 - **world_hub.ts**: Hub room spawning with NPC and door placement
 - **world_dungeons.ts**: Dungeon registry helpers, clearing checks
 - **quests.ts**: Flag-based quest system
 
 ### UI & Tools
+
 - **ui_hud.ts**: Hearts, tool display, hint system
 - **ui_menu.ts**: Pause, inventory, quest log stubs
 - **tools.ts**: All 5 tools scaffolded (FreezeCam, Confetti, Soap, Decoy, Tagger)
 - **dialogue.ts**: Cutscene and dialog wrappers with placeholder IDs
 
 ### Support
+
 - **assets_stub.ts**: Complete placeholder asset factory system
 - **debug.ts**: Warp, godmode, debug overlay
 - **main.ts**: Bootstrap with proper references
 
 ### Configuration
+
 - **pxt.json**: MakeCode Arcade project config with all extensions
 - **tsconfig.json**: TypeScript compiler options
 - **.gitignore**: Proper exclusions
@@ -52,6 +58,7 @@
 ## Next Steps (Prioritized)
 
 ### Phase 1: Make 2 Dungeons Fully Playable
+
 1. **Platform Mode (Dungeon 7)**:
    - Create real tilemaps with platforms, hazards, goal tiles
    - Add moving platforms
@@ -65,6 +72,7 @@
    - Test full 4-stage progression
 
 ### Phase 2: Polish Core Systems
+
 3. Create actual hub tilemaps (not null)
 4. Add parallax layers with real images
 5. Implement hub room-to-room scrolling transitions
@@ -72,6 +80,7 @@
 7. Test save/load/continue flow
 
 ### Phase 3: Expand Content
+
 8. Make 3 more dungeons playable:
    - Shooter mode (Dungeon 2)
    - Rhythm mode (Dungeon 4)
@@ -99,6 +108,7 @@
 ## Architecture Quality
 
 ✅ **Guardrails Met**:
+
 - Single source of truth (constants.ts)
 - Data-driven dungeons (DUNGEON_SPECS)
 - Clean mode switching with locks
@@ -108,6 +118,7 @@
 - No monolith files (all under 400 lines)
 
 ✅ **Stability Features**:
+
 - transitionLock prevents concurrent switches
 - Sprite cleanup on mode change
 - AutoDestroy/Lifespan on projectiles
@@ -134,6 +145,7 @@
 ## Current State
 
 The game is **architecturally complete** but needs:
+
 1. Real tilemaps (created in MakeCode editor)
 2. Real sprites (PNG imports or pixel art)
 3. Real sounds/music

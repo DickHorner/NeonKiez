@@ -1,4 +1,3 @@
-
 > **Wichtig:** Alles in dieser Datei ist **verbindlich**.  
 > Der Agent darf **Rückfragen** stellen. Wenn etwas unklar ist, fragt er nach oder trifft sinnvolle Defaults und dokumentiert sie als `// DECISION: ...`.
 
@@ -11,12 +10,13 @@ Du implementierst ein story-getriebenes Retro-Spiel in **MakeCode Arcade (TypeSc
 - **Hubwelt = Top-Down wie alte Zeldas** (Room-to-Room scrollende Übergänge).
 - **Dungeons = sofortiger Moduswechsel**:
   - Ablauf beim Betreten einer Dungeon-Tür im Hub:
-    1) **kurzer Storybeat (2–5 Sekunden)**
-    2) **SOFORT PlayMode wechseln**
-    3) **Der ganze Dungeon läuft in diesem Mode** (nicht erst beim Boss)
+    1. **kurzer Storybeat (2–5 Sekunden)**
+    2. **SOFORT PlayMode wechseln**
+    3. **Der ganze Dungeon läuft in diesem Mode** (nicht erst beim Boss)
 - Zielgruppe: **10 Jahre** → **kein Gore, keine „Kills“**, nur Comic-Feedback (stun/freeze/decoy/confetti/out-of-order).
 
 ### Begriffe (niemals vermischen)
+
 - **HubMode**: Top-Down-Zelda-Gameplay (Exploration, NPCs, Quests, Savehouse, Türen).
 - **DungeonMode**: eigener PlayMode pro Dungeon (z. B. Platformer / Shooter / Asteroids / Rhythm / Puzzle / Meta).
 - **Encounter**: optionales Mini-Event innerhalb eines Modes (untergeordnet). **Nicht** Hauptmechanismus.
@@ -25,29 +25,30 @@ Du implementierst ein story-getriebenes Retro-Spiel in **MakeCode Arcade (TypeSc
 
 ## 1) Nicht verhandelbare Constraints (Guardrails)
 
-1) **Rückfragen.** Frag nach oder triff Defaults, dokumentiere sie.
-2) **Texte ausschließlich als Platzhalter-IDs** (keine echten Dialoge), z. B.:
+1. **Rückfragen.** Frag nach oder triff Defaults, dokumentiere sie.
+2. **Texte ausschließlich als Platzhalter-IDs** (keine echten Dialoge), z. B.:
    - `[CUT_DUN_02_ENTRY_BEAT_DIE_LUFT_KNISTERT]`
    - `[DIALOG_NPC_03_HINT_WO_IST_DIE_TUER]`
-3) **Assets sind Platzhalter** (Sprites/Tilemaps/Sounds). Menschen ersetzen sie später manuell.
-4) **Kinderfreundlich**: kein Blut, kein Gore, keine Hinrichtungen, keine „Dead bodies“. Gegner „gehen aus“, „tanzen“, „frieren ein“, „fliehen“.
-5) Stabilität/Performance:
+3. **Assets sind Platzhalter** (Sprites/Tilemaps/Sounds). Menschen ersetzen sie später manuell.
+4. **Kinderfreundlich**: kein Blut, kein Gore, keine Hinrichtungen, keine „Dead bodies“. Gegner „gehen aus“, „tanzen“, „frieren ein“, „fliehen“.
+5. Stabilität/Performance:
    - keine unkontrollierten Spawns
    - AutoDestroy/Lifespan + Caps
    - konsequentes Cleanup beim Modewechsel
-6) Event-Handler:
+6. Event-Handler:
    - **einmal** registrieren
    - im Handler sofort `if (state.playMode !== EXPECTED) return;`
-7) Overlap/Interact:
+7. Overlap/Interact:
    - immer Debounce / Cooldown
    - Hits mit I-Frames
-8) Keine Monolith-Datei: Wenn > ~250 Zeilen → splitten.
+8. Keine Monolith-Datei: Wenn > ~250 Zeilen → splitten.
 
 ---
 
 ## 2) Extensions / Abhängigkeiten
 
 Füge diese Extensions hinzu:
+
 - `microsoft/arcade-background-scroll` (Parallax)
 - `riknoll/arcade-overworld` (Hub Room-Grid + scrollende Transitions)
 - `microsoft/arcade-storytelling` (Cutscenes/Dialogs)
@@ -86,9 +87,17 @@ Jede Datei bekommt oben einen 1-Zeiler Kommentar „Zweck“.
 
 > **Regel:** Neue Inhalte hinzufügen heißt: **Spec ergänzen**, nicht Logik kopieren.
 
-~~~ts
+```ts
 // constants.ts
-export enum GameMode { Boot, Title, Hub, Dungeon, Cutscene, Menu, Transition }
+export enum GameMode {
+  Boot,
+  Title,
+  Hub,
+  Dungeon,
+  Cutscene,
+  Menu,
+  Transition,
+}
 export enum PlayMode {
   HUB_TOPDOWN,
   DUN_PLATFORM,
@@ -96,7 +105,7 @@ export enum PlayMode {
   DUN_ASTEROIDS,
   DUN_RHYTHM,
   DUN_PUZZLE,
-  DUN_META
+  DUN_META,
 }
 
 export interface DungeonReward {
@@ -110,7 +119,7 @@ export interface DungeonSpec {
 
   // Sofortiger Mode-Switch nach Intro-Beat
   playMode: PlayMode;
-  introCutsceneId: string;  // kurzer Storybeat beim Eintritt (Platzhalter-ID)
+  introCutsceneId: string; // kurzer Storybeat beim Eintritt (Platzhalter-ID)
 
   // Stage-IDs (Tilemaps/Scenes) — pro Dungeon Mode-spezifisch
   stages: string[];
@@ -124,44 +133,51 @@ export interface DungeonSpec {
   // Optional: Mode-Parameter (Caps, Difficulty, BPM usw.)
   params?: any; // typed soweit sinnvoll pro Mode
 }
-~~~
+```
 
 ---
 
 ## 5) Kernarchitektur: GameController + PlayMode-Switch (das Herz)
 
 ### 5.1 Einzige Wahrheit
+
 - `state.gameMode` (Flow)
 - `state.playMode` (Gameplay-System)
 
 ### 5.2 Heiliger Modewechsel: `switchPlayMode(next, payload)`
+
 Ablauf **immer**:
-1) `transitionLock = true`
-2) `cleanupCurrentPlayMode()`:
+
+1. `transitionLock = true`
+2. `cleanupCurrentPlayMode()`:
    - destroy all sprites of Kinds owned by current playMode
    - stop interval handles/timers owned by mode
    - reset camera/background scroll layers
    - reset temporary input mappings
-3) `setupNextPlayMode(next, payload)`:
+3. `setupNextPlayMode(next, payload)`:
    - load stage tilemap/scene
    - spawn player/avatar for mode
    - set input mapping
    - set HUD state
-4) `transitionLock = false`
+4. `transitionLock = false`
 
 **Regel:** Event-Handler werden nur einmal registriert. Jeder Handler beginnt mit:
+
 - `if (state.playMode !== EXPECTED_MODE) return;`
 - plus Debounce falls nötig
 
 ### 5.3 Dungeon Entry Ablauf (SOFORT nach Storybeat)
+
 Wenn der Hub-Spieler eine Dungeon-Tür nutzt:
-1) `setGameMode(Transition)`
-2) `setGameMode(Cutscene)`
-3) `playCutscene(dungeon.introCutsceneId)` (2–5s, Platzhaltertext)
-4) `setGameMode(Dungeon)`
-5) `switchPlayMode(dungeon.playMode, { dungeonId, stageIndex: 0 })`
+
+1. `setGameMode(Transition)`
+2. `setGameMode(Cutscene)`
+3. `playCutscene(dungeon.introCutsceneId)` (2–5s, Platzhaltertext)
+4. `setGameMode(Dungeon)`
+5. `switchPlayMode(dungeon.playMode, { dungeonId, stageIndex: 0 })`
 
 Wenn Dungeon abgeschlossen oder abgebrochen:
+
 - `switchPlayMode(HUB_TOPDOWN, { hubSpawnTag: dungeon.hubReturnSpawnTag })`
 - `setGameMode(Hub)`
 
@@ -170,12 +186,14 @@ Wenn Dungeon abgeschlossen oder abgebrochen:
 ## 6) Platzhalter-Assets & Naming (damit Austausch später schmerzfrei ist)
 
 ### 6.1 Factories in `assets_stub.ts`
+
 - `imgPlayerTopdown()`, `imgNpc(id)`, `imgDoor(id)`
 - pro Mode: `imgPlatformPlayer()`, `imgShooterShip()`, `imgAstShip()`, `imgPuzzleCursor()`, …
 - Tilemaps: `tmHub00()` … `tmHub22()`
 - Dungeons: `tmDun01Stage00()` … etc. (Platzhalter, Menschen ersetzen)
 
 ### 6.2 Naming Standard (streng)
+
 - Sprites: `SPR_*`
 - Tilemaps: `TM_*`
 - Tiles/Marker: `TILE_*`
@@ -187,6 +205,7 @@ Wenn Dungeon abgeschlossen oder abgebrochen:
 ## 7) Tools (kinderfreundlich, global)
 
 Tools existieren in `state`, aber können pro Mode disabled sein:
+
 - `TOOL_FREEZECAM` — freeze cone
 - `TOOL_CONFETTI_BOMB` — AoE stun (“tanzen”)
 - `TOOL_SOAP_SLIDE` — slippery area
@@ -209,12 +228,13 @@ Wenn Tool in Mode nicht passt: HUD zeigt „disabled“, Tool macht nichts (kein
 
 ---
 
-## 9) Dungeon-Katalog (9 Stück) — *mit vollständigen Beschreibungen*
+## 9) Dungeon-Katalog (9 Stück) — _mit vollständigen Beschreibungen_
 
 > **Wichtig:** Jeder Dungeon startet **sofort** nach Intro-Beat in seinem Mode.  
 > Jeder Dungeon hat mehrere **Stages** (empfohlen 3–5) und ein klares Win/Lose.
 
 Für jede Beschreibung gilt:
+
 - **Setup**: Stage laden, Avatar spawnen, Musik, Caps
 - **Input**: Mode-spezifisch
 - **Core Loop**: die eine Mechanik pro Dungeon
@@ -230,10 +250,10 @@ Für jede Beschreibung gilt:
 - **Intro-Beat:** `[CUT_DUN_01_ENTRY_BEAT_WASCHMASCHINEN_SINGEN]`
 - **PlayMode:** `DUN_PUZZLE`
 - **Stages (Beispiele/IDs):**
-  1) `TM_DUN_01_STAGE_00_WARMUP` — kurzer Tutorial-Korridor (Schalter + Tür)
-  2) `TM_DUN_01_STAGE_01_DARK_MAZE` — Lichtschalter toggeln Sicht/Wege
-  3) `TM_DUN_01_STAGE_02_TOKEN_RUN` — Tokens sammeln, „Ghost-Bot“ patrouilliert
-  4) `TM_DUN_01_STAGE_03_EXIT_ROOM` — Finale: 1 großes Gate, 1 letzter Schalter
+  1. `TM_DUN_01_STAGE_00_WARMUP` — kurzer Tutorial-Korridor (Schalter + Tür)
+  2. `TM_DUN_01_STAGE_01_DARK_MAZE` — Lichtschalter toggeln Sicht/Wege
+  3. `TM_DUN_01_STAGE_02_TOKEN_RUN` — Tokens sammeln, „Ghost-Bot“ patrouilliert
+  4. `TM_DUN_01_STAGE_03_EXIT_ROOM` — Finale: 1 großes Gate, 1 letzter Schalter
 - **Setup (pro Stage):**
   - Puzzle-Player-Avatar: `SPR_PUZZLE_PLAYER`
   - Spawn via `TILE_SPAWN_STAGE`
@@ -264,10 +284,10 @@ Für jede Beschreibung gilt:
 - **Intro-Beat:** `[CUT_DUN_02_ENTRY_BEAT_WIND_UEBER_NEON]`
 - **PlayMode:** `DUN_SHOOTER`
 - **Stages:**
-  1) `TM_DUN_02_STAGE_00_RANGE` — Schießen üben + 1 Welle
-  2) `TM_DUN_02_STAGE_01_FORMATIONS` — Formations-Gegner (classic invaders vibe)
-  3) `TM_DUN_02_STAGE_02_ALARM` — Alarm erhöht Spawn, aber senkt Enemy-Speed (fair)
-  4) `TM_DUN_02_STAGE_03_CORE` — „Antenna Core“ mit HP (kein Blut, nur sparks)
+  1. `TM_DUN_02_STAGE_00_RANGE` — Schießen üben + 1 Welle
+  2. `TM_DUN_02_STAGE_01_FORMATIONS` — Formations-Gegner (classic invaders vibe)
+  3. `TM_DUN_02_STAGE_02_ALARM` — Alarm erhöht Spawn, aber senkt Enemy-Speed (fair)
+  4. `TM_DUN_02_STAGE_03_CORE` — „Antenna Core“ mit HP (kein Blut, nur sparks)
 - **Setup:**
   - Shooter-Ship: `SPR_SHOOTER_SHIP`
   - Bullets: cap + AutoDestroy
@@ -295,10 +315,10 @@ Für jede Beschreibung gilt:
 - **Intro-Beat:** `[CUT_DUN_03_ENTRY_BEAT_GABELSTAPLER_GRUESST]`
 - **PlayMode:** `DUN_PUZZLE`
 - **Stages:**
-  1) `TM_DUN_03_STAGE_00_CONVEYOR_INTRO` — Förderband + 1 Gate
-  2) `TM_DUN_03_STAGE_01_BLOCK_ROWS` — Blockreihen füllen → Gate toggelt
-  3) `TM_DUN_03_STAGE_02_MOVING_CRATES` — periodische Kisten bewegen
-  4) `TM_DUN_03_STAGE_03_FINAL_PATTERN` — Zielmuster herstellen
+  1. `TM_DUN_03_STAGE_00_CONVEYOR_INTRO` — Förderband + 1 Gate
+  2. `TM_DUN_03_STAGE_01_BLOCK_ROWS` — Blockreihen füllen → Gate toggelt
+  3. `TM_DUN_03_STAGE_02_MOVING_CRATES` — periodische Kisten bewegen
+  4. `TM_DUN_03_STAGE_03_FINAL_PATTERN` — Zielmuster herstellen
 - **Input:**
   - bewegen, A = grab/push (oder Interact), B = Tool optional
 - **Core Loop:**
@@ -321,10 +341,10 @@ Für jede Beschreibung gilt:
 - **Intro-Beat:** `[CUT_DUN_04_ENTRY_BEAT_TAKT_IM_TUNNEL]`
 - **PlayMode:** `DUN_RHYTHM`
 - **Stages:**
-  1) `TM_DUN_04_STAGE_00_BEAT_TUTORIAL` — good window lernen
-  2) `TM_DUN_04_STAGE_01_DOORS` — Türen öffnen nur im Beat-Fenster
-  3) `TM_DUN_04_STAGE_02_SWITCH_CHAIN` — mehrere Fenster hintereinander (streak)
-  4) `TM_DUN_04_STAGE_03_FINAL_STREAK` — finale streak challenge
+  1. `TM_DUN_04_STAGE_00_BEAT_TUTORIAL` — good window lernen
+  2. `TM_DUN_04_STAGE_01_DOORS` — Türen öffnen nur im Beat-Fenster
+  3. `TM_DUN_04_STAGE_02_SWITCH_CHAIN` — mehrere Fenster hintereinander (streak)
+  4. `TM_DUN_04_STAGE_03_FINAL_STREAK` — finale streak challenge
 - **Input:**
   - D-Pad bewegen (optional), A = „Tap“ / Interact im Window
 - **Core Loop:**
@@ -347,10 +367,10 @@ Für jede Beschreibung gilt:
 - **Intro-Beat:** `[CUT_DUN_05_ENTRY_BEAT_PAUSENKLINGEL_PING]`
 - **PlayMode:** `DUN_PUZZLE`
 - **Stages:**
-  1) `TM_DUN_05_STAGE_00_PADDLE_LEARN` — paddle bewegen, ball bleibt langsam
-  2) `TM_DUN_05_STAGE_01_TARGETS` — targets aktivieren (breakout)
-  3) `TM_DUN_05_STAGE_02_REFLECTORS` — Winkelrätsel
-  4) `TM_DUN_05_STAGE_03_FINAL_CLEAR` — kombiniertes target layout
+  1. `TM_DUN_05_STAGE_00_PADDLE_LEARN` — paddle bewegen, ball bleibt langsam
+  2. `TM_DUN_05_STAGE_01_TARGETS` — targets aktivieren (breakout)
+  3. `TM_DUN_05_STAGE_02_REFLECTORS` — Winkelrätsel
+  4. `TM_DUN_05_STAGE_03_FINAL_CLEAR` — kombiniertes target layout
 - **Input:**
   - D-Pad steuert Paddle (oder Cursor), A = Start/Serve, B = Tool optional
 - **Core Loop:**
@@ -372,10 +392,10 @@ Für jede Beschreibung gilt:
 - **Intro-Beat:** `[CUT_DUN_06_ENTRY_BEAT_SCHWERELLOS_IM_MUSEUM]`
 - **PlayMode:** `DUN_ASTEROIDS`
 - **Stages:**
-  1) `TM_DUN_06_STAGE_00_THRUST` — thrust/wrap lernen, wenige debris
-  2) `TM_DUN_06_STAGE_01_SPLIT` — split depth max 2, cap debris
-  3) `TM_DUN_06_STAGE_02_PARTS_RUSH` — Teile einsammeln statt „zerstören“
-  4) `TM_DUN_06_STAGE_03_SURVIVE` — survive timer
+  1. `TM_DUN_06_STAGE_00_THRUST` — thrust/wrap lernen, wenige debris
+  2. `TM_DUN_06_STAGE_01_SPLIT` — split depth max 2, cap debris
+  3. `TM_DUN_06_STAGE_02_PARTS_RUSH` — Teile einsammeln statt „zerstören“
+  4. `TM_DUN_06_STAGE_03_SURVIVE` — survive timer
 - **Input:**
   - Left/Right = rotate, Up = thrust, A = ping/shot (optional), B = tool optional
 - **Core Loop:**
@@ -397,10 +417,10 @@ Für jede Beschreibung gilt:
 - **Intro-Beat:** `[CUT_DUN_07_ENTRY_BEAT_VHS_REGAL_RUETTELT]`
 - **PlayMode:** `DUN_PLATFORM`
 - **Stages:**
-  1) `TM_DUN_07_STAGE_00_JUMP` — basic jumps, safe platforms
-  2) `TM_DUN_07_STAGE_01_MOVING_SHELVES` — moving platforms
-  3) `TM_DUN_07_STAGE_02_SWITCH_GATES` — switches open gates
-  4) `TM_DUN_07_STAGE_03_FINAL_RUN` — kurzer final run
+  1. `TM_DUN_07_STAGE_00_JUMP` — basic jumps, safe platforms
+  2. `TM_DUN_07_STAGE_01_MOVING_SHELVES` — moving platforms
+  3. `TM_DUN_07_STAGE_02_SWITCH_GATES` — switches open gates
+  4. `TM_DUN_07_STAGE_03_FINAL_RUN` — kurzer final run
 - **Input:**
   - Left/Right move, A = jump, Down = drop-through optional, B = tool optional
 - **Core Loop:**
@@ -422,10 +442,10 @@ Für jede Beschreibung gilt:
 - **Intro-Beat:** `[CUT_DUN_08_ENTRY_BEAT_BAUSTELLE_RUMMST]`
 - **PlayMode:** `DUN_PLATFORM`
 - **Stages:**
-  1) `TM_DUN_08_STAGE_00_LADDERS` — ladders tutorial
-  2) `TM_DUN_08_STAGE_01_BARRELS` — rolling barrels (comic paint cans)
-  3) `TM_DUN_08_STAGE_02_TRICK_LADDERS` — ladder gaps + timing
-  4) `TM_DUN_08_STAGE_03_TOP_PLATFORM` — final climb
+  1. `TM_DUN_08_STAGE_00_LADDERS` — ladders tutorial
+  2. `TM_DUN_08_STAGE_01_BARRELS` — rolling barrels (comic paint cans)
+  3. `TM_DUN_08_STAGE_02_TRICK_LADDERS` — ladder gaps + timing
+  4. `TM_DUN_08_STAGE_03_TOP_PLATFORM` — final climb
 - **Input:**
   - Left/Right, A jump, Up/Down ladder climb (only on ladder tiles)
 - **Core Loop:**
@@ -448,11 +468,11 @@ Für jede Beschreibung gilt:
 - **Intro-Beat:** `[CUT_DUN_09_ENTRY_BEAT_DIE_WELT_HAKT]`
 - **PlayMode:** `DUN_META`
 - **Stages:**
-  1) `TM_DUN_09_STAGE_00_META_INTRO` — kurze, sichere Einführung
-  2) `TM_DUN_09_STAGE_01_MICRO_PLATFORM` — 15–20s platform remix
-  3) `TM_DUN_09_STAGE_02_MICRO_SHOOTER` — 15–20s shooter remix
-  4) `TM_DUN_09_STAGE_03_MICRO_RHYTHM` — streak mini
-  5) `TM_DUN_09_STAGE_04_STABILIZE` — finale nodes aktivieren
+  1. `TM_DUN_09_STAGE_00_META_INTRO` — kurze, sichere Einführung
+  2. `TM_DUN_09_STAGE_01_MICRO_PLATFORM` — 15–20s platform remix
+  3. `TM_DUN_09_STAGE_02_MICRO_SHOOTER` — 15–20s shooter remix
+  4. `TM_DUN_09_STAGE_03_MICRO_RHYTHM` — streak mini
+  5. `TM_DUN_09_STAGE_04_STABILIZE` — finale nodes aktivieren
 - **Input:**
   - wechselt pro micro-stage, muss immer eingeblendet werden (HUD hint placeholder)
 - **Core Loop:**
@@ -470,19 +490,19 @@ Für jede Beschreibung gilt:
 
 ## 10) Implementierungs-Reihenfolge (ohne Umwege)
 
-1) Scaffold: Dateien + enums + state/save stubs
-2) `GameController` + `switchPlayMode()` + `cleanupCurrentPlayMode()` (noch ohne Content)
-3) Hub Top-Down Player + 1 Hub room (movement, collision, hud)
-4) Hub Room-Grid + scroll transitions + parallax
-5) Dungeon Door system: Door → intro beat → immediate mode switch
-6) Implementiere 2 Modes vollständig als Proof:
+1. Scaffold: Dateien + enums + state/save stubs
+2. `GameController` + `switchPlayMode()` + `cleanupCurrentPlayMode()` (noch ohne Content)
+3. Hub Top-Down Player + 1 Hub room (movement, collision, hud)
+4. Hub Room-Grid + scroll transitions + parallax
+5. Dungeon Door system: Door → intro beat → immediate mode switch
+6. Implementiere 2 Modes vollständig als Proof:
    - `DUN_PLATFORM` (Dungeon 7 Stage 0–1 spielbar)
    - `DUN_ASTEROIDS` (Dungeon 6 Stage 0 spielbar)
-7) Implementiere Save/Continue
-8) Implementiere restliche Modes minimal (scaffold), so dass jeder Dungeon startbar ist
-9) Fülle mindestens 5 Dungeons spielbar (mehrstufig, rewards)
-10) Debug tools + Warp menu
-11) Polish: cleanup, caps, i-frames, transitions, comments
+7. Implementiere Save/Continue
+8. Implementiere restliche Modes minimal (scaffold), so dass jeder Dungeon startbar ist
+9. Fülle mindestens 5 Dungeons spielbar (mehrstufig, rewards)
+10. Debug tools + Warp menu
+11. Polish: cleanup, caps, i-frames, transitions, comments
 
 Nach jedem Schritt: Kommentar `// MANUAL TEST PASSED: <was>`.
 
@@ -491,6 +511,7 @@ Nach jedem Schritt: Kommentar `// MANUAL TEST PASSED: <was>`.
 ## 11) Definition of Done (DoD)
 
 Fertig implementiert, wenn:
+
 - Title → Hub → beliebige Dungeon-Door → Storybeat → sofortiger Modewechsel funktioniert
 - Rückkehr in Hub funktioniert zuverlässig
 - Parallax sichtbar im Hub
@@ -504,11 +525,13 @@ Fertig implementiert, wenn:
 ## 12) Asset-Lieferformat (für Menschen)
 
 Menschen liefern:
+
 - Grafik: PNG (transparent), optional Aseprite/ASE
 - Audio: WAV (Master), optional MIDI + WAV-Referenz
 - Text: CSV/MD (id,text,note) → wird als Platzhalter-IDs geführt
 
 Einfügen:
+
 - nur über `assets_stub.ts` Factories + Naming Standard.
 
 **ENDE.**

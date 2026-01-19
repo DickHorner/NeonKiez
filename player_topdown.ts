@@ -5,17 +5,17 @@
 // This file handles additional hub-specific logic
 
 function initHubPlayer(player: Sprite) {
-    // Set collision detection
-    player.setFlag(SpriteFlag.Ghost, false)
-    
-    // Camera follow
-    scene.cameraFollowSprite(player)
+  // Set collision detection
+  player.setFlag(SpriteFlag.Ghost, false);
+
+  // Camera follow
+  scene.cameraFollowSprite(player);
 }
 
 // Collision with walls
 scene.onHitWall(SpriteKind.Player, (sprite, location) => {
-    if (state.playMode !== PlayMode.HUB_TOPDOWN) return
-    // Blocked by wall, no action needed (controller.moveSprite handles it)
-})
+  if (state.playMode !== PlayMode.HUB_TOPDOWN) return;
+  // Blocked by wall, no action needed (controller.moveSprite handles it)
+});
 
 // MANUAL TEST PASSED: Hub player movement basic

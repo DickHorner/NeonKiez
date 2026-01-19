@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
     "name": "Neon-Kiez",
     "description": "Story-driven retro game with Hub world and multiple dungeon modes",
     "dependencies": {
@@ -36,5 +37,42 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "tsprj"
-}
+    {
+      "name": "Neon-Kiez",
+      "description": "Story-driven retro game with Hub world and multiple dungeon modes",
+      "dependencies": {
+        "device": "*",
+        "arcade-background-scroll": "github:microsoft/arcade-background-scroll#v0.1.2",
+        "arcade-overworld": "github:riknoll/arcade-overworld#v0.0.5",
+        "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.0.1",
+        "arcade-storytelling": "github:microsoft/arcade-storytelling#v1.0.3"
+      },
+      "files": [
+        "main.ts",
+        "constants.ts",
+        "arcade_shims.ts",
+        "state.ts",
+        "save.ts",
+        "assets_stub.ts",
+        "game_controller.ts",
+        "player_topdown.ts",
+        "player_modes.ts",
+        "tools.ts",
+        "ui_hud.ts",
+        "ui_menu.ts",
+        "dialogue.ts",
+        "quests.ts",
+        "world_hub.ts",
+        "world_dungeons.ts",
+        "debug.ts",
+        "README.md"
+      ],
+      "testFiles": [],
+      "targetVersions": {
+        "target": "2.0.63",
+        "targetId": "arcade"
+      },
+      "supportedTargets": ["arcade"],
+      "preferredEditor": "tsprj"
+    }
+>>>>>>> Stashed changes

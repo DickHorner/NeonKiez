@@ -5,18 +5,22 @@
 // All texts are placeholder IDs, humans will replace
 
 function playCutscene(cutsceneId: string, onComplete?: () => void) {
-    // Placeholder: show text briefly
-    game.showLongText("[" + cutsceneId + "]", DialogLayout.Bottom)
-    if (onComplete) onComplete()
+  // Placeholder: show text briefly
+  game.showLongText("[" + cutsceneId + "]", DialogLayout.Bottom);
+  if (onComplete) onComplete();
 }
 
 function showDialog(dialogId: string, onComplete?: () => void) {
-    game.showLongText("[" + dialogId + "]", DialogLayout.Bottom)
-    if (onComplete) onComplete()
+  game.showLongText("[" + dialogId + "]", DialogLayout.Bottom);
+  if (onComplete) onComplete();
 }
 
-function showChoice(promptId: string, options: string[], onSelect: (index: number) => void) {
-    // Placeholder: just pick first option for now
-    game.showLongText("[" + promptId + "]", DialogLayout.Bottom)
-    onSelect(0)
+function showChoice(
+  promptId: string,
+  options: string[],
+  onSelect: (index: number) => void,
+) {
+  // Placeholder: just pick first option for now
+  game.showLongText("[" + promptId + "]", DialogLayout.Bottom);
+  onSelect(0);
 }
