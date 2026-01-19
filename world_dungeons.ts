@@ -33,6 +33,16 @@ function checkAllDungeonsClearExceptFinal(): boolean {
   return count >= DUNGEON_SPECS.length - 1;
 }
 
+// Helper function to find duplicates in an array
+function findDuplicates(items: string[]): { [key: string]: number } {
+  const counts: { [key: string]: number } = {};
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    counts[item] = (counts[item] || 0) + 1;
+  }
+  return counts;
+}
+
 // Dungeon Registry Validation
 // Validates that all dungeon specs are complete and consistent
 function validateDungeonRegistry(): string[] {
@@ -51,6 +61,7 @@ function validateDungeonRegistry(): string[] {
   for (let i = 0; i < DUNGEON_SPECS.length; i++) {
     const spec = DUNGEON_SPECS[i];
     const dungeonLabel = `Dungeon ${i + 1} (${spec.id})`;
+    const isFinalDungeon = i === DUNGEON_SPECS.length - 1;
 
     // Check 2: introCutsceneId must be set
     if (!spec.introCutsceneId || spec.introCutsceneId.trim() === "") {
@@ -59,10 +70,11 @@ function validateDungeonRegistry(): string[] {
       );
     }
 
-    // Check 3: stages[] must have 4-5 stages (v1.0: 4; final might be 5)
-    if (!spec.stages || spec.stages.length < 4 || spec.stages.length > 5) {
+    // Check 3: stages[] must have 4 stages (5 for final dungeon only)
+    const expectedStageCount = isFinalDungeon ? 5 : 4;
+    if (!spec.stages || spec.stages.length !== expectedStageCount) {
       errors.push(
-        `FAIL: ${dungeonLabel} - Expected 4-5 stages, found ${spec.stages ? spec.stages.length : 0}`
+        `FAIL: ${dungeonLabel} - Expected ${expectedStageCount} stages, found ${spec.stages ? spec.stages.length : 0}`
       );
     }
 
@@ -108,16 +120,7 @@ function validateDungeonRegistry(): string[] {
   }
 
   // Check 7: All flags must be unique (no duplicates)
-  const flagCounts: { [key: string]: number } = {};
-  for (let i = 0; i < allFlags.length; i++) {
-    const flag = allFlags[i];
-    if (flagCounts[flag]) {
-      flagCounts[flag]++;
-    } else {
-      flagCounts[flag] = 1;
-    }
-  }
-
+  const flagCounts = findDuplicates(allFlags);
   for (const flag in flagCounts) {
     if (flagCounts[flag] > 1) {
       errors.push(
@@ -127,16 +130,7 @@ function validateDungeonRegistry(): string[] {
   }
 
   // Check 8: All stage IDs must be unique (no duplicates)
-  const stageIdCounts: { [key: string]: number } = {};
-  for (let i = 0; i < allStageIds.length; i++) {
-    const stageId = allStageIds[i];
-    if (stageIdCounts[stageId]) {
-      stageIdCounts[stageId]++;
-    } else {
-      stageIdCounts[stageId] = 1;
-    }
-  }
-
+  const stageIdCounts = findDuplicates(allStageIds);
   for (const stageId in stageIdCounts) {
     if (stageIdCounts[stageId] > 1) {
       errors.push(

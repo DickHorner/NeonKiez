@@ -32,8 +32,8 @@ All dungeons have their intro cutscene ID defined:
 
 **Status:** PASS
 
-### 3. ✅ Stages Array Complete (4-5 stages)
-v1.0 spec requires 4 stages per dungeon, final dungeon may have 5 stages.
+### 3. ✅ Stages Array Complete (4 stages, 5 for final)
+v1.0 spec requires 4 stages per dungeon. The final dungeon (Dungeon 9) has 5 stages.
 
 | Dungeon # | ID | Stage Count | Status |
 |-----------|-----|-------------|--------|
@@ -167,10 +167,10 @@ All dungeons have hubReturnSpawnTag defined for proper return to hub:
 ### Validation Checks Performed
 1. Count check: Exactly 9 dungeons
 2. Field completeness: introCutsceneId, stages[], hubReturnSpawnTag, rewards.flagsSet
-3. Stage count validation: 4-5 stages per dungeon
+3. Stage count validation: Exactly 4 stages per dungeon, 5 stages for final dungeon only
 4. Stage ID validation: No empty or missing IDs
-5. Flag uniqueness: No duplicate flags across all dungeons
-6. Stage ID uniqueness: No duplicate stage IDs
+5. Flag uniqueness: No duplicate flags across all dungeons (using optimized helper function)
+6. Stage ID uniqueness: No duplicate stage IDs (using optimized helper function)
 
 ## Acceptance Criteria
 
