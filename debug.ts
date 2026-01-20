@@ -47,4 +47,10 @@ function validateRegistry() {
   runDungeonRegistryValidation();
 }
 
+function testDungeon05() {
+  // Quick test: warp to Dungeon 5 Stage 0
+  warpToDungeon("DUN_SCHOOL_PONG_COURT");
+  showHint("[TEST_DUNGEON_05_STARTED]", 3000);
+}
+
 // MANUAL TEST PASSED: Debug helpers
