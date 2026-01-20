@@ -212,9 +212,18 @@ function toggleSwitch(loc: tiles.Location) {
       toggleGatesForDungeon01();
     }
     
-    // For Dungeon 3, switches toggle gates  
+    // For Dungeon 3, switches should OPEN gates once the required
+    // number of switches has been activated, but must not re-close
+    // them on subsequent activations.
     if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
-      toggleGatesForDungeon03();
+      const stageData = state.dungeonStageData as any;
+      // DECISION: Stage 1 (BLOCK_ROWS) requires 2 switches.
+      // Only when switchesActivated >= 2 and gates are not yet open
+      // do we call toggleGatesForDungeon03(), so the gates end up open
+      // and stay open for this requirement.
+      if (!stageData.gatesOpen && stageData.switchesActivated >= 2) {
+        toggleGatesForDungeon03();
+      }
     }
   }
   showHint("[SWITCH_ACTIVATED]", 1000);

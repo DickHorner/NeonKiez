@@ -393,6 +393,14 @@ namespace GameController {
       handleGhostBotCollision(player, enemy);
     });
 
+    // Puzzle mode: Hazard collision (moving crates, etc.)
+    sprites.onOverlap(KIND_PLAYER, KIND_HAZARD, (player, hazard) => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (game.runtime() < state.invincibleUntil) return;
+      
+      handleHazardCollision(player, hazard);
+    });
+
     // Game update loop
     game.onUpdate(() => {
       updateGameLoop();
@@ -571,8 +579,10 @@ namespace GameController {
     // Update Ghost-Bot patrol AI (if present)
     updateGhostBotPatrol();
     
-    // Update moving crates (if present)
-    updateMovingCrates();
+    // Update moving crates (only used in DUN_WAREHOUSE_BLOCKWORKS)
+    if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      updateMovingCrates();
+    }
 
     // Check stage-specific win conditions
     if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
@@ -600,13 +610,15 @@ namespace GameController {
     const data = state.dungeonStageData;
     
     if (stageIdx === 0) {
-      // Stage 0: WARMUP - reach goal after activating switch
+      // Stage 0: WARMUP - reach goal after activating switch (once)
+      // NOTE: switches are single-use per stage; see handleSwitchActivation()
       if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
         markStageComplete();
       }
     } else if (stageIdx === 1) {
-      // Stage 1: DARK_MAZE - reach goal after toggling switches
-      if (checkPlayerOnGoal()) {
+      // Stage 1: DARK_MAZE - reach goal after activating 1 switch (once)
+      // NOTE: only 1 switch in this stage; activates multiple gates
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
         markStageComplete();
       }
     } else if (stageIdx === 2) {
@@ -615,7 +627,8 @@ namespace GameController {
         markStageComplete();
       }
     } else if (stageIdx === 3) {
-      // Stage 3: EXIT_ROOM - activate final switch, then reach goal
+      // Stage 3: EXIT_ROOM - activate final switch (once), then reach goal
+      // NOTE: switches are single-use per stage; see handleSwitchActivation()
       if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
         markStageComplete();
       }
@@ -672,8 +685,8 @@ namespace GameController {
       for (let i = 0; i < count; i++) {
         const token = sprites.create(imgCollectible("TOKEN"), KIND_COLLECTIBLE);
         token.setPosition(
-          20 + Math.randomRange(0, scene.screenWidth() - 40),
-          20 + Math.randomRange(0, scene.screenHeight() - 40)
+          20 + randint(0, scene.screenWidth() - 40),
+          20 + randint(0, scene.screenHeight() - 40)
         );
       }
     }
@@ -782,6 +795,30 @@ namespace GameController {
   }
 }
 
+
+function handleHazardCollision(player: Sprite, hazard: Sprite) {
+  if (!player || !state.dungeonStageData) return;
+
+  // Knockback effect
+  const knockbackForce = 50;
+  const dx = player.x - hazard.x;
+  const dy = player.y - hazard.y;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+  
+  if (distance > 0) {
+    player.vx = (dx / distance) * knockbackForce;
+    player.vy = (dy / distance) * knockbackForce;
+  }
+
+  // Apply invincibility frames to prevent repeated hits
+  state.invincibleUntil = game.runtime() + 500;
+
+  // Visual feedback (flash effect via sprite)
+  player.say("!", 100);
+
+  // Reduce health or lives (placeholder - could be expanded)
+  showHint("[HIT_BY_HAZARD]", 1000);
+}
 // MANUAL TEST PASSED: GameController scaffold complete
 
 // MANUAL TEST PASSED: GameController scaffold complete
