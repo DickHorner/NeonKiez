@@ -179,7 +179,12 @@ namespace GameController {
     state.dungeonStageData = {
       stageIndex: stageIndex,
       reachedGoal: false,
+      switchesActivated: 0,
+      gatesOpen: false,
     };
+
+    // Spawn platform stage content (moving platforms, hazards)
+    spawnPlatformStageContent(dungeonId, stageIndex);
   }
 
   function setupShooterMode(payload: any) {
@@ -542,6 +547,11 @@ namespace GameController {
       state.dungeonStageData.reachedGoal = true;
       onStageComplete();
     }
+
+    // Check for switch interaction in platform mode (Dungeon 7 Stage 2)
+    if (state.currentDungeonId === "DUN_VIDEO_STORE_PLATFORM_TRIAL" && state.currentStageIndex === 2) {
+      checkPlatformSwitchInteraction();
+    }
   }
 
   function updateShooterMode() {
@@ -681,6 +691,95 @@ namespace GameController {
     ghostBot.vx = patrolSpeed;
     
     // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
+  }
+
+  function spawnPlatformStageContent(dungeonId: string, stageIndex: number) {
+    if (dungeonId === "DUN_VIDEO_STORE_PLATFORM_TRIAL") {
+      spawnDungeon07Content(stageIndex);
+    } else if (dungeonId === "DUN_CONSTRUCTION_DONKEY_TOWER") {
+      spawnDungeon08Content(stageIndex);
+    }
+  }
+
+  function spawnDungeon07Content(stageIndex: number) {
+    if (stageIndex === 1) {
+      // Stage 1: Spawn moving platforms (shelves)
+      spawnMovingPlatform(60, 50, 40, 120, 30); // x start, x end, y, speed
+      spawnMovingPlatform(100, 140, 70, 25);
+    }
+  }
+
+  function spawnDungeon08Content(stageIndex: number) {
+    // Dungeon 8 content would go here (ladders, barrels)
+    // Placeholder for future implementation
+  }
+
+  function spawnMovingPlatform(xStart: number, xEnd: number, y: number, speed: number) {
+    const platform = sprites.create(image.create(32, 8), KIND_PLATFORM_MOVING);
+    platform.setPosition(xStart, y);
+    platform.setFlag(SpriteFlag.Ghost, false); // Solid platform
+    
+    // Simple oscillation
+    const range = xEnd - xStart;
+    let direction = 1;
+    
+    game.onUpdate(() => {
+      if (state.playMode !== PlayMode.DUN_PLATFORM) return;
+      if (platform.flags & sprites.Flag.Destroyed) return;
+      
+      platform.x += direction * speed / 60; // 60 fps
+      
+      if (platform.x >= xEnd) {
+        direction = -1;
+      } else if (platform.x <= xStart) {
+        direction = 1;
+      }
+    });
+  }
+
+  function checkPlatformSwitchInteraction() {
+    if (!playerSprite || !state.dungeonStageData) return;
+    if (game.runtime() < state.lastInteractTime + INTERACT_DEBOUNCE_MS) return;
+    
+    const loc = playerSprite.tilemapLocation();
+    if (!loc) return;
+    
+    const switchTile = tiles.getTileImage(TILE_SWITCH as any);
+    if (switchTile && tiles.tileAtLocationEquals(loc, switchTile)) {
+      if (controller.A.isPressed()) {
+        state.lastInteractTime = game.runtime();
+        togglePlatformGates();
+      }
+    }
+  }
+
+  function togglePlatformGates() {
+    if (!state.dungeonStageData) return;
+    
+    state.dungeonStageData.switchesActivated += 1;
+    state.dungeonStageData.gatesOpen = !state.dungeonStageData.gatesOpen;
+    
+    // Get gate locations (store on first use)
+    const stageData = state.dungeonStageData as any;
+    if (!stageData.gateLocations) {
+      stageData.gateLocations = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+    }
+    
+    const gateLocations = (stageData.gateLocations as tiles.Location[]) || [];
+    
+    for (const gateLoc of gateLocations) {
+      if (stageData.gatesOpen) {
+        // Open gate: replace with floor tile
+        tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any));
+      } else {
+        // Close gate: replace with gate tile
+        tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
+      }
+      tiles.setWallAt(gateLoc, !stageData.gatesOpen);
+    }
+    
+    showHint(stageData.gatesOpen ? "[GATES_OPEN]" : "[GATES_CLOSED]", 1000);
+    sfxInteract();
   }
 
   function onStageComplete() {
