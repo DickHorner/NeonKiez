@@ -44,7 +44,6 @@ const TILE_GOAL_FLAG = 7;
 const TILE_HAZARD = 8;
 const TILE_SWITCH = 9;
 const TILE_GATE = 10;
-const TILE_RHYTHM_DOOR = 11; // Doors that open on beat in rhythm mode
 
 // Interaction distances
 const INTERACT_DISTANCE = 20;
@@ -163,8 +162,6 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       bpm: 120, 
       missLimit: 3,
       streakTargets: [3, 5, 8, 12], // Stage 0-3 streak requirements
-      doorsPerStage: [0, 3, 0, 0], // Stage 1 has 3 doors
-      switchesPerStage: [0, 0, 6, 4], // Stages 2-3 have switches to activate
     },
   },
   {

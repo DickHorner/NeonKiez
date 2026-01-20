@@ -172,6 +172,9 @@ function openRhythmDoors() {
   
   if (!stageData.rhythmDoorLocations) return;
   
+  // Guard: Skip if doors are already open
+  if (stageData.rhythmDoorsOpen) return;
+  
   stageData.rhythmDoorsOpen = true;
   
   // Open all rhythm doors
@@ -189,6 +192,9 @@ function closeRhythmDoors() {
   
   if (!stageData.rhythmDoorLocations) return;
   
+  // Guard: Skip if doors are already closed
+  if (!stageData.rhythmDoorsOpen) return;
+  
   stageData.rhythmDoorsOpen = false;
   
   // Close all rhythm doors
@@ -202,7 +208,6 @@ function closeRhythmDoors() {
 
 function activateNearbyRhythmSwitch() {
   if (!state.dungeonStageData) return;
-  const stageData = state.dungeonStageData as any;
   
   const plyr = GameController.getPlayerSprite();
   if (!plyr) return;

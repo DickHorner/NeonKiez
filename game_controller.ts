@@ -589,24 +589,43 @@ namespace GameController {
       return;
     }
 
-    // Check for streak target reached (win condition)
-    if (state.dungeonStageData.streak >= state.dungeonStageData.streakTarget) {
-      state.dungeonStageData.stageComplete = true;
-      showHint("[RHYTHM_STREAK_COMPLETE]", 2000);
-      pause(1000);
-      onStageComplete();
-      return;
-    }
-
-    // Check for goal tile reached (alternative win for some stages)
+    // Win condition logic
+    const streakTarget = state.dungeonStageData.streakTarget;
+    const streakComplete = state.dungeonStageData.streak >= streakTarget;
+    
+    let goalReached = false;
     if (game.currentScene().tileMap) {
       const loc = playerSprite.tilemapLocation();
       if (loc) {
         const goalTile = tiles.getTileImage(TILE_GOAL_FLAG as any);
         if (goalTile && tiles.tileAtLocationEquals(loc, goalTile)) {
-          state.dungeonStageData.stageComplete = true;
-          onStageComplete();
+          goalReached = true;
         }
+      }
+    }
+
+    // Stage 1 requires BOTH streak AND goal tile
+    if (state.currentDungeonId === "DUN_SUBWAY_TIMING" && state.currentStageIndex === 1) {
+      if (streakComplete && goalReached) {
+        state.dungeonStageData.stageComplete = true;
+        showHint("[RHYTHM_STREAK_AND_GOAL_COMPLETE]", 2000);
+        pause(1000);
+        onStageComplete();
+        return;
+      }
+      // Hint player if streak is done but goal not reached
+      if (streakComplete && !goalReached && !state.dungeonStageData.streakHintShown) {
+        state.dungeonStageData.streakHintShown = true;
+        showHint("[RHYTHM_STREAK_DONE_FIND_GOAL]", 2000);
+      }
+    } else {
+      // Other stages: streak alone is enough (goal tile is optional/alternative)
+      if (streakComplete || goalReached) {
+        state.dungeonStageData.stageComplete = true;
+        showHint("[RHYTHM_STREAK_COMPLETE]", 2000);
+        pause(1000);
+        onStageComplete();
+        return;
       }
     }
   }
@@ -736,12 +755,14 @@ namespace GameController {
   }
 
   function markRhythmBeatMarkers() {
-    // Find all beat marker tiles (using TILE_SWITCH as markers)
+    // DECISION: Stage 3 uses TILE_SWITCH tiles purely as visual beat markers.
+    // They are NOT interactive switches - they just guide the player where to stand for the rhythm challenge.
+    // The win condition for Stage 3 is reaching the streak target (12), not activating markers.
     const beatMarkers = tiles.getTilesByType(tiles.getTileImage(TILE_SWITCH as any));
     
     if (!state.dungeonStageData) return;
     
-    // Store beat marker locations
+    // Store beat marker locations (for visual reference only)
     (state.dungeonStageData as any).beatMarkerLocations = beatMarkers || [];
     (state.dungeonStageData as any).markersRequired = (beatMarkers && beatMarkers.length) || 4;
     
