@@ -92,7 +92,31 @@ function tmHub01(): tiles.TileMapData {
   return createEmptyTilemap();
 }
 function tmHub02(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Hub room (0,2) - Contains Dungeon 3 door (Warehouse Blockworks)
+  return tiles.createTilemap(
+    hex`10000c00010101010101010101010101010101010101010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000400000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010101010101010101010101010101010101`,
+    img`
+. . . . . . . . . . . . . . . . 
+. 2 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . d . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.castle.tileGrass2,
+      sprites.castle.tileDarkGrass1,
+      sprites.castle.tilePath5,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath4,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmHub10(): tiles.TileMapData {
   return createEmptyTilemap();
@@ -320,18 +344,134 @@ function tmDun02Stage03(): tiles.TileMapData {
   );
 }
 
-// Dungeon 3 stages
+// Dungeon 3 stages - Warehouse Blockworks
 function tmDun03Stage00(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 0: CONVEYOR_INTRO - Simple conveyor belt + gate tutorial
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303000200000000000000000000000303000000000000000000000000000303000000000000000000000000000303000000000000090000000000000303000a0a0a0a0a0a0a0a0a0a000000030300000000000000000000000000030300000000000000000000000007030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 1 . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . 9 . . . . . 2 
+2 6 6 6 6 6 6 6 6 6 6 . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . 7 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.dungeon.stairNorth,
+      sprites.dungeon.chestClosed,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+      sprites.dungeon.purpleOuterWest0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun03Stage01(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 1: BLOCK_ROWS - Fill block rows to toggle gates
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303000200000000000000000000000303000000000000000000000000000303000000000000000000000000000303000000090000000000090000000303000a0a0a0a0a0a0a0a0a0a0a0a0a030300000000000000000000000000030300000000000000000000000000030300000000000000000000000007030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 1 . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . 9 . . . . . . . 9 . 2 
+2 6 6 6 6 6 6 6 6 6 6 6 6 6 6 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . 7 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.dungeon.stairNorth,
+      sprites.dungeon.chestClosed,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+      sprites.dungeon.purpleOuterWest0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun03Stage02(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 2: MOVING_CRATES - Navigate around periodically moving crate obstacles
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303000200000000000000000000000303000000000000000000000000000303000000000000000000000000000303000000000000000000000000000303000000000000000000000000000303000000000000000000000000000303000000000000000000000000000303000000000000000000000007000303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 1 . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . 7 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.dungeon.stairNorth,
+      sprites.dungeon.chestClosed,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+      sprites.dungeon.purpleOuterWest0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun03Stage03(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 3: FINAL_PATTERN - Create the target pattern to unlock final gate
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303000200000000000000000000000303000000000000000000000000000303000000000000000000000000000303000000000000000000000000000303000000000900000000000000000303000a0a0a0a0a0a0a0a0a0a0a0a0a030300000000000000000000000000030300000000000000000000000007030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 1 . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . 9 . . . . . . . 2 
+2 6 6 6 6 6 6 6 6 6 6 6 6 6 6 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . 7 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.dungeon.stairNorth,
+      sprites.dungeon.chestClosed,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+      sprites.dungeon.purpleOuterWest0,
+    ],
+    TileScale.Sixteen
+  );
 }
 
 // Dungeon 4 stages
