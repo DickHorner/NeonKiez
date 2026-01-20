@@ -847,12 +847,7 @@ namespace GameController {
     } else if (stageIndex === 1) {
       // Stage 1: 4–7 enemies in formations (max 7 documented)
       enemiesToSpawn = 4 + (state.dungeonStageData.wavesComplete - 1);
-    // Spawn at top of screen with a safe horizontal margin from walls
-    // DECISION: Use a 30px margin from each horizontal edge to reduce immediate wall bounces.
-    const marginX = 30;
-    const x = randint(marginX, scene.screenWidth() - marginX);
-    const marginX = 30;
-    const x = randint(marginX, scene.screenWidth() - marginX);
+      if (enemiesToSpawn > 7) {
         enemiesToSpawn = 7;
       }
     } else if (stageIndex === 2) {
@@ -863,16 +858,6 @@ namespace GameController {
         enemiesToSpawn = 7;
       }
     }
-
-    // Global cap check to guard against future CAP_MAX_ENEMIES changes
-      enemiesToSpawn = 5 + Math.floor(state.dungeonStageData.wavesComplete / 2);
-      if (enemiesToSpawn > 7) {
-        // DECISION: Cap Stage 2 waves at 7 enemies to keep design predictable and under CAP_MAX_ENEMIES.
-        enemiesToSpawn = 7;
-    // Spawn at top of screen with a safe horizontal margin from walls
-    // DECISION: Use a 30px margin from each horizontal edge to reduce immediate wall bounces.
-    const marginX = 30;
-    const x = randint(marginX, scene.screenWidth() - marginX);
 
     // Global cap check to guard against future CAP_MAX_ENEMIES changes
     if (enemiesToSpawn > CAP_MAX_ENEMIES) {
