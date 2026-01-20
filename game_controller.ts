@@ -211,11 +211,27 @@ namespace GameController {
     initShooterPlayer(playerSprite);
 
     // Stage data
+    const wavesPerStage = (spec.params && spec.params.wavesPerStage) || [1, 1, 1, 1];
+    const coreHP = (spec.params && spec.params.coreHP) || 30;
+    
     state.dungeonStageData = {
       stageIndex: stageIndex,
       wavesComplete: 0,
+      wavesTotal: wavesPerStage[idx] || 1,
       enemiesAlive: 0,
+      waveSpawnTimer: 0,
+      coreHP: stageIndex === 3 ? coreHP : 0,
+      coreSprite: null,
+      isAlarmStage: stageIndex === 2,
+      alarmActive: false,
     };
+
+    // Start first wave or spawn core
+    if (stageIndex === 3) {
+      spawnCore();
+    } else {
+      startNextWave();
+    }
   }
 
   function setupAsteroidsMode(payload: any) {
@@ -275,6 +291,9 @@ namespace GameController {
     // Stage data
     const bpm = (spec.params && spec.params.bpm) || 120;
     const beatIntervalMs = 60000 / bpm;
+    const missLimit = (spec.params && spec.params.missLimit) || 3;
+    const streakTargets = (spec.params && spec.params.streakTargets) || [3, 5, 8, 12];
+    const streakTarget = streakTargets[idx] || 5;
 
     state.dungeonStageData = {
       stageIndex: stageIndex,
@@ -283,7 +302,15 @@ namespace GameController {
       nextBeatTime: game.runtime() + beatIntervalMs,
       streak: 0,
       misses: 0,
+      missLimit: missLimit,
+      streakTarget: streakTarget,
+      doorsOpened: 0,
+      switchesActivated: 0,
+      stageComplete: false,
     };
+
+    // Spawn stage-specific content
+    spawnRhythmStageContent(dungeonId, stageIndex);
   }
 
   function setupPuzzleMode(payload: any) {
@@ -395,6 +422,44 @@ namespace GameController {
       handleInteract();
     });
 
+    // Bullet hits enemy
+    sprites.onOverlap(KIND_PROJECTILE, KIND_ENEMY, (bullet, enemy) => {
+      if (state.playMode !== PlayMode.DUN_SHOOTER) return;
+
+      bullet.destroy();
+      
+      // Check if enemy is core
+      if ((enemy as any).isCore && state.dungeonStageData) {
+        state.dungeonStageData.coreHP -= 1;
+        effects.starField.startScreenEffect(100);
+        
+        if (state.dungeonStageData.coreHP <= 0) {
+          enemy.destroy();
+          effects.confetti.startScreenEffect(1000);
+        }
+      } else {
+        // Normal enemy
+        const hp = (enemy as any).hp || 1;
+        (enemy as any).hp = hp - 1;
+        
+        if ((enemy as any).hp <= 0) {
+          enemy.destroy();
+          effects.starField.startScreenEffect(100);
+          sfxHit();
+        }
+      }
+    });
+
+    // Enemy hits player
+    sprites.onOverlap(KIND_PLAYER, KIND_ENEMY, (player, enemy) => {
+      if (state.playMode !== PlayMode.DUN_SHOOTER) return;
+      if (game.runtime() < state.invincibleUntil) return;
+
+      damagePlayer(1);
+      state.invincibleUntil = game.runtime() + 2000; // 2 second invincibility with visual flash
+      sfxHit();
+    });
+
     // Puzzle mode: Token collection (registered globally to avoid memory leaks)
     sprites.onOverlap(KIND_PLAYER, KIND_COLLECTIBLE, (sprite, collectible) => {
       if (state.playMode !== PlayMode.DUN_PUZZLE) return;
@@ -410,6 +475,14 @@ namespace GameController {
       if (game.runtime() < state.invincibleUntil) return;
       
       handleGhostBotCollision(player, enemy);
+    });
+
+    // Puzzle mode: Hazard collision (moving crates, etc.)
+    sprites.onOverlap(KIND_PLAYER, KIND_HAZARD, (player, hazard) => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (game.runtime() < state.invincibleUntil) return;
+      
+      handleHazardCollision(player, hazard);
     });
 
     // Dungeon 5: Ball/Paddle collision (registered globally to avoid memory leaks)
@@ -562,6 +635,9 @@ namespace GameController {
       updateHUD();
     }
 
+    // Update invincibility visual feedback
+    updateInvincibilityFlash();
+
     // Mode-specific updates
     if (state.playMode === PlayMode.DUN_PLATFORM) {
       updatePlatformMode();
@@ -573,6 +649,21 @@ namespace GameController {
       updateRhythmMode();
     } else if (state.playMode === PlayMode.DUN_PUZZLE) {
       updatePuzzleMode();
+    }
+  }
+
+  function updateInvincibilityFlash() {
+    if (!playerSprite) return;
+
+    const now = game.runtime();
+    if (now < state.invincibleUntil) {
+      // Flash effect: toggle opacity every 100ms for visual feedback
+      const flashInterval = 100;
+      const isVisible = Math.floor((now / flashInterval) % 2) === 0;
+      playerSprite.setFlag(SpriteFlag.Ghost, !isVisible);
+    } else {
+      // Ensure sprite is fully visible when invincibility ends
+      playerSprite.setFlag(SpriteFlag.Ghost, false);
     }
   }
 
@@ -597,7 +688,60 @@ namespace GameController {
   }
 
   function updateShooterMode() {
-    // Wave/enemy management (placeholder)
+    if (!state.dungeonStageData) return;
+
+    // Count alive enemies
+    state.dungeonStageData.enemiesAlive = sprites.allOfKind(KIND_ENEMY).length;
+
+    // Core HP mode (stage 3)
+    if (state.dungeonStageData.coreHP >= 0) {
+      // Check if core is destroyed
+      if (state.dungeonStageData.coreHP <= 0 && state.dungeonStageData.coreSprite) {
+        state.dungeonStageData.coreSprite.destroy();
+        state.dungeonStageData.coreSprite = null;
+        effects.confetti.startScreenEffect(1000);
+        control.runInParallel(() => {
+          pause(1500);
+          onStageComplete();
+        });
+      }
+      return;
+    }
+
+    // Wave mode (stages 0-2)
+    // Check if current wave is complete
+    if (state.dungeonStageData.enemiesAlive === 0 && state.dungeonStageData.waveSpawnTimer === 0) {
+      if (state.dungeonStageData.wavesComplete >= state.dungeonStageData.wavesTotal) {
+        // Stage complete
+        effects.confetti.startScreenEffect(1000);
+        control.runInParallel(() => {
+          pause(1500);
+          onStageComplete();
+        });
+      } else {
+        // Start next wave
+        control.runInParallel(() => {
+          pause(1000);
+          startNextWave();
+        });
+      }
+    }
+
+    // Alarm stage mechanic (stage 2): periodic spawn boost
+    if (state.dungeonStageData.isAlarmStage && state.dungeonStageData.wavesComplete > 0) {
+      const now = game.runtime();
+      const lastAlarmTime = (state.dungeonStageData as any).lastAlarmTime || 0;
+      const alarmIntervalMs = 5000;
+      
+      if (now - lastAlarmTime >= alarmIntervalMs) {
+        (state.dungeonStageData as any).lastAlarmTime = now;
+        showHint("[ALARM_TRIGGERED]", 1000);
+        // Spawn extra enemy
+        if (sprites.allOfKind(KIND_ENEMY).length < CAP_MAX_ENEMIES) {
+          spawnShooterEnemy();
+        }
+      }
+    }
   }
 
   function updateAsteroidsMode() {
@@ -606,13 +750,68 @@ namespace GameController {
 
   function updateRhythmMode() {
     if (!state.dungeonStageData) return;
+    if (state.dungeonStageData.stageComplete) return;
+    if (!playerSprite) return;
 
-    // Beat timing (placeholder)
+    // Beat timing
     const now = game.runtime();
     if (now >= state.dungeonStageData.nextBeatTime) {
       state.dungeonStageData.nextBeatTime +=
         state.dungeonStageData.beatIntervalMs;
-      // Visual cue for beat window
+      // Visual cue for beat window (placeholder)
+      showHint("[RHYTHM_BEAT_CUE]", 100);
+    }
+
+    // Check for miss limit exceeded (lose condition)
+    if (state.dungeonStageData.misses >= state.dungeonStageData.missLimit) {
+      // Restart stage
+      showHint("[RHYTHM_MISS_LIMIT_RESTART]", 2000);
+      pause(500);
+      switchPlayMode(state.playMode, {
+        dungeonId: state.currentDungeonId,
+        stageIndex: state.currentStageIndex,
+      });
+      return;
+    }
+
+    // Win condition logic
+    const streakTarget = state.dungeonStageData.streakTarget;
+    const streakComplete = state.dungeonStageData.streak >= streakTarget;
+    
+    let goalReached = false;
+    if (game.currentScene().tileMap) {
+      const loc = playerSprite.tilemapLocation();
+      if (loc) {
+        const goalTile = tiles.getTileImage(TILE_GOAL_FLAG as any);
+        if (goalTile && tiles.tileAtLocationEquals(loc, goalTile)) {
+          goalReached = true;
+        }
+      }
+    }
+
+    // Stage 1 requires BOTH streak AND goal tile
+    if (state.currentDungeonId === "DUN_SUBWAY_TIMING" && state.currentStageIndex === 1) {
+      if (streakComplete && goalReached) {
+        state.dungeonStageData.stageComplete = true;
+        showHint("[RHYTHM_STREAK_AND_GOAL_COMPLETE]", 2000);
+        pause(1000);
+        onStageComplete();
+        return;
+      }
+      // Hint player if streak is done but goal not reached
+      if (streakComplete && !goalReached && !state.dungeonStageData.streakHintShown) {
+        state.dungeonStageData.streakHintShown = true;
+        showHint("[RHYTHM_STREAK_DONE_FIND_GOAL]", 2000);
+      }
+    } else {
+      // Other stages: streak alone is enough (goal tile is optional/alternative)
+      if (streakComplete || goalReached) {
+        state.dungeonStageData.stageComplete = true;
+        showHint("[RHYTHM_STREAK_COMPLETE]", 2000);
+        pause(1000);
+        onStageComplete();
+        return;
+      }
     }
   }
 
@@ -623,6 +822,11 @@ namespace GameController {
     // Update Ghost-Bot patrol AI (if present)
     updateGhostBotPatrol();
     
+    // Update moving crates (only used in DUN_WAREHOUSE_BLOCKWORKS)
+    if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      updateMovingCrates();
+    }
+    
     // Update Dungeon 5 ball physics
     if (state.currentDungeonId === "DUN_SCHOOL_PONG_COURT") {
       updateDungeon05Balls();
@@ -631,6 +835,8 @@ namespace GameController {
     // Check stage-specific win conditions
     if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       checkDungeon01StageComplete();
+    } else if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      checkDungeon03StageComplete();
     } else if (state.currentDungeonId === "DUN_SCHOOL_PONG_COURT") {
       checkDungeon05StageComplete();
     }
@@ -654,13 +860,15 @@ namespace GameController {
     const data = state.dungeonStageData;
     
     if (stageIdx === 0) {
-      // Stage 0: WARMUP - reach goal after activating switch
+      // Stage 0: WARMUP - reach goal after activating switch (once)
+      // NOTE: switches are single-use per stage; see handleSwitchActivation()
       if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
         markStageComplete();
       }
     } else if (stageIdx === 1) {
-      // Stage 1: DARK_MAZE - reach goal after toggling switches
-      if (checkPlayerOnGoal()) {
+      // Stage 1: DARK_MAZE - reach goal after activating 1 switch (once)
+      // NOTE: only 1 switch in this stage; activates multiple gates
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
         markStageComplete();
       }
     } else if (stageIdx === 2) {
@@ -669,7 +877,8 @@ namespace GameController {
         markStageComplete();
       }
     } else if (stageIdx === 3) {
-      // Stage 3: EXIT_ROOM - activate final switch, then reach goal
+      // Stage 3: EXIT_ROOM - activate final switch (once), then reach goal
+      // NOTE: switches are single-use per stage; see handleSwitchActivation()
       if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
         markStageComplete();
       }
@@ -729,7 +938,71 @@ namespace GameController {
       spawnDungeon01Content(stageIndex);
     } else if (dungeonId === "DUN_SCHOOL_PONG_COURT") {
       spawnDungeon05Content(stageIndex);
+    } else if (dungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      spawnDungeon03Content(stageIndex);
     }
+  }
+
+  function spawnRhythmStageContent(dungeonId: string, stageIndex: number) {
+    if (dungeonId === "DUN_SUBWAY_TIMING") {
+      spawnDungeon04Content(stageIndex);
+    }
+  }
+
+  function spawnDungeon04Content(stageIndex: number) {
+    // Stage 1: Spawn rhythm doors (gates that open on beat)
+    if (stageIndex === 1) {
+      spawnRhythmDoors();
+    }
+    // Stage 2: Mark switch locations for beat activation
+    if (stageIndex === 2) {
+      markRhythmSwitches();
+    }
+    // Stage 3: Mark beat markers for final streak
+    if (stageIndex === 3) {
+      markRhythmBeatMarkers();
+    }
+  }
+
+  function spawnRhythmDoors() {
+    // Find all rhythm door tiles (gate tiles in rhythm stages)
+    const doorTiles = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+    
+    if (!state.dungeonStageData) return;
+    
+    // Store door locations for beat-based opening
+    (state.dungeonStageData as any).rhythmDoorLocations = doorTiles || [];
+    (state.dungeonStageData as any).rhythmDoorsOpen = false;
+    
+    showHint("[RHYTHM_DOORS_ON_BEAT]", 2000);
+  }
+
+  function markRhythmSwitches() {
+    // Find all switch tiles
+    const switchTiles = tiles.getTilesByType(tiles.getTileImage(TILE_SWITCH as any));
+    
+    if (!state.dungeonStageData) return;
+    
+    // Store switch locations
+    (state.dungeonStageData as any).rhythmSwitchLocations = switchTiles || [];
+    (state.dungeonStageData as any).switchesRequired = (switchTiles && switchTiles.length) || 6;
+    
+    showHint("[RHYTHM_HIT_SWITCHES_ON_BEAT]", 2000);
+  }
+
+  function markRhythmBeatMarkers() {
+    // DECISION: Stage 3 uses TILE_SWITCH tiles purely as visual beat markers.
+    // They are NOT interactive switches - they just guide the player where to stand for the rhythm challenge.
+    // The win condition for Stage 3 is reaching the streak target (12), not activating markers.
+    const beatMarkers = tiles.getTilesByType(tiles.getTileImage(TILE_SWITCH as any));
+    
+    if (!state.dungeonStageData) return;
+    
+    // Store beat marker locations (for visual reference only)
+    (state.dungeonStageData as any).beatMarkerLocations = beatMarkers || [];
+    (state.dungeonStageData as any).markersRequired = (beatMarkers && beatMarkers.length) || 4;
+    
+    showHint("[RHYTHM_FINAL_STREAK_CHALLENGE]", 2000);
   }
 
   function spawnDungeon01Content(stageIndex: number) {
@@ -756,8 +1029,8 @@ namespace GameController {
       for (let i = 0; i < count; i++) {
         const token = sprites.create(imgCollectible("TOKEN"), KIND_COLLECTIBLE);
         token.setPosition(
-          20 + Math.randomRange(0, scene.screenWidth() - 40),
-          20 + Math.randomRange(0, scene.screenHeight() - 40)
+          20 + randint(0, scene.screenWidth() - 40),
+          20 + randint(0, scene.screenHeight() - 40)
         );
       }
     }
@@ -772,6 +1045,73 @@ namespace GameController {
     ghostBot.vx = patrolSpeed;
     
     // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
+  }
+  
+  // ============ DUNGEON 3 (WAREHOUSE BLOCKWORKS) ============
+  
+  function spawnDungeon03Content(stageIndex: number) {
+    if (stageIndex === 2) {
+      // Stage 2: Spawn moving crates that patrol
+      spawnMovingCrates();
+    }
+  }
+  
+  function spawnMovingCrates() {
+    // Spawn 3 crates that move in patterns
+    const crate1 = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+    crate1.setPosition(40, 40);
+    crate1.vx = 15;
+    
+    const crate2 = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+    crate2.setPosition(80, 60);
+    crate2.vy = 15;
+    
+    const crate3 = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+    crate3.setPosition(120, 40);
+    crate3.vx = -15;
+  }
+  
+  function updateMovingCrates() {
+    // Update all moving crates in puzzle mode
+    const crates = sprites.allOfKind(KIND_HAZARD);
+    for (const crate of crates) {
+      if (!crate || crate.flags & sprites.Flag.Destroyed) continue;
+      
+      // Bounce on screen edges
+      if (crate.x < 20 || crate.x > scene.screenWidth() - 20) {
+        crate.vx = -crate.vx;
+      }
+      if (crate.y < 20 || crate.y > scene.screenHeight() - 20) {
+        crate.vy = -crate.vy;
+      }
+    }
+  }
+  
+  function checkDungeon03StageComplete() {
+    const stageIdx = state.currentStageIndex;
+    const data = state.dungeonStageData;
+    
+    if (stageIdx === 0) {
+      // Stage 0: CONVEYOR_INTRO - activate switch and reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 1) {
+      // Stage 1: BLOCK_ROWS - activate both switches to open gates, then reach goal
+      if (data.switchesActivated >= 2 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 2) {
+      // Stage 2: MOVING_CRATES - navigate past moving crates to reach goal
+      if (checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 3) {
+      // Stage 3: FINAL_PATTERN - activate final switch to open gate, then reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    }
   }
 
   function spawnDungeon05Content(stageIndex: number) {
@@ -833,7 +1173,7 @@ namespace GameController {
     
     // Set ball velocity (upward and slightly random horizontal)
     const ballSpeed = state.dungeonStageData.ballSpeed || BALL_SPEED_NORMAL;
-    ball.vx = Math.randomRange(BALL_SERVE_HORIZONTAL_MIN, BALL_SERVE_HORIZONTAL_MAX);
+    ball.vx = randint(BALL_SERVE_HORIZONTAL_MIN, BALL_SERVE_HORIZONTAL_MAX);
     ball.vy = -ballSpeed;
     
     ball.setFlag(SpriteFlag.BounceOnWall, true);
@@ -872,11 +1212,104 @@ namespace GameController {
     }
   }
 
+  // ============ SHOOTER MODE HELPERS ============
+
+  function startNextWave() {
+    if (!state.dungeonStageData) return;
+
+    state.dungeonStageData.wavesComplete += 1;
+    const waveNum = state.dungeonStageData.wavesComplete;
+    showHint(`[WAVE_${waveNum}_START]`, 1500);
+
+    // Spawn enemies based on stage
+    const stageIndex = state.dungeonStageData.stageIndex;
+    let enemiesToSpawn = 0;
+
+    if (stageIndex === 0) {
+      // Stage 0: fixed 3 enemies per wave
+      enemiesToSpawn = 3;
+    } else if (stageIndex === 1) {
+      // Stage 1: 4–7 enemies in formations (max 7 documented)
+      enemiesToSpawn = 4 + (state.dungeonStageData.wavesComplete - 1);
+      if (enemiesToSpawn > 7) {
+        enemiesToSpawn = 7;
+      }
+    } else if (stageIndex === 2) {
+      // Stage 2: 5–7 enemies with alarm mechanic (max 7 documented)
+      enemiesToSpawn = 5 + Math.floor(state.dungeonStageData.wavesComplete / 2);
+      if (enemiesToSpawn > 7) {
+        // DECISION: Cap Stage 2 waves at 7 enemies to keep design predictable and under CAP_MAX_ENEMIES.
+        enemiesToSpawn = 7;
+      }
+    }
+
+    // Global cap check to guard against future CAP_MAX_ENEMIES changes
+    if (enemiesToSpawn > CAP_MAX_ENEMIES) {
+      enemiesToSpawn = CAP_MAX_ENEMIES;
+    }
+
+    for (let i = 0; i < enemiesToSpawn; i++) {
+      spawnShooterEnemy();
+    }
+  }
+
+  function spawnShooterEnemy() {
+    if (sprites.allOfKind(KIND_ENEMY).length >= CAP_MAX_ENEMIES) return;
+
+    // Spawn at top of screen
+    const x = 20 + randint(0, scene.screenWidth() - 40);
+    const enemy = sprites.create(imgEnemy("SHOOTER_INVADER"), KIND_ENEMY);
+    enemy.setPosition(x, 10);
+    enemy.setVelocity(randint(-20, 20), randint(10, 30));
+    enemy.setFlag(SpriteFlag.BounceOnWall, true);
+    enemy.setFlag(SpriteFlag.StayInScreen, true);
+    
+    // Enemy HP
+    (enemy as any).hp = 1;
+  }
+
+  function spawnCore() {
+    if (!state.dungeonStageData) return;
+
+    const core = sprites.create(imgEnemy("ANTENNA_CORE"), KIND_ENEMY);
+    core.setPosition(80, 40);
+    core.setFlag(SpriteFlag.StayInScreen, true);
+
+    state.dungeonStageData.coreSprite = core;
+    (core as any).isCore = true;
+    
+    showHint("[CORE_DESTROY_TARGET]", 2000);
+  }
+
   export function getPlayerSprite(): Sprite {
     return playerSprite;
   }
 }
 
+
+function handleHazardCollision(player: Sprite, hazard: Sprite) {
+  if (!player || !state.dungeonStageData) return;
+
+  // Knockback effect
+  const knockbackForce = 50;
+  const dx = player.x - hazard.x;
+  const dy = player.y - hazard.y;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+  
+  if (distance > 0) {
+    player.vx = (dx / distance) * knockbackForce;
+    player.vy = (dy / distance) * knockbackForce;
+  }
+
+  // Apply invincibility frames to prevent repeated hits
+  state.invincibleUntil = game.runtime() + 500;
+
+  // Visual feedback (flash effect via sprite)
+  player.say("!", 100);
+
+  // Reduce health or lives (placeholder - could be expanded)
+  showHint("[HIT_BY_HAZARD]", 1000);
+}
 // MANUAL TEST PASSED: GameController scaffold complete
 
 // MANUAL TEST PASSED: GameController scaffold complete
