@@ -474,18 +474,129 @@ function tmDun03Stage03(): tiles.TileMapData {
   );
 }
 
-// Dungeon 4 stages
+// Dungeon 4 stages (Rhythm Mode - Subway Timing)
 function tmDun04Stage00(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 0: BEAT_TUTORIAL - Learn the beat window
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030300000000000000000000000703030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . 7 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorDark0,
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.dungeon.chestClosed,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun04Stage01(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 1: DOORS - Doors open only in beat window
+  return tiles.createTilemap(
+    hex`10000a000303030303030303030303030303030303000000000000000000000000030303000000000000000000000000030303000000000000000a00000000030303000000000000000000000000030303000000000000000a00000000030303000000000000000000000000030303000000000000000a00000000030303000000000000000000000007030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . 6 . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . 6 . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . 6 . . . 7 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorDark0,
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.dungeon.chestClosed,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+      sprites.dungeon.purpleOuterWest0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun04Stage02(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 2: SWITCH_CHAIN - Multiple switches in sequence (streak)
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303030300000000000000000000000003030300000000000000000000000003030300000200000900000900000003030300000000000000000000000003030300000000000000000000000003030300000900000900000900000003030300000000000000000000000003030300000000000000000000000703030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . 1 . . 9 . . 9 . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . 9 . . 9 . . 9 . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . 7 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorDark0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.greenSwitchDown,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.dungeon.chestClosed,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun04Stage03(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 3: FINAL_STREAK - Final streak challenge
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303030300000000000000000000000003030300000000000900000000000003030300000000000000000000000003030300000000000900000000000003030300000000000000000000000003030300000000000900000000000003030300000000000000000000000003030300000000000900000000000703030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . 9 . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . 9 . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . 9 . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . 9 . . . . . . 7 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorDark0,
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.dungeon.chestClosed,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+    ],
+    TileScale.Sixteen
+  );
 }
 
 // Dungeon 5 stages

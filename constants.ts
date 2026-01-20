@@ -158,7 +158,11 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       toolUnlocks: ["TOOL_FREEZECAM"],
       items: [{ id: "ITEM_CASSETTE_02", qty: 1 }],
     },
-    params: { bpm: 120, missLimit: 3 },
+    params: { 
+      bpm: 120, 
+      missLimit: 3,
+      streakTargets: [3, 5, 8, 12], // Stage 0-3 streak requirements
+    },
   },
   {
     id: "DUN_SCHOOL_PONG_COURT",
