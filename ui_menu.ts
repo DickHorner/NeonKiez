@@ -26,6 +26,19 @@ function showQuestLog() {
 }
 
 function showDebugWarpMenu() {
-  // Placeholder: warp to dungeons
-  game.showLongText("[DEBUG_WARP_MENU]", DialogLayout.Center);
+  // Debug warp menu for testing
+  const choice = game.askForNumber(
+    "WARP: 0=Hub 1=Dun01 2=Dun02 9=GodMode",
+    1
+  );
+
+  if (choice === 0) {
+    warpToHub();
+  } else if (choice === 1) {
+    warpToDungeon("DUN_LAUNDROMAT_LABYRINTH");
+  } else if (choice === 2) {
+    warpToDungeon("DUN_ROOFTOP_INVADERS");
+  } else if (choice === 9) {
+    toggleGodMode();
+  }
 }

@@ -109,6 +109,12 @@ namespace GameController {
       state.hubRoom = payload.hubRoom;
     }
 
+    // Handle spawn tag
+    if (payload && payload.spawnTag && HUB_SPAWN_POINTS[payload.spawnTag]) {
+      const spawnPoint = HUB_SPAWN_POINTS[payload.spawnTag];
+      state.hubRoom = spawnPoint.room;
+    }
+
     // Load hub room
     const roomId = HUB_ROOM_IDS[state.hubRoom.row][state.hubRoom.col];
     const tm = getTilemapByID(roomId);
@@ -120,9 +126,9 @@ namespace GameController {
     playerSprite = sprites.create(imgPlayerTopdown(), KIND_PLAYER);
 
     // Find spawn point
-    if (payload && payload.spawnTag) {
-      // TODO: find tile by tag
-      playerSprite.setPosition(80, 60);
+    if (payload && payload.spawnTag && HUB_SPAWN_POINTS[payload.spawnTag]) {
+      const spawnPoint = HUB_SPAWN_POINTS[payload.spawnTag];
+      playerSprite.setPosition(spawnPoint.x, spawnPoint.y);
     } else {
       playerSprite.setPosition(80, 60);
     }
@@ -312,18 +318,37 @@ namespace GameController {
 
     // Puzzle player (top-down or cursor)
     playerSprite = sprites.create(imgPuzzlePlayer(), KIND_PLAYER);
-    playerSprite.setPosition(80, 60);
+    
+    // Find spawn tile (looking for greenSwitchUp sprite which is used as spawn marker in tilemaps)
+    // Note: Using index 1 (greenSwitchUp) as spawn marker instead of TILE_SPAWN_STAGE constant
+    const spawnTiles = tiles.getTilesByType(tiles.getTileImage(1 as any));
+    if (spawnTiles && spawnTiles.length > 0) {
+      tiles.placeOnTile(playerSprite, spawnTiles[0]);
+    } else {
+      playerSprite.setPosition(80, 60);
+    }
 
     // Puzzle controls
     initPuzzlePlayer(playerSprite);
+
+    // Get tokens required for this stage (Dungeon 1 specific)
+    let tokensRequired = 0;
+    if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH" && spec.params && spec.params.tokensPerStage) {
+      tokensRequired = spec.params.tokensPerStage[idx] || 0;
+    }
 
     // Stage data (dungeon-specific)
     state.dungeonStageData = {
       stageIndex: stageIndex,
       tokensCollected: 0,
+      tokensRequired: tokensRequired,
       switchesActivated: 0,
       gatesOpen: false,
+      stageComplete: false,
     };
+
+    // Spawn stage-specific content
+    spawnPuzzleStageContent(dungeonId, stageIndex);
   }
 
   function setupMetaMode(payload: any) {
@@ -403,6 +428,23 @@ namespace GameController {
       damagePlayer(1);
       state.invincibleUntil = game.runtime() + 2000; // 2 second invincibility with visual flash
       sfxHit();
+    });
+
+    // Puzzle mode: Token collection (registered globally to avoid memory leaks)
+    sprites.onOverlap(KIND_PLAYER, KIND_COLLECTIBLE, (sprite, collectible) => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (game.runtime() < state.lastOverlapTime + OVERLAP_COOLDOWN_MS) return;
+      
+      collectToken(collectible);
+      state.lastOverlapTime = game.runtime();
+    });
+
+    // Puzzle mode: Ghost-Bot collision (registered globally to avoid memory leaks)
+    sprites.onOverlap(KIND_PLAYER, KIND_ENEMY, (player, enemy) => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (game.runtime() < state.invincibleUntil) return;
+      
+      handleGhostBotCollision(player, enemy);
     });
 
     // Game update loop
@@ -648,7 +690,122 @@ namespace GameController {
   }
 
   function updatePuzzleMode() {
-    // Puzzle state checks (placeholder)
+    if (!playerSprite || !state.dungeonStageData) return;
+    if (state.dungeonStageData.stageComplete) return;
+
+    // Update Ghost-Bot patrol AI (if present)
+    updateGhostBotPatrol();
+
+    // Check stage-specific win conditions
+    if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
+      checkDungeon01StageComplete();
+    }
+  }
+
+  function updateGhostBotPatrol() {
+    // Update all Ghost-Bots in puzzle mode
+    const ghostBots = sprites.allOfKind(KIND_ENEMY);
+    for (const ghostBot of ghostBots) {
+      if (!ghostBot || ghostBot.flags & sprites.Flag.Destroyed) continue;
+      
+      // Bounce on screen edges
+      if (ghostBot.x < 10 || ghostBot.x > scene.screenWidth() - 10) {
+        ghostBot.vx = -ghostBot.vx;
+      }
+    }
+  }
+
+  function checkDungeon01StageComplete() {
+    const stageIdx = state.currentStageIndex;
+    const data = state.dungeonStageData;
+    
+    if (stageIdx === 0) {
+      // Stage 0: WARMUP - reach goal after activating switch
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 1) {
+      // Stage 1: DARK_MAZE - reach goal after toggling switches
+      if (checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 2) {
+      // Stage 2: TOKEN_RUN - collect all tokens, then reach goal
+      if (data.tokensCollected >= data.tokensRequired && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 3) {
+      // Stage 3: EXIT_ROOM - activate final switch, then reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    }
+  }
+
+  function checkPlayerOnGoal(): boolean {
+    if (!playerSprite || !game.currentScene().tileMap) return false;
+    
+    const loc = playerSprite.tilemapLocation();
+    if (!loc) return false;
+    
+    const goalTile = tiles.getTileImage(TILE_GOAL_FLAG as any);
+    return goalTile && tiles.tileAtLocationEquals(loc, goalTile);
+  }
+
+  function markStageComplete() {
+    if (!state.dungeonStageData) return;
+    state.dungeonStageData.stageComplete = true;
+    showHint("[STAGE_COMPLETE]", 2000);
+    pause(500);
+    onStageComplete();
+  }
+
+  function spawnPuzzleStageContent(dungeonId: string, stageIndex: number) {
+    if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
+      spawnDungeon01Content(stageIndex);
+    }
+  }
+
+  function spawnDungeon01Content(stageIndex: number) {
+    if (stageIndex === 2) {
+      // Stage 2: Spawn tokens
+      spawnTokens(state.dungeonStageData.tokensRequired);
+      // Spawn Ghost-Bot patrol
+      spawnGhostBot();
+    }
+  }
+
+  function spawnTokens(count: number) {
+    // Find all collectible spawn tiles or scatter them
+    const tokenTiles = tiles.getTilesByType(tiles.getTileImage(11 as any)); // Custom token tile
+    
+    if (tokenTiles && tokenTiles.length > 0) {
+      // Place tokens on designated tiles
+      for (let i = 0; i < Math.min(count, tokenTiles.length); i++) {
+        const token = sprites.create(imgCollectible("TOKEN"), KIND_COLLECTIBLE);
+        tiles.placeOnTile(token, tokenTiles[i]);
+      }
+    } else {
+      // Scatter tokens in safe locations
+      for (let i = 0; i < count; i++) {
+        const token = sprites.create(imgCollectible("TOKEN"), KIND_COLLECTIBLE);
+        token.setPosition(
+          20 + Math.randomRange(0, scene.screenWidth() - 40),
+          20 + Math.randomRange(0, scene.screenHeight() - 40)
+        );
+      }
+    }
+  }
+
+  function spawnGhostBot() {
+    const ghostBot = sprites.create(imgEnemy("GHOST_BOT"), KIND_ENEMY);
+    ghostBot.setPosition(80, 30);
+    
+    // Simple patrol: oscillate horizontally
+    const patrolSpeed = 20;
+    ghostBot.vx = patrolSpeed;
+    
+    // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
   }
 
   function onStageComplete() {

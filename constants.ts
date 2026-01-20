@@ -260,6 +260,25 @@ const HUB_ROOM_IDS = [
 
 const HUB_START_ROOM = { row: 1, col: 1 }; // center room
 
+// Hub spawn points (return from dungeons)
+interface SpawnPoint {
+  room: { row: number; col: number };
+  x: number;
+  y: number;
+}
+
+const HUB_SPAWN_POINTS: { [tag: string]: SpawnPoint } = {
+  SPAWN_HUB_FROM_DUN_01: { room: { row: 0, col: 0 }, x: 80, y: 80 },
+  SPAWN_HUB_FROM_DUN_02: { room: { row: 0, col: 1 }, x: 80, y: 80 },
+  SPAWN_HUB_FROM_DUN_03: { room: { row: 0, col: 2 }, x: 80, y: 80 },
+  SPAWN_HUB_FROM_DUN_04: { room: { row: 1, col: 0 }, x: 80, y: 80 },
+  SPAWN_HUB_FROM_DUN_05: { room: { row: 1, col: 2 }, x: 80, y: 80 },
+  SPAWN_HUB_FROM_DUN_06: { room: { row: 2, col: 0 }, x: 80, y: 80 },
+  SPAWN_HUB_FROM_DUN_07: { room: { row: 2, col: 1 }, x: 80, y: 80 },
+  SPAWN_HUB_FROM_DUN_08: { room: { row: 2, col: 2 }, x: 80, y: 80 },
+  SPAWN_HUB_FROM_DUN_09: { room: { row: 1, col: 1 }, x: 80, y: 100 },
+};
+
 // Tools
 const TOOL_FREEZECAM = "TOOL_FREEZECAM";
 const TOOL_CONFETTI_BOMB = "TOOL_CONFETTI_BOMB";
