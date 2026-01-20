@@ -5,6 +5,9 @@ namespace GameController {
   let playerSprite: Sprite = null;
   const TRANSITION_PAUSE_MS = 100;
   const CONTINUE_YES = 1;
+  const PADDLE_HIT_SPREAD_MULTIPLIER = 2;
+  const BALL_SERVE_HORIZONTAL_MIN = -20;
+  const BALL_SERVE_HORIZONTAL_MAX = 20;
 
   export function start() {
     initState();
@@ -419,7 +422,7 @@ namespace GameController {
       
       // Add horizontal velocity based on hit position
       const hitOffset = ball.x - paddle.x;
-      ball.vx = hitOffset * 2; // Spread based on hit position
+      ball.vx = hitOffset * PADDLE_HIT_SPREAD_MULTIPLIER; // Spread based on hit position
       
       sfxInteract();
     });
@@ -830,7 +833,7 @@ namespace GameController {
     
     // Set ball velocity (upward and slightly random horizontal)
     const ballSpeed = state.dungeonStageData.ballSpeed || BALL_SPEED_NORMAL;
-    ball.vx = Math.randomRange(-20, 20);
+    ball.vx = Math.randomRange(BALL_SERVE_HORIZONTAL_MIN, BALL_SERVE_HORIZONTAL_MAX);
     ball.vy = -ballSpeed;
     
     ball.setFlag(SpriteFlag.BounceOnWall, true);
