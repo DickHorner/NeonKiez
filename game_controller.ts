@@ -9,6 +9,10 @@ namespace GameController {
   export function start() {
     initState();
     initHUD();
+    
+    // Run dungeon registry validation
+    runDungeonRegistryValidation();
+    
     registerGlobalHandlers();
     setGameMode(GameMode.Title);
     showTitle();

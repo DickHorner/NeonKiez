@@ -43,4 +43,8 @@ function showDebugOverlay() {
   game.showLongText(text, DialogLayout.Top);
 }
 
+function validateRegistry() {
+  runDungeonRegistryValidation();
+}
+
 // MANUAL TEST PASSED: Debug helpers
