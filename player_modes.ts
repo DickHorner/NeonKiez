@@ -155,22 +155,7 @@ function initPuzzlePlayer(player: Sprite) {
     handlePuzzleInteract();
   });
 
-  // Token collection
-  sprites.onOverlap(KIND_PLAYER, KIND_COLLECTIBLE, (sprite, collectible) => {
-    if (state.playMode !== PlayMode.DUN_PUZZLE) return;
-    if (game.runtime() < state.lastOverlapTime + OVERLAP_COOLDOWN_MS) return;
-    
-    collectToken(collectible);
-    state.lastOverlapTime = game.runtime();
-  });
-
-  // Ghost-Bot collision (harmless stun)
-  sprites.onOverlap(KIND_PLAYER, KIND_ENEMY, (player, enemy) => {
-    if (state.playMode !== PlayMode.DUN_PUZZLE) return;
-    if (game.runtime() < state.invincibleUntil) return;
-    
-    handleGhostBotCollision(player, enemy);
-  });
+  // NOTE: Overlap handlers are registered globally in registerGlobalHandlers() to avoid memory leaks
 }
 
 function collectToken(token: Sprite) {
@@ -180,9 +165,8 @@ function collectToken(token: Sprite) {
   token.destroy();
   sfxCollect();
   
-  const collected = state.dungeonStageData.tokensCollected;
-  const required = state.dungeonStageData.tokensRequired;
-  showHint("[TOKEN_COLLECTED_" + collected + "_OF_" + required + "]", 1000);
+  // DECISION: Use a static placeholder ID and let HUD/localization render collected/required instead of encoding them into the ID.
+  showHint("[TOKEN_COLLECTED]", 1000);
 }
 
 function handleGhostBotCollision(player: Sprite, enemy: Sprite) {
@@ -235,25 +219,32 @@ function toggleSwitch(loc: tiles.Location) {
 function toggleGatesForDungeon01() {
   if (!state.dungeonStageData) return;
   
-  // Toggle gate state
-  state.dungeonStageData.gatesOpen = !state.dungeonStageData.gatesOpen;
-  
-  // Find all gate tiles and toggle them
-  const gateTiles = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
-  if (gateTiles && gateTiles.length > 0) {
-    for (const gateLoc of gateTiles) {
-      if (state.dungeonStageData.gatesOpen) {
-        // Open gate: replace with floor tile
-        tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any)); // Floor tile
-      } else {
-        // Close gate: replace with gate tile
-        tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
-      }
-      tiles.setWallAt(gateLoc, !state.dungeonStageData.gatesOpen);
-    }
+  // DECISION: Use dungeonStageData as a loose bag for per-stage runtime data (gateLocations).
+  const stageData = state.dungeonStageData as any;
+
+  // Toggle gate state flag
+  stageData.gatesOpen = !stageData.gatesOpen;
+
+  // On first use, capture all gate locations so we can reliably toggle them later,
+  // even after their tile image has been changed.
+  if (!stageData.gateLocations) {
+    stageData.gateLocations = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
   }
-  
-  showHint(state.dungeonStageData.gatesOpen ? "[GATES_OPEN]" : "[GATES_CLOSED]", 1000);
+
+  const gateLocations = (stageData.gateLocations as tiles.Location[]) || [];
+
+  for (const gateLoc of gateLocations) {
+    if (stageData.gatesOpen) {
+      // Open gate: replace with floor tile
+      tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any)); // Floor tile (placeholder)
+    } else {
+      // Close gate: replace with gate tile
+      tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
+    }
+    tiles.setWallAt(gateLoc, !stageData.gatesOpen);
+  }
+
+  showHint(stageData.gatesOpen ? "[GATES_OPEN]" : "[GATES_CLOSED]", 1000);
 }
 
 // MANUAL TEST PASSED: Player mode inputs scaffold

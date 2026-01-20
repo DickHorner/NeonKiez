@@ -303,8 +303,9 @@ namespace GameController {
     // Puzzle player (top-down or cursor)
     playerSprite = sprites.create(imgPuzzlePlayer(), KIND_PLAYER);
     
-    // Find spawn tile
-    const spawnTiles = tiles.getTilesByType(tiles.getTileImage(TILE_SPAWN_STAGE as any));
+    // Find spawn tile (looking for greenSwitchUp sprite which is used as spawn marker in tilemaps)
+    // Note: Using index 1 (greenSwitchUp) as spawn marker instead of TILE_SPAWN_STAGE constant
+    const spawnTiles = tiles.getTilesByType(tiles.getTileImage(1 as any));
     if (spawnTiles && spawnTiles.length > 0) {
       tiles.placeOnTile(playerSprite, spawnTiles[0]);
     } else {
@@ -373,6 +374,23 @@ namespace GameController {
     // Interact
     controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
       handleInteract();
+    });
+
+    // Puzzle mode: Token collection (registered globally to avoid memory leaks)
+    sprites.onOverlap(KIND_PLAYER, KIND_COLLECTIBLE, (sprite, collectible) => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (game.runtime() < state.lastOverlapTime + OVERLAP_COOLDOWN_MS) return;
+      
+      collectToken(collectible);
+      state.lastOverlapTime = game.runtime();
+    });
+
+    // Puzzle mode: Ghost-Bot collision (registered globally to avoid memory leaks)
+    sprites.onOverlap(KIND_PLAYER, KIND_ENEMY, (player, enemy) => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (game.runtime() < state.invincibleUntil) return;
+      
+      handleGhostBotCollision(player, enemy);
     });
 
     // Game update loop
@@ -550,9 +568,25 @@ namespace GameController {
     if (!playerSprite || !state.dungeonStageData) return;
     if (state.dungeonStageData.stageComplete) return;
 
+    // Update Ghost-Bot patrol AI (if present)
+    updateGhostBotPatrol();
+
     // Check stage-specific win conditions
     if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       checkDungeon01StageComplete();
+    }
+  }
+
+  function updateGhostBotPatrol() {
+    // Update all Ghost-Bots in puzzle mode
+    const ghostBots = sprites.allOfKind(KIND_ENEMY);
+    for (const ghostBot of ghostBots) {
+      if (!ghostBot || ghostBot.flags & sprites.Flag.Destroyed) continue;
+      
+      // Bounce on screen edges
+      if (ghostBot.x < 10 || ghostBot.x > scene.screenWidth() - 10) {
+        ghostBot.vx = -ghostBot.vx;
+      }
     }
   }
 
@@ -646,15 +680,7 @@ namespace GameController {
     const patrolSpeed = 20;
     ghostBot.vx = patrolSpeed;
     
-    game.onUpdate(() => {
-      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
-      if (!ghostBot || ghostBot.flags & sprites.Flag.Destroyed) return;
-      
-      // Bounce on screen edges
-      if (ghostBot.x < 10 || ghostBot.x > scene.screenWidth() - 10) {
-        ghostBot.vx = -ghostBot.vx;
-      }
-    });
+    // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
   }
 
   function onStageComplete() {
