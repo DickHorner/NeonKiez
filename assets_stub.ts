@@ -62,7 +62,31 @@ function createEmptyTilemap(): tiles.TileMapData {
 
 // Hub rooms (3x3 grid)
 function tmHub00(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Hub room (0,0) - Contains Dungeon 1 door
+  return tiles.createTilemap(
+    hex`10000c00010101010101010101010101010101010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000400000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010101010101010101010101010101010101`,
+    img`
+. . . . . . . . . . . . . . . . 
+. 2 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . d . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.castle.tileGrass2,
+      sprites.castle.tileDarkGrass1,
+      sprites.castle.tilePath5,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath4,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmHub01(): tiles.TileMapData {
   return createEmptyTilemap();

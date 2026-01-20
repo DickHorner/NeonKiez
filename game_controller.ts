@@ -109,6 +109,12 @@ namespace GameController {
       state.hubRoom = payload.hubRoom;
     }
 
+    // Handle spawn tag
+    if (payload && payload.spawnTag && HUB_SPAWN_POINTS[payload.spawnTag]) {
+      const spawnPoint = HUB_SPAWN_POINTS[payload.spawnTag];
+      state.hubRoom = spawnPoint.room;
+    }
+
     // Load hub room
     const roomId = HUB_ROOM_IDS[state.hubRoom.row][state.hubRoom.col];
     const tm = getTilemapByID(roomId);
@@ -120,9 +126,9 @@ namespace GameController {
     playerSprite = sprites.create(imgPlayerTopdown(), KIND_PLAYER);
 
     // Find spawn point
-    if (payload && payload.spawnTag) {
-      // TODO: find tile by tag
-      playerSprite.setPosition(80, 60);
+    if (payload && payload.spawnTag && HUB_SPAWN_POINTS[payload.spawnTag]) {
+      const spawnPoint = HUB_SPAWN_POINTS[payload.spawnTag];
+      playerSprite.setPosition(spawnPoint.x, spawnPoint.y);
     } else {
       playerSprite.setPosition(80, 60);
     }
