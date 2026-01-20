@@ -447,6 +447,14 @@ namespace GameController {
       handleGhostBotCollision(player, enemy);
     });
 
+    // Puzzle mode: Hazard collision (moving crates, etc.)
+    sprites.onOverlap(KIND_PLAYER, KIND_HAZARD, (player, hazard) => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (game.runtime() < state.invincibleUntil) return;
+      
+      handleHazardCollision(player, hazard);
+    });
+
     // Game update loop
     game.onUpdate(() => {
       updateGameLoop();
@@ -695,10 +703,17 @@ namespace GameController {
 
     // Update Ghost-Bot patrol AI (if present)
     updateGhostBotPatrol();
+    
+    // Update moving crates (only used in DUN_WAREHOUSE_BLOCKWORKS)
+    if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      updateMovingCrates();
+    }
 
     // Check stage-specific win conditions
     if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       checkDungeon01StageComplete();
+    } else if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      checkDungeon03StageComplete();
     }
   }
 
@@ -720,13 +735,15 @@ namespace GameController {
     const data = state.dungeonStageData;
     
     if (stageIdx === 0) {
-      // Stage 0: WARMUP - reach goal after activating switch
+      // Stage 0: WARMUP - reach goal after activating switch (once)
+      // NOTE: switches are single-use per stage; see handleSwitchActivation()
       if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
         markStageComplete();
       }
     } else if (stageIdx === 1) {
-      // Stage 1: DARK_MAZE - reach goal after toggling switches
-      if (checkPlayerOnGoal()) {
+      // Stage 1: DARK_MAZE - reach goal after activating 1 switch (once)
+      // NOTE: only 1 switch in this stage; activates multiple gates
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
         markStageComplete();
       }
     } else if (stageIdx === 2) {
@@ -735,7 +752,8 @@ namespace GameController {
         markStageComplete();
       }
     } else if (stageIdx === 3) {
-      // Stage 3: EXIT_ROOM - activate final switch, then reach goal
+      // Stage 3: EXIT_ROOM - activate final switch (once), then reach goal
+      // NOTE: switches are single-use per stage; see handleSwitchActivation()
       if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
         markStageComplete();
       }
@@ -763,6 +781,8 @@ namespace GameController {
   function spawnPuzzleStageContent(dungeonId: string, stageIndex: number) {
     if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       spawnDungeon01Content(stageIndex);
+    } else if (dungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      spawnDungeon03Content(stageIndex);
     }
   }
 
@@ -806,6 +826,73 @@ namespace GameController {
     ghostBot.vx = patrolSpeed;
     
     // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
+  }
+  
+  // ============ DUNGEON 3 (WAREHOUSE BLOCKWORKS) ============
+  
+  function spawnDungeon03Content(stageIndex: number) {
+    if (stageIndex === 2) {
+      // Stage 2: Spawn moving crates that patrol
+      spawnMovingCrates();
+    }
+  }
+  
+  function spawnMovingCrates() {
+    // Spawn 3 crates that move in patterns
+    const crate1 = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+    crate1.setPosition(40, 40);
+    crate1.vx = 15;
+    
+    const crate2 = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+    crate2.setPosition(80, 60);
+    crate2.vy = 15;
+    
+    const crate3 = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+    crate3.setPosition(120, 40);
+    crate3.vx = -15;
+  }
+  
+  function updateMovingCrates() {
+    // Update all moving crates in puzzle mode
+    const crates = sprites.allOfKind(KIND_HAZARD);
+    for (const crate of crates) {
+      if (!crate || crate.flags & sprites.Flag.Destroyed) continue;
+      
+      // Bounce on screen edges
+      if (crate.x < 20 || crate.x > scene.screenWidth() - 20) {
+        crate.vx = -crate.vx;
+      }
+      if (crate.y < 20 || crate.y > scene.screenHeight() - 20) {
+        crate.vy = -crate.vy;
+      }
+    }
+  }
+  
+  function checkDungeon03StageComplete() {
+    const stageIdx = state.currentStageIndex;
+    const data = state.dungeonStageData;
+    
+    if (stageIdx === 0) {
+      // Stage 0: CONVEYOR_INTRO - activate switch and reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 1) {
+      // Stage 1: BLOCK_ROWS - activate both switches to open gates, then reach goal
+      if (data.switchesActivated >= 2 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 2) {
+      // Stage 2: MOVING_CRATES - navigate past moving crates to reach goal
+      if (checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 3) {
+      // Stage 3: FINAL_PATTERN - activate final switch to open gate, then reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    }
   }
 
   function onStageComplete() {
@@ -917,6 +1004,30 @@ namespace GameController {
   }
 }
 
+
+function handleHazardCollision(player: Sprite, hazard: Sprite) {
+  if (!player || !state.dungeonStageData) return;
+
+  // Knockback effect
+  const knockbackForce = 50;
+  const dx = player.x - hazard.x;
+  const dy = player.y - hazard.y;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+  
+  if (distance > 0) {
+    player.vx = (dx / distance) * knockbackForce;
+    player.vy = (dy / distance) * knockbackForce;
+  }
+
+  // Apply invincibility frames to prevent repeated hits
+  state.invincibleUntil = game.runtime() + 500;
+
+  // Visual feedback (flash effect via sprite)
+  player.say("!", 100);
+
+  // Reduce health or lives (placeholder - could be expanded)
+  showHint("[HIT_BY_HAZARD]", 1000);
+}
 // MANUAL TEST PASSED: GameController scaffold complete
 
 // MANUAL TEST PASSED: GameController scaffold complete
