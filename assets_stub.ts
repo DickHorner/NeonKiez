@@ -159,20 +159,22 @@ function tmDun02Stage02(): tiles.TileMapData {
   );
 }
 function tmDun02Stage03(): tiles.TileMapData {
-  // Stage 3: Core - Arena for boss fight
+  // Stage 3: Core - Arena for boss fight (visually distinct from Stage 2)
+  // DECISION: Keep overall 10x8 arena with solid border, introduce decorative
+  // floor pattern using a third, walkable tile type for visual variety only.
   return tiles.createTilemap(
-    hex`0a00080001010101010101010101010100000000000000000101000000000000000001010000000000000000010100000000000000000101000000000000000001010000000000000000010101010101010101010101`,
+    hex`0a00080001010101010101010101010100000002000000000101000000000000000001010000000000000000010100000002000000000101000000000000000001010000000000000000010101010101010101010101`,
     img`
       2 2 2 2 2 2 2 2 2 2
+      2 . . 3 . . 3 . . 2
       2 . . . . . . . . 2
       2 . . . . . . . . 2
-      2 . . . . . . . . 2
-      2 . . . . . . . . 2
+      2 . . 3 . . 3 . . 2
       2 . . . . . . . . 2
       2 . . . . . . . . 2
       2 2 2 2 2 2 2 2 2 2
     `,
-    [sprites.castle.tileDarkGrass2, sprites.castle.tileGrass1],
+    [sprites.castle.tileDarkGrass2, sprites.castle.tileGrass1, sprites.castle.tileGrass2],
     TileScale.Sixteen
   );
 }

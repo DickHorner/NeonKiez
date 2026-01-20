@@ -401,6 +401,7 @@ namespace GameController {
       if (game.runtime() < state.invincibleUntil) return;
 
       damagePlayer(1);
+      state.invincibleUntil = game.runtime() + 2000; // 2 second invincibility with visual flash
       sfxHit();
     });
 
@@ -521,6 +522,9 @@ namespace GameController {
       updateHUD();
     }
 
+    // Update invincibility visual feedback
+    updateInvincibilityFlash();
+
     // Mode-specific updates
     if (state.playMode === PlayMode.DUN_PLATFORM) {
       updatePlatformMode();
@@ -532,6 +536,21 @@ namespace GameController {
       updateRhythmMode();
     } else if (state.playMode === PlayMode.DUN_PUZZLE) {
       updatePuzzleMode();
+    }
+  }
+
+  function updateInvincibilityFlash() {
+    if (!playerSprite) return;
+
+    const now = game.runtime();
+    if (now < state.invincibleUntil) {
+      // Flash effect: toggle opacity every 100ms for visual feedback
+      const flashInterval = 100;
+      const isVisible = Math.floor((now / flashInterval) % 2) === 0;
+      playerSprite.setFlag(SpriteFlag.Ghost, !isVisible);
+    } else {
+      // Ensure sprite is fully visible when invincibility ends
+      playerSprite.setFlag(SpriteFlag.Ghost, false);
     }
   }
 
@@ -562,14 +581,16 @@ namespace GameController {
     state.dungeonStageData.enemiesAlive = sprites.allOfKind(KIND_ENEMY).length;
 
     // Core HP mode (stage 3)
-    if (state.dungeonStageData.coreHP > 0) {
+    if (state.dungeonStageData.coreHP >= 0) {
       // Check if core is destroyed
       if (state.dungeonStageData.coreHP <= 0 && state.dungeonStageData.coreSprite) {
         state.dungeonStageData.coreSprite.destroy();
         state.dungeonStageData.coreSprite = null;
         effects.confetti.startScreenEffect(1000);
-        pause(1500);
-        onStageComplete();
+        control.runInParallel(() => {
+          pause(1500);
+          onStageComplete();
+        });
       }
       return;
     }
@@ -580,28 +601,32 @@ namespace GameController {
       if (state.dungeonStageData.wavesComplete >= state.dungeonStageData.wavesTotal) {
         // Stage complete
         effects.confetti.startScreenEffect(1000);
-        pause(1500);
-        onStageComplete();
+        control.runInParallel(() => {
+          pause(1500);
+          onStageComplete();
+        });
       } else {
         // Start next wave
-        pause(1000);
-        startNextWave();
+        control.runInParallel(() => {
+          pause(1000);
+          startNextWave();
+        });
       }
     }
 
     // Alarm stage mechanic (stage 2): periodic spawn boost
     if (state.dungeonStageData.isAlarmStage && state.dungeonStageData.wavesComplete > 0) {
       const now = game.runtime();
-      if (now % 5000 < 100 && !state.dungeonStageData.alarmActive) {
-        state.dungeonStageData.alarmActive = true;
+      const lastAlarmTime = (state.dungeonStageData as any).lastAlarmTime || 0;
+      const alarmIntervalMs = 5000;
+      
+      if (now - lastAlarmTime >= alarmIntervalMs) {
+        (state.dungeonStageData as any).lastAlarmTime = now;
         showHint("[ALARM_TRIGGERED]", 1000);
         // Spawn extra enemy
         if (sprites.allOfKind(KIND_ENEMY).length < CAP_MAX_ENEMIES) {
           spawnShooterEnemy();
         }
-      }
-      if (now % 5000 >= 100) {
-        state.dungeonStageData.alarmActive = false;
       }
     }
   }
@@ -652,24 +677,47 @@ namespace GameController {
     if (!state.dungeonStageData) return;
 
     state.dungeonStageData.wavesComplete += 1;
-    showHint(`[WAVE_${state.dungeonStageData.wavesComplete}_START]`, 1500);
+    const waveNum = state.dungeonStageData.wavesComplete;
+    showHint(`[WAVE_${waveNum}_START]`, 1500);
 
     // Spawn enemies based on stage
     const stageIndex = state.dungeonStageData.stageIndex;
     let enemiesToSpawn = 0;
 
     if (stageIndex === 0) {
-      // Stage 0: 3 enemies
+      // Stage 0: fixed 3 enemies per wave
       enemiesToSpawn = 3;
     } else if (stageIndex === 1) {
-      // Stage 1: 4-6 enemies in formations
-      enemiesToSpawn = 4 + state.dungeonStageData.wavesComplete;
+      // Stage 1: 4–7 enemies in formations (max 7 documented)
+      enemiesToSpawn = 4 + (state.dungeonStageData.wavesComplete - 1);
+    // Spawn at top of screen with a safe horizontal margin from walls
+    // DECISION: Use a 30px margin from each horizontal edge to reduce immediate wall bounces.
+    const marginX = 30;
+    const x = randint(marginX, scene.screenWidth() - marginX);
+    const marginX = 30;
+    const x = randint(marginX, scene.screenWidth() - marginX);
+        enemiesToSpawn = 7;
+      }
     } else if (stageIndex === 2) {
-      // Stage 2: 5-7 enemies with alarm mechanic
+      // Stage 2: 5–7 enemies with alarm mechanic (max 7 documented)
       enemiesToSpawn = 5 + Math.floor(state.dungeonStageData.wavesComplete / 2);
+      if (enemiesToSpawn > 7) {
+        // DECISION: Cap Stage 2 waves at 7 enemies to keep design predictable and under CAP_MAX_ENEMIES.
+        enemiesToSpawn = 7;
+      }
     }
 
-    // Cap check
+    // Global cap check to guard against future CAP_MAX_ENEMIES changes
+      enemiesToSpawn = 5 + Math.floor(state.dungeonStageData.wavesComplete / 2);
+      if (enemiesToSpawn > 7) {
+        // DECISION: Cap Stage 2 waves at 7 enemies to keep design predictable and under CAP_MAX_ENEMIES.
+        enemiesToSpawn = 7;
+    // Spawn at top of screen with a safe horizontal margin from walls
+    // DECISION: Use a 30px margin from each horizontal edge to reduce immediate wall bounces.
+    const marginX = 30;
+    const x = randint(marginX, scene.screenWidth() - marginX);
+
+    // Global cap check to guard against future CAP_MAX_ENEMIES changes
     if (enemiesToSpawn > CAP_MAX_ENEMIES) {
       enemiesToSpawn = CAP_MAX_ENEMIES;
     }
