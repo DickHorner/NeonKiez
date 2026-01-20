@@ -272,6 +272,9 @@ namespace GameController {
     // Stage data
     const bpm = (spec.params && spec.params.bpm) || 120;
     const beatIntervalMs = 60000 / bpm;
+    const missLimit = (spec.params && spec.params.missLimit) || 3;
+    const streakTargets = (spec.params && spec.params.streakTargets) || [3, 5, 8, 12];
+    const streakTarget = streakTargets[idx] || 5;
 
     state.dungeonStageData = {
       stageIndex: stageIndex,
@@ -280,7 +283,15 @@ namespace GameController {
       nextBeatTime: game.runtime() + beatIntervalMs,
       streak: 0,
       misses: 0,
+      missLimit: missLimit,
+      streakTarget: streakTarget,
+      doorsOpened: 0,
+      switchesActivated: 0,
+      stageComplete: false,
     };
+
+    // Spawn stage-specific content
+    spawnRhythmStageContent(dungeonId, stageIndex);
   }
 
   function setupPuzzleMode(payload: any) {
@@ -554,13 +565,49 @@ namespace GameController {
 
   function updateRhythmMode() {
     if (!state.dungeonStageData) return;
+    if (state.dungeonStageData.stageComplete) return;
+    if (!playerSprite) return;
 
-    // Beat timing (placeholder)
+    // Beat timing
     const now = game.runtime();
     if (now >= state.dungeonStageData.nextBeatTime) {
       state.dungeonStageData.nextBeatTime +=
         state.dungeonStageData.beatIntervalMs;
-      // Visual cue for beat window
+      // Visual cue for beat window (placeholder)
+      showHint("[RHYTHM_BEAT_CUE]", 100);
+    }
+
+    // Check for miss limit exceeded (lose condition)
+    if (state.dungeonStageData.misses >= state.dungeonStageData.missLimit) {
+      // Restart stage
+      showHint("[RHYTHM_MISS_LIMIT_RESTART]", 2000);
+      pause(500);
+      switchPlayMode(state.playMode, {
+        dungeonId: state.currentDungeonId,
+        stageIndex: state.currentStageIndex,
+      });
+      return;
+    }
+
+    // Check for streak target reached (win condition)
+    if (state.dungeonStageData.streak >= state.dungeonStageData.streakTarget) {
+      state.dungeonStageData.stageComplete = true;
+      showHint("[RHYTHM_STREAK_COMPLETE]", 2000);
+      pause(1000);
+      onStageComplete();
+      return;
+    }
+
+    // Check for goal tile reached (alternative win for some stages)
+    if (game.currentScene().tileMap) {
+      const loc = playerSprite.tilemapLocation();
+      if (loc) {
+        const goalTile = tiles.getTileImage(TILE_GOAL_FLAG as any);
+        if (goalTile && tiles.tileAtLocationEquals(loc, goalTile)) {
+          state.dungeonStageData.stageComplete = true;
+          onStageComplete();
+        }
+      }
     }
   }
 
@@ -639,6 +686,66 @@ namespace GameController {
     if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       spawnDungeon01Content(stageIndex);
     }
+  }
+
+  function spawnRhythmStageContent(dungeonId: string, stageIndex: number) {
+    if (dungeonId === "DUN_SUBWAY_TIMING") {
+      spawnDungeon04Content(stageIndex);
+    }
+  }
+
+  function spawnDungeon04Content(stageIndex: number) {
+    // Stage 1: Spawn rhythm doors (gates that open on beat)
+    if (stageIndex === 1) {
+      spawnRhythmDoors();
+    }
+    // Stage 2: Mark switch locations for beat activation
+    if (stageIndex === 2) {
+      markRhythmSwitches();
+    }
+    // Stage 3: Mark beat markers for final streak
+    if (stageIndex === 3) {
+      markRhythmBeatMarkers();
+    }
+  }
+
+  function spawnRhythmDoors() {
+    // Find all rhythm door tiles (gate tiles in rhythm stages)
+    const doorTiles = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+    
+    if (!state.dungeonStageData) return;
+    
+    // Store door locations for beat-based opening
+    (state.dungeonStageData as any).rhythmDoorLocations = doorTiles || [];
+    (state.dungeonStageData as any).rhythmDoorsOpen = false;
+    
+    showHint("[RHYTHM_DOORS_ON_BEAT]", 2000);
+  }
+
+  function markRhythmSwitches() {
+    // Find all switch tiles
+    const switchTiles = tiles.getTilesByType(tiles.getTileImage(TILE_SWITCH as any));
+    
+    if (!state.dungeonStageData) return;
+    
+    // Store switch locations
+    (state.dungeonStageData as any).rhythmSwitchLocations = switchTiles || [];
+    (state.dungeonStageData as any).switchesRequired = (switchTiles && switchTiles.length) || 6;
+    
+    showHint("[RHYTHM_HIT_SWITCHES_ON_BEAT]", 2000);
+  }
+
+  function markRhythmBeatMarkers() {
+    // Find all beat marker tiles (using TILE_SWITCH as markers)
+    const beatMarkers = tiles.getTilesByType(tiles.getTileImage(TILE_SWITCH as any));
+    
+    if (!state.dungeonStageData) return;
+    
+    // Store beat marker locations
+    (state.dungeonStageData as any).beatMarkerLocations = beatMarkers || [];
+    (state.dungeonStageData as any).markersRequired = (beatMarkers && beatMarkers.length) || 4;
+    
+    showHint("[RHYTHM_FINAL_STREAK_CHALLENGE]", 2000);
   }
 
   function spawnDungeon01Content(stageIndex: number) {

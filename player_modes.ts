@@ -132,15 +132,107 @@ function handleRhythmTap() {
   const nextBeat = state.dungeonStageData.nextBeatTime;
   const windowMs = 200; // good window
 
-  if (Math.abs(now - nextBeat) < windowMs) {
-    // Good hit
+  const isGoodHit = Math.abs(now - nextBeat) < windowMs;
+
+  if (isGoodHit) {
+    // Good hit - increment streak
     state.dungeonStageData.streak += 1;
     showHint("[RHYTHM_GOOD]", 500);
+    sfxInteract();
+
+    // Stage-specific mechanics on good hit
+    const stageIndex = state.dungeonStageData.stageIndex;
+    
+    // Stage 1: Open rhythm doors on good hit
+    if (stageIndex === 1) {
+      openRhythmDoors();
+    }
+    
+    // Stage 2-3: Activate switches on good hit (if near one)
+    if (stageIndex === 2 || stageIndex === 3) {
+      activateNearbyRhythmSwitch();
+    }
   } else {
-    // Miss
+    // Miss - increment misses, reset streak
     state.dungeonStageData.misses += 1;
     state.dungeonStageData.streak = 0;
     showHint("[RHYTHM_MISS]", 500);
+    
+    // Stage 1: Close rhythm doors on miss
+    const stageIndex = state.dungeonStageData.stageIndex;
+    if (stageIndex === 1) {
+      closeRhythmDoors();
+    }
+  }
+}
+
+function openRhythmDoors() {
+  if (!state.dungeonStageData) return;
+  const stageData = state.dungeonStageData as any;
+  
+  if (!stageData.rhythmDoorLocations) return;
+  
+  stageData.rhythmDoorsOpen = true;
+  
+  // Open all rhythm doors
+  for (const doorLoc of stageData.rhythmDoorLocations) {
+    tiles.setTileAt(doorLoc, tiles.getTileImage(0 as any)); // Floor tile
+    tiles.setWallAt(doorLoc, false);
+  }
+  
+  showHint("[RHYTHM_DOORS_OPEN]", 1000);
+}
+
+function closeRhythmDoors() {
+  if (!state.dungeonStageData) return;
+  const stageData = state.dungeonStageData as any;
+  
+  if (!stageData.rhythmDoorLocations) return;
+  
+  stageData.rhythmDoorsOpen = false;
+  
+  // Close all rhythm doors
+  for (const doorLoc of stageData.rhythmDoorLocations) {
+    tiles.setTileAt(doorLoc, tiles.getTileImage(TILE_GATE as any));
+    tiles.setWallAt(doorLoc, true);
+  }
+  
+  showHint("[RHYTHM_DOORS_CLOSED]", 500);
+}
+
+function activateNearbyRhythmSwitch() {
+  if (!state.dungeonStageData) return;
+  const stageData = state.dungeonStageData as any;
+  
+  const plyr = GameController.getPlayerSprite();
+  if (!plyr) return;
+  
+  // Check if player is near a switch
+  const loc = plyr.tilemapLocation();
+  if (!loc) return;
+  
+  const switchTile = tiles.getTileImage(TILE_SWITCH as any);
+  if (!switchTile) return;
+  
+  // Check current tile and adjacent tiles
+  const nearbyLocs = [
+    loc,
+    tiles.getTileLocation(loc.column - 1, loc.row),
+    tiles.getTileLocation(loc.column + 1, loc.row),
+    tiles.getTileLocation(loc.column, loc.row - 1),
+    tiles.getTileLocation(loc.column, loc.row + 1),
+  ];
+  
+  for (const nearLoc of nearbyLocs) {
+    if (nearLoc && tiles.tileAtLocationEquals(nearLoc, switchTile)) {
+      // Activate switch
+      state.dungeonStageData.switchesActivated += 1;
+      // Change tile to activated state (use different tile)
+      tiles.setTileAt(nearLoc, tiles.getTileImage(2 as any)); // Activated switch tile
+      showHint("[RHYTHM_SWITCH_ACTIVATED]", 500);
+      sfxInteract();
+      return;
+    }
   }
 }
 
