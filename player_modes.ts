@@ -154,6 +154,35 @@ function initPuzzlePlayer(player: Sprite) {
     if (state.playMode !== PlayMode.DUN_PUZZLE) return;
     handlePuzzleInteract();
   });
+
+  // NOTE: Overlap handlers are registered globally in registerGlobalHandlers() to avoid memory leaks
+}
+
+function collectToken(token: Sprite) {
+  if (!state.dungeonStageData) return;
+  
+  state.dungeonStageData.tokensCollected += 1;
+  token.destroy();
+  sfxCollect();
+  
+  // DECISION: Use a static placeholder ID and let HUD/localization render collected/required instead of encoding them into the ID.
+  showHint("[TOKEN_COLLECTED]", 1000);
+}
+
+function handleGhostBotCollision(player: Sprite, enemy: Sprite) {
+  // Harmless stun: knockback + i-frames
+  damagePlayer(0); // Sets i-frames but no damage
+  
+  // Knockback
+  const dx = player.x - enemy.x;
+  const dy = player.y - enemy.y;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  if (dist > 0) {
+    player.vx = (dx / dist) * 50;
+    player.vy = (dy / dist) * 50;
+  }
+  
+  showHint("[GHOST_BOT_BUMPED]", 500);
 }
 
 function handlePuzzleInteract() {
@@ -177,9 +206,45 @@ function toggleSwitch(loc: tiles.Location) {
   // Toggle gate state
   if (state.dungeonStageData) {
     state.dungeonStageData.switchesActivated += 1;
+    
+    // For Dungeon 1, switches toggle gates
+    if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
+      toggleGatesForDungeon01();
+    }
   }
   showHint("[SWITCH_ACTIVATED]", 1000);
   sfxInteract();
+}
+
+function toggleGatesForDungeon01() {
+  if (!state.dungeonStageData) return;
+  
+  // DECISION: Use dungeonStageData as a loose bag for per-stage runtime data (gateLocations).
+  const stageData = state.dungeonStageData as any;
+
+  // Toggle gate state flag
+  stageData.gatesOpen = !stageData.gatesOpen;
+
+  // On first use, capture all gate locations so we can reliably toggle them later,
+  // even after their tile image has been changed.
+  if (!stageData.gateLocations) {
+    stageData.gateLocations = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+  }
+
+  const gateLocations = (stageData.gateLocations as tiles.Location[]) || [];
+
+  for (const gateLoc of gateLocations) {
+    if (stageData.gatesOpen) {
+      // Open gate: replace with floor tile
+      tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any)); // Floor tile (placeholder)
+    } else {
+      // Close gate: replace with gate tile
+      tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
+    }
+    tiles.setWallAt(gateLoc, !stageData.gatesOpen);
+  }
+
+  showHint(stageData.gatesOpen ? "[GATES_OPEN]" : "[GATES_CLOSED]", 1000);
 }
 
 // MANUAL TEST PASSED: Player mode inputs scaffold
