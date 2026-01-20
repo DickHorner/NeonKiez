@@ -599,12 +599,12 @@ namespace GameController {
     // Check stage-specific win conditions
     if (stageIdx === 0) {
       // Stage 0: THRUST - Clear all debris (tutorial)
-      if (data.debrisCount === 0 && sprites.allOfKind(KIND_DEBRIS).length === 0) {
+      if (sprites.allOfKind(KIND_DEBRIS).length === 0) {
         onStageComplete();
       }
     } else if (stageIdx === 1) {
       // Stage 1: SPLIT - Clear all debris with splitting
-      if (data.debrisCount === 0 && sprites.allOfKind(KIND_DEBRIS).length === 0) {
+      if (sprites.allOfKind(KIND_DEBRIS).length === 0) {
         onStageComplete();
       }
     } else if (stageIdx === 2) {
