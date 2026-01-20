@@ -676,16 +676,20 @@ namespace GameController {
   function updateDungeon05Balls() {
     // Check if balls fell off bottom of screen
     const balls = sprites.allOfKind(KIND_BALL);
+    
+    // DECISION: Only check balls if they exist (optimization)
+    if (balls.length === 0) return;
+    
     for (const ball of balls) {
       if (ball.y > scene.screenHeight()) {
         ball.destroy();
-        
-        // Allow re-serve if no balls left
-        if (sprites.allOfKind(KIND_BALL).length === 0 && state.dungeonStageData) {
-          state.dungeonStageData.ballServed = false;
-          showHint("[BALL_LOST_PRESS_A]", 2000);
-        }
       }
+    }
+    
+    // Allow re-serve if no balls left
+    if (sprites.allOfKind(KIND_BALL).length === 0 && state.dungeonStageData && state.dungeonStageData.ballServed) {
+      state.dungeonStageData.ballServed = false;
+      showHint("[BALL_LOST_PRESS_A]", 2000);
     }
   }
 
@@ -787,7 +791,7 @@ namespace GameController {
 
   function spawnTargets(count: number, stageIndex: number) {
     // Find target tiles (stairNorth sprite used as target marker in tilemaps)
-    const targetTiles = tiles.getTilesByType(tiles.getTileImage(4 as any));
+    const targetTiles = tiles.getTilesByType(tiles.getTileImage(TILE_INDEX_TARGET as any));
     
     if (targetTiles && targetTiles.length > 0) {
       // Place targets on designated tiles

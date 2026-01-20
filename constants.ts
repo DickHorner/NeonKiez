@@ -46,6 +46,7 @@ const TILE_GOAL_FLAG = 7;
 const TILE_HAZARD = 8;
 const TILE_SWITCH = 9;
 const TILE_GATE = 10;
+const TILE_INDEX_TARGET = 4; // stairNorth sprite used as target marker in tilemaps
 
 // Interaction distances
 const INTERACT_DISTANCE = 20;
