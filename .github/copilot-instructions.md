@@ -3,6 +3,22 @@
 
 ---
 
+applyTo: "**/*"
+excludeAgent: "Issue-Executor"
+excludeAgent: "PR-Reviewer"
+excludeAgent: "Review-Auditor"
+
+In dieser Datei sind die vollständigen Anweisungen für die Implementierung eines story-getriebenen Retro-Spiels in MakeCode Arcade (TypeScript) beschrieben.
+Der Code wird generiert durch KI-Agenten basierend auf diesen Anweisungen.
+Für verschiedene Abschnitte der Anweisungen können unterschiedliche Agenten mit verschiedenen Spezialisierungen eingesetzt werden (z. B. Gameplay, UI, Audio, Testing).
+
+## Liste der Agenten:
+- **Gameplay-Agent**: Verantwortlich für die Implementierung der Kernspielmechaniken, einschließlich GameController, PlayMode-Switching, Dungeon-Logik und Hub-Welt. (Diese Datei: copilot-instructions.md)
+- **Issue-Executor**: Der „Issue Executor“-Agent. Er arbeitet GitHub Issues eigenständig ab. (AGENT_EXECUTOR.md)
+- **PR-Reviewer**: Der PR-Review-Agent. Er reviewt PRs für dieses Repo. (AGENT_PR_REVIEWER.md)
+- **Review-Auditor**:  Der „Review-Auditor“-Agent. Er prüft PR-Reviews (Kommentare), ob sie qualitativ und regelkonform sind. Er ändert keinen Code. Er korrigiert das Review. (AGENT_REVIEW_AUDITOR.md)
+
+
 ## 0) Zielbild (die eine Wahrheit)
 
 Du implementierst ein story-getriebenes Retro-Spiel in **MakeCode Arcade (TypeScript)**:
