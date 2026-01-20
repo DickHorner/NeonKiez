@@ -330,16 +330,137 @@ function tmDun07Stage03(): tiles.TileMapData {
 
 // Dungeon 8 stages
 function tmDun08Stage00(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 0: LADDERS - Tutorial level with basic ladder climbing
+  return tiles.createTilemap(
+    hex`10000c000303030303030303030303030303030303000200000000000000000000030303000000000000000000000000030303000000000006060000000000030303000000000000000000000000030303000000000006060000000000030303000000000000000000000000030303000000000006060000000000030303000000000000000000000000030303000000000000000000000007030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+. . . . . . . . . . . . . . . . 
+. . 2 . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . 6 6 . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . 6 6 . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . 6 6 . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . 7 . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.castle.tileGrass1,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.stairWest,
+      sprites.castle.tileDarkGrass3,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath4,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun08Stage01(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 1: BARRELS - Rolling barrel hazards (comic paint cans)
+  return tiles.createTilemap(
+    hex`10000c00030303030303030303030303030303030300020000000000000000000003030300000000000000000000000003030300000a0a0a0a0a0a0a00000000030303000000000000000000000000030303000000000000060600000000030303000000000000000000000000030303000000060600000000000000030303000000000000000000000000030303000000000000000000000007030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+. . . . . . . . . . . . . . . . 
+. . 2 . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . 6 6 6 6 6 6 6 . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . 6 6 . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . 6 6 . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . 7 . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.castle.tileGrass1,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.stairWest,
+      sprites.castle.tileDarkGrass3,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath4,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+      sprites.dungeon.purpleOuterWest0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun08Stage02(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 2: TRICK_LADDERS - Ladder gaps and timing challenges
+  return tiles.createTilemap(
+    hex`10000c00030303030303030303030303030303030300020000000000000000000003030300000000000000000000000003030300000000000606000000000003030300000a0a0a0a0a0a0a00000000030303000000000000060000000000030303000000000000000000000000030303000000000006060000000000030303000000000000000000000000030303000000000000000000000007030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+. . . . . . . . . . . . . . . . 
+. . 2 . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . 6 6 . . . . . . . 
+. . . 6 6 6 6 6 6 6 . . . . . . 
+. . . . . . . . . 6 . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . 6 6 . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . 7 . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.castle.tileGrass1,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.stairWest,
+      sprites.castle.tileDarkGrass3,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath4,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+      sprites.dungeon.purpleOuterWest0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun08Stage03(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 3: TOP_PLATFORM - Final climb to the goal
+  return tiles.createTilemap(
+    hex`10000c000303030303030303030303030303030303000200000000000000000000030303000000000000060000000000030303000000000000000000000000030303000000060000000000000000030303000000000000000000000000030303000006000000000000000000030303000000000000000000000000030303000000000000000000000000030303000000000000000000000007030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+. . . . . . . . . . . . . . . . 
+. . 2 . . . . . . . . . . . . . 
+. . . . . . . . 6 . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . 6 . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . 6 . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . 7 . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.castle.tileGrass1,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.stairWest,
+      sprites.castle.tileDarkGrass3,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath4,
+      sprites.dungeon.doorClosedNorth,
+      sprites.dungeon.buttonTeal,
+      sprites.dungeon.purpleOuterWest0,
+    ],
+    TileScale.Sixteen
+  );
 }
 
 // Dungeon 9 stages

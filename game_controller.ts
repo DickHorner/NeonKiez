@@ -180,6 +180,9 @@ namespace GameController {
       stageIndex: stageIndex,
       reachedGoal: false,
     };
+
+    // Spawn stage-specific content
+    spawnPlatformStageContent(dungeonId, stageIndex);
   }
 
   function setupShooterMode(payload: any) {
@@ -393,6 +396,14 @@ namespace GameController {
       handleGhostBotCollision(player, enemy);
     });
 
+    // Platform mode (Dungeon 8): Barrel collision (registered globally to avoid memory leaks)
+    sprites.onOverlap(KIND_PLAYER, KIND_HAZARD, (player, hazard) => {
+      if (state.playMode !== PlayMode.DUN_PLATFORM) return;
+      if (game.runtime() < state.invincibleUntil) return;
+      
+      handleBarrelCollision(player, hazard);
+    });
+
     // Game update loop
     game.onUpdate(() => {
       updateGameLoop();
@@ -542,6 +553,11 @@ namespace GameController {
       state.dungeonStageData.reachedGoal = true;
       onStageComplete();
     }
+
+    // Dungeon 8: Spawn barrels
+    if (state.currentDungeonId === "DUN_CONSTRUCTION_DONKEY_TOWER") {
+      updateBarrelSpawning();
+    }
   }
 
   function updateShooterMode() {
@@ -681,6 +697,77 @@ namespace GameController {
     ghostBot.vx = patrolSpeed;
     
     // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
+  }
+
+  function spawnPlatformStageContent(dungeonId: string, stageIndex: number) {
+    if (dungeonId === "DUN_CONSTRUCTION_DONKEY_TOWER") {
+      spawnDungeon08Content(stageIndex);
+    }
+  }
+
+  function spawnDungeon08Content(stageIndex: number) {
+    const spec = DUNGEON_SPECS.find((d) => d.id === "DUN_CONSTRUCTION_DONKEY_TOWER");
+    const barrelCap = (spec && spec.params && spec.params.barrelSpawnCap) || 4;
+
+    if (stageIndex === 1 || stageIndex === 2 || stageIndex === 3) {
+      // Stages 1-3: Spawn barrels periodically
+      state.dungeonStageData.barrelSpawnCap = barrelCap;
+      state.dungeonStageData.barrelsActive = 0;
+      state.dungeonStageData.lastBarrelSpawn = 0;
+    }
+  }
+
+  function updateBarrelSpawning() {
+    if (!state.dungeonStageData) return;
+
+    const data = state.dungeonStageData;
+    const now = game.runtime();
+    const spawnInterval = 3000; // Spawn every 3 seconds
+
+    // Only spawn barrels in stages 1-3
+    const stageIdx = state.currentStageIndex;
+    if (stageIdx < 1) return;
+
+    // Check spawn cap
+    const currentBarrels = sprites.allOfKind(KIND_HAZARD).length;
+    if (currentBarrels >= data.barrelSpawnCap) return;
+
+    // Check spawn timer
+    if (now - data.lastBarrelSpawn < spawnInterval) return;
+
+    // Spawn barrel
+    spawnBarrel();
+    data.lastBarrelSpawn = now;
+  }
+
+  function spawnBarrel() {
+    const barrel = sprites.create(imgEnemy("BARREL"), KIND_HAZARD);
+    barrel.setPosition(20, 20); // Spawn at top
+    barrel.vx = 30; // Roll to the right
+    barrel.ay = 300; // Gravity
+    barrel.lifespan = 10000; // Auto-destroy after 10 seconds
+
+    // Bounce on screen edges
+    barrel.setFlag(SpriteFlag.BounceOnWall, true);
+  }
+
+  function handleBarrelCollision(player: Sprite, barrel: Sprite) {
+    if (game.runtime() < state.invincibleUntil) return;
+
+    // Knockback + i-frames
+    damagePlayer(0); // Sets i-frames but no damage (kinderfreundlich)
+    
+    // Knockback
+    const dx = player.x - barrel.x;
+    const dy = player.y - barrel.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist > 0) {
+      player.vx = (dx / dist) * 80;
+      player.vy = (dy / dist) * -100; // Pop upward
+    }
+    
+    showHint("[BARREL_BUMPED]", 500);
+    sfxHit();
   }
 
   function onStageComplete() {

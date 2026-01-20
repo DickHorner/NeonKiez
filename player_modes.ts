@@ -8,6 +8,8 @@ const ASTEROIDS_THRUST_SCALE = 10;
 
 // ============ PLATFORM MODE ============
 
+let isOnLadder = false;
+
 function initPlatformPlayer(player: Sprite) {
   controller.moveSprite(player, PLAYER_PLATFORM_SPEED, 0);
   scene.cameraFollowSprite(player);
@@ -19,6 +21,9 @@ function initPlatformPlayer(player: Sprite) {
     const plyr = GameController.getPlayerSprite();
     if (!plyr) return;
 
+    // Can't jump while on ladder
+    if (isOnLadder) return;
+
     // Check if on ground using tile collision
     if (
       plyr.isHittingTile(CollisionDirection.Bottom) ||
@@ -28,6 +33,46 @@ function initPlatformPlayer(player: Sprite) {
       sfxJump();
     }
   });
+
+  // Update loop for ladder climbing
+  game.onUpdate(() => {
+    if (state.playMode !== PlayMode.DUN_PLATFORM) return;
+    updateLadderClimbing();
+  });
+}
+
+function updateLadderClimbing() {
+  const plyr = GameController.getPlayerSprite();
+  if (!plyr || !game.currentScene().tileMap) return;
+
+  const loc = plyr.tilemapLocation();
+  if (!loc) return;
+
+  const ladderTile = tiles.getTileImage(TILE_LADDER as any);
+  const onLadderTile = ladderTile && tiles.tileAtLocationEquals(loc, ladderTile);
+
+  if (onLadderTile) {
+    isOnLadder = true;
+
+    // Disable gravity while on ladder
+    plyr.ay = 0;
+    plyr.vy = 0;
+
+    // Ladder climbing controls
+    if (controller.up.isPressed()) {
+      plyr.vy = -50;
+    } else if (controller.down.isPressed()) {
+      plyr.vy = 50;
+    } else {
+      plyr.vy = 0;
+    }
+  } else {
+    // Re-enable gravity when off ladder
+    if (isOnLadder) {
+      plyr.ay = 300;
+      isOnLadder = false;
+    }
+  }
 }
 
 // ============ SHOOTER MODE ============
