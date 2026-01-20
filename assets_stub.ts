@@ -140,7 +140,31 @@ function tmHub12(): tiles.TileMapData {
   return createEmptyTilemap();
 }
 function tmHub20(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Hub room (2,0) - Contains Dungeon 6 door
+  return tiles.createTilemap(
+    hex`10000c00010101010101010101010101010101010101010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000400000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010101010101010101010101010101010101`,
+    img`
+. . . . . . . . . . . . . . . . 
+. 2 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . d . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.castle.tileGrass2,
+      sprites.castle.tileDarkGrass1,
+      sprites.castle.tilePath5,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath4,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmHub21(): tiles.TileMapData {
   return createEmptyTilemap();
@@ -716,18 +740,115 @@ function tmDun05Stage03(): tiles.TileMapData {
   );
 }
 
-// Dungeon 6 stages
+// Dungeon 6 stages - Asteroids (Museum Zero-G)
+// Note: Asteroids mode uses open space, tilemaps provide visual background only
 function tmDun06Stage00(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 0: THRUST - Basic controls tutorial
+  return tiles.createTilemap(
+    hex`10000a00050505050505050505050505050505050500000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050505050505050505050505050505`,
+    img`
+. . . . . . . . . . . . . . . . 
+. 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.space.spaceBlueSimpleTile,
+      sprites.space.spaceOrangeSimpleTile,
+      sprites.space.spaceRedSimpleTile,
+      sprites.space.spaceYellowSimpleTile,
+      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceAsteroid0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun06Stage01(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 1: SPLIT - Debris splitting mechanic
+  return tiles.createTilemap(
+    hex`10000a00050505050505050505050505050505050500000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050505050505050505050505050505`,
+    img`
+. . . . . . . . . . . . . . . . 
+. 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.space.spaceBlueSimpleTile,
+      sprites.space.spaceOrangeSimpleTile,
+      sprites.space.spaceRedSimpleTile,
+      sprites.space.spaceYellowSimpleTile,
+      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceAsteroid1,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun06Stage02(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 2: PARTS_RUSH - Collect parts from debris
+  return tiles.createTilemap(
+    hex`10000a00050505050505050505050505050505050500000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050505050505050505050505050505`,
+    img`
+. . . . . . . . . . . . . . . . 
+. 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.space.spaceBlueSimpleTile,
+      sprites.space.spaceOrangeSimpleTile,
+      sprites.space.spaceRedSimpleTile,
+      sprites.space.spaceYellowSimpleTile,
+      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceAsteroid2,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun06Stage03(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 3: SURVIVE - Timer survival challenge
+  return tiles.createTilemap(
+    hex`10000a00050505050505050505050505050505050500000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050000000000000000000000000505050505050505050505050505050505`,
+    img`
+. . . . . . . . . . . . . . . . 
+. 5 5 5 5 5 5 5 5 5 5 5 5 5 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. 5 . . . . . . . . . . . . 5 . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.space.spaceBlueSimpleTile,
+      sprites.space.spaceOrangeSimpleTile,
+      sprites.space.spaceRedSimpleTile,
+      sprites.space.spaceYellowSimpleTile,
+      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceAsteroid3,
+    ],
+    TileScale.Sixteen
+  );
 }
 
 // Dungeon 7 stages
