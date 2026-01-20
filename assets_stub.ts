@@ -344,19 +344,133 @@ function tmDun08Stage03(): tiles.TileMapData {
 
 // Dungeon 9 stages
 function tmDun09Stage00(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 0: META_INTRO - Brief tutorial (auto-complete after 5 seconds)
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun09Stage01(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 1: MICRO_PLATFORM - 20 second platforming challenge
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030306060606060000000000000003030300000000000000000606060600030303000000000000000000000000030303000000000000000000070000030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 6 6 6 6 6 6 . . . . . . . . 2 
+2 . . . . . . . . . 6 6 6 6 6 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . 7 . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.purpleOuterEast0,
+      sprites.dungeon.purpleOuterNorth0,
+      sprites.dungeon.stairNorth,
+      sprites.dungeon.chestClosed,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun09Stage02(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 2: MICRO_SHOOTER - Destroy 10 targets in 20 seconds
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030300000000000000000000000003030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun09Stage03(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 3: MICRO_RHYTHM - Achieve streak of 5 in 20 seconds
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun09Stage04(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 4: STABILIZE - Activate 4 nodes in sequence (finale)
+  return tiles.createTilemap(
+    hex`10000a00030303030303030303030303030303030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030302020202020202020202020203030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+    ],
+    TileScale.Sixteen
+  );
 }
 
 // ============ SOUNDS ============
