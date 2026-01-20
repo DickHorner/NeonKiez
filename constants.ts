@@ -33,6 +33,8 @@ const KIND_DEBRIS = SpriteKind.create();
 const KIND_PLATFORM_MOVING = SpriteKind.create();
 const KIND_TARGET = SpriteKind.create();
 const KIND_TOOL_EFFECT = SpriteKind.create();
+const KIND_PADDLE = SpriteKind.create();
+const KIND_BALL = SpriteKind.create();
 // Tile Tags
 const TILE_SPAWN_PLAYER = 1;
 const TILE_SPAWN_STAGE = 2;
@@ -69,6 +71,12 @@ const TOOL_COOLDOWN_MS = 500;
 
 const INTERACT_DEBOUNCE_MS = 300;
 const OVERLAP_COOLDOWN_MS = 200;
+
+// Dungeon 5 (Pong/Breakout) specific
+const PADDLE_SPEED = 120;
+const BALL_SPEED_SLOW = 40;
+const BALL_SPEED_NORMAL = 60;
+const CAP_MAX_BALLS = 2;
 
 // Dungeon Specs
 interface DungeonReward {
@@ -174,6 +182,10 @@ const DUNGEON_SPECS: DungeonSpec[] = [
     rewards: {
       flagsSet: ["FLAG_DUN_05_CLEARED", "FLAG_UPG_DASH_COOLDOWN_REDUCED"],
       items: [{ id: "ITEM_KEYCARD_B", qty: 1 }],
+    },
+    params: { 
+      targetsPerStage: [3, 8, 6, 12],
+      ballSpeed: [BALL_SPEED_SLOW, BALL_SPEED_NORMAL, BALL_SPEED_NORMAL, BALL_SPEED_NORMAL]
     },
   },
   {

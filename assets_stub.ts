@@ -53,6 +53,18 @@ function imgToolEffect(toolId: string): Image {
   return image.create(16, 16);
 }
 
+function imgPaddle(): Image {
+  return image.create(32, 8); // horizontal paddle placeholder
+}
+
+function imgBall(): Image {
+  return image.create(6, 6); // small ball placeholder
+}
+
+function imgTarget(): Image {
+  return image.create(16, 8); // breakout brick placeholder
+}
+
 // ============ TILEMAPS ============
 
 function createEmptyTilemap(): tiles.TileMapData {
@@ -288,16 +300,107 @@ function tmDun04Stage03(): tiles.TileMapData {
 
 // Dungeon 5 stages
 function tmDun05Stage00(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 0: PADDLE_LEARN - Learn to move paddle, slow ball
+  return tiles.createTilemap(
+    hex`14000a00030303030303030303030303030303030303030303030000000000000000000000000000000303030300000000000000000000000000000003030303000000000000000000000000000000030303030000000000000000000000000000000303030300000000000000000000000000000003030303000000000000000000000000000000030303030000000000000000000000000000000303030303030303030303030303030303030303030303030000000001000000000000000000000303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 . . . . 1 . . . . . . . . . . 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun05Stage01(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 1: TARGETS - Breakout style with targets at top
+  return tiles.createTilemap(
+    hex`14000a00030303030303030303030303030303030303030303030000000000000000000000000000000303030303000000000404040404040000000003030303030000000000000000000000000000303030303000000000000000000000000000003030303030000000000000000000000000000303030303000000000000000000000000000003030303030000000000000000000000000000303030303030303030303030303030303030303030303030000000001000000000000000000000303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . d d d d d d . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 . . . . 1 . . . . . . . . . . 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.stairNorth,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun05Stage02(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 2: REFLECTORS - Angled walls for trick shots
+  return tiles.createTilemap(
+    hex`14000a00030303030303030303030303030303030303030303030000000000000000000000000000000303030303000000000004040000000000000003030303030000000000000000000000000000303030303000000000000000000000400000003030303030000000000000000000000000000303030303000000000000000000040000000003030303030000000000000000000000000000303030303030303030303030303030303030303030303030000000001000000000000000000000303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . d d . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . d . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . d . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 . . . . 1 . . . . . . . . . . 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.stairNorth,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun05Stage03(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 3: FINAL_CLEAR - Combined challenge with more targets
+  return tiles.createTilemap(
+    hex`14000a00030303030303030303030303030303030303030303030000000000000000000000000000000303030303000004040404040404040400000003030303030000000000000000000000000000303030303000000000004040400000000000003030303030000000000000000000000000000303030303000000000000000000000000000003030303030000000000000000000000000000303030303030303030303030303030303030303030303030000000001000000000000000000000303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . d d d d d d d d d . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . d d d . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 . . . . . . . . . . . . . . . 2 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 . . . . 1 . . . . . . . . . . 2 2 
+`,
+    [
+      sprites.dungeon.floorLight0,
+      sprites.dungeon.greenSwitchUp,
+      sprites.dungeon.purpleOuterNorthWest,
+      sprites.dungeon.purpleOuterSouth0,
+      sprites.dungeon.stairNorth,
+    ],
+    TileScale.Sixteen
+  );
 }
 
 // Dungeon 6 stages
