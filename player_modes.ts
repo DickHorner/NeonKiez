@@ -16,7 +16,7 @@ function initPlatformPlayer(player: Sprite) {
   controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
     if (state.playMode !== PlayMode.DUN_PLATFORM) return;
 
-    const plyr = GameController.getPlayerSprite();
+    const plyr = sprites.allOfKind(KIND_PLAYER)[0];
     if (!plyr) return;
 
     // Check if on ground using tile collision
@@ -43,7 +43,7 @@ function initShooterPlayer(player: Sprite) {
 }
 
 function shootBullet() {
-  const plyr = GameController.getPlayerSprite();
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr) return;
 
   // Cap check
@@ -85,7 +85,7 @@ function initAsteroidsPlayer(player: Sprite) {
 }
 
 function updateAsteroidsControls() {
-  const plyr = GameController.getPlayerSprite();
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr) return;
 
   // Rotate
@@ -120,7 +120,7 @@ function updateAsteroidsControls() {
 }
 
 function shootAsteroidPing() {
-  const plyr = GameController.getPlayerSprite();
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr) return;
 
   // Cap check
@@ -239,7 +239,7 @@ function closeRhythmDoors() {
 function activateNearbyRhythmSwitch() {
   if (!state.dungeonStageData) return;
   
-  const plyr = GameController.getPlayerSprite();
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr) return;
   
   // Check if player is near a switch
@@ -315,7 +315,7 @@ function handleGhostBotCollision(player: Sprite, enemy: Sprite) {
 function handlePuzzleInteract() {
   if (!canInteract()) return;
 
-  const plyr = GameController.getPlayerSprite();
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr) return;
 
   // Check tile at player location
