@@ -296,18 +296,36 @@ namespace GameController {
 
     // Puzzle player (top-down or cursor)
     playerSprite = sprites.create(imgPuzzlePlayer(), KIND_PLAYER);
-    playerSprite.setPosition(80, 60);
+    
+    // Find spawn tile
+    const spawnTiles = tiles.getTilesByType(tiles.getTileImage(TILE_SPAWN_STAGE as any));
+    if (spawnTiles && spawnTiles.length > 0) {
+      tiles.placeOnTile(playerSprite, spawnTiles[0]);
+    } else {
+      playerSprite.setPosition(80, 60);
+    }
 
     // Puzzle controls
     initPuzzlePlayer(playerSprite);
+
+    // Get tokens required for this stage (Dungeon 1 specific)
+    let tokensRequired = 0;
+    if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH" && spec.params && spec.params.tokensPerStage) {
+      tokensRequired = spec.params.tokensPerStage[idx] || 0;
+    }
 
     // Stage data (dungeon-specific)
     state.dungeonStageData = {
       stageIndex: stageIndex,
       tokensCollected: 0,
+      tokensRequired: tokensRequired,
       switchesActivated: 0,
       gatesOpen: false,
+      stageComplete: false,
     };
+
+    // Spawn stage-specific content
+    spawnPuzzleStageContent(dungeonId, stageIndex);
   }
 
   function setupMetaMode(payload: any) {
@@ -523,7 +541,114 @@ namespace GameController {
   }
 
   function updatePuzzleMode() {
-    // Puzzle state checks (placeholder)
+    if (!playerSprite || !state.dungeonStageData) return;
+    if (state.dungeonStageData.stageComplete) return;
+
+    // Check stage-specific win conditions
+    if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
+      checkDungeon01StageComplete();
+    }
+  }
+
+  function checkDungeon01StageComplete() {
+    const stageIdx = state.currentStageIndex;
+    const data = state.dungeonStageData;
+    
+    if (stageIdx === 0) {
+      // Stage 0: WARMUP - reach goal after activating switch
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 1) {
+      // Stage 1: DARK_MAZE - reach goal after toggling switches
+      if (checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 2) {
+      // Stage 2: TOKEN_RUN - collect all tokens, then reach goal
+      if (data.tokensCollected >= data.tokensRequired && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 3) {
+      // Stage 3: EXIT_ROOM - activate final switch, then reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    }
+  }
+
+  function checkPlayerOnGoal(): boolean {
+    if (!playerSprite || !game.currentScene().tileMap) return false;
+    
+    const loc = playerSprite.tilemapLocation();
+    if (!loc) return false;
+    
+    const goalTile = tiles.getTileImage(TILE_GOAL_FLAG as any);
+    return goalTile && tiles.tileAtLocationEquals(loc, goalTile);
+  }
+
+  function markStageComplete() {
+    if (!state.dungeonStageData) return;
+    state.dungeonStageData.stageComplete = true;
+    showHint("[STAGE_COMPLETE]", 2000);
+    pause(500);
+    onStageComplete();
+  }
+
+  function spawnPuzzleStageContent(dungeonId: string, stageIndex: number) {
+    if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
+      spawnDungeon01Content(stageIndex);
+    }
+  }
+
+  function spawnDungeon01Content(stageIndex: number) {
+    if (stageIndex === 2) {
+      // Stage 2: Spawn tokens
+      spawnTokens(state.dungeonStageData.tokensRequired);
+      // Spawn Ghost-Bot patrol
+      spawnGhostBot();
+    }
+  }
+
+  function spawnTokens(count: number) {
+    // Find all collectible spawn tiles or scatter them
+    const tokenTiles = tiles.getTilesByType(tiles.getTileImage(11 as any)); // Custom token tile
+    
+    if (tokenTiles && tokenTiles.length > 0) {
+      // Place tokens on designated tiles
+      for (let i = 0; i < Math.min(count, tokenTiles.length); i++) {
+        const token = sprites.create(imgCollectible("TOKEN"), KIND_COLLECTIBLE);
+        tiles.placeOnTile(token, tokenTiles[i]);
+      }
+    } else {
+      // Scatter tokens in safe locations
+      for (let i = 0; i < count; i++) {
+        const token = sprites.create(imgCollectible("TOKEN"), KIND_COLLECTIBLE);
+        token.setPosition(
+          20 + Math.randomRange(0, scene.screenWidth() - 40),
+          20 + Math.randomRange(0, scene.screenHeight() - 40)
+        );
+      }
+    }
+  }
+
+  function spawnGhostBot() {
+    const ghostBot = sprites.create(imgEnemy("GHOST_BOT"), KIND_ENEMY);
+    ghostBot.setPosition(80, 30);
+    
+    // Simple patrol: oscillate horizontally
+    const patrolSpeed = 20;
+    ghostBot.vx = patrolSpeed;
+    
+    game.onUpdate(() => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (!ghostBot || ghostBot.flags & sprites.Flag.Destroyed) return;
+      
+      // Bounce on screen edges
+      if (ghostBot.x < 10 || ghostBot.x > scene.screenWidth() - 10) {
+        ghostBot.vx = -ghostBot.vx;
+      }
+    });
   }
 
   function onStageComplete() {

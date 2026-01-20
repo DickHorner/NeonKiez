@@ -154,6 +154,51 @@ function initPuzzlePlayer(player: Sprite) {
     if (state.playMode !== PlayMode.DUN_PUZZLE) return;
     handlePuzzleInteract();
   });
+
+  // Token collection
+  sprites.onOverlap(KIND_PLAYER, KIND_COLLECTIBLE, (sprite, collectible) => {
+    if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+    if (game.runtime() < state.lastOverlapTime + OVERLAP_COOLDOWN_MS) return;
+    
+    collectToken(collectible);
+    state.lastOverlapTime = game.runtime();
+  });
+
+  // Ghost-Bot collision (harmless stun)
+  sprites.onOverlap(KIND_PLAYER, KIND_ENEMY, (player, enemy) => {
+    if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+    if (game.runtime() < state.invincibleUntil) return;
+    
+    handleGhostBotCollision(player, enemy);
+  });
+}
+
+function collectToken(token: Sprite) {
+  if (!state.dungeonStageData) return;
+  
+  state.dungeonStageData.tokensCollected += 1;
+  token.destroy();
+  sfxCollect();
+  
+  const collected = state.dungeonStageData.tokensCollected;
+  const required = state.dungeonStageData.tokensRequired;
+  showHint("[TOKEN_COLLECTED_" + collected + "_OF_" + required + "]", 1000);
+}
+
+function handleGhostBotCollision(player: Sprite, enemy: Sprite) {
+  // Harmless stun: knockback + i-frames
+  damagePlayer(0); // Sets i-frames but no damage
+  
+  // Knockback
+  const dx = player.x - enemy.x;
+  const dy = player.y - enemy.y;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  if (dist > 0) {
+    player.vx = (dx / dist) * 50;
+    player.vy = (dy / dist) * 50;
+  }
+  
+  showHint("[GHOST_BOT_BUMPED]", 500);
 }
 
 function handlePuzzleInteract() {
@@ -177,9 +222,38 @@ function toggleSwitch(loc: tiles.Location) {
   // Toggle gate state
   if (state.dungeonStageData) {
     state.dungeonStageData.switchesActivated += 1;
+    
+    // For Dungeon 1, switches toggle gates
+    if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
+      toggleGatesForDungeon01();
+    }
   }
   showHint("[SWITCH_ACTIVATED]", 1000);
   sfxInteract();
+}
+
+function toggleGatesForDungeon01() {
+  if (!state.dungeonStageData) return;
+  
+  // Toggle gate state
+  state.dungeonStageData.gatesOpen = !state.dungeonStageData.gatesOpen;
+  
+  // Find all gate tiles and toggle them
+  const gateTiles = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+  if (gateTiles && gateTiles.length > 0) {
+    for (const gateLoc of gateTiles) {
+      if (state.dungeonStageData.gatesOpen) {
+        // Open gate: replace with floor tile
+        tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any)); // Floor tile
+      } else {
+        // Close gate: replace with gate tile
+        tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
+      }
+      tiles.setWallAt(gateLoc, !state.dungeonStageData.gatesOpen);
+    }
+  }
+  
+  showHint(state.dungeonStageData.gatesOpen ? "[GATES_OPEN]" : "[GATES_CLOSED]", 1000);
 }
 
 // MANUAL TEST PASSED: Player mode inputs scaffold
