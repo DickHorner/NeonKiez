@@ -227,7 +227,14 @@ namespace GameController {
 
     const idx = stageIndex | 0;
     const stageId = spec.stages[idx];
-    // No tilemap for asteroids (open space)
+    
+    // Load tilemap for visual background
+    const tm = getTilemapByID(stageId);
+    if (tm) {
+      tiles.setCurrentTilemap(tm);
+    }
+    
+    // Set space background
     scene.setBackgroundColor(1);
 
     // Spawn asteroids ship
@@ -242,7 +249,13 @@ namespace GameController {
       stageIndex: stageIndex,
       debrisCount: 0,
       partsCollected: 0,
+      partsRequired: 0,
+      surviveStartTime: 0,
+      surviveTimeRequired: 0,
     };
+    
+    // Spawn stage-specific content
+    spawnAsteroidsStageContent(stageIndex);
   }
 
   function setupRhythmMode(payload: any) {
@@ -378,11 +391,19 @@ namespace GameController {
 
     // Puzzle mode: Token collection (registered globally to avoid memory leaks)
     sprites.onOverlap(KIND_PLAYER, KIND_COLLECTIBLE, (sprite, collectible) => {
-      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
-      if (game.runtime() < state.lastOverlapTime + OVERLAP_COOLDOWN_MS) return;
-      
-      collectToken(collectible);
-      state.lastOverlapTime = game.runtime();
+      if (state.playMode === PlayMode.DUN_PUZZLE) {
+        if (game.runtime() < state.lastOverlapTime + OVERLAP_COOLDOWN_MS) return;
+        collectToken(collectible);
+        state.lastOverlapTime = game.runtime();
+      } else if (state.playMode === PlayMode.DUN_ASTEROIDS) {
+        // Asteroids mode: Collect parts in stage 2
+        if (state.currentStageIndex === 2 && state.dungeonStageData) {
+          state.dungeonStageData.partsCollected += 1;
+          collectible.destroy();
+          sfxCollect();
+          showHint("[PART_COLLECTED]", 500);
+        }
+      }
     });
 
     // Puzzle mode: Ghost-Bot collision (registered globally to avoid memory leaks)
@@ -391,6 +412,24 @@ namespace GameController {
       if (game.runtime() < state.invincibleUntil) return;
       
       handleGhostBotCollision(player, enemy);
+    });
+
+    // Asteroids mode: Projectile hits debris
+    sprites.onOverlap(KIND_PROJECTILE, KIND_DEBRIS, (projectile, debris) => {
+      if (state.playMode !== PlayMode.DUN_ASTEROIDS) return;
+      
+      projectile.destroy();
+      splitDebris(debris);
+      sfxHit();
+    });
+
+    // Asteroids mode: Player hits debris (damage)
+    sprites.onOverlap(KIND_PLAYER, KIND_DEBRIS, (player, debris) => {
+      if (state.playMode !== PlayMode.DUN_ASTEROIDS) return;
+      if (game.runtime() < state.invincibleUntil) return;
+      
+      damagePlayer(1);
+      sfxHit();
     });
 
     // Game update loop
@@ -549,7 +588,177 @@ namespace GameController {
   }
 
   function updateAsteroidsMode() {
-    // Debris/parts management (placeholder)
+    if (!state.dungeonStageData) return;
+
+    const stageIdx = state.currentStageIndex;
+    const data = state.dungeonStageData;
+
+    // Update debris velocities and screen wrap
+    updateDebrisMovement();
+
+    // Check stage-specific win conditions
+    if (stageIdx === 0) {
+      // Stage 0: THRUST - Clear all debris (tutorial)
+      if (data.debrisCount === 0 && sprites.allOfKind(KIND_DEBRIS).length === 0) {
+        onStageComplete();
+      }
+    } else if (stageIdx === 1) {
+      // Stage 1: SPLIT - Clear all debris with splitting
+      if (data.debrisCount === 0 && sprites.allOfKind(KIND_DEBRIS).length === 0) {
+        onStageComplete();
+      }
+    } else if (stageIdx === 2) {
+      // Stage 2: PARTS_RUSH - Collect required parts
+      if (data.partsCollected >= data.partsRequired) {
+        onStageComplete();
+      }
+    } else if (stageIdx === 3) {
+      // Stage 3: SURVIVE - Survive for required time
+      const elapsed = (game.runtime() - data.surviveStartTime) / 1000;
+      if (elapsed >= data.surviveTimeRequired) {
+        onStageComplete();
+      }
+    }
+  }
+
+  function updateDebrisMovement() {
+    const debris = sprites.allOfKind(KIND_DEBRIS);
+    for (const d of debris) {
+      if (!d || d.flags & sprites.Flag.Destroyed) continue;
+
+      // Screen wrap
+      if (d.x < -8) d.x = scene.screenWidth() + 8;
+      if (d.x > scene.screenWidth() + 8) d.x = -8;
+      if (d.y < -8) d.y = scene.screenHeight() + 8;
+      if (d.y > scene.screenHeight() + 8) d.y = -8;
+    }
+  }
+
+  function spawnAsteroidsStageContent(stageIndex: number) {
+    const spec = DUNGEON_SPECS.find((d) => d.id === state.currentDungeonId);
+    if (!spec || !spec.params) return;
+
+    if (stageIndex === 0) {
+      // Stage 0: Few debris for tutorial
+      spawnDebrisWave(3, 16, 0);
+      state.dungeonStageData.debrisCount = 3;
+    } else if (stageIndex === 1) {
+      // Stage 1: More debris with splitting
+      spawnDebrisWave(5, 16, 0);
+      state.dungeonStageData.debrisCount = 5;
+    } else if (stageIndex === 2) {
+      // Stage 2: Debris that drop parts
+      spawnDebrisWave(8, 16, 0);
+      state.dungeonStageData.debrisCount = 8;
+      state.dungeonStageData.partsRequired = 10;
+    } else if (stageIndex === 3) {
+      // Stage 3: Continuous debris for survival
+      const surviveTime = (spec.params.surviveTimeS || 60);
+      state.dungeonStageData.surviveTimeRequired = surviveTime;
+      state.dungeonStageData.surviveStartTime = game.runtime();
+      
+      // Initial wave
+      spawnDebrisWave(6, 14, 0);
+      
+      // Spawn debris periodically
+      game.onUpdateInterval(3000, () => {
+        if (state.playMode !== PlayMode.DUN_ASTEROIDS) return;
+        if (state.currentStageIndex !== 3) return;
+        
+        const currentDebris = sprites.allOfKind(KIND_DEBRIS).length;
+        if (currentDebris < 8) {
+          spawnDebrisWave(2, 14, 0);
+        }
+      });
+    }
+  }
+
+  function spawnDebrisWave(count: number, size: number, depth: number) {
+    for (let i = 0; i < count; i++) {
+      spawnDebris(size, depth);
+    }
+  }
+
+  function spawnDebris(size: number, depth: number) {
+    // Cap check
+    if (sprites.allOfKind(KIND_DEBRIS).length >= CAP_MAX_DEBRIS) return;
+
+    const debris = sprites.create(imgDebris(size), KIND_DEBRIS);
+    
+    // Spawn at edge
+    const edge = Math.randomRange(0, 3);
+    if (edge === 0) {
+      // Top
+      debris.setPosition(Math.randomRange(10, scene.screenWidth() - 10), 0);
+    } else if (edge === 1) {
+      // Right
+      debris.setPosition(scene.screenWidth(), Math.randomRange(10, scene.screenHeight() - 10));
+    } else if (edge === 2) {
+      // Bottom
+      debris.setPosition(Math.randomRange(10, scene.screenWidth() - 10), scene.screenHeight());
+    } else {
+      // Left
+      debris.setPosition(0, Math.randomRange(10, scene.screenHeight() - 10));
+    }
+
+    // Random velocity
+    debris.vx = Math.randomRange(-30, 30);
+    debris.vy = Math.randomRange(-30, 30);
+
+    // Store depth for splitting
+    (debris as any).splitDepth = depth;
+    (debris as any).debrisSize = size;
+  }
+
+  function splitDebris(debris: Sprite) {
+    const depth = (debris as any).splitDepth || 0;
+    const size = (debris as any).debrisSize || 16;
+    
+    // Get split depth from dungeon spec
+    const spec = DUNGEON_SPECS.find((d) => d.id === state.currentDungeonId);
+    const maxDepth = (spec && spec.params && spec.params.splitDepth) || 0;
+
+    if (depth >= maxDepth) {
+      // Max depth reached, destroy completely
+      debris.destroy();
+      
+      // Spawn collectible part in stage 2
+      if (state.currentStageIndex === 2) {
+        spawnPart(debris.x, debris.y);
+      }
+      return;
+    }
+
+    // Split into 2 smaller pieces
+    const newSize = Math.floor(size / 2);
+    if (newSize < 4) {
+      debris.destroy();
+      return;
+    }
+
+    debris.destroy();
+
+    // Spawn 2 smaller debris
+    for (let i = 0; i < 2; i++) {
+      if (sprites.allOfKind(KIND_DEBRIS).length >= CAP_MAX_DEBRIS) break;
+      
+      const child = sprites.create(imgDebris(newSize), KIND_DEBRIS);
+      child.setPosition(debris.x, debris.y);
+      
+      // Diverging velocities
+      const angle = Math.randomRange(0, 360) * Math.PI / 180;
+      child.vx = Math.cos(angle) * 40;
+      child.vy = Math.sin(angle) * 40;
+      
+      (child as any).splitDepth = depth + 1;
+      (child as any).debrisSize = newSize;
+    }
+  }
+
+  function spawnPart(x: number, y: number) {
+    const part = sprites.create(imgCollectible("PART"), KIND_COLLECTIBLE);
+    part.setPosition(x, y);
+    part.lifespan = 8000; // Parts disappear after 8 seconds
   }
 
   function updateRhythmMode() {

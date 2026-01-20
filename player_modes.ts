@@ -72,6 +72,12 @@ function initAsteroidsPlayer(player: Sprite) {
   asteroidVx = 0;
   asteroidVy = 0;
 
+  // Shoot projectile
+  controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
+    if (state.playMode !== PlayMode.DUN_ASTEROIDS) return;
+    shootAsteroidPing();
+  });
+
   game.onUpdate(() => {
     if (state.playMode !== PlayMode.DUN_ASTEROIDS) return;
     updateAsteroidsControls();
@@ -111,6 +117,30 @@ function updateAsteroidsControls() {
 
   // Rotate sprite (visual)
   // TODO: sprite rotation when asset ready
+}
+
+function shootAsteroidPing() {
+  const plyr = GameController.getPlayerSprite();
+  if (!plyr) return;
+
+  // Cap check
+  if (sprites.allOfKind(KIND_PROJECTILE).length >= CAP_MAX_PROJECTILES) return;
+
+  // Shoot in direction ship is facing
+  const rad = (asteroidRotation * Math.PI) / 180;
+  const vx = Math.sin(rad) * 120;
+  const vy = -Math.cos(rad) * 120;
+
+  const ping = sprites.createProjectileFromSprite(
+    imgProjectile("PING"),
+    plyr,
+    vx,
+    vy,
+  );
+  ping.setKind(KIND_PROJECTILE);
+  ping.lifespan = 1500;
+
+  sfxShoot();
 }
 
 // ============ RHYTHM MODE ============
