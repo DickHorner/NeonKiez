@@ -793,8 +793,8 @@ namespace GameController {
       for (let i = 0; i < count; i++) {
         const token = sprites.create(imgCollectible("TOKEN"), KIND_COLLECTIBLE);
         token.setPosition(
-          20 + Math.randomRange(0, scene.screenWidth() - 40),
-          20 + Math.randomRange(0, scene.screenHeight() - 40)
+          20 + randint(0, scene.screenWidth() - 40),
+          20 + randint(0, scene.screenHeight() - 40)
         );
       }
     }
