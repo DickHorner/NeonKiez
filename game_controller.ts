@@ -570,10 +570,15 @@ namespace GameController {
 
     // Update Ghost-Bot patrol AI (if present)
     updateGhostBotPatrol();
+    
+    // Update moving crates (if present)
+    updateMovingCrates();
 
     // Check stage-specific win conditions
     if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       checkDungeon01StageComplete();
+    } else if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      checkDungeon03StageComplete();
     }
   }
 
@@ -638,6 +643,8 @@ namespace GameController {
   function spawnPuzzleStageContent(dungeonId: string, stageIndex: number) {
     if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       spawnDungeon01Content(stageIndex);
+    } else if (dungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      spawnDungeon03Content(stageIndex);
     }
   }
 
@@ -681,6 +688,73 @@ namespace GameController {
     ghostBot.vx = patrolSpeed;
     
     // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
+  }
+  
+  // ============ DUNGEON 3 (WAREHOUSE BLOCKWORKS) ============
+  
+  function spawnDungeon03Content(stageIndex: number) {
+    if (stageIndex === 2) {
+      // Stage 2: Spawn moving crates that patrol
+      spawnMovingCrates();
+    }
+  }
+  
+  function spawnMovingCrates() {
+    // Spawn 3 crates that move in patterns
+    const crate1 = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+    crate1.setPosition(40, 40);
+    crate1.vx = 15;
+    
+    const crate2 = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+    crate2.setPosition(80, 60);
+    crate2.vy = 15;
+    
+    const crate3 = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+    crate3.setPosition(120, 40);
+    crate3.vx = -15;
+  }
+  
+  function updateMovingCrates() {
+    // Update all moving crates in puzzle mode
+    const crates = sprites.allOfKind(KIND_HAZARD);
+    for (const crate of crates) {
+      if (!crate || crate.flags & sprites.Flag.Destroyed) continue;
+      
+      // Bounce on screen edges
+      if (crate.x < 20 || crate.x > scene.screenWidth() - 20) {
+        crate.vx = -crate.vx;
+      }
+      if (crate.y < 20 || crate.y > scene.screenHeight() - 20) {
+        crate.vy = -crate.vy;
+      }
+    }
+  }
+  
+  function checkDungeon03StageComplete() {
+    const stageIdx = state.currentStageIndex;
+    const data = state.dungeonStageData;
+    
+    if (stageIdx === 0) {
+      // Stage 0: CONVEYOR_INTRO - activate switch and reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 1) {
+      // Stage 1: BLOCK_ROWS - activate both switches to open gates, then reach goal
+      if (data.switchesActivated >= 2 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 2) {
+      // Stage 2: MOVING_CRATES - navigate past moving crates to reach goal
+      if (checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 3) {
+      // Stage 3: FINAL_PATTERN - activate final switch to open gate, then reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    }
   }
 
   function onStageComplete() {

@@ -211,12 +211,48 @@ function toggleSwitch(loc: tiles.Location) {
     if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       toggleGatesForDungeon01();
     }
+    
+    // For Dungeon 3, switches toggle gates  
+    if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      toggleGatesForDungeon03();
+    }
   }
   showHint("[SWITCH_ACTIVATED]", 1000);
   sfxInteract();
 }
 
 function toggleGatesForDungeon01() {
+  if (!state.dungeonStageData) return;
+  
+  // DECISION: Use dungeonStageData as a loose bag for per-stage runtime data (gateLocations).
+  const stageData = state.dungeonStageData as any;
+
+  // Toggle gate state flag
+  stageData.gatesOpen = !stageData.gatesOpen;
+
+  // On first use, capture all gate locations so we can reliably toggle them later,
+  // even after their tile image has been changed.
+  if (!stageData.gateLocations) {
+    stageData.gateLocations = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+  }
+
+  const gateLocations = (stageData.gateLocations as tiles.Location[]) || [];
+
+  for (const gateLoc of gateLocations) {
+    if (stageData.gatesOpen) {
+      // Open gate: replace with floor tile
+      tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any)); // Floor tile (placeholder)
+    } else {
+      // Close gate: replace with gate tile
+      tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
+    }
+    tiles.setWallAt(gateLoc, !stageData.gatesOpen);
+  }
+
+  showHint(stageData.gatesOpen ? "[GATES_OPEN]" : "[GATES_CLOSED]", 1000);
+}
+
+function toggleGatesForDungeon03() {
   if (!state.dungeonStageData) return;
   
   // DECISION: Use dungeonStageData as a loose bag for per-stage runtime data (gateLocations).
