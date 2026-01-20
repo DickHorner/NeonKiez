@@ -202,11 +202,27 @@ namespace GameController {
     initShooterPlayer(playerSprite);
 
     // Stage data
+    const wavesPerStage = (spec.params && spec.params.wavesPerStage) || [1, 1, 1, 1];
+    const coreHP = (spec.params && spec.params.coreHP) || 30;
+    
     state.dungeonStageData = {
       stageIndex: stageIndex,
       wavesComplete: 0,
+      wavesTotal: wavesPerStage[idx] || 1,
       enemiesAlive: 0,
+      waveSpawnTimer: 0,
+      coreHP: stageIndex === 3 ? coreHP : 0,
+      coreSprite: null,
+      isAlarmStage: stageIndex === 2,
+      alarmActive: false,
     };
+
+    // Start first wave or spawn core
+    if (stageIndex === 3) {
+      spawnCore();
+    } else {
+      startNextWave();
+    }
   }
 
   function setupAsteroidsMode(payload: any) {
@@ -349,6 +365,43 @@ namespace GameController {
     // Interact
     controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
       handleInteract();
+    });
+
+    // Bullet hits enemy
+    sprites.onOverlap(KIND_PROJECTILE, KIND_ENEMY, (bullet, enemy) => {
+      if (state.playMode !== PlayMode.DUN_SHOOTER) return;
+
+      bullet.destroy();
+      
+      // Check if enemy is core
+      if ((enemy as any).isCore && state.dungeonStageData) {
+        state.dungeonStageData.coreHP -= 1;
+        effects.starField.startScreenEffect(100);
+        
+        if (state.dungeonStageData.coreHP <= 0) {
+          enemy.destroy();
+          effects.confetti.startScreenEffect(1000);
+        }
+      } else {
+        // Normal enemy
+        const hp = (enemy as any).hp || 1;
+        (enemy as any).hp = hp - 1;
+        
+        if ((enemy as any).hp <= 0) {
+          enemy.destroy();
+          effects.starField.startScreenEffect(100);
+          sfxHit();
+        }
+      }
+    });
+
+    // Enemy hits player
+    sprites.onOverlap(KIND_PLAYER, KIND_ENEMY, (player, enemy) => {
+      if (state.playMode !== PlayMode.DUN_SHOOTER) return;
+      if (game.runtime() < state.invincibleUntil) return;
+
+      damagePlayer(1);
+      sfxHit();
     });
 
     // Game update loop
@@ -503,7 +556,54 @@ namespace GameController {
   }
 
   function updateShooterMode() {
-    // Wave/enemy management (placeholder)
+    if (!state.dungeonStageData) return;
+
+    // Count alive enemies
+    state.dungeonStageData.enemiesAlive = sprites.allOfKind(KIND_ENEMY).length;
+
+    // Core HP mode (stage 3)
+    if (state.dungeonStageData.coreHP > 0) {
+      // Check if core is destroyed
+      if (state.dungeonStageData.coreHP <= 0 && state.dungeonStageData.coreSprite) {
+        state.dungeonStageData.coreSprite.destroy();
+        state.dungeonStageData.coreSprite = null;
+        effects.confetti.startScreenEffect(1000);
+        pause(1500);
+        onStageComplete();
+      }
+      return;
+    }
+
+    // Wave mode (stages 0-2)
+    // Check if current wave is complete
+    if (state.dungeonStageData.enemiesAlive === 0 && state.dungeonStageData.waveSpawnTimer === 0) {
+      if (state.dungeonStageData.wavesComplete >= state.dungeonStageData.wavesTotal) {
+        // Stage complete
+        effects.confetti.startScreenEffect(1000);
+        pause(1500);
+        onStageComplete();
+      } else {
+        // Start next wave
+        pause(1000);
+        startNextWave();
+      }
+    }
+
+    // Alarm stage mechanic (stage 2): periodic spawn boost
+    if (state.dungeonStageData.isAlarmStage && state.dungeonStageData.wavesComplete > 0) {
+      const now = game.runtime();
+      if (now % 5000 < 100 && !state.dungeonStageData.alarmActive) {
+        state.dungeonStageData.alarmActive = true;
+        showHint("[ALARM_TRIGGERED]", 1000);
+        // Spawn extra enemy
+        if (sprites.allOfKind(KIND_ENEMY).length < CAP_MAX_ENEMIES) {
+          spawnShooterEnemy();
+        }
+      }
+      if (now % 5000 >= 100) {
+        state.dungeonStageData.alarmActive = false;
+      }
+    }
   }
 
   function updateAsteroidsMode() {
@@ -544,6 +644,67 @@ namespace GameController {
         stageIndex: nextStageIndex,
       });
     }
+  }
+
+  // ============ SHOOTER MODE HELPERS ============
+
+  function startNextWave() {
+    if (!state.dungeonStageData) return;
+
+    state.dungeonStageData.wavesComplete += 1;
+    showHint(`[WAVE_${state.dungeonStageData.wavesComplete}_START]`, 1500);
+
+    // Spawn enemies based on stage
+    const stageIndex = state.dungeonStageData.stageIndex;
+    let enemiesToSpawn = 0;
+
+    if (stageIndex === 0) {
+      // Stage 0: 3 enemies
+      enemiesToSpawn = 3;
+    } else if (stageIndex === 1) {
+      // Stage 1: 4-6 enemies in formations
+      enemiesToSpawn = 4 + state.dungeonStageData.wavesComplete;
+    } else if (stageIndex === 2) {
+      // Stage 2: 5-7 enemies with alarm mechanic
+      enemiesToSpawn = 5 + Math.floor(state.dungeonStageData.wavesComplete / 2);
+    }
+
+    // Cap check
+    if (enemiesToSpawn > CAP_MAX_ENEMIES) {
+      enemiesToSpawn = CAP_MAX_ENEMIES;
+    }
+
+    for (let i = 0; i < enemiesToSpawn; i++) {
+      spawnShooterEnemy();
+    }
+  }
+
+  function spawnShooterEnemy() {
+    if (sprites.allOfKind(KIND_ENEMY).length >= CAP_MAX_ENEMIES) return;
+
+    // Spawn at top of screen
+    const x = 20 + randint(0, scene.screenWidth() - 40);
+    const enemy = sprites.create(imgEnemy("SHOOTER_INVADER"), KIND_ENEMY);
+    enemy.setPosition(x, 10);
+    enemy.setVelocity(randint(-20, 20), randint(10, 30));
+    enemy.setFlag(SpriteFlag.BounceOnWall, true);
+    enemy.setFlag(SpriteFlag.StayInScreen, true);
+    
+    // Enemy HP
+    (enemy as any).hp = 1;
+  }
+
+  function spawnCore() {
+    if (!state.dungeonStageData) return;
+
+    const core = sprites.create(imgEnemy("ANTENNA_CORE"), KIND_ENEMY);
+    core.setPosition(80, 40);
+    core.setFlag(SpriteFlag.StayInScreen, true);
+
+    state.dungeonStageData.coreSprite = core;
+    (core as any).isCore = true;
+    
+    showHint("[CORE_DESTROY_TARGET]", 2000);
   }
 
   export function getPlayerSprite(): Sprite {

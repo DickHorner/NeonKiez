@@ -105,16 +105,76 @@ function tmDun01Stage03(): tiles.TileMapData {
 
 // Dungeon 2 stages
 function tmDun02Stage00(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 0: Range - Simple open area for target practice
+  return tiles.createTilemap(
+    hex`0a00080001010101010101010101010000000000000000010100000000000000010100000000000000010100000000000000010100000000000000010100000000000000010101010101010101010101`,
+    img`
+      2 2 2 2 2 2 2 2 2 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 2 2 2 2 2 2 2 2 2
+    `,
+    [sprites.castle.tileDarkGrass2, sprites.castle.tileGrass1],
+    TileScale.Sixteen
+  );
 }
 function tmDun02Stage01(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 1: Formations - Open area with more room for enemy formations
+  return tiles.createTilemap(
+    hex`0a00080001010101010101010101010100000000000000000101000000000000000001010000000000000000010100000000000000000101000000000000000001010000000000000000010101010101010101010101`,
+    img`
+      2 2 2 2 2 2 2 2 2 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 2 2 2 2 2 2 2 2 2
+    `,
+    [sprites.castle.tileDarkGrass2, sprites.castle.tileGrass1],
+    TileScale.Sixteen
+  );
 }
 function tmDun02Stage02(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 2: Alarm - Same layout, alarm mechanic in code
+  return tiles.createTilemap(
+    hex`0a00080001010101010101010101010100000000000000000101000000000000000001010000000000000000010100000000000000000101000000000000000001010000000000000000010101010101010101010101`,
+    img`
+      2 2 2 2 2 2 2 2 2 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 2 2 2 2 2 2 2 2 2
+    `,
+    [sprites.castle.tileDarkGrass2, sprites.castle.tileGrass1],
+    TileScale.Sixteen
+  );
 }
 function tmDun02Stage03(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 3: Core - Arena for boss fight
+  return tiles.createTilemap(
+    hex`0a00080001010101010101010101010100000000000000000101000000000000000001010000000000000000010100000000000000000101000000000000000001010000000000000000010101010101010101010101`,
+    img`
+      2 2 2 2 2 2 2 2 2 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 . . . . . . . . 2
+      2 2 2 2 2 2 2 2 2 2
+    `,
+    [sprites.castle.tileDarkGrass2, sprites.castle.tileGrass1],
+    TileScale.Sixteen
+  );
 }
 
 // Dungeon 3 stages
