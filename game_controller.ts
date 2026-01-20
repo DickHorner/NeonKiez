@@ -848,6 +848,16 @@ namespace GameController {
       }
     }
 
+    // Check if all dungeons (1-8) are now cleared to unlock final dungeon
+    if (checkAllDungeonsClearExceptFinal()) {
+      setFlag("FLAG_ALL_DUNGEONS_CLEARED");
+      // Show special message
+      control.runInParallel(() => {
+        pause(1000);
+        game.splash("[FINAL_DUNGEON_UNLOCKED]");
+      });
+    }
+
     saveGame();
 
     // Return to hub
