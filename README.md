@@ -1,21 +1,4 @@
-<<<<<<< Updated upstream
-# Neon-Kiez
 
-Story-driven retro game for **MakeCode Arcade (TypeScript)**
-
-## Overview
-
-- **Hub World**: Top-down Zelda-style exploration with room-to-room scrolling
-- **9 Dungeons**: Each with unique PlayMode (Platform, Shooter, Asteroids, Rhythm, Puzzle, Meta)
-- **Target Audience**: 10 years old (kid-friendly, no gore)
-
-## Architecture
-
-### Core Files
-- `main.ts` - Bootstrap
-- `constants.ts` - All IDs, enums, tuning, dungeon specs
-- `state.ts` - Global game state
-# Neon-Kiez
 # Neon-Kiez
 
 Story-driven retro game for MakeCode Arcade (TypeScript)
