@@ -33,6 +33,8 @@ const KIND_DEBRIS = SpriteKind.create();
 const KIND_PLATFORM_MOVING = SpriteKind.create();
 const KIND_TARGET = SpriteKind.create();
 const KIND_TOOL_EFFECT = SpriteKind.create();
+const KIND_PADDLE = SpriteKind.create();
+const KIND_BALL = SpriteKind.create();
 // Tile Tags
 const TILE_SPAWN_PLAYER = 1;
 const TILE_SPAWN_STAGE = 2;
@@ -44,6 +46,7 @@ const TILE_GOAL_FLAG = 7;
 const TILE_HAZARD = 8;
 const TILE_SWITCH = 9;
 const TILE_GATE = 10;
+const TILE_INDEX_TARGET = 4; // stairNorth sprite used as target marker in tilemaps
 
 // Interaction distances
 const INTERACT_DISTANCE = 20;
@@ -69,6 +72,12 @@ const TOOL_COOLDOWN_MS = 500;
 
 const INTERACT_DEBOUNCE_MS = 300;
 const OVERLAP_COOLDOWN_MS = 200;
+
+// Dungeon 5 (Pong/Breakout) specific
+const PADDLE_SPEED = 120;
+const BALL_SPEED_SLOW = 40;
+const BALL_SPEED_NORMAL = 60;
+const CAP_MAX_BALLS = 2;
 
 // Dungeon Specs
 interface DungeonReward {
@@ -105,7 +114,10 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       toolUnlocks: ["TOOL_TAGGER"],
       items: [{ id: "ITEM_CASSETTE_01", qty: 1 }],
     },
-    params: { tokensPerStage: [0, 0, 5, 0] },
+    params: {
+      tokensPerStage: [0, 0, 5, 0],
+      switchToggleBehavior: "toggle", // toggle gates on every switch press
+    },
   },
   {
     id: "DUN_ROOFTOP_INVADERS",
@@ -141,6 +153,10 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       toolUnlocks: ["TOOL_SOAP_SLIDE"],
       items: [{ id: "ITEM_KEYCARD_A", qty: 1 }],
     },
+    params: {
+      switchToggleBehavior: "latch", // gates open on switch count threshold, stay open
+      switchRequiredForStage: [0, 2, 0, 0], // stage 1 needs 2 switches
+    },
   },
   {
     id: "DUN_SUBWAY_TIMING",
@@ -158,7 +174,11 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       toolUnlocks: ["TOOL_FREEZECAM"],
       items: [{ id: "ITEM_CASSETTE_02", qty: 1 }],
     },
-    params: { bpm: 120, missLimit: 3 },
+    params: { 
+      bpm: 120, 
+      missLimit: 3,
+      streakTargets: [3, 5, 8, 12], // Stage 0-3 streak requirements
+    },
   },
   {
     id: "DUN_SCHOOL_PONG_COURT",
@@ -174,6 +194,10 @@ const DUNGEON_SPECS: DungeonSpec[] = [
     rewards: {
       flagsSet: ["FLAG_DUN_05_CLEARED", "FLAG_UPG_DASH_COOLDOWN_REDUCED"],
       items: [{ id: "ITEM_KEYCARD_B", qty: 1 }],
+    },
+    params: { 
+      targetsPerStage: [3, 8, 6, 12],
+      ballSpeed: [BALL_SPEED_SLOW, BALL_SPEED_NORMAL, BALL_SPEED_NORMAL, BALL_SPEED_NORMAL]
     },
   },
   {
@@ -208,6 +232,17 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       flagsSet: ["FLAG_DUN_07_CLEARED", "FLAG_UPG_LIGHT_DOUBLE_JUMP"],
       items: [{ id: "ITEM_STICKER_SET_01", qty: 1 }],
     },
+    params: {
+      stageSpawners: [
+        [], // Stage 0: static platforms only
+        [
+          { xStart: 60, xEnd: 50, y: 40, speed: 120 },
+          { xStart: 100, xEnd: 140, y: 70, speed: 25 },
+        ], // Stage 1: moving shelves
+        [], // Stage 2: switches + gates only
+        [], // Stage 3: final run
+      ],
+    },
   },
   {
     id: "DUN_CONSTRUCTION_DONKEY_TOWER",
@@ -225,7 +260,15 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       toolUnlocks: ["TOOL_DECOY_TOY"],
       items: [{ id: "ITEM_CASSETTE_04", qty: 1 }],
     },
-    params: { barrelSpawnCap: 4 },
+    params: {
+      barrelSpawnCap: 4,
+      stageSpawners: [
+        [], // Stage 0: ladders, no barrels
+        [{ xStart: 150, rate: 500 }], // Stage 1: barrels start
+        [], // Stage 2: trick ladders, barrels continue (spawned by room)
+        [], // Stage 3: no new barrels
+      ],
+    },
   },
   {
     id: "DUN_FINAL_GLITCH_PANOPTICON",

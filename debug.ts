@@ -47,6 +47,12 @@ function validateRegistry() {
   runDungeonRegistryValidation();
 }
 
+function testDungeon05() {
+  // Quick test: warp to Dungeon 5 Stage 0
+  warpToDungeon("DUN_SCHOOL_PONG_COURT");
+  showHint("[TEST_DUNGEON_05_STARTED]", 3000);
+}
+
 function unlockAllDungeons() {
   // Unlock all 8 dungeons to access Dungeon 9
   for (let i = 0; i < DUNGEON_SPECS.length - 1; i++) {
