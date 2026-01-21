@@ -677,6 +677,9 @@ namespace GameController {
   }
 
   function handleBallPaddleBounce(ball: Sprite, paddle: Sprite) {
+    // Only bounce if ball is moving downward (prevent rapid re-bounces)
+    if (ball.vy < 0) return;
+
     // Bounce ball upward with horizontal velocity based on hit position
     const hitOffset = ball.x - paddle.x; // -16 to +16 (for 32px paddle)
     
