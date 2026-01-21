@@ -639,6 +639,22 @@ namespace GameController {
       state.lastOverlapTime = game.runtime();
     });
 
+    // Dungeon 5: Ball + Paddle collision (bounce physics)
+    sprites.onOverlap(KIND_BALL, KIND_PADDLE, (ball, paddle) => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (state.currentDungeonId !== "DUN_SCHOOL_PONG_COURT") return;
+      
+      handleBallPaddleBounce(ball, paddle);
+    });
+
+    // Dungeon 5: Ball + Target collision (destroy target)
+    sprites.onOverlap(KIND_BALL, KIND_TARGET, (ball, target) => {
+      if (state.playMode !== PlayMode.DUN_PUZZLE) return;
+      if (state.currentDungeonId !== "DUN_SCHOOL_PONG_COURT") return;
+      
+      handleBallTargetHit(ball, target);
+    });
+
     // Game update loop
     game.onUpdate(() => {
       updateGameLoop();
@@ -652,6 +668,43 @@ namespace GameController {
     // Destroy both projectile and target
     projectile.destroy();
     target.destroy();
+
+    // Increment counter
+    if (state.dungeonStageData.targetsDestroyed !== undefined) {
+      state.dungeonStageData.targetsDestroyed = state.dungeonStageData.targetsDestroyed + 1;
+    }
+
+    sfxInteract();
+  }
+
+  function handleBallPaddleBounce(ball: Sprite, paddle: Sprite) {
+    // Bounce ball upward with horizontal velocity based on hit position
+    const hitOffset = ball.x - paddle.x; // -16 to +16 (for 32px paddle)
+    
+    // Set upward velocity
+    ball.vy = -Math.abs(ball.vy);
+    
+    // Add horizontal velocity based on where ball hit paddle
+    // Center hit: small horizontal velocity
+    // Edge hit: large horizontal velocity
+    ball.vx += hitOffset * 2;
+    
+    // Cap horizontal velocity to prevent runaway speed
+    if (ball.vx > 80) ball.vx = 80;
+    if (ball.vx < -80) ball.vx = -80;
+    
+    sfxInteract();
+  }
+
+  function handleBallTargetHit(ball: Sprite, target: Sprite) {
+    if (!state.dungeonStageData) return;
+    if (!(target as any).isTarget) return;
+
+    // Destroy target
+    target.destroy();
+
+    // Bounce ball (simple downward bounce)
+    ball.vy = Math.abs(ball.vy);
 
     // Increment counter
     if (state.dungeonStageData.targetsDestroyed !== undefined) {
@@ -946,9 +999,23 @@ namespace GameController {
     // Update Ghost-Bot patrol AI (if present)
     updateGhostBotPatrol();
 
+    // Update moving crates (Dungeon 3)
+    if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      updateMovingCrates();
+    }
+
+    // Update ball physics (Dungeon 5)
+    if (state.currentDungeonId === "DUN_SCHOOL_PONG_COURT") {
+      updateDungeon05Balls();
+    }
+
     // Check stage-specific win conditions
     if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       checkDungeon01StageComplete();
+    } else if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      checkDungeon03StageComplete();
+    } else if (state.currentDungeonId === "DUN_SCHOOL_PONG_COURT") {
+      checkDungeon05StageComplete();
     }
   }
 
@@ -996,6 +1063,43 @@ namespace GameController {
     }
   }
 
+  function checkDungeon03StageComplete() {
+    const stageIdx = state.currentStageIndex;
+    const data = state.dungeonStageData;
+
+    if (stageIdx === 0) {
+      // Stage 0: CONVEYOR_INTRO - activate switch and reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 1) {
+      // Stage 1: BLOCK_ROWS - activate 2 switches (latch), then reach goal
+      // NOTE: Gate opens when switchesActivated >= 2 (handled by latch behavior in toggleSwitch)
+      if (data.switchesActivated >= 2 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 2) {
+      // Stage 2: MOVING_CRATES - navigate around moving crates and reach goal
+      if (checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 3) {
+      // Stage 3: FINAL_PATTERN - activate switch and reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    }
+  }
+
+  function checkDungeon05StageComplete() {
+    const data = state.dungeonStageData;
+
+    // All stages: destroy all targets
+    if (data.targetsDestroyed >= data.targetsRequired) {
+      markStageComplete();
+    }
+  }
+
   function checkPlayerOnGoal(): boolean {
     if (!playerSprite || !game.currentScene().tileMap) return false;
     
@@ -1017,6 +1121,10 @@ namespace GameController {
   function spawnPuzzleStageContent(dungeonId: string, stageIndex: number) {
     if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       spawnDungeon01Content(stageIndex);
+    } else if (dungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      spawnDungeon03Content(stageIndex);
+    } else if (dungeonId === "DUN_SCHOOL_PONG_COURT") {
+      spawnDungeon05Content(stageIndex);
     }
   }
 
@@ -1060,6 +1168,142 @@ namespace GameController {
     ghostBot.vx = patrolSpeed;
     
     // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
+  }
+
+  function spawnDungeon03Content(stageIndex: number) {
+    if (stageIndex === 2) {
+      // Stage 2: Spawn moving crates (3 crates with simple patrol)
+      spawnMovingCrates();
+    }
+  }
+
+  function spawnMovingCrates() {
+    // Spawn 3 moving crates as hazards
+    const cratePositions = [
+      { x: 40, y: 40, vx: 15, vy: 10 },
+      { x: 100, y: 50, vx: -12, vy: 8 },
+      { x: 70, y: 80, vx: 10, vy: -15 },
+    ];
+
+    for (let i = 0; i < cratePositions.length; i++) {
+      const pos = cratePositions[i];
+      const crate = sprites.create(imgEnemy("CRATE"), KIND_HAZARD);
+      crate.setPosition(pos.x, pos.y);
+      crate.vx = pos.vx;
+      crate.vy = pos.vy;
+    }
+  }
+
+  function updateMovingCrates() {
+    // Update all moving crates (bounce on screen edges)
+    const crates = sprites.allOfKind(KIND_HAZARD);
+    for (const crate of crates) {
+      if (!crate || crate.flags & sprites.Flag.Destroyed) continue;
+
+      // Bounce on screen edges
+      if (crate.x < 10 || crate.x > scene.screenWidth() - 10) {
+        crate.vx = -crate.vx;
+      }
+      if (crate.y < 10 || crate.y > scene.screenHeight() - 10) {
+        crate.vy = -crate.vy;
+      }
+    }
+  }
+
+  function spawnDungeon05Content(stageIndex: number) {
+    const spec = getDungeonSpec("DUN_SCHOOL_PONG_COURT");
+    if (!spec || !spec.params) return;
+
+    const targetsRequired = spec.params.targetsPerStage[stageIndex] || 0;
+    const ballSpeed = spec.params.ballSpeed[stageIndex] || BALL_SPEED_NORMAL;
+
+    // Initialize stage data with targets count
+    if (state.dungeonStageData) {
+      state.dungeonStageData.targetsRequired = targetsRequired;
+      state.dungeonStageData.targetsDestroyed = 0;
+      state.dungeonStageData.ballSpeed = ballSpeed;
+      state.dungeonStageData.ballActive = false;
+    }
+
+    // Spawn paddle at bottom center
+    const paddle = sprites.create(imgPaddle(), KIND_PADDLE);
+    paddle.setPosition(80, 110);
+    paddle.setStayInScreen(true);
+    controller.moveSprite(paddle, PADDLE_SPEED, 0);
+
+    // Spawn targets based on stage
+    spawnTargets(stageIndex);
+  }
+
+  function spawnTargets(stageIndex: number) {
+    if (!state.dungeonStageData) return;
+    const targetsRequired = state.dungeonStageData.targetsRequired;
+
+    // Find target tiles (using tile index 4 as target marker)
+    const targetTiles = tiles.getTilesByType(tiles.getTileImage(TILE_INDEX_TARGET as any));
+
+    if (targetTiles && targetTiles.length > 0) {
+      // Place targets on designated tiles
+      for (let i = 0; i < Math.min(targetsRequired, targetTiles.length); i++) {
+        const target = sprites.create(imgTarget(), KIND_TARGET);
+        tiles.placeOnTile(target, targetTiles[i]);
+        (target as any).isTarget = true; // Mark as target for collision handler
+      }
+    } else {
+      // Fallback: create targets in rows at top
+      const rows = Math.ceil(targetsRequired / 4);
+      let count = 0;
+      for (let row = 0; row < rows && count < targetsRequired; row++) {
+        for (let col = 0; col < 4 && count < targetsRequired; col++) {
+          const target = sprites.create(imgTarget(), KIND_TARGET);
+          target.setPosition(20 + col * 35, 20 + row * 15);
+          (target as any).isTarget = true;
+          count++;
+        }
+      }
+    }
+  }
+
+  function serveBall() {
+    if (!state.dungeonStageData) return;
+    
+    // Only allow serving if no ball is active
+    if (state.dungeonStageData.ballActive) return;
+
+    // Cap check
+    if (sprites.allOfKind(KIND_BALL).length >= CAP_MAX_BALLS) return;
+
+    const paddle = sprites.allOfKind(KIND_PADDLE)[0];
+    if (!paddle) return;
+
+    const ballSpeed = state.dungeonStageData.ballSpeed || BALL_SPEED_NORMAL;
+    
+    // Create ball on paddle
+    const ball = sprites.create(imgBall(), KIND_BALL);
+    ball.setPosition(paddle.x, paddle.y - 8);
+    
+    // Launch upward with slight random horizontal spread
+    ball.vx = randint(-20, 20);
+    ball.vy = -ballSpeed;
+    ball.setBounceOnWall(true);
+
+    state.dungeonStageData.ballActive = true;
+    sfxInteract();
+  }
+
+  function updateDungeon05Balls() {
+    if (!state.dungeonStageData) return;
+
+    const balls = sprites.allOfKind(KIND_BALL);
+    for (const ball of balls) {
+      if (!ball || ball.flags & sprites.Flag.Destroyed) continue;
+
+      // Check if ball fell off bottom
+      if (ball.y > scene.screenHeight() + 5) {
+        ball.destroy();
+        state.dungeonStageData.ballActive = false;
+      }
+    }
   }
 
   /** Spawn stage-specific platform content using data-driven spec params (no hardcoded dungeon IDs). */
