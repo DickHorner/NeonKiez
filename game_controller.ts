@@ -1227,7 +1227,6 @@ namespace GameController {
       state.dungeonStageData.targetsRequired = targetsRequired;
       state.dungeonStageData.targetsDestroyed = 0;
       state.dungeonStageData.ballSpeed = ballSpeed;
-      state.dungeonStageData.ballActive = false;
     }
 
     // Use player sprite as paddle (already created by setupPuzzleMode)
@@ -1279,10 +1278,9 @@ namespace GameController {
     for (const ball of balls) {
       if (!ball || ball.flags & sprites.Flag.Destroyed) continue;
 
-      // Check if ball fell off bottom
+      // Check if ball fell off bottom - just destroy it, serveBall will handle spawning
       if (ball.y > scene.screenHeight() + 5) {
         ball.destroy();
-        state.dungeonStageData.ballActive = false;
       }
     }
   }
@@ -1456,10 +1454,7 @@ namespace GameController {
 function serveBall() {
   if (!state.dungeonStageData) return;
   
-  // Only allow serving if no ball is active
-  if (state.dungeonStageData.ballActive) return;
-
-  // Cap check
+  // Cap check - only allow serving if under ball limit
   if (sprites.allOfKind(KIND_BALL).length >= CAP_MAX_BALLS) return;
 
   const paddle = sprites.allOfKind(KIND_PADDLE)[0];
@@ -1471,12 +1466,11 @@ function serveBall() {
   const ball = sprites.create(imgBall(), KIND_BALL);
   ball.setPosition(paddle.x, paddle.y - 8);
   
-  // Launch upward with slight random horizontal spread
-  ball.vx = randint(-20, 20);
+  // Launch upward with deterministic slight rightward bias
+  ball.vx = 10;
   ball.vy = -ballSpeed;
   ball.setBounceOnWall(true);
 
-  state.dungeonStageData.ballActive = true;
   sfxInteract();
 }
 
