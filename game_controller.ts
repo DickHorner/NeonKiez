@@ -639,16 +639,6 @@ namespace GameController {
       state.lastOverlapTime = game.runtime();
     });
 
-    // Meta mode: Stabilization node interaction (registered globally)
-    sprites.onOverlap(KIND_PLAYER, KIND_INTERACTABLE, (player, node) => {
-      if (state.playMode !== PlayMode.DUN_META) return;
-      if (state.currentStageIndex !== 4) return; // Only in stabilize stage
-      if (game.runtime() < state.lastOverlapTime + OVERLAP_COOLDOWN_MS) return;
-      
-      handleStabilizationNode(node);
-      state.lastOverlapTime = game.runtime();
-    });
-
     // Game update loop
     game.onUpdate(() => {
       updateGameLoop();
@@ -665,7 +655,7 @@ namespace GameController {
 
     // Increment counter
     if (state.dungeonStageData.targetsDestroyed !== undefined) {
-      state.dungeonStageData.targetsDestroyed++;
+      state.dungeonStageData.targetsDestroyed = state.dungeonStageData.targetsDestroyed + 1;
     }
 
     sfxInteract();
@@ -738,8 +728,8 @@ namespace GameController {
 
     // Activate node
     node.destroy();
-    data.nodesStabilized++;
-    data.currentNodeIndex++;
+    data.nodesStabilized = data.nodesStabilized + 1;
+    data.currentNodeIndex = data.currentNodeIndex + 1;
 
     showHint("[NODE_STABILIZED_" + nodeIndex + "]", 1000);
     sfxInteract();
@@ -935,48 +925,26 @@ namespace GameController {
   }
 
   function updateRhythmMode() {
-    function spawnRhythmStageContent(dungeonId: string, stageIndex: number) {
-      if (dungeonId === "DUN_SUBWAY_TIMING") {
-        spawnDungeon04Content(stageIndex);
-      }
+    if (!playerSprite || !state.dungeonStageData) return;
+
+    const now = game.runtime();
+    const data = state.dungeonStageData;
+
+    // DECISION: Guard against invalid or zero beatIntervalMs to avoid divide-by-zero
+    if (data.beatIntervalMs > 0 && now >= data.nextBeatTime) {
+      const beatsBehind = now - data.nextBeatTime;
+      const beatsToAdvance = Math.floor(beatsBehind / data.beatIntervalMs) + 1;
+      data.nextBeatTime += beatsToAdvance * data.beatIntervalMs;
+      // Visual cue for beat window (placeholder)
     }
+  }
 
-    function spawnDungeon04Content(stageIndex: number) {
-      // Stage 1: Spawn rhythm doors (gates that open on beat)
-      if (stageIndex === 1) {
-        spawnRhythmDoors();
-      }
-      // Stage 2: Mark switch locations for beat activation
-      if (stageIndex === 2) {
-        markRhythmSwitches();
-      }
-      // Stage 3: Mark beat markers for final streak
-      if (stageIndex === 3) {
-        markRhythmBeatMarkers();
-      }
-    }
+  function updatePuzzleMode() {
+    if (!playerSprite || !state.dungeonStageData) return;
+    if (state.dungeonStageData.stageComplete) return;
 
-    function spawnRhythmDoors() {
-      // Find all rhythm door tiles (gate tiles in rhythm stages)
-      const doorTiles = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
-    
-      if (!state.dungeonStageData) return;
-
-      // Beat timing (placeholder)
-      const now = game.runtime();
-      if (now >= state.dungeonStageData.nextBeatTime) {
-        state.dungeonStageData.nextBeatTime +=
-          state.dungeonStageData.beatIntervalMs;
-        // Visual cue for beat window
-      }
-    }
-
-    function updatePuzzleMode() {
-      if (!playerSprite || !state.dungeonStageData) return;
-      if (state.dungeonStageData.stageComplete) return;
-
-      // Update Ghost-Bot patrol AI (if present)
-      updateGhostBotPatrol();
+    // Update Ghost-Bot patrol AI (if present)
+    updateGhostBotPatrol();
 
     // Check stage-specific win conditions
     if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
@@ -984,85 +952,84 @@ namespace GameController {
     }
   }
 
-    function updateGhostBotPatrol() {
-      // Update all Ghost-Bots in puzzle mode
-      const ghostBots = sprites.allOfKind(KIND_ENEMY);
-      for (const ghostBot of ghostBots) {
-        if (!ghostBot || ghostBot.flags & sprites.Flag.Destroyed) continue;
+  function updateMetaMode() {
+    // Placeholder: meta mode logic
+  }
+
+  function updateGhostBotPatrol() {
+    // Update all Ghost-Bots in puzzle mode
+    const ghostBots = sprites.allOfKind(KIND_ENEMY);
+    for (const ghostBot of ghostBots) {
+      if (!ghostBot || ghostBot.flags & sprites.Flag.Destroyed) continue;
       
-        // Bounce on screen edges
-        if (ghostBot.x < 10 || ghostBot.x > scene.screenWidth() - 10) {
-          ghostBot.vx = -ghostBot.vx;
-        }
+      // Bounce on screen edges
+      if (ghostBot.x < 10 || ghostBot.x > scene.screenWidth() - 10) {
+        ghostBot.vx = -ghostBot.vx;
       }
     }
+  }
 
-    function checkDungeon01StageComplete() {
-      const stageIdx = state.currentStageIndex;
-      const data = state.dungeonStageData;
+  function checkDungeon01StageComplete() {
+    const stageIdx = state.currentStageIndex;
+    const data = state.dungeonStageData;
     
-      if (stageIdx === 0) {
-        // Stage 0: WARMUP - reach goal after activating switch
-        if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
-          markStageComplete();
-        }
-      } else if (stageIdx === 1) {
-    // DECISION: Guard against invalid or zero beatIntervalMs to avoid divide-by-zero and
-    // undefined scheduling; if invalid, skip beat handling for this frame.
-    if (data.beatIntervalMs > 0 && now >= data.nextBeatTime) {
-      // Catch up nextBeatTime in case multiple beats were missed due to a slow frame or pause.
-      const beatsBehind = now - data.nextBeatTime;
-      const beatsToAdvance = Math.floor(beatsBehind / data.beatIntervalMs) + 1;
-      data.nextBeatTime += beatsToAdvance * data.beatIntervalMs;
-          markStageComplete();
-        }
-      } else if (stageIdx === 2) {
-        // Stage 2: TOKEN_RUN - collect all tokens, then reach goal
-        if (data.tokensCollected >= data.tokensRequired && checkPlayerOnGoal()) {
-          markStageComplete();
-        }
-      } else if (stageIdx === 3) {
-        // Stage 3: EXIT_ROOM - activate final switch, then reach goal
-        if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
-          markStageComplete();
-        }
+    if (stageIdx === 0) {
+      // Stage 0: WARMUP - reach goal after activating switch
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 1) {
+      // Stage 1: DARK_MAZE - reach goal (no tokens here)
+      if (checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 2) {
+      // Stage 2: TOKEN_RUN - collect all tokens, then reach goal
+      if (data.tokensCollected >= data.tokensRequired && checkPlayerOnGoal()) {
+        markStageComplete();
+      }
+    } else if (stageIdx === 3) {
+      // Stage 3: EXIT_ROOM - activate final switch, then reach goal
+      if (data.switchesActivated > 0 && checkPlayerOnGoal()) {
+        markStageComplete();
       }
     }
+  }
 
-    function checkPlayerOnGoal(): boolean {
-      if (!playerSprite || !game.currentScene().tileMap) return false;
+  function checkPlayerOnGoal(): boolean {
+    if (!playerSprite || !game.currentScene().tileMap) return false;
     
-      const loc = playerSprite.tilemapLocation();
-      if (!loc) return false;
+    const loc = playerSprite.tilemapLocation();
+    if (!loc) return false;
     
-      const goalTile = tiles.getTileImage(TILE_GOAL_FLAG as any);
-      return goalTile && tiles.tileAtLocationEquals(loc, goalTile);
-    }
+    const goalTile = tiles.getTileImage(TILE_GOAL_FLAG as any);
+    return goalTile && tiles.tileAtLocationEquals(loc, goalTile);
+  }
 
-    function markStageComplete() {
-      if (!state.dungeonStageData) return;
-      state.dungeonStageData.stageComplete = true;
-      showHint("[STAGE_COMPLETE]", 2000);
-      pause(500);
-      onStageComplete();
-    }
+  function markStageComplete() {
+    if (!state.dungeonStageData) return;
+    state.dungeonStageData.stageComplete = true;
+    showHint("[STAGE_COMPLETE]", 2000);
+    pause(500);
+    onStageComplete();
+  }
 
-    function spawnPuzzleStageContent(dungeonId: string, stageIndex: number) {
-      if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
-        spawnDungeon01Content(stageIndex);
-      }
+  function spawnPuzzleStageContent(dungeonId: string, stageIndex: number) {
+    if (dungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
+      spawnDungeon01Content(stageIndex);
     }
+  }
 
-    function spawnDungeon01Content(stageIndex: number) {
-      if (stageIndex === 2) {
-        // Stage 2: Spawn tokens
-        spawnTokens(state.dungeonStageData.tokensRequired);
-        // Spawn Ghost-Bot patrol
-        spawnGhostBot();
-      }
+  function spawnDungeon01Content(stageIndex: number) {
+    if (stageIndex === 2) {
+      // Stage 2: Spawn tokens
+      spawnTokens(state.dungeonStageData.tokensRequired);
+      // Spawn Ghost-Bot patrol
+      spawnGhostBot();
     }
+  }
 
-    function spawnTokens(count: number) {
+  function spawnTokens(count: number) {
       // Find all collectible spawn tiles or scatter them
       const tokenTiles = tiles.getTilesByType(tiles.getTileImage(11 as any)); // Custom token tile
     
@@ -1077,232 +1044,185 @@ namespace GameController {
       for (let i = 0; i < count; i++) {
         const token = sprites.create(imgCollectible("TOKEN"), KIND_COLLECTIBLE);
         token.setPosition(
-          20 + Math.randomRange(0, scene.screenWidth() - 40),
-          20 + Math.randomRange(0, scene.screenHeight() - 40)
+          20 + randint(0, scene.screenWidth() - 40),
+          20 + randint(0, scene.screenHeight() - 40)
         );
       }
     }
   }
 
-    function spawnGhostBot() {
-      const ghostBot = sprites.create(imgEnemy("GHOST_BOT"), KIND_ENEMY);
-      ghostBot.setPosition(80, 30);
+  function spawnGhostBot() {
+    const ghostBot = sprites.create(imgEnemy("GHOST_BOT"), KIND_ENEMY);
+    ghostBot.setPosition(80, 30);
     
-      // Simple patrol: oscillate horizontally
-      const patrolSpeed = 20;
-      ghostBot.vx = patrolSpeed;
+    // Simple patrol: oscillate horizontally
+    const patrolSpeed = 20;
+    ghostBot.vx = patrolSpeed;
     
-      // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
-    }
+    // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
+  }
 
-    /** Spawn stage-specific platform content using data-driven spec params (no hardcoded dungeon IDs). */
-    function spawnPlatformStageContent(dungeonId: string, stageIndex: number) {
-      const spec = getDungeonSpec(dungeonId);
-      if (!spec || !spec.params?.stageSpawners) return;
+  /** Spawn stage-specific platform content using data-driven spec params (no hardcoded dungeon IDs). */
+  function spawnPlatformStageContent(dungeonId: string, stageIndex: number) {
+    const spec = getDungeonSpec(dungeonId);
+    if (!spec || !spec.params || !spec.params.stageSpawners) return;
 
-      const spawners = spec.params.stageSpawners[stageIndex] || [];
-      for (const spawner of spawners) {
-        if ("xEnd" in spawner) {
-          // Moving platform (has xEnd property)
-          spawnMovingPlatform(spawner.xStart, spawner.xEnd, spawner.y, spawner.speed);
-        } else if ("rate" in spawner) {
-          // Barrel spawner (has rate property) - configure barrel spawn interval
-          // TODO: wire barrel spawn loop to use this rate per stage
-        }
+    const spawners = spec.params.stageSpawners[stageIndex] || [];
+    for (let i = 0; i < spawners.length; i = i + 1) {
+      const spawner = spawners[i];
+      if (spawner.xEnd !== undefined) {
+        // Moving platform (has xEnd property)
+        spawnMovingPlatform(spawner.xStart, spawner.xEnd, spawner.y, spawner.speed);
+      } else if (spawner.rate !== undefined) {
+        // Barrel spawner (has rate property) - configure barrel spawn interval
+        // TODO: wire barrel spawn loop to use this rate per stage
       }
     }
+  }
 
-    /** Legacy: kept for backward compatibility if called elsewhere. */
-    function spawnDungeon07Content(stageIndex: number) {
-      // DECISION: Legacy function kept for backward compatibility.
-      // New code uses spawnPlatformStageContent() with spec params instead.
-    }
-
-
-    function spawnMovingPlatform(xStart: number, xEnd: number, y: number, speed: number) {
-      const platform = sprites.create(image.create(32, 8), KIND_PLATFORM_MOVING);
-      platform.setPosition(xStart, y);
-      platform.setFlag(SpriteFlag.Ghost, false); // Solid platform
+  function spawnMovingPlatform(xStart: number, xEnd: number, y: number, speed: number) {
+    const platform = sprites.create(image.create(32, 8), KIND_PLATFORM_MOVING);
+    platform.setPosition(xStart, y);
+    platform.setFlag(SpriteFlag.Ghost, false); // Solid platform
     
-      // Simple oscillation
-      const range = xEnd - xStart;
-      let direction = 1;
+    // Simple oscillation
+    const range = xEnd - xStart;
+    let direction = 1;
     
-      game.onUpdate(() => {
-        if (state.playMode !== PlayMode.DUN_PLATFORM) return;
-        if (platform.flags & sprites.Flag.Destroyed) return;
+    game.onUpdate(() => {
+      if (state.playMode !== PlayMode.DUN_PLATFORM) return;
+      if (platform.flags & sprites.Flag.Destroyed) return;
       
-        platform.x += direction * speed / 60; // 60 fps
+      platform.x += direction * speed / 60; // 60 fps
       
-        if (platform.x >= xEnd) {
-          direction = -1;
-        } else if (platform.x <= xStart) {
-          direction = 1;
-        }
-      });
-    }
+      if (platform.x >= xEnd) {
+        direction = -1;
+      } else if (platform.x <= xStart) {
+        direction = 1;
+      }
+    });
+  }
 
-    function checkPlatformSwitchInteraction() {
-      if (!playerSprite || !state.dungeonStageData) return;
-      if (game.runtime() < state.lastInteractTime + INTERACT_DEBOUNCE_MS) return;
+  function checkPlatformSwitchInteraction() {
+    if (!playerSprite || !state.dungeonStageData) return;
+    if (game.runtime() < state.lastInteractTime + INTERACT_DEBOUNCE_MS) return;
     
-      const loc = playerSprite.tilemapLocation();
-      if (!loc) return;
+    const loc = playerSprite.tilemapLocation();
+    if (!loc) return;
     
-      const switchTile = tiles.getTileImage(TILE_SWITCH as any);
-      if (switchTile && tiles.tileAtLocationEquals(loc, switchTile)) {
-        if (controller.A.isPressed()) {
-          state.lastInteractTime = game.runtime();
-          togglePlatformGates();
-        }
+    const switchTile = tiles.getTileImage(TILE_SWITCH as any);
+    if (switchTile && tiles.tileAtLocationEquals(loc, switchTile)) {
+      if (controller.A.isPressed()) {
+        state.lastInteractTime = game.runtime();
+        togglePlatformGates();
       }
     }
+  }
 
-    function togglePlatformGates() {
-      if (!state.dungeonStageData) return;
+  function togglePlatformGates() {
+    if (!state.dungeonStageData) return;
     
-      state.dungeonStageData.switchesActivated += 1;
-      state.dungeonStageData.gatesOpen = !state.dungeonStageData.gatesOpen;
+    state.dungeonStageData.switchesActivated += 1;
+    state.dungeonStageData.gatesOpen = !state.dungeonStageData.gatesOpen;
     
-      // Get gate locations (store on first use)
-      const stageData = state.dungeonStageData as any;
-      if (!stageData.gateLocations) {
-        stageData.gateLocations = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
-      }
-    
-      const gateLocations = (stageData.gateLocations as tiles.Location[]) || [];
-    
-      for (const gateLoc of gateLocations) {
-        if (stageData.gatesOpen) {
-          // Open gate: replace with floor tile
-          tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any));
-        } else {
-          // Close gate: replace with gate tile
-          tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
-        }
-        tiles.setWallAt(gateLoc, !stageData.gatesOpen);
-      }
-    
-      showHint(stageData.gatesOpen ? "[GATES_OPEN]" : "[GATES_CLOSED]", 1000);
-      sfxInteract();
+    // Get gate locations (store on first use)
+    const stageData = state.dungeonStageData as any;
+    if (!stageData.gateLocations) {
+      stageData.gateLocations = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
     }
-
-
-
-
-    function updateBarrelSpawning() {
-      if (!state.dungeonStageData) return;
-
-      const data = state.dungeonStageData;
-      const now = game.runtime();
-      const spawnInterval = 3000; // Spawn every 3 seconds
-
-      // Only spawn barrels in stages 1-3
-      const stageIdx = state.currentStageIndex;
-      if (stageIdx < 1) return;
-
-      // Check spawn cap
-      const currentBarrels = sprites.allOfKind(KIND_HAZARD).length;
-      if (currentBarrels >= data.barrelSpawnCap) return;
-
-      // Check spawn timer
-      if (now - data.lastBarrelSpawn < spawnInterval) return;
-
-      // Spawn barrel
-      spawnBarrel();
-      data.lastBarrelSpawn = now;
-    }
-
-    function spawnBarrel() {
-      const barrel = sprites.create(imgEnemy("BARREL"), KIND_HAZARD);
-      barrel.setPosition(20, 20); // Spawn at top
-      barrel.vx = 30; // Roll to the right
-      barrel.ay = 300; // Gravity
-      barrel.lifespan = 10000; // Auto-destroy after 10 seconds
-
-      // Bounce on screen edges
-      barrel.setFlag(SpriteFlag.BounceOnWall, true);
-    }
-
-    function handleBarrelCollision(player: Sprite, barrel: Sprite) {
-      if (game.runtime() < state.invincibleUntil) return;
-
-      // Knockback + i-frames
-      damagePlayer(0); // Sets i-frames but no damage (kinderfreundlich)
     
-      // Knockback
-      const dx = player.x - barrel.x;
-      const dy = player.y - barrel.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist > 0) {
-        player.vx = (dx / dist) * 80;
-        player.vy = (dy / dist) * -100; // Pop upward
-      }
+    const gateLocations = (stageData.gateLocations as tiles.Location[]) || [];
     
-      showHint("[BARREL_BUMPED]", 500);
-      sfxHit();
-    }
-
-    function onStageComplete() {
-      if (!state.currentDungeonId) return;
-
-      const spec = DUNGEON_SPECS.find((d) => d.id === state.currentDungeonId);
-      if (!spec) return;
-
-      const nextStageIndex = state.currentStageIndex + 1;
-
-      if (nextStageIndex >= spec.stages.length) {
-        // Dungeon complete
-        completeDungeon();
+    for (const gateLoc of gateLocations) {
+      if (stageData.gatesOpen) {
+        // Open gate: replace with floor tile
+        tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any));
       } else {
-        // Next stage
-        switchPlayMode(state.playMode, {
-          dungeonId: state.currentDungeonId,
-          stageIndex: nextStageIndex,
-        });
+        // Close gate: replace with gate tile
+        tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
       }
+      tiles.setWallAt(gateLoc, !stageData.gatesOpen);
+    }
+    
+    showHint(stageData.gatesOpen ? "[GATES_OPEN]" : "[GATES_CLOSED]", 1000);
+    sfxInteract();
+  }
+
+  function updateBarrelSpawning() {
+    if (!state.dungeonStageData) return;
+
+    const data = state.dungeonStageData;
+    const now = game.runtime();
+    const spawnInterval = 3000; // Spawn every 3 seconds
+
+    // Only spawn barrels in stages 1-3
+    const stageIdx = state.currentStageIndex;
+    if (stageIdx < 1) return;
+
+    // Check spawn cap
+    const currentBarrels = sprites.allOfKind(KIND_HAZARD).length;
+    if (currentBarrels >= data.barrelSpawnCap) return;
+
+    // Check spawn timer
+    if (now - data.lastBarrelSpawn < spawnInterval) return;
+
+    // Spawn barrel
+    spawnBarrel();
+    data.lastBarrelSpawn = now;
+  }
+
+  function spawnBarrel() {
+    const barrel = sprites.create(imgEnemy("BARREL"), KIND_HAZARD);
+    barrel.setPosition(20, 20); // Spawn at top
+    barrel.vx = 30; // Roll to the right
+    barrel.ay = 300; // Gravity
+    barrel.lifespan = 10000; // Auto-destroy after 10 seconds
+
+    // Bounce on screen edges
+    barrel.setFlag(SpriteFlag.BounceOnWall, true);
+  }
+
+  function handleBarrelCollision(player: Sprite, barrel: Sprite) {
+    if (game.runtime() < state.invincibleUntil) return;
+
+    // Knockback + i-frames
+    damagePlayer(0); // Sets i-frames but no damage (kinderfreundlich)
+    
+    // Knockback
+    const dx = player.x - barrel.x;
+    const dy = player.y - barrel.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist > 0) {
+      player.vx = (dx / dist) * 80;
+      player.vy = (dy / dist) * -100; // Pop upward
+    }
+    
+    showHint("[BARREL_BUMPED]", 500);
+    sfxHit();
+  }
+
+  function onStageComplete() {
+    if (!state.currentDungeonId) return;
+
+    const spec = DUNGEON_SPECS.find((d) => d.id === state.currentDungeonId);
+    if (!spec) return;
+
+    const nextStageIndex = state.currentStageIndex + 1;
+
+    if (nextStageIndex >= spec.stages.length) {
+      // Dungeon complete
+      completeDungeon();
+    } else {
+      // Next stage
+      switchPlayMode(state.playMode, {
+        dungeonId: state.currentDungeonId,
+        stageIndex: nextStageIndex,
+      });
     }
   }
 
   export function getPlayerSprite(): Sprite {
     return playerSprite;
-  }
-
-
-  function spawnPlatformStageContent(dungeonId: any, stageIndex: any) {
-    throw new Error("Function not implemented.");
-  }
-
-  function spawnPuzzleStageContent(dungeonId: any, stageIndex: any) {
-    throw new Error("Function not implemented.");
-  }
-
-  function onStageComplete() {
-    throw new Error("Function not implemented.");
-  }
-
-  function updatePuzzleMode() {
-    throw new Error("Function not implemented.");
-  }
-
-  function updateMetaMode() {
-    throw new Error("Function not implemented.");
-  }
-
-  function checkPlatformSwitchInteraction() {
-    throw new Error("Function not implemented.");
-  }
-
-  function updateBarrelSpawning() {
-    throw new Error("Function not implemented.");
-  }
-
-  function markRhythmSwitches() {
-    throw new Error("Function not implemented.");
-  }
-
-  function markRhythmBeatMarkers() {
-    throw new Error("Function not implemented.");
   }
 }
 // MANUAL TEST PASSED: GameController scaffold complete

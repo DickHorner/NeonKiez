@@ -121,7 +121,9 @@ function validateDungeonRegistry(): string[] {
 
   // Check 7: All flags must be unique (no duplicates)
   const flagCounts = findDuplicates(allFlags);
-  for (const flag in flagCounts) {
+  const flagKeys = Object.keys(flagCounts);
+  for (let i = 0; i < flagKeys.length; i = i + 1) {
+    const flag = flagKeys[i];
     if (flagCounts[flag] > 1) {
       errors.push(
         `FAIL: Flag "${flag}" is used ${flagCounts[flag]} times (must be unique)`
@@ -131,7 +133,9 @@ function validateDungeonRegistry(): string[] {
 
   // Check 8: All stage IDs must be unique (no duplicates)
   const stageIdCounts = findDuplicates(allStageIds);
-  for (const stageId in stageIdCounts) {
+  const stageKeys = Object.keys(stageIdCounts);
+  for (let i = 0; i < stageKeys.length; i = i + 1) {
+    const stageId = stageKeys[i];
     if (stageIdCounts[stageId] > 1) {
       errors.push(
         `FAIL: Stage ID "${stageId}" is used ${stageIdCounts[stageId]} times (must be unique)`

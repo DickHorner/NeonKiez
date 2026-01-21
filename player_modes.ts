@@ -253,7 +253,9 @@ function openRhythmDoors() {
   stageData.rhythmDoorsOpen = true;
   
   // Open all rhythm doors
-  for (const doorLoc of stageData.rhythmDoorLocations) {
+  const doorLocs = stageData.rhythmDoorLocations;
+  for (let i = 0; i < doorLocs.length; i = i + 1) {
+    const doorLoc = doorLocs[i];
     tiles.setTileAt(doorLoc, tiles.getTileImage(0 as any)); // Floor tile
     tiles.setWallAt(doorLoc, false);
   }
@@ -273,7 +275,9 @@ function closeRhythmDoors() {
   stageData.rhythmDoorsOpen = false;
   
   // Close all rhythm doors
-  for (const doorLoc of stageData.rhythmDoorLocations) {
+  const doorLocs = stageData.rhythmDoorLocations;
+  for (let i = 0; i < doorLocs.length; i = i + 1) {
+    const doorLoc = doorLocs[i];
     tiles.setTileAt(doorLoc, tiles.getTileImage(TILE_GATE as any));
     tiles.setWallAt(doorLoc, true);
   }
@@ -386,8 +390,8 @@ function toggleSwitch(loc: tiles.Location) {
   // DECISION: Switch behavior is now data-driven via spec.params.switchToggleBehavior:
   // - "toggle": immediate toggle of gates (Dungeon 1)
   // - "latch": gates open only after switchRequiredForStage threshold (Dungeon 3)
-  const behavior = spec.params?.switchToggleBehavior || "toggle";
-  const requiredForStage = spec.params?.switchRequiredForStage?.[state.currentStageIndex] || 0;
+  const behavior = (spec.params && spec.params.switchToggleBehavior) || "toggle";
+  const requiredForStage = (spec.params && spec.params.switchRequiredForStage && spec.params.switchRequiredForStage[state.currentStageIndex]) || 0;
 
   if (behavior === "toggle") {
     // Immediate toggle on every switch (Dungeon 1)
