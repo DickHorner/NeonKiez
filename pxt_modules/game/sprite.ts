@@ -105,128 +105,186 @@ class Sprite extends sprites.BaseSprite {
     _sy: Fx8 // scale
     _width: Fx8 // scaled width
     _height: Fx8 // scaled height
+    _rotatedBBox: sprites.RotatedBoundingBox;
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="x" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/x#get
     get x(): number {
         return Fx.toFloat(Fx.add(this._x, Fx.div(this._width, Fx.twoFx8)));
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="x"
+    //% blockCombineSetHelp=sprites/sprite/x#set
     set x(v: number) {
         this.left = v - (this.width / 2)
     }
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="y" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/y#get
     get y(): number {
         return Fx.toFloat(Fx.add(this._y, Fx.div(this._height, Fx.twoFx8)));
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="y"
+    //% blockCombineSetHelp=sprites/sprite/y#set
     set y(v: number) {
         this.top = v - (this.height / 2)
     }
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="vx (velocity x)" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/vx#get
     get vx(): number {
         return Fx.toFloat(this._vx)
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="vx (velocity x)"
+    //% blockCombineSetHelp=sprites/sprite/vx#set
     set vx(v: number) {
         this._vx = Fx8(v)
     }
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="vy (velocity y)" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/vy#get
     get vy(): number {
         return Fx.toFloat(this._vy)
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="vy (velocity y)"
+    //% blockCombineSetHelp=sprites/sprite/vy#set
     set vy(v: number) {
         this._vy = Fx8(v)
     }
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="ax (acceleration x)" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/ax#get
     get ax(): number {
         return Fx.toFloat(this._ax)
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="ax (acceleration x)"
+    //% blockCombineSetHelp=sprites/sprite/ax#set
     set ax(v: number) {
         this._ax = Fx8(v)
     }
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="ay (acceleration y)" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/ay#get
     get ay(): number {
         return Fx.toFloat(this._ay)
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="ay (acceleration y)"
+    //% blockCombineSetHelp=sprites/sprite/ay#set
     set ay(v: number) {
         this._ay = Fx8(v)
     }
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="fx (friction x)" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/fx#get
     get fx(): number {
         return Fx.toFloat(this._fx)
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="fx (friction x)"
+    //% blockCombineSetHelp=sprites/sprite/fx#set
     set fx(v: number) {
         this._fx = Fx8(Math.max(0, v))
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="fy (friction y)" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/fy#get
     get fy(): number {
         return Fx.toFloat(this._fy)
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="fy (friction y)"
+    //% blockCombineSetHelp=sprites/sprite/fy#set
     set fy(v: number) {
         this._fy = Fx8(Math.max(0, v))
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="sx (scale x)" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/sx#get
     get sx(): number {
         return Fx.toFloat(this._sx);
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="sx (scale x)"
+    //% blockCombineSetHelp=sprites/sprite/sx#set
     set sx(v: number) {
+        const y = this.y;
         const x = this.x;
         this._sx = Fx8(Math.max(0, v));
         this.recalcSize();
-        this.left = x - this.width / 2;
+        this.y = y;
+        this.x = x;
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="sy (scale y)" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/sy#get
     get sy(): number {
         return Fx.toFloat(this._sy);
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="sy (scale y)"
+    //% blockCombineSetHelp=sprites/sprite/sy#set
     set sy(v: number) {
         const y = this.y;
+        const x = this.x;
         this._sy = Fx8(Math.max(0, v));
         this.recalcSize();
-        this.top = y - this.height / 2;
+        this.y = y;
+        this.x = x;
     }
+
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="scale" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/scale#get
     get scale(): number {
         return Math.max(this.sx, this.sy);
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="scale"
+    //% blockCombineGetHelp=sprites/sprite/scale#set
     set scale(v: number) {
         this.sx = this.sy = v;
+    }
+
+    //% group="Physics" blockSetVariable="mySprite"
+    //% blockCombine block="rotation (radians)" callInDebugger
+    get rotation(): number {
+        return this._rotatedBBox ? this._rotatedBBox.rotation : 0;
+    }
+    //% group="Physics" blockSetVariable="mySprite"
+    //% blockCombine block="rotation (radians)"
+    set rotation(v: number) {
+        const x = this.x;
+        const y = this.y;
+        if (!this._rotatedBBox) {
+            this._rotatedBBox = new sprites.RotatedBoundingBox(this, this.width, this.height);
+        }
+        this._rotatedBBox.setRotation(v);
+        this.recalcSize();
+        this.x = x;
+        this.y = y;
+    }
+
+    //% group="Physics" blockSetVariable="mySprite"
+    //% blockCombine block="rotation (degrees)" callInDebugger
+    get rotationDegrees(): number {
+        return this.rotation * 180 / Math.PI;
+    }
+    //% group="Physics" blockSetVariable="mySprite"
+    //% blockCombine block="rotation (degrees)"
+    set rotationDegrees(v: number) {
+        this.rotation = v * Math.PI / 180;
     }
 
     private _data: any;
@@ -261,6 +319,7 @@ class Sprite extends sprites.BaseSprite {
      */
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="lifespan"
+    //% help=sprites/sprite/lifespan
     lifespan: number;
     private _image: Image;
     private _obstacles: sprites.Obstacle[];
@@ -279,6 +338,10 @@ class Sprite extends sprites.BaseSprite {
 
     constructor(img: Image) {
         super(scene.SPRITE_Z);
+
+        if (!img) {
+            throw "Sprite image cannot be undefined or null";
+        }
 
         this._x = Fx8(screen.width - img.width >> 1);
         this._y = Fx8(screen.height - img.height >> 1);
@@ -321,6 +384,7 @@ class Sprite extends sprites.BaseSprite {
     //% group="Image"
     //% blockId=spriteimage block="%sprite(mySprite) image"
     //% weight=8 help=sprites/sprite/image
+    //% blockCombineGetHelp=sprites/sprite/image
     get image(): Image {
         return this._image;
     }
@@ -338,7 +402,7 @@ class Sprite extends sprites.BaseSprite {
     }
 
     calcDimensionalHash() {
-        return this._image.revision() + Fx.toIntShifted(this._width, 8) + Fx.toIntShifted(this._height, 16);
+        return this._image.revision() + Fx.toIntShifted(this._width, 8) + Fx.toIntShifted(this._height, 16) + this.rotation;
     }
 
     resetHitbox() {
@@ -363,8 +427,15 @@ class Sprite extends sprites.BaseSprite {
     }
 
     protected recalcSize(): void {
-        this._width = Fx8(this._image.width * this.sx);
-        this._height = Fx8(this._image.height * this.sy);
+        if (this._rotatedBBox) {
+            this._rotatedBBox.setDimensions(this._image.width * this.sx, this._image.height * this.sy);
+            this._width = Fx8(this._rotatedBBox.width);
+            this._height = Fx8(this._rotatedBBox.height);
+        }
+        else {
+            this._width = Fx8(this._image.width * this.sx);
+            this._height = Fx8(this._image.height * this.sy);
+        }
         this.resetHitbox();
     }
 
@@ -374,22 +445,26 @@ class Sprite extends sprites.BaseSprite {
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="width" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/width
     get width() {
         return Fx.toFloat(this._width);
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="height" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/height
     get height() {
         return Fx.toFloat(this._height);
     }
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="left" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/left#get
     get left() {
         return Fx.toFloat(this._x)
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="left"
+    //% blockCombineSetHelp=sprites/sprite/left#set
     set left(value: number) {
         const physics = game.currentScene().physicsEngine;
         physics.moveSprite(
@@ -404,22 +479,26 @@ class Sprite extends sprites.BaseSprite {
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="right" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/righty#get
     get right() {
         return this.left + this.width
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="right"
+    //% blockCombineSetHelp=sprites/sprite/right#set
     set right(value: number) {
         this.left = value - this.width
     }
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="top" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/top#get
     get top() {
         return Fx.toFloat(this._y);
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="top"
+    //% blockCombineSetHelp=sprites/sprite/top#set
     set top(value: number) {
         const physics = game.currentScene().physicsEngine;
         physics.moveSprite(
@@ -434,11 +513,13 @@ class Sprite extends sprites.BaseSprite {
 
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="bottom" callInDebugger
+    //% blockCombineGetHelp=sprites/sprite/bottom#get
     get bottom() {
         return this.top + this.height;
     }
     //% group="Physics" blockSetVariable="mySprite"
     //% blockCombine block="bottom"
+    //% blockCombineSetHelp=sprites/sprite/bottom#set
     set bottom(value: number) {
         this.top = value - this.height;
     }
@@ -686,9 +767,10 @@ class Sprite extends sprites.BaseSprite {
      */
     //% group="Overlaps"
     //% blockId=spriteoverlapswith block="%sprite(mySprite) overlaps with %other=variables_get(otherSprite)"
+    //% other.defl=otherSprite
     //% help=sprites/sprite/overlaps-with
     //% weight=90
-    overlapsWith(other: Sprite) {
+    overlapsWith(other: Sprite): boolean {
         control.enablePerfCounter("overlapsCPP")
         if (other == this) return false;
         if (this.flags & SPRITE_NO_SPRITE_OVERLAPS)
@@ -699,7 +781,47 @@ class Sprite extends sprites.BaseSprite {
             return other._hitbox.overlapsWith(this._hitbox);
         if (!other._hitbox.overlapsWith(this._hitbox))
             return false;
-        if (!this.isScaled() && !other.isScaled()) {
+        else if (this._rotatedBBox) {
+            if (other._rotatedBBox) {
+                if (this._rotatedBBox.overlaps(other._rotatedBBox)) {
+                    return helpers.checkOverlapsTwoScaledRotatedImages(
+                        other.image,
+                        this.left - other.left,
+                        this.top - other.top,
+                        other.sx,
+                        other.sy,
+                        other.rotation,
+                        this.image,
+                        this.sx,
+                        this.sy,
+                        this.rotation
+                    );
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                if (this._rotatedBBox.overlapsAABB(other.left, other.top, other.right, other.bottom)) {
+                    return helpers.checkOverlapsScaledRotatedImage(
+                        other.image,
+                        this.left - other.left,
+                        this.top - other.top,
+                        this.image,
+                        this.sx,
+                        this.sy,
+                        this.rotation
+                    );
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        else if (other._rotatedBBox) {
+            return other.overlapsWith(this);
+        }
+        else if (!this.isScaled() && !other.isScaled()) {
             return other._image.overlapsWith(
                 this._image,
                 this.left - other.left,
@@ -894,6 +1016,7 @@ class Sprite extends sprites.BaseSprite {
     //% group="Physics" weight=10
     //% blockId=spriteFollowOtherSprite
     //% block="set %sprite(myEnemy) follow %target=variables_get(mySprite) || with speed %speed"
+    //% target.defl=mySprite
     //% help=sprites/sprite/follow
     follow(target: Sprite, speed = 100, turnRate = 400) {
         if (target === this) return;
@@ -1117,7 +1240,18 @@ class Sprite extends sprites.BaseSprite {
     }
 
     protected drawSprite(drawLeft: number, drawTop: number) {
-        if (!this.isScaled())
+        if (this._rotatedBBox) {
+            helpers.imageDrawScaledRotated(
+                screen,
+                drawLeft,
+                drawTop,
+                this._image,
+                this.sx,
+                this.sy,
+                this.rotation
+            );
+        }
+        else if (!this.isScaled())
             screen.drawTransparentImage(this._image, drawLeft, drawTop);
         else
             screen.blit(

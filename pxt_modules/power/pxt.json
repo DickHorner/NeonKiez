@@ -10,7 +10,7 @@
     "testFiles": [],
     "public": true,
     "targetVersions": {
-        "target": "2.0.63",
-        "pxt": "11.3.68"
+        "target": "2.1.28",
+        "pxt": "12.2.18"
     }
 }

@@ -38,8 +38,6 @@
         "timer.ts",
         "light.cpp",
         "light.h",
-        "keyvaluestorage.cpp",
-        "keyvaluestorage.ts",
         "leveldetector.ts",
         "pxtparts.json"
     ],
@@ -48,8 +46,8 @@
     ],
     "public": true,
     "targetVersions": {
-        "target": "2.0.63",
-        "pxt": "11.3.68"
+        "target": "2.1.28",
+        "pxt": "12.2.18"
     },
     "yotta": {
         "config": {
