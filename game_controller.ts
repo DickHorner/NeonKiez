@@ -1225,11 +1225,16 @@ namespace GameController {
       state.dungeonStageData.ballActive = false;
     }
 
-    // Spawn paddle at bottom center
-    const paddle = sprites.create(imgPaddle(), KIND_PADDLE);
-    paddle.setPosition(80, 110);
-    paddle.setStayInScreen(true);
-    controller.moveSprite(paddle, PADDLE_SPEED, 0);
+    // Use player sprite as paddle (already created by setupPuzzleMode)
+    // Change its appearance and position
+    if (playerSprite) {
+      playerSprite.setImage(imgPaddle());
+      playerSprite.setKind(KIND_PADDLE);
+      playerSprite.setPosition(80, 110);
+      playerSprite.setStayInScreen(true);
+      // Controller already bound by initPuzzlePlayer, but we need horizontal only
+      controller.moveSprite(playerSprite, PADDLE_SPEED, 0);
+    }
 
     // Spawn targets based on stage
     spawnTargets(stageIndex);
@@ -1262,33 +1267,6 @@ namespace GameController {
         }
       }
     }
-  }
-
-  function serveBall() {
-    if (!state.dungeonStageData) return;
-    
-    // Only allow serving if no ball is active
-    if (state.dungeonStageData.ballActive) return;
-
-    // Cap check
-    if (sprites.allOfKind(KIND_BALL).length >= CAP_MAX_BALLS) return;
-
-    const paddle = sprites.allOfKind(KIND_PADDLE)[0];
-    if (!paddle) return;
-
-    const ballSpeed = state.dungeonStageData.ballSpeed || BALL_SPEED_NORMAL;
-    
-    // Create ball on paddle
-    const ball = sprites.create(imgBall(), KIND_BALL);
-    ball.setPosition(paddle.x, paddle.y - 8);
-    
-    // Launch upward with slight random horizontal spread
-    ball.vx = randint(-20, 20);
-    ball.vy = -ballSpeed;
-    ball.setBounceOnWall(true);
-
-    state.dungeonStageData.ballActive = true;
-    sfxInteract();
   }
 
   function updateDungeon05Balls() {
@@ -1469,4 +1447,34 @@ namespace GameController {
     return playerSprite;
   }
 }
+
+// Global helper functions for puzzle modes (callable from player_modes.ts)
+
+function serveBall() {
+  if (!state.dungeonStageData) return;
+  
+  // Only allow serving if no ball is active
+  if (state.dungeonStageData.ballActive) return;
+
+  // Cap check
+  if (sprites.allOfKind(KIND_BALL).length >= CAP_MAX_BALLS) return;
+
+  const paddle = sprites.allOfKind(KIND_PADDLE)[0];
+  if (!paddle) return;
+
+  const ballSpeed = state.dungeonStageData.ballSpeed || BALL_SPEED_NORMAL;
+  
+  // Create ball on paddle
+  const ball = sprites.create(imgBall(), KIND_BALL);
+  ball.setPosition(paddle.x, paddle.y - 8);
+  
+  // Launch upward with slight random horizontal spread
+  ball.vx = randint(-20, 20);
+  ball.vy = -ballSpeed;
+  ball.setBounceOnWall(true);
+
+  state.dungeonStageData.ballActive = true;
+  sfxInteract();
+}
+
 // MANUAL TEST PASSED: GameController scaffold complete
