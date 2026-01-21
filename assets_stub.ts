@@ -167,7 +167,31 @@ function tmHub20(): tiles.TileMapData {
   );
 }
 function tmHub21(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Hub room (2,1) - Contains Dungeon 7 door (Video Store)
+  return tiles.createTilemap(
+    hex`10000c00010101010101010101010101010101010101010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000400000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010101010101010101010101010101010101`,
+    img`
+. . . . . . . . . . . . . . . . 
+. 2 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . d . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. 2 . . . . . . . . . . . . 2 . 
+. . . . . . . . . . . . . . . . 
+`,
+    [
+      sprites.castle.tileGrass2,
+      sprites.castle.tileDarkGrass1,
+      sprites.castle.tilePath5,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath4,
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmHub22(): tiles.TileMapData {
   return createEmptyTilemap();
@@ -759,11 +783,11 @@ function tmDun06Stage00(): tiles.TileMapData {
 . . . . . . . . . . . . . . . . 
 `,
     [
-      sprites.space.spaceBlueSimpleTile,
-      sprites.space.spaceOrangeSimpleTile,
-      sprites.space.spaceRedSimpleTile,
-      sprites.space.spaceYellowSimpleTile,
-      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceBlueShip,
+      sprites.space.spaceOrangeShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
       sprites.space.spaceAsteroid0,
     ],
     TileScale.Sixteen
@@ -786,11 +810,11 @@ function tmDun06Stage01(): tiles.TileMapData {
 . . . . . . . . . . . . . . . . 
 `,
     [
-      sprites.space.spaceBlueSimpleTile,
-      sprites.space.spaceOrangeSimpleTile,
-      sprites.space.spaceRedSimpleTile,
-      sprites.space.spaceYellowSimpleTile,
-      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceBlueShip,
+      sprites.space.spaceOrangeShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
       sprites.space.spaceAsteroid1,
     ],
     TileScale.Sixteen
@@ -813,11 +837,11 @@ function tmDun06Stage02(): tiles.TileMapData {
 . . . . . . . . . . . . . . . . 
 `,
     [
-      sprites.space.spaceBlueSimpleTile,
-      sprites.space.spaceOrangeSimpleTile,
-      sprites.space.spaceRedSimpleTile,
-      sprites.space.spaceYellowSimpleTile,
-      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceBlueShip,
+      sprites.space.spaceOrangeShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
       sprites.space.spaceAsteroid2,
     ],
     TileScale.Sixteen
@@ -840,11 +864,11 @@ function tmDun06Stage03(): tiles.TileMapData {
 . . . . . . . . . . . . . . . . 
 `,
     [
-      sprites.space.spaceBlueSimpleTile,
-      sprites.space.spaceOrangeSimpleTile,
-      sprites.space.spaceRedSimpleTile,
-      sprites.space.spaceYellowSimpleTile,
-      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceBlueShip,
+      sprites.space.spaceOrangeShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
       sprites.space.spaceAsteroid3,
     ],
     TileScale.Sixteen
@@ -853,16 +877,124 @@ function tmDun06Stage03(): tiles.TileMapData {
 
 // Dungeon 7 stages
 function tmDun07Stage00(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 0: JUMP - Basic jumps, safe platforms
+  // Simple platformer tutorial: jump across gaps to reach goal
+  return tiles.createTilemap(
+    hex`14000a00030303030303030303030303030303030303030300000000000000000000000000000000000000030300000000000000000000000000000000000003030000000000000000000000000700000000000303030303030303030000000000000000000000030300000000000000000303030303030000000003030000000000000000030300000000000000000303030000000000000000030300000007000000030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . 7 . . . . . 2 
+2 2 2 2 2 2 2 2 . . . . . . . . . . . 2 
+2 . . . . . . . . 2 2 2 2 2 2 . . . . 2 
+2 . . . . . . . . 2 . . . . . . . . . 2 
+2 . . . . . . . . 2 . . . 7 . . . . . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.castle.tilePath5,
+      sprites.castle.tileGrass2,
+      sprites.castle.tileDarkGrass3,
+      sprites.castle.tileDarkGrass1,
+      sprites.castle.tilePath4,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath5,
+      sprites.dungeon.chestClosed, // Goal flag placeholder
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun07Stage01(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 1: MOVING_SHELVES - Moving platforms (VHS shelves)
+  // Player must time jumps across moving platforms
+  return tiles.createTilemap(
+    hex`14000a00030303030303030303030303030303030303030300000000000000000000000000000000000000030300000000000000000000000000000000000003030000000000000000000000000700000000000303030000000000000000000000000000000000030300000000000000000000000000000000000303030000000000000000000000000000000003030300000000000000000000000000000000030303030000000000000000000000000700000303030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . 7 . . . . . 2 
+2 2 . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . . . . . 2 
+2 2 . . . . . . . . . . . . . . . . . 2 
+2 2 . . . . . . . . . . . . . . . . . 2 
+2 2 2 . . . . . . . . . . . . 7 . . . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.castle.tilePath5,
+      sprites.castle.tileGrass2,
+      sprites.castle.tileDarkGrass3,
+      sprites.castle.tileDarkGrass1,
+      sprites.castle.tilePath4,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath5,
+      sprites.dungeon.chestClosed, // Goal flag placeholder
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun07Stage02(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 2: SWITCH_GATES - Switches open gates
+  // Player activates switches to open gates blocking path to goal
+  return tiles.createTilemap(
+    hex`14000a00030303030303030303030303030303030303030300000000000000000000000000000000000000030300000000000000000000000000000000000003030000000000000900000a0a0a0a0a0a0a0a0a03030303030303030303030303030000000000000303000000000000000000000000000000000000030300000000000000000000000700000000000303030000000000000000000000000000000000030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . 9 . . . 6 6 6 6 6 6 6 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 . . . . . . 2 
+2 . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . 7 . . . . . 2 
+2 2 . . . . . . . . . . . . . . . . . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.castle.tilePath5,
+      sprites.castle.tileGrass2,
+      sprites.castle.tileDarkGrass3,
+      sprites.castle.tileDarkGrass1,
+      sprites.castle.tilePath4,
+      sprites.builtin.forestTiles0,
+      sprites.dungeon.purpleOuterWest0, // Gate tiles
+      sprites.dungeon.chestClosed, // Goal flag placeholder
+      sprites.builtin.forestTiles0,
+      sprites.dungeon.buttonTeal, // Switch tile
+      sprites.dungeon.stairNorth, // Gate wall
+    ],
+    TileScale.Sixteen
+  );
 }
 function tmDun07Stage03(): tiles.TileMapData {
-  return createEmptyTilemap();
+  // Stage 3: FINAL_RUN - Fast platforming challenge
+  // Longer level combining all previous mechanics for final challenge
+  return tiles.createTilemap(
+    hex`1e000a000303030303030303030303030303030303030303030303030303030303030300000000000000000000000000000000000000000000000000000000000000030300000000000000000000000000000000000000000000000000000000000003030000000000000000000000000000000000000000000000000700000000000303030303000000000000000000030303030000000000000000000000000000030300000000000000000003030300000000000000000000000000000000000303000000000000000303030000000000000000000000000000000000000003030000000000030303000000000000000000000000000000000000000000030303030303030303030303030303030303030303030303030303030303030303`,
+    img`
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . . . . . . . . . . . . . . 7 . . . . . . 2 
+2 2 2 2 . . . . . . . . . 2 2 2 2 . . . . . . . . . . . . 2 
+2 . . . . . . . . . 2 2 2 . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . . 2 2 2 . . . . . . . . . . . . . . . . . 2 
+2 . . . . . . . 2 2 2 . . . . . . . . . . . . . . . . . . 2 
+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+`,
+    [
+      sprites.castle.tilePath5,
+      sprites.castle.tileGrass2,
+      sprites.castle.tileDarkGrass3,
+      sprites.castle.tileDarkGrass1,
+      sprites.castle.tilePath4,
+      sprites.builtin.forestTiles0,
+      sprites.castle.tilePath5,
+      sprites.dungeon.chestClosed, // Goal flag placeholder
+    ],
+    TileScale.Sixteen
+  );
 }
 
 // Dungeon 8 stages

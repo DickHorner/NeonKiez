@@ -114,7 +114,10 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       toolUnlocks: ["TOOL_TAGGER"],
       items: [{ id: "ITEM_CASSETTE_01", qty: 1 }],
     },
-    params: { tokensPerStage: [0, 0, 5, 0] },
+    params: {
+      tokensPerStage: [0, 0, 5, 0],
+      switchToggleBehavior: "toggle", // toggle gates on every switch press
+    },
   },
   {
     id: "DUN_ROOFTOP_INVADERS",
@@ -149,6 +152,10 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       flagsSet: ["FLAG_DUN_03_CLEARED"],
       toolUnlocks: ["TOOL_SOAP_SLIDE"],
       items: [{ id: "ITEM_KEYCARD_A", qty: 1 }],
+    },
+    params: {
+      switchToggleBehavior: "latch", // gates open on switch count threshold, stay open
+      switchRequiredForStage: [0, 2, 0, 0], // stage 1 needs 2 switches
     },
   },
   {
@@ -225,6 +232,17 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       flagsSet: ["FLAG_DUN_07_CLEARED", "FLAG_UPG_LIGHT_DOUBLE_JUMP"],
       items: [{ id: "ITEM_STICKER_SET_01", qty: 1 }],
     },
+    params: {
+      stageSpawners: [
+        [], // Stage 0: static platforms only
+        [
+          { xStart: 60, xEnd: 50, y: 40, speed: 120 },
+          { xStart: 100, xEnd: 140, y: 70, speed: 25 },
+        ], // Stage 1: moving shelves
+        [], // Stage 2: switches + gates only
+        [], // Stage 3: final run
+      ],
+    },
   },
   {
     id: "DUN_CONSTRUCTION_DONKEY_TOWER",
@@ -242,7 +260,15 @@ const DUNGEON_SPECS: DungeonSpec[] = [
       toolUnlocks: ["TOOL_DECOY_TOY"],
       items: [{ id: "ITEM_CASSETTE_04", qty: 1 }],
     },
-    params: { barrelSpawnCap: 4 },
+    params: {
+      barrelSpawnCap: 4,
+      stageSpawners: [
+        [], // Stage 0: ladders, no barrels
+        [{ xStart: 150, rate: 500 }], // Stage 1: barrels start
+        [], // Stage 2: trick ladders, barrels continue (spawned by room)
+        [], // Stage 3: no new barrels
+      ],
+    },
   },
   {
     id: "DUN_FINAL_GLITCH_PANOPTICON",

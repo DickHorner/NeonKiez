@@ -329,34 +329,40 @@ function handlePuzzleInteract() {
   }
 }
 
+/** Data-driven switch activation that dispatches to appropriate behavior based on spec params. */
 function toggleSwitch(loc: tiles.Location) {
-  // Toggle gate state
-  if (state.dungeonStageData) {
-    state.dungeonStageData.switchesActivated += 1;
-    
-    // For Dungeon 1, switches toggle gates
-    if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
-      toggleGatesForDungeon01();
-    }
-    
-    // For Dungeon 3, switches should OPEN gates once the required
-    // number of switches has been activated, but must not re-close
-    // them on subsequent activations.
-    if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
-      const stageData = state.dungeonStageData as any;
-      // DECISION: Stage 1 (BLOCK_ROWS) requires 2 switches.
-      // Only when switchesActivated >= 2 and gates are not yet open
-      // do we call toggleGatesForDungeon03(), so the gates end up open
-      // and stay open for this requirement.
-      if (!stageData.gatesOpen && stageData.switchesActivated >= 2) {
-        toggleGatesForDungeon03();
-      }
+  if (!state.dungeonStageData) return;
+
+  const spec = getDungeonSpec(state.currentDungeonId);
+  if (!spec) return;
+
+  state.dungeonStageData.switchesActivated += 1;
+
+  // DECISION: Switch behavior is now data-driven via spec.params.switchToggleBehavior:
+  // - "toggle": immediate toggle of gates (Dungeon 1)
+  // - "latch": gates open only after switchRequiredForStage threshold (Dungeon 3)
+  const behavior = spec.params?.switchToggleBehavior || "toggle";
+  const requiredForStage = spec.params?.switchRequiredForStage?.[state.currentStageIndex] || 0;
+
+  if (behavior === "toggle") {
+    // Immediate toggle on every switch (Dungeon 1)
+    toggleGatesForDungeon01();
+  } else if (behavior === "latch") {
+    // Only toggle gates once we've hit the required count (Dungeon 3)
+    const stageData = state.dungeonStageData as any;
+    if (!stageData.gatesOpen && state.dungeonStageData.switchesActivated >= requiredForStage) {
+      toggleGatesForDungeon03();
     }
   }
-  showHint("[SWITCH_ACTIVATED]", 1000);
-  sfxInteract();
 }
 
+/** Legacy: Kept for backward compatibility. */
+function toggleGatesForCurrentStage() {
+  // DECISION: Legacy helper kept for compatibility only.
+  toggleGatesForDungeon01();
+}
+
+/** Legacy: Kept for backward compatibility. */
 function toggleGatesForDungeon01() {
   if (!state.dungeonStageData) return;
   
