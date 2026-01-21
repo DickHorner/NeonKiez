@@ -783,11 +783,11 @@ function tmDun06Stage00(): tiles.TileMapData {
 . . . . . . . . . . . . . . . . 
 `,
     [
-      sprites.space.spaceBlueSimpleTile,
-      sprites.space.spaceOrangeSimpleTile,
-      sprites.space.spaceRedSimpleTile,
-      sprites.space.spaceYellowSimpleTile,
-      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceBlueShip,
+      sprites.space.spaceOrangeShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
       sprites.space.spaceAsteroid0,
     ],
     TileScale.Sixteen
@@ -810,11 +810,11 @@ function tmDun06Stage01(): tiles.TileMapData {
 . . . . . . . . . . . . . . . . 
 `,
     [
-      sprites.space.spaceBlueSimpleTile,
-      sprites.space.spaceOrangeSimpleTile,
-      sprites.space.spaceRedSimpleTile,
-      sprites.space.spaceYellowSimpleTile,
-      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceBlueShip,
+      sprites.space.spaceOrangeShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
       sprites.space.spaceAsteroid1,
     ],
     TileScale.Sixteen
@@ -837,11 +837,11 @@ function tmDun06Stage02(): tiles.TileMapData {
 . . . . . . . . . . . . . . . . 
 `,
     [
-      sprites.space.spaceBlueSimpleTile,
-      sprites.space.spaceOrangeSimpleTile,
-      sprites.space.spaceRedSimpleTile,
-      sprites.space.spaceYellowSimpleTile,
-      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceBlueShip,
+      sprites.space.spaceOrangeShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
       sprites.space.spaceAsteroid2,
     ],
     TileScale.Sixteen
@@ -864,11 +864,11 @@ function tmDun06Stage03(): tiles.TileMapData {
 . . . . . . . . . . . . . . . . 
 `,
     [
-      sprites.space.spaceBlueSimpleTile,
-      sprites.space.spaceOrangeSimpleTile,
-      sprites.space.spaceRedSimpleTile,
-      sprites.space.spaceYellowSimpleTile,
-      sprites.space.spacePurpleSimpleTile,
+      sprites.space.spaceBlueShip,
+      sprites.space.spaceOrangeShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
+      sprites.space.spaceRedShip,
       sprites.space.spaceAsteroid3,
     ],
     TileScale.Sixteen
