@@ -364,6 +364,13 @@ function handleGhostBotCollision(player: Sprite, enemy: Sprite) {
 function handlePuzzleInteract() {
   if (!canInteract()) return;
 
+  // Dungeon 5: Serve ball with A button
+  if (state.currentDungeonId === "DUN_SCHOOL_PONG_COURT") {
+    markInteract();
+    serveBall();
+    return;
+  }
+
   const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr) return;
 
