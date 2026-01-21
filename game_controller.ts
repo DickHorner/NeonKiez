@@ -663,17 +663,16 @@ namespace GameController {
 
   function handleTargetHit(projectile: Sprite, target: Sprite) {
     if (!state.dungeonStageData) return;
-    if (!(target as any).isTarget) return;
+
+    // Verify it's actually a target (overlap handlers can fire for different sprite kinds)
+    if (target.kind() !== KIND_TARGET) return;
 
     // Destroy both projectile and target
     projectile.destroy();
     target.destroy();
 
-    // Increment counter
-    if (state.dungeonStageData.targetsDestroyed !== undefined) {
-      state.dungeonStageData.targetsDestroyed = state.dungeonStageData.targetsDestroyed + 1;
-    }
-
+    // Increment counter using shared helper
+    incrementTargetCounter();
     sfxInteract();
   }
 
@@ -698,7 +697,9 @@ namespace GameController {
 
   function handleBallTargetHit(ball: Sprite, target: Sprite) {
     if (!state.dungeonStageData) return;
-    if (!(target as any).isTarget) return;
+
+    // Verify it's actually a target (overlap handlers can fire for different sprite kinds)
+    if (target.kind() !== KIND_TARGET) return;
 
     // Destroy target
     target.destroy();
@@ -706,12 +707,16 @@ namespace GameController {
     // Bounce ball (simple downward bounce)
     ball.vy = Math.abs(ball.vy);
 
-    // Increment counter
+    // Increment counter using shared helper
+    incrementTargetCounter();
+    sfxInteract();
+  }
+
+  function incrementTargetCounter() {
+    if (!state.dungeonStageData) return;
     if (state.dungeonStageData.targetsDestroyed !== undefined) {
       state.dungeonStageData.targetsDestroyed = state.dungeonStageData.targetsDestroyed + 1;
     }
-
-    sfxInteract();
   }
 
   function handleMicroPlatformJump() {
@@ -1252,7 +1257,6 @@ namespace GameController {
       for (let i = 0; i < Math.min(targetsRequired, targetTiles.length); i++) {
         const target = sprites.create(imgTarget(), KIND_TARGET);
         tiles.placeOnTile(target, targetTiles[i]);
-        (target as any).isTarget = true; // Mark as target for collision handler
       }
     } else {
       // Fallback: create targets in rows at top
@@ -1262,7 +1266,6 @@ namespace GameController {
         for (let col = 0; col < 4 && count < targetsRequired; col++) {
           const target = sprites.create(imgTarget(), KIND_TARGET);
           target.setPosition(20 + col * 35, 20 + row * 15);
-          (target as any).isTarget = true;
           count++;
         }
       }
