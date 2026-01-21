@@ -1262,14 +1262,10 @@ namespace GameController {
         });
       }
     }
+  }
 
-    export function getPlayerSprite(): Sprite {
-      return playerSprite;
-    }
-
-    export function getPlayerSprite() {
-      throw new Error("Function not implemented.");
-    }
+  export function getPlayerSprite(): Sprite {
+    return playerSprite;
   }
 
 
@@ -1307,27 +1303,6 @@ namespace GameController {
 
   function markRhythmBeatMarkers() {
     throw new Error("Function not implemented.");
-
-    export function getPlayerSprite(): Sprite {
-      throw new Error("Function not implemented.");
-    }
-
-    export function getPlayerSprite() {
-      throw new Error("Function not implemented.");
-    }
-
-    export function getPlayerSprite() {
-      throw new Error("Function not implemented.");
-    }
-
-    export function getPlayerSprite() {
-      throw new Error("Function not implemented.");
-    }
-
-    export function getPlayerSprite() {
-      throw new Error("Function not implemented.");
-    }
   }
-// MANUAL TEST PASSED: GameController scaffold complete
-
+}
 // MANUAL TEST PASSED: GameController scaffold complete
