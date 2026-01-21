@@ -42,7 +42,7 @@ function initPlatformPlayer(player: Sprite) {
 }
 
 function updateLadderClimbing() {
-  const plyr = GameController.getPlayerSprite();
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr || !game.currentScene().tileMap) return;
 
   const loc = plyr.tilemapLocation();
