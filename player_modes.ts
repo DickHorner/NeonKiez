@@ -16,7 +16,7 @@ function initPlatformPlayer(player: Sprite) {
   controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
     if (state.playMode !== PlayMode.DUN_PLATFORM) return;
 
-    const plyr = GameController.getPlayerSprite();
+    const plyr = sprites.allOfKind(KIND_PLAYER)[0];
     if (!plyr) return;
 
     // Check if on ground using tile collision
@@ -43,7 +43,7 @@ function initShooterPlayer(player: Sprite) {
 }
 
 function shootBullet() {
-  const plyr = GameController.getPlayerSprite();
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr) return;
 
   // Cap check
@@ -72,6 +72,12 @@ function initAsteroidsPlayer(player: Sprite) {
   asteroidVx = 0;
   asteroidVy = 0;
 
+  // Shoot projectile
+  controller.A.onEvent(ControllerButtonEvent.Pressed, () => {
+    if (state.playMode !== PlayMode.DUN_ASTEROIDS) return;
+    shootAsteroidPing();
+  });
+
   game.onUpdate(() => {
     if (state.playMode !== PlayMode.DUN_ASTEROIDS) return;
     updateAsteroidsControls();
@@ -79,7 +85,7 @@ function initAsteroidsPlayer(player: Sprite) {
 }
 
 function updateAsteroidsControls() {
-  const plyr = GameController.getPlayerSprite();
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr) return;
 
   // Rotate
@@ -113,6 +119,30 @@ function updateAsteroidsControls() {
   // TODO: sprite rotation when asset ready
 }
 
+function shootAsteroidPing() {
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
+  if (!plyr) return;
+
+  // Cap check
+  if (sprites.allOfKind(KIND_PROJECTILE).length >= CAP_MAX_PROJECTILES) return;
+
+  // Shoot in direction ship is facing
+  const rad = (asteroidRotation * Math.PI) / 180;
+  const vx = Math.sin(rad) * 120;
+  const vy = -Math.cos(rad) * 120;
+
+  const ping = sprites.createProjectileFromSprite(
+    imgProjectile("PING"),
+    plyr,
+    vx,
+    vy,
+  );
+  ping.setKind(KIND_PROJECTILE);
+  ping.lifespan = 1500;
+
+  sfxShoot();
+}
+
 // ============ RHYTHM MODE ============
 
 function initRhythmPlayer(player: Sprite) {
@@ -132,15 +162,112 @@ function handleRhythmTap() {
   const nextBeat = state.dungeonStageData.nextBeatTime;
   const windowMs = 200; // good window
 
-  if (Math.abs(now - nextBeat) < windowMs) {
-    // Good hit
+  const isGoodHit = Math.abs(now - nextBeat) < windowMs;
+
+  if (isGoodHit) {
+    // Good hit - increment streak
     state.dungeonStageData.streak += 1;
     showHint("[RHYTHM_GOOD]", 500);
+    sfxInteract();
+
+    // Stage-specific mechanics on good hit
+    const stageIndex = state.dungeonStageData.stageIndex;
+    
+    // Stage 1: Open rhythm doors on good hit
+    if (stageIndex === 1) {
+      openRhythmDoors();
+    }
+    
+    // Stage 2-3: Activate switches on good hit (if near one)
+    if (stageIndex === 2 || stageIndex === 3) {
+      activateNearbyRhythmSwitch();
+    }
   } else {
-    // Miss
+    // Miss - increment misses, reset streak
     state.dungeonStageData.misses += 1;
     state.dungeonStageData.streak = 0;
     showHint("[RHYTHM_MISS]", 500);
+    
+    // Stage 1: Close rhythm doors on miss
+    const stageIndex = state.dungeonStageData.stageIndex;
+    if (stageIndex === 1) {
+      closeRhythmDoors();
+    }
+  }
+}
+
+function openRhythmDoors() {
+  if (!state.dungeonStageData) return;
+  const stageData = state.dungeonStageData as any;
+  
+  if (!stageData.rhythmDoorLocations) return;
+  
+  // Guard: Skip if doors are already open
+  if (stageData.rhythmDoorsOpen) return;
+  
+  stageData.rhythmDoorsOpen = true;
+  
+  // Open all rhythm doors
+  for (const doorLoc of stageData.rhythmDoorLocations) {
+    tiles.setTileAt(doorLoc, tiles.getTileImage(0 as any)); // Floor tile
+    tiles.setWallAt(doorLoc, false);
+  }
+  
+  showHint("[RHYTHM_DOORS_OPEN]", 1000);
+}
+
+function closeRhythmDoors() {
+  if (!state.dungeonStageData) return;
+  const stageData = state.dungeonStageData as any;
+  
+  if (!stageData.rhythmDoorLocations) return;
+  
+  // Guard: Skip if doors are already closed
+  if (!stageData.rhythmDoorsOpen) return;
+  
+  stageData.rhythmDoorsOpen = false;
+  
+  // Close all rhythm doors
+  for (const doorLoc of stageData.rhythmDoorLocations) {
+    tiles.setTileAt(doorLoc, tiles.getTileImage(TILE_GATE as any));
+    tiles.setWallAt(doorLoc, true);
+  }
+  
+  showHint("[RHYTHM_DOORS_CLOSED]", 500);
+}
+
+function activateNearbyRhythmSwitch() {
+  if (!state.dungeonStageData) return;
+  
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
+  if (!plyr) return;
+  
+  // Check if player is near a switch
+  const loc = plyr.tilemapLocation();
+  if (!loc) return;
+  
+  const switchTile = tiles.getTileImage(TILE_SWITCH as any);
+  if (!switchTile) return;
+  
+  // Check current tile and adjacent tiles
+  const nearbyLocs = [
+    loc,
+    tiles.getTileLocation(loc.column - 1, loc.row),
+    tiles.getTileLocation(loc.column + 1, loc.row),
+    tiles.getTileLocation(loc.column, loc.row - 1),
+    tiles.getTileLocation(loc.column, loc.row + 1),
+  ];
+  
+  for (const nearLoc of nearbyLocs) {
+    if (nearLoc && tiles.tileAtLocationEquals(nearLoc, switchTile)) {
+      // Activate switch
+      state.dungeonStageData.switchesActivated += 1;
+      // Change tile to activated state (use different tile)
+      tiles.setTileAt(nearLoc, tiles.getTileImage(2 as any)); // Activated switch tile
+      showHint("[RHYTHM_SWITCH_ACTIVATED]", 500);
+      sfxInteract();
+      return;
+    }
   }
 }
 
@@ -188,7 +315,7 @@ function handleGhostBotCollision(player: Sprite, enemy: Sprite) {
 function handlePuzzleInteract() {
   if (!canInteract()) return;
 
-  const plyr = GameController.getPlayerSprite();
+  const plyr = sprites.allOfKind(KIND_PLAYER)[0];
   if (!plyr) return;
 
   // Check tile at player location
@@ -211,12 +338,57 @@ function toggleSwitch(loc: tiles.Location) {
     if (state.currentDungeonId === "DUN_LAUNDROMAT_LABYRINTH") {
       toggleGatesForDungeon01();
     }
+    
+    // For Dungeon 3, switches should OPEN gates once the required
+    // number of switches has been activated, but must not re-close
+    // them on subsequent activations.
+    if (state.currentDungeonId === "DUN_WAREHOUSE_BLOCKWORKS") {
+      const stageData = state.dungeonStageData as any;
+      // DECISION: Stage 1 (BLOCK_ROWS) requires 2 switches.
+      // Only when switchesActivated >= 2 and gates are not yet open
+      // do we call toggleGatesForDungeon03(), so the gates end up open
+      // and stay open for this requirement.
+      if (!stageData.gatesOpen && stageData.switchesActivated >= 2) {
+        toggleGatesForDungeon03();
+      }
+    }
   }
   showHint("[SWITCH_ACTIVATED]", 1000);
   sfxInteract();
 }
 
 function toggleGatesForDungeon01() {
+  if (!state.dungeonStageData) return;
+  
+  // DECISION: Use dungeonStageData as a loose bag for per-stage runtime data (gateLocations).
+  const stageData = state.dungeonStageData as any;
+
+  // Toggle gate state flag
+  stageData.gatesOpen = !stageData.gatesOpen;
+
+  // On first use, capture all gate locations so we can reliably toggle them later,
+  // even after their tile image has been changed.
+  if (!stageData.gateLocations) {
+    stageData.gateLocations = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+  }
+
+  const gateLocations = (stageData.gateLocations as tiles.Location[]) || [];
+
+  for (const gateLoc of gateLocations) {
+    if (stageData.gatesOpen) {
+      // Open gate: replace with floor tile
+      tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any)); // Floor tile (placeholder)
+    } else {
+      // Close gate: replace with gate tile
+      tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
+    }
+    tiles.setWallAt(gateLoc, !stageData.gatesOpen);
+  }
+
+  showHint(stageData.gatesOpen ? "[GATES_OPEN]" : "[GATES_CLOSED]", 1000);
+}
+
+function toggleGatesForDungeon03() {
   if (!state.dungeonStageData) return;
   
   // DECISION: Use dungeonStageData as a loose bag for per-stage runtime data (gateLocations).

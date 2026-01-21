@@ -563,6 +563,31 @@ namespace GameController {
   }
 
   function updateRhythmMode() {
+  function spawnRhythmStageContent(dungeonId: string, stageIndex: number) {
+    if (dungeonId === "DUN_SUBWAY_TIMING") {
+      spawnDungeon04Content(stageIndex);
+    }
+  }
+
+  function spawnDungeon04Content(stageIndex: number) {
+    // Stage 1: Spawn rhythm doors (gates that open on beat)
+    if (stageIndex === 1) {
+      spawnRhythmDoors();
+    }
+    // Stage 2: Mark switch locations for beat activation
+    if (stageIndex === 2) {
+      markRhythmSwitches();
+    }
+    // Stage 3: Mark beat markers for final streak
+    if (stageIndex === 3) {
+      markRhythmBeatMarkers();
+    }
+  }
+
+  function spawnRhythmDoors() {
+    // Find all rhythm door tiles (gate tiles in rhythm stages)
+    const doorTiles = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+    
     if (!state.dungeonStageData) return;
 
     // Beat timing (placeholder)
@@ -675,8 +700,8 @@ namespace GameController {
       for (let i = 0; i < count; i++) {
         const token = sprites.create(imgCollectible("TOKEN"), KIND_COLLECTIBLE);
         token.setPosition(
-          20 + Math.randomRange(0, scene.screenWidth() - 40),
-          20 + Math.randomRange(0, scene.screenHeight() - 40)
+          20 + randint(0, scene.screenWidth() - 40),
+          20 + randint(0, scene.screenHeight() - 40)
         );
       }
     }
@@ -693,25 +718,31 @@ namespace GameController {
     // NOTE: Patrol AI is handled in updateGhostBotPatrol() (called from updatePuzzleMode in main game loop)
   }
 
+  /** Spawn stage-specific platform content using data-driven spec params (no hardcoded dungeon IDs). */
   function spawnPlatformStageContent(dungeonId: string, stageIndex: number) {
-    if (dungeonId === "DUN_VIDEO_STORE_PLATFORM_TRIAL") {
-      spawnDungeon07Content(stageIndex);
-    } else if (dungeonId === "DUN_CONSTRUCTION_DONKEY_TOWER") {
-      spawnDungeon08Content(stageIndex);
+    const spec = getDungeonSpec(dungeonId);
+    if (!spec || !spec.params?.stageSpawners) return;
+
+    const spawners = spec.params.stageSpawners[stageIndex] || [];
+    for (const spawner of spawners) {
+      if ("xEnd" in spawner) {
+        // Moving platform (has xEnd property)
+        spawnMovingPlatform(spawner.xStart, spawner.xEnd, spawner.y, spawner.speed);
+      } else if ("rate" in spawner) {
+        // Barrel spawner (has rate property) - configure barrel spawn interval
+        // TODO: wire barrel spawn loop to use this rate per stage
+      }
     }
   }
 
+  /** Legacy: kept for backward compatibility if called elsewhere. */
   function spawnDungeon07Content(stageIndex: number) {
-    if (stageIndex === 1) {
-      // Stage 1: Spawn moving platforms (shelves)
-      spawnMovingPlatform(60, 50, 40, 120, 30); // x start, x end, y, speed
-      spawnMovingPlatform(100, 140, 70, 25);
-    }
+    // DECISION: Legacy function kept for backward compatibility.
+    // New code uses spawnPlatformStageContent() with spec params instead.
   }
 
   function spawnDungeon08Content(stageIndex: number) {
-    // Dungeon 8 content would go here (ladders, barrels)
-    // Placeholder for future implementation
+    // DECISION: Legacy function kept for backward compatibility.
   }
 
   function spawnMovingPlatform(xStart: number, xEnd: number, y: number, speed: number) {
