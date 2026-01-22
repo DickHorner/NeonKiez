@@ -1,4 +1,4 @@
-﻿// GameController Hub: Hub mode setup and interactions
+// GameController Hub: Hub mode setup and interactions
 // NOTE: Focused module for Hub-specific logic, part of GameController namespace
 
 namespace GameController {
