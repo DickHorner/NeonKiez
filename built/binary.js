@@ -611,7 +611,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P41411(s) {
+function _main___P42429(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1905,13 +1905,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P41411.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/arcade-background-scroll/main.ts","functionName":"<main>","argumentNames":[]}
-_main___P41411.continuations = [  ]
+_main___P42429.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/arcade-background-scroll/main.ts","functionName":"<main>","argumentNames":[]}
+_main___P42429.continuations = [  ]
 
-function _main___P41411_mk(s) {
+function _main___P42429_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P41411, depth: s.depth + 1,
+        parent: s, fn: _main___P42429, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -16783,14 +16783,14 @@ switch (step) {
 
     s.spec___39622 = undefined;
     s.flag___39636 = undefined;
-    s.unnamed464___U2 = undefined;
-    s.unnamed465___U3 = undefined;
+    s.unnamed500___U2 = undefined;
+    s.unnamed501___U3 = undefined;
     s.tool___39646 = undefined;
-    s.unnamed466___U5 = undefined;
-    s.unnamed467___U6 = undefined;
+    s.unnamed502___U5 = undefined;
+    s.unnamed503___U6 = undefined;
     s.item___39656 = undefined;
-    s.unnamed468___U8 = undefined;
-    s.unnamed469___U9 = undefined;
+    s.unnamed504___U8 = undefined;
+    s.unnamed505___U9 = undefined;
     s.tmp_3 = if_currentDungeonId_1_mk(s);
     s.tmp_3.arg0 = globals.state___10020;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -16854,15 +16854,15 @@ switch (step) {
     }
   case 20:
     r0 = s.retval;
-    s.unnamed464___U2 = (r0);
-    s.unnamed465___U3 = (0);
+    s.unnamed500___U2 = (r0);
+    s.unnamed501___U3 = (0);
   case 5:
-    s.tmp_0 = r0 = s.unnamed465___U3;
-    r0 = pxsim_Array__length(s.unnamed464___U2);
+    s.tmp_0 = r0 = s.unnamed501___U3;
+    r0 = pxsim_Array__length(s.unnamed500___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed464___U2, s.unnamed465___U3);
+    r0 = pxsim_Array__getAt(s.unnamed500___U2, s.unnamed501___U3);
     s.flag___39636 = (r0);
     s.tmp_2 = setFlag__P10024_mk(s);
     s.tmp_2.arg0 = s.flag___39636;
@@ -16870,11 +16870,11 @@ switch (step) {
     s.callLocIdx = 379; s.pc = 22; return s.tmp_2;
   case 22:
     r0 = s.retval;
-    r0 = (s.unnamed465___U3 + 1);
-    s.unnamed465___U3 = (r0);
+    r0 = (s.unnamed501___U3 + 1);
+    s.unnamed501___U3 = (r0);
     { step = 5; continue; }
   case 6:
-    s.unnamed464___U2 = (undefined);
+    s.unnamed500___U2 = (undefined);
     s.tmp_1 = if_toolUnlocks_1_mk(s);
     s.tmp_2 = if_rewards_1_mk(s);
     s.tmp_2.arg0 = s.spec___39622;
@@ -16927,26 +16927,26 @@ switch (step) {
     }
   case 25:
     r0 = s.retval;
-    s.unnamed466___U5 = (r0);
-    s.unnamed467___U6 = (0);
+    s.unnamed502___U5 = (r0);
+    s.unnamed503___U6 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed467___U6;
-    r0 = pxsim_Array__length(s.unnamed466___U5);
+    s.tmp_0 = r0 = s.unnamed503___U6;
+    r0 = pxsim_Array__length(s.unnamed502___U5);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed466___U5, s.unnamed467___U6);
+    r0 = pxsim_Array__getAt(s.unnamed502___U5, s.unnamed503___U6);
     s.tool___39646 = (r0);
     s.tmp_2 = unlockTool__P10026_mk(s);
     s.tmp_2.arg0 = s.tool___39646;
     s.callLocIdx = 384; s.pc = 27; return s.tmp_2;
   case 27:
     r0 = s.retval;
-    r0 = (s.unnamed467___U6 + 1);
-    s.unnamed467___U6 = (r0);
+    r0 = (s.unnamed503___U6 + 1);
+    s.unnamed503___U6 = (r0);
     { step = 7; continue; }
   case 8:
-    s.unnamed466___U5 = (undefined);
+    s.unnamed502___U5 = (undefined);
   case 9:
   case 10:
     s.tmp_1 = if_items_1_mk(s);
@@ -17001,15 +17001,15 @@ switch (step) {
     }
   case 30:
     r0 = s.retval;
-    s.unnamed468___U8 = (r0);
-    s.unnamed469___U9 = (0);
+    s.unnamed504___U8 = (r0);
+    s.unnamed505___U9 = (0);
   case 11:
-    s.tmp_0 = r0 = s.unnamed469___U9;
-    r0 = pxsim_Array__length(s.unnamed468___U8);
+    s.tmp_0 = r0 = s.unnamed505___U9;
+    r0 = pxsim_Array__length(s.unnamed504___U8);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed468___U8, s.unnamed469___U9);
+    r0 = pxsim_Array__getAt(s.unnamed504___U8, s.unnamed505___U9);
     s.item___39656 = (r0);
     s.tmp_2 = addItem__P10028_mk(s);
     s.tmp_3 = if_id_1_mk(s);
@@ -17041,11 +17041,11 @@ switch (step) {
     s.callLocIdx = 391; s.pc = 32; return s.tmp_2;
   case 32:
     r0 = s.retval;
-    r0 = (s.unnamed469___U9 + 1);
-    s.unnamed469___U9 = (r0);
+    r0 = (s.unnamed505___U9 + 1);
+    s.unnamed505___U9 = (r0);
     { step = 11; continue; }
   case 12:
-    s.unnamed468___U8 = (undefined);
+    s.unnamed504___U8 = (undefined);
   case 13:
   case 14:
     s.tmp_1 = checkAllDungeonsClearExceptFinal__P10164_mk(s);
@@ -17091,14 +17091,14 @@ function GameController_completeDungeon__P39463_mk(s) {
   tmp_4: undefined,
   spec___39622: undefined,
   flag___39636: undefined,
-  unnamed464___U2: undefined,
-  unnamed465___U3: undefined,
+  unnamed500___U2: undefined,
+  unnamed501___U3: undefined,
   tool___39646: undefined,
-  unnamed466___U5: undefined,
-  unnamed467___U6: undefined,
+  unnamed502___U5: undefined,
+  unnamed503___U6: undefined,
   item___39656: undefined,
-  unnamed468___U8: undefined,
-  unnamed469___U9: undefined,
+  unnamed504___U8: undefined,
+  unnamed505___U9: undefined,
 } }
 
 
@@ -30664,8 +30664,8 @@ switch (step) {
 
     s.allSprites___39886 = undefined;
     s.s___39891 = undefined;
-    s.unnamed462___U2 = undefined;
-    s.unnamed463___U3 = undefined;
+    s.unnamed498___U2 = undefined;
+    s.unnamed499___U3 = undefined;
     s.sprite___39897 = undefined;
     s.tmp_0 = game_currentScene__P8136_mk(s);
     s.callLocIdx = 245; s.pc = 6; return s.tmp_0;
@@ -30674,15 +30674,15 @@ switch (step) {
     r0 = r0.fields["allSprites"];
     s.allSprites___39886 = (r0);
     s.s___39891 = (undefined);
-    s.unnamed462___U2 = (s.allSprites___39886);
-    s.unnamed463___U3 = (0);
+    s.unnamed498___U2 = (s.allSprites___39886);
+    s.unnamed499___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed463___U3;
-    r0 = pxsim_Array__length(s.unnamed462___U2);
+    s.tmp_0 = r0 = s.unnamed499___U3;
+    r0 = pxsim_Array__length(s.unnamed498___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 5; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed462___U2, s.unnamed463___U3);
+    r0 = pxsim_Array__getAt(s.unnamed498___U2, s.unnamed499___U3);
     s.s___39891 = (r0);
     s.tmp_4 = if_flags_1_mk(s);
     s.tmp_4.arg0 = s.s___39891;
@@ -30713,11 +30713,11 @@ switch (step) {
   case 8:
     r0 = s.retval;
   case 4:
-    r0 = (s.unnamed463___U3 + 1);
-    s.unnamed463___U3 = (r0);
+    r0 = (s.unnamed499___U3 + 1);
+    s.unnamed499___U3 = (r0);
     { step = 1; continue; }
   case 5:
-    s.unnamed462___U2 = (undefined);
+    s.unnamed498___U2 = (undefined);
     s.tmp_0 = scene_centerCameraAt__P8011_mk(s);
     s.tmp_0.arg0 = 80;
     s.tmp_0.arg1 = 60;
@@ -30775,8 +30775,8 @@ function GameController_cleanupCurrentPlayMode__P39442_mk(s) {
   tmp_4: undefined,
   allSprites___39886: undefined,
   s___39891: undefined,
-  unnamed462___U2: undefined,
-  unnamed463___U3: undefined,
+  unnamed498___U2: undefined,
+  unnamed499___U3: undefined,
   sprite___39897: undefined,
 } }
 
@@ -48723,8 +48723,8 @@ switch (step) {
 
     s.balls___25094 = undefined;
     s.ball___25099 = undefined;
-    s.unnamed478___U2 = undefined;
-    s.unnamed479___U3 = undefined;
+    s.unnamed514___U2 = undefined;
+    s.unnamed515___U3 = undefined;
     s.tmp_3 = if_dungeonStageData_1_mk(s);
     s.tmp_3.arg0 = globals.state___10020;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -48754,15 +48754,15 @@ switch (step) {
     r0 = s.retval;
     s.balls___25094 = (r0);
     s.ball___25099 = (undefined);
-    s.unnamed478___U2 = (s.balls___25094);
-    s.unnamed479___U3 = (0);
+    s.unnamed514___U2 = (s.balls___25094);
+    s.unnamed515___U3 = (0);
   case 3:
-    s.tmp_0 = r0 = s.unnamed479___U3;
-    r0 = pxsim_Array__length(s.unnamed478___U2);
+    s.tmp_0 = r0 = s.unnamed515___U3;
+    r0 = pxsim_Array__length(s.unnamed514___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed478___U2, s.unnamed479___U3);
+    r0 = pxsim_Array__getAt(s.unnamed514___U2, s.unnamed515___U3);
     s.ball___25099 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.ball___25099);
     s.tmp_3 = r0;
@@ -48808,11 +48808,11 @@ switch (step) {
   case 8:
   case 9:
   case 10:
-    r0 = (s.unnamed479___U3 + 1);
-    s.unnamed479___U3 = (r0);
+    r0 = (s.unnamed515___U3 + 1);
+    s.unnamed515___U3 = (r0);
     { step = 3; continue; }
   case 11:
-    s.unnamed478___U2 = (undefined);
+    s.unnamed514___U2 = (undefined);
   case 12:
     r0 = undefined;
     return leave(s, r0)
@@ -48839,8 +48839,8 @@ function GameController_PuzzleMode_updateDungeon05Balls__P13082_mk(s) {
   tmp_11: undefined,
   balls___25094: undefined,
   ball___25099: undefined,
-  unnamed478___U2: undefined,
-  unnamed479___U3: undefined,
+  unnamed514___U2: undefined,
+  unnamed515___U3: undefined,
 } }
 
 
@@ -48859,8 +48859,8 @@ switch (step) {
 
     s.crates___25119 = undefined;
     s.crate___25124 = undefined;
-    s.unnamed476___U2 = undefined;
-    s.unnamed477___U3 = undefined;
+    s.unnamed512___U2 = undefined;
+    s.unnamed513___U3 = undefined;
     s.tmp_0 = sprites_allOfKind__P7395_mk(s);
     s.tmp_0.arg0 = globals.KIND_HAZARD___41434;
     s.callLocIdx = 743; s.pc = 16; return s.tmp_0;
@@ -48868,15 +48868,15 @@ switch (step) {
     r0 = s.retval;
     s.crates___25119 = (r0);
     s.crate___25124 = (undefined);
-    s.unnamed476___U2 = (s.crates___25119);
-    s.unnamed477___U3 = (0);
+    s.unnamed512___U2 = (s.crates___25119);
+    s.unnamed513___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed477___U3;
-    r0 = pxsim_Array__length(s.unnamed476___U2);
+    s.tmp_0 = r0 = s.unnamed513___U3;
+    r0 = pxsim_Array__length(s.unnamed512___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 15; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed476___U2, s.unnamed477___U3);
+    r0 = pxsim_Array__getAt(s.unnamed512___U2, s.unnamed513___U3);
     s.crate___25124 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.crate___25124);
     s.tmp_3 = r0;
@@ -48987,11 +48987,11 @@ switch (step) {
   case 12:
   case 13:
   case 14:
-    r0 = (s.unnamed477___U3 + 1);
-    s.unnamed477___U3 = (r0);
+    r0 = (s.unnamed513___U3 + 1);
+    s.unnamed513___U3 = (r0);
     { step = 1; continue; }
   case 15:
-    s.unnamed476___U2 = (undefined);
+    s.unnamed512___U2 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -49022,8 +49022,8 @@ function GameController_PuzzleMode_updateMovingCrates__P13079_mk(s) {
   tmp_16: undefined,
   crates___25119: undefined,
   crate___25124: undefined,
-  unnamed476___U2: undefined,
-  unnamed477___U3: undefined,
+  unnamed512___U2: undefined,
+  unnamed513___U3: undefined,
 } }
 
 
@@ -49042,8 +49042,8 @@ switch (step) {
 
     s.ghostBots___25163 = undefined;
     s.ghostBot___25168 = undefined;
-    s.unnamed474___U2 = undefined;
-    s.unnamed475___U3 = undefined;
+    s.unnamed510___U2 = undefined;
+    s.unnamed511___U3 = undefined;
     s.tmp_0 = sprites_allOfKind__P7395_mk(s);
     s.tmp_0.arg0 = globals.KIND_ENEMY___41418;
     s.callLocIdx = 666; s.pc = 12; return s.tmp_0;
@@ -49051,15 +49051,15 @@ switch (step) {
     r0 = s.retval;
     s.ghostBots___25163 = (r0);
     s.ghostBot___25168 = (undefined);
-    s.unnamed474___U2 = (s.ghostBots___25163);
-    s.unnamed475___U3 = (0);
+    s.unnamed510___U2 = (s.ghostBots___25163);
+    s.unnamed511___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed475___U3;
-    r0 = pxsim_Array__length(s.unnamed474___U2);
+    s.tmp_0 = r0 = s.unnamed511___U3;
+    r0 = pxsim_Array__length(s.unnamed510___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed474___U2, s.unnamed475___U3);
+    r0 = pxsim_Array__getAt(s.unnamed510___U2, s.unnamed511___U3);
     s.ghostBot___25168 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.ghostBot___25168);
     s.tmp_3 = r0;
@@ -49126,11 +49126,11 @@ switch (step) {
   case 8:
   case 9:
   case 10:
-    r0 = (s.unnamed475___U3 + 1);
-    s.unnamed475___U3 = (r0);
+    r0 = (s.unnamed511___U3 + 1);
+    s.unnamed511___U3 = (r0);
     { step = 1; continue; }
   case 11:
-    s.unnamed474___U2 = (undefined);
+    s.unnamed510___U2 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -49161,8 +49161,8 @@ function GameController_PuzzleMode_updateGhostBotPatrol__P13068_mk(s) {
   tmp_16: undefined,
   ghostBots___25163: undefined,
   ghostBot___25168: undefined,
-  unnamed474___U2: undefined,
-  unnamed475___U3: undefined,
+  unnamed510___U2: undefined,
+  unnamed511___U3: undefined,
 } }
 
 
@@ -50193,8 +50193,8 @@ switch (step) {
     s.stageData___25414 = undefined;
     s.gateLocations___25429 = undefined;
     s.gateLoc___25437 = undefined;
-    s.unnamed472___U3 = undefined;
-    s.unnamed473___U4 = undefined;
+    s.unnamed508___U3 = undefined;
+    s.unnamed509___U4 = undefined;
     s.tmp_3 = if_dungeonStageData_1_mk(s);
     s.tmp_3.arg0 = globals.state___10020;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -50391,15 +50391,15 @@ switch (step) {
     s.tmp_2 = r0;
     s.gateLocations___25429 = (s.tmp_2);
     s.gateLoc___25437 = (undefined);
-    s.unnamed472___U3 = (s.gateLocations___25429);
-    s.unnamed473___U4 = (0);
+    s.unnamed508___U3 = (s.gateLocations___25429);
+    s.unnamed509___U4 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed473___U4;
-    r0 = pxsim_Array__length(s.unnamed472___U3);
+    s.tmp_0 = r0 = s.unnamed509___U4;
+    r0 = pxsim_Array__length(s.unnamed508___U3);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 10; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed472___U3, s.unnamed473___U4);
+    r0 = pxsim_Array__getAt(s.unnamed508___U3, s.unnamed509___U4);
     s.gateLoc___25437 = (r0);
     s.tmp_3 = if_gatesOpen_1_mk(s);
     s.tmp_3.arg0 = s.stageData___25414;
@@ -50463,11 +50463,11 @@ switch (step) {
     s.callLocIdx = 574; s.pc = 33; return s.tmp_0;
   case 33:
     r0 = s.retval;
-    r0 = (s.unnamed473___U4 + 1);
-    s.unnamed473___U4 = (r0);
+    r0 = (s.unnamed509___U4 + 1);
+    s.unnamed509___U4 = (r0);
     { step = 7; continue; }
   case 10:
-    s.unnamed472___U3 = (undefined);
+    s.unnamed508___U3 = (undefined);
     s.tmp_1 = if_gatesOpen_1_mk(s);
     s.tmp_1.arg0 = s.stageData___25414;
     if (!s.tmp_1.arg0.vtable.iface) {
@@ -50524,8 +50524,8 @@ function GameController_PlatformMode_togglePlatformGates__P13061_mk(s) {
   stageData___25414: undefined,
   gateLocations___25429: undefined,
   gateLoc___25437: undefined,
-  unnamed472___U3: undefined,
-  unnamed473___U4: undefined,
+  unnamed508___U3: undefined,
+  unnamed509___U4: undefined,
 } }
 
 
@@ -52872,8 +52872,8 @@ switch (step) {
     s.playerSprite___25939 = undefined;
     s.nearby___25944 = undefined;
     s.s___25953 = undefined;
-    s.unnamed470___U3 = undefined;
-    s.unnamed471___U4 = undefined;
+    s.unnamed506___U3 = undefined;
+    s.unnamed507___U4 = undefined;
     s.tmp_2 = if_playMode_1_mk(s);
     s.tmp_2.arg0 = globals.state___10020;
     if (!s.tmp_2.arg0.vtable.iface) {
@@ -52937,15 +52937,15 @@ switch (step) {
     r0 = s.retval;
     s.nearby___25944 = (r0);
     s.s___25953 = (undefined);
-    s.unnamed470___U3 = (s.nearby___25944);
-    s.unnamed471___U4 = (0);
+    s.unnamed506___U3 = (s.nearby___25944);
+    s.unnamed507___U4 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed471___U4;
-    r0 = pxsim_Array__length(s.unnamed470___U3);
+    s.tmp_0 = r0 = s.unnamed507___U4;
+    r0 = pxsim_Array__length(s.unnamed506___U3);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed470___U3, s.unnamed471___U4);
+    r0 = pxsim_Array__getAt(s.unnamed506___U3, s.unnamed507___U4);
     s.s___25953 = (r0);
     s.tmp_4 = Math_abs__P5231_mk(s);
     s.tmp_6 = Sprite_x__P7471_mk(s);
@@ -53010,11 +53010,11 @@ switch (step) {
     { step = 13; continue; }
   case 10:
   case 11:
-    r0 = (s.unnamed471___U4 + 1);
-    s.unnamed471___U4 = (r0);
+    r0 = (s.unnamed507___U4 + 1);
+    s.unnamed507___U4 = (r0);
     { step = 7; continue; }
   case 12:
-    s.unnamed470___U3 = (undefined);
+    s.unnamed506___U3 = (undefined);
   case 13:
     r0 = undefined;
     return leave(s, r0)
@@ -53047,8 +53047,8 @@ function GameController_HubMode_handleInteract__P13056_mk(s) {
   playerSprite___25939: undefined,
   nearby___25944: undefined,
   s___25953: undefined,
-  unnamed470___U3: undefined,
-  unnamed471___U4: undefined,
+  unnamed506___U3: undefined,
+  unnamed507___U4: undefined,
 } }
 
 
@@ -83992,5 +83992,5 @@ const sprites_BaseSpriteSayRenderer__C7376_VT = mkVTable({
 
 const breakpoints = setupDebugger(1, ["KIND_PLAYER___41416","KIND_ENEMY___41418","KIND_NPC___41422","KIND_DOOR___41425","KIND_INTERACTABLE___41428","KIND_COLLECTIBLE___41431","KIND_HAZARD___41434","KIND_DEBRIS___41437","KIND_PLATFORM_MOVING___41440","KIND_TARGET___41443","KIND_TOOL_EFFECT___41446","KIND_PADDLE___41449","KIND_BALL___41452","KIND_HUD___41455","DUNGEON_SPECS___41525","HUB_START_ROOM___41595","HUB_SPAWN_POINTS___41598","state___10020","QUESTS___10149","hudHearts___41606","hudTool___41610","playerSprite___39433","hudHint___41612","asteroidRotation___10189","asteroidVx___10190","asteroidVy___10191","isOnLadder___10182","HUB_ROOM_IDS___41593","hudEnergy___41608","TOOL_FREEZECAM___41599","TOOL_CONFETTI_BOMB___41600","TOOL_SOAP_SLIDE___41601","TOOL_DECOY_TOY___41602","TOOL_TAGGER___41603"])
 
-return _main___P41411
+return _main___P42429
 })
