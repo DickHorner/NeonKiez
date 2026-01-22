@@ -1,4 +1,4 @@
-// GameController Hub: Hub mode setup and interactions
+﻿// GameController Hub: Hub mode setup and interactions
 // NOTE: Focused module for Hub-specific logic, part of GameController namespace
 
 namespace GameController {
@@ -58,8 +58,7 @@ namespace GameController {
       if (!playerSprite) return;
 
       // Check for nearby interactables (doors, NPCs)
-      const nearby = sprites
-        allOfKind(SpriteKind.Food)
+      const nearby = sprites.allOfKind(SpriteKind.Food)
         .concat(sprites.allOfKind(SpriteKind.Enemy));
       for (const s of nearby) {
         if (
