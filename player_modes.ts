@@ -112,7 +112,7 @@ function handlePuzzleInteract() {
   // Dungeon 5: Serve ball with A button
   if (state.currentDungeonId === "DUN_SCHOOL_PONG_COURT") {
     markInteract();
-    serveBall();
+    GameController.PuzzleMode.serveBall();
     return;
   }
 

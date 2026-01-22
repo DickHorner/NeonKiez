@@ -232,6 +232,9 @@ namespace GameController {
       }
 
       spawnTargets(stageIndex);
+
+      // Serve an initial ball if none are active
+      serveBall();
     }
 
     function spawnTargets(stageIndex: number) {
@@ -270,6 +273,24 @@ namespace GameController {
           ball.destroy();
         }
       }
+    }
+
+    export function serveBall() {
+      if (!state.dungeonStageData) return;
+
+      // Cap: only one ball at a time
+      if (sprites.allOfKind(KIND_BALL).length >= CAP_MAX_BALLS) return;
+
+      const paddle = sprites.allOfKind(KIND_PADDLE)[0];
+      if (!paddle) return;
+
+      const ballSpeed = state.dungeonStageData.ballSpeed || BALL_SPEED_NORMAL;
+
+      const ball = sprites.create(imgBall(), KIND_BALL);
+      ball.setPosition(paddle.x, paddle.y - 10);
+      ball.vx = 0;
+      ball.vy = -ballSpeed;
+      ball.setFlag(SpriteFlag.AutoDestroy, true);
     }
 
     export function handleBallPaddleBounce(ball: Sprite, paddle: Sprite) {
