@@ -7,6 +7,9 @@ namespace GameController {
   const CONTINUE_YES = 1;
 
   export function start() {
+    // Initialize sprite kinds before anything else
+    initSpriteKinds();
+    
     initState();
     
     // Run dungeon registry validation

@@ -2,7 +2,9 @@
 // ============ SPRITES ============
 
 function imgPlayerTopdown(): Image {
-  return image.create(16, 16); // placeholder: solid square
+  const img = image.create(16, 16);
+  img.fill(7); // DECISION: Visible placeholder (white) for player
+  return img;
 }
 
 function imgPlatformPlayer(): Image {
@@ -26,11 +28,15 @@ function imgPuzzlePlayer(): Image {
 }
 
 function imgNpc(id: string): Image {
-  return image.create(16, 16);
+  const img = image.create(16, 16);
+  img.fill(8); // DECISION: Visible placeholder (light gray) to avoid transparent sprite issues
+  return img;
 }
 
 function imgDoor(id: string): Image {
-  return image.create(16, 16);
+  const img = image.create(16, 16);
+  img.fill(5); // DECISION: Visible placeholder (light gray) to avoid transparent sprite issues
+  return img;
 }
 
 function imgEnemy(id: string): Image {

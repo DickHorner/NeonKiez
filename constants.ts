@@ -21,21 +21,44 @@ enum PlayMode {
 }
 
 // SpriteKinds per mode (extend as needed)
-const KIND_PLAYER = SpriteKind.Player;
-const KIND_ENEMY = SpriteKind.Enemy;
-const KIND_PROJECTILE = SpriteKind.Projectile;
-const KIND_NPC = SpriteKind.create();
-const KIND_DOOR = SpriteKind.create();
-const KIND_INTERACTABLE = SpriteKind.create();
-const KIND_COLLECTIBLE = SpriteKind.create();
-const KIND_HAZARD = SpriteKind.create();
-const KIND_DEBRIS = SpriteKind.create();
-const KIND_PLATFORM_MOVING = SpriteKind.create();
-const KIND_TARGET = SpriteKind.create();
-const KIND_TOOL_EFFECT = SpriteKind.create();
-const KIND_PADDLE = SpriteKind.create();
-const KIND_BALL = SpriteKind.create();
-const KIND_HUD = SpriteKind.create();
+// DECISION: Use direct references instead of const to avoid initialization order issues
+// These are initialized when first accessed, ensuring game engine is ready
+let KIND_PLAYER: number;
+let KIND_ENEMY: number;
+let KIND_PROJECTILE: number;
+let KIND_NPC: number;
+let KIND_DOOR: number;
+let KIND_INTERACTABLE: number;
+let KIND_COLLECTIBLE: number;
+let KIND_HAZARD: number;
+let KIND_DEBRIS: number;
+let KIND_PLATFORM_MOVING: number;
+let KIND_TARGET: number;
+let KIND_TOOL_EFFECT: number;
+let KIND_PADDLE: number;
+let KIND_BALL: number;
+let KIND_HUD: number;
+
+function initSpriteKinds() {
+  if (KIND_PLAYER !== undefined) return; // Already initialized
+  
+  KIND_PLAYER = SpriteKind.Player;
+  KIND_ENEMY = SpriteKind.Enemy;
+  KIND_PROJECTILE = SpriteKind.Projectile;
+  KIND_NPC = SpriteKind.create();
+  KIND_DOOR = SpriteKind.create();
+  KIND_INTERACTABLE = SpriteKind.create();
+  KIND_COLLECTIBLE = SpriteKind.create();
+  KIND_HAZARD = SpriteKind.create();
+  KIND_DEBRIS = SpriteKind.create();
+  KIND_PLATFORM_MOVING = SpriteKind.create();
+  KIND_TARGET = SpriteKind.create();
+  KIND_TOOL_EFFECT = SpriteKind.create();
+  KIND_PADDLE = SpriteKind.create();
+  KIND_BALL = SpriteKind.create();
+  KIND_HUD = SpriteKind.create();
+}
+
 // Tile Tags
 const TILE_SPAWN_PLAYER = 1;
 const TILE_SPAWN_STAGE = 2;
