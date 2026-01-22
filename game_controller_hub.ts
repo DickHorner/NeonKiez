@@ -1,6 +1,7 @@
 // GameController Hub: Hub mode setup and interactions
 // NOTE: Focused module for Hub-specific logic, part of GameController namespace
 
+namespace GameController {
   export namespace HubMode {
     export function setup(payload: any) {
       // Update hub room if specified
