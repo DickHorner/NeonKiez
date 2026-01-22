@@ -9,6 +9,9 @@ const HUB_DOOR_Y = 80;
 const HUB_FINAL_DOOR_Y = 100;
 
 function spawnHubContent(roomRow: number, roomCol: number) {
+  // Ensure sprite kinds exist before spawning hub content
+  initSpriteKinds();
+
   // Spawn NPCs
   if (roomRow === 1 && roomCol === 1) {
     // Center room: savehouse + main NPCs
@@ -25,11 +28,12 @@ function spawnHubContent(roomRow: number, roomCol: number) {
 }
 
 function spawnNPC(npcId: string, x: number, y: number, dialogId: string) {
-  // DECISION: Ensure sprite kinds are initialized (defensive)
+  // DECISION: Use dedicated NPC kind (lazy init guarded in initSpriteKinds)
   initSpriteKinds();
-  
-  const npc = sprites.create(imgNpc(npcId), SpriteKind.Enemy);
-  npc.setPosition(x, y); (npc as any).isNPC = true;
+
+  const npc = sprites.create(imgNpc(npcId), KIND_NPC);
+  npc.setPosition(x, y);
+  (npc as any).isNPC = true;
   (npc as any).dialogId = dialogId;
 }
 
@@ -72,9 +76,10 @@ function spawnDungeonDoors(roomRow: number, roomCol: number) {
 }
 
 function spawnDoor(dungeonId: string, x: number, y: number) {
-  const door = sprites.create(imgDoor(dungeonId), SpriteKind.Food);
-  door.setPosition(x, y); (door as any).isDoor = true;
+  const door = sprites.create(imgDoor(dungeonId), KIND_DOOR);
+  door.setPosition(x, y);
   (door as any).dungeonId = dungeonId;
+  (door as any).isDoor = true;
 }
 
 function interactWithSavehouse() {

@@ -4,6 +4,9 @@
 namespace GameController {
   export namespace HubMode {
     export function setup(payload: any) {
+      // Ensure sprite kinds exist before hub setup
+      initSpriteKinds();
+
       // Update hub room if specified
       if (payload && payload.hubRoom) {
         state.hubRoom = payload.hubRoom;
@@ -58,8 +61,8 @@ namespace GameController {
       if (!playerSprite) return;
 
       // Check for nearby interactables (doors, NPCs)
-      const nearby = sprites.allOfKind(SpriteKind.Food)
-        .concat(sprites.allOfKind(SpriteKind.Enemy));
+      const nearby = sprites.allOfKind(KIND_DOOR)
+        .concat(sprites.allOfKind(KIND_NPC));
       for (const s of nearby) {
         if (
           Math.abs(playerSprite.x - s.x) < INTERACT_DISTANCE &&
