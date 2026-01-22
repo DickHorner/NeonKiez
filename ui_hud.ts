@@ -1,28 +1,28 @@
 // UI HUD: hearts, energy, tool, hint
-// NOTE: Relies on Arcade globals (textsprite, SpriteFlag, scene, game); no imports needed.
+// NOTE: Relies on Arcade globals and story.TextSprite from arcade-storytelling
 
-let hudHearts: TextSprite = null as any;
-let hudEnergy: TextSprite = null as any;
-let hudTool: TextSprite = null as any;
-let hudHint: TextSprite = null as any;
+let hudHearts: story.TextSprite = null;
+let hudEnergy: story.TextSprite = null;
+let hudTool: story.TextSprite = null;
+let hudHint: story.TextSprite = null;
 
 function initHUD() {
-  hudHearts = textsprite.create("", 0, 1);
+  hudHearts = new story.TextSprite(0);
   hudHearts.setFlag(SpriteFlag.RelativeToCamera, true);
   hudHearts.left = 2;
   hudHearts.top = 2;
 
-  hudEnergy = textsprite.create("", 0, 1);
+  hudEnergy = new story.TextSprite(0);
   hudEnergy.setFlag(SpriteFlag.RelativeToCamera, true);
   hudEnergy.left = 2;
   hudEnergy.top = 12;
 
-  hudTool = textsprite.create("", 0, 1);
+  hudTool = new story.TextSprite(0);
   hudTool.setFlag(SpriteFlag.RelativeToCamera, true);
   hudTool.right = scene.screenWidth() - 2;
   hudTool.top = 2;
 
-  hudHint = textsprite.create("", 0, 1);
+  hudHint = new story.TextSprite(0);
   hudHint.setFlag(SpriteFlag.RelativeToCamera, true);
   hudHint.setMaxFontHeight(7);
   hudHint.left = 2;
