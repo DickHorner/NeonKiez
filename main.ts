@@ -14,8 +14,21 @@
 /// <reference path="world_dungeons.ts" />
 /// <reference path="debug.ts" />
 /// <reference path="player_topdown.ts" />
+/// <reference path="player_platform.ts" />
+/// <reference path="player_shooter.ts" />
+/// <reference path="player_asteroids.ts" />
+/// <reference path="player_rhythm.ts" />
+/// <reference path="player_puzzle.ts" />
 /// <reference path="player_modes.ts" />
+/// <reference path="game_controller_hub.ts" />
+/// <reference path="game_controller_platform.ts" />
+/// <reference path="game_controller_shooter.ts" />
+/// <reference path="game_controller_asteroids.ts" />
+/// <reference path="game_controller_rhythm.ts" />
+/// <reference path="game_controller_puzzle.ts" />
+/// <reference path="game_controller_meta.ts" />
 /// <reference path="game_controller.ts" />
 
 // Start game
 GameController.start();
+
