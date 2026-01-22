@@ -8,7 +8,6 @@ namespace GameController {
 
   export function start() {
     initState();
-    initHUD();
     
     // Run dungeon registry validation
     runDungeonRegistryValidation();
@@ -183,6 +182,9 @@ namespace GameController {
   // ============ GLOBAL EVENT HANDLERS (registered once) ============
 
   function registerGlobalHandlers() {
+    // Initialize HUD on first update (after extensions are loaded)
+    let hudInitialized = false;
+
     // Pause menu
     controller.menu.onEvent(ControllerButtonEvent.Pressed, () => {
       if (
@@ -258,6 +260,11 @@ namespace GameController {
 
     // Game update loop
     game.onUpdate(() => {
+      // Initialize HUD on first update (after extensions are loaded)
+      if (!hudInitialized) {
+        initHUD();
+        hudInitialized = true;
+      }
       updateGameLoop();
     });
   }
