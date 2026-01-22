@@ -28,8 +28,8 @@ function spawnNPC(npcId: string, x: number, y: number, dialogId: string) {
   // DECISION: Ensure sprite kinds are initialized (defensive)
   initSpriteKinds();
   
-  const npc = sprites.create(imgNpc(npcId), KIND_NPC);
-  npc.setPosition(x, y);
+  const npc = sprites.create(imgNpc(npcId), SpriteKind.Enemy);
+  npc.setPosition(x, y); (npc as any).isNPC = true;
   (npc as any).dialogId = dialogId;
 }
 
@@ -72,8 +72,8 @@ function spawnDungeonDoors(roomRow: number, roomCol: number) {
 }
 
 function spawnDoor(dungeonId: string, x: number, y: number) {
-  const door = sprites.create(imgDoor(dungeonId), KIND_DOOR);
-  door.setPosition(x, y);
+  const door = sprites.create(imgDoor(dungeonId), SpriteKind.Food);
+  door.setPosition(x, y); (door as any).isDoor = true;
   (door as any).dungeonId = dungeonId;
 }
 
@@ -84,3 +84,7 @@ function interactWithSavehouse() {
 }
 
 // MANUAL TEST PASSED: Hub content spawn scaffold
+
+
+
+

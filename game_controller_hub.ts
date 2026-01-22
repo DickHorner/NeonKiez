@@ -59,8 +59,8 @@ namespace GameController {
 
       // Check for nearby interactables (doors, NPCs)
       const nearby = sprites
-        .allOfKind(KIND_DOOR)
-        .concat(sprites.allOfKind(KIND_NPC));
+        allOfKind(SpriteKind.Food)
+        .concat(sprites.allOfKind(SpriteKind.Enemy));
       for (const s of nearby) {
         if (
           Math.abs(playerSprite.x - s.x) < INTERACT_DISTANCE &&
@@ -74,11 +74,11 @@ namespace GameController {
     }
 
     function handleInteractable(s: Sprite) {
-      if (s.kind() === KIND_DOOR) {
+      if ((s as any).isDoor) {
         // Enter dungeon
         const dungeonId = (s as any).dungeonId as string;
         if (dungeonId) GameController.enterDungeon(dungeonId);
-      } else if (s.kind() === KIND_NPC) {
+      } else if ((s as any).isNPC) {
         // Talk to NPC
         const dialogId = (s as any).dialogId as string;
         if (dialogId) showDialog(dialogId);
@@ -86,3 +86,6 @@ namespace GameController {
     }
   }
 }
+
+
+
