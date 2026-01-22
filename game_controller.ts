@@ -7,7 +7,7 @@ namespace GameController {
   const CONTINUE_YES = 1;
 
   export function start() {
-    // Initialize sprite kinds before anything else
+    // Initialize sprite kinds with safe fallbacks
     initSpriteKinds();
     
     initState();
@@ -18,6 +18,10 @@ namespace GameController {
     registerGlobalHandlers();
     setGameMode(GameMode.Title);
     showTitle();
+  }
+  
+  export function deferredInit() {
+    deferredInitSpriteKinds();
   }
 
   function showTitle() {
@@ -262,7 +266,14 @@ namespace GameController {
     });
 
     // Game update loop
+    let deferredInitDone = false;
     game.onUpdate(() => {
+      // Deferred sprite kind initialization (first update, when engine is ready)
+      if (!deferredInitDone) {
+        GameController.deferredInit();
+        deferredInitDone = true;
+      }
+      
       // Initialize HUD on first update (after extensions are loaded)
       if (!hudInitialized) {
         initHUD();

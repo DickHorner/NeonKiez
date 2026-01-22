@@ -39,12 +39,37 @@ let KIND_PADDLE: number;
 let KIND_BALL: number;
 let KIND_HUD: number;
 
+let kindInitPhase = 0; // 0 = not init, 1 = fallback init, 2 = deferred init
+
 function initSpriteKinds() {
-  if (KIND_PLAYER !== undefined) return; // Already initialized
+  if (kindInitPhase >= 1) return;
   
+  // Initialize built-in kinds immediately (safe at startup)
   KIND_PLAYER = SpriteKind.Player;
   KIND_ENEMY = SpriteKind.Enemy;
   KIND_PROJECTILE = SpriteKind.Projectile;
+  
+  // Use built-in fallbacks initially (safer than SpriteKind.create() at startup)
+  KIND_NPC = SpriteKind.Player;
+  KIND_DOOR = SpriteKind.Food;
+  KIND_INTERACTABLE = SpriteKind.Food;
+  KIND_COLLECTIBLE = SpriteKind.Food;
+  KIND_HAZARD = SpriteKind.Enemy;
+  KIND_DEBRIS = SpriteKind.Projectile;
+  KIND_PLATFORM_MOVING = SpriteKind.Enemy;
+  KIND_TARGET = SpriteKind.Food;
+  KIND_TOOL_EFFECT = SpriteKind.Projectile;
+  KIND_PADDLE = SpriteKind.Player;
+  KIND_BALL = SpriteKind.Projectile;
+  KIND_HUD = SpriteKind.Player;
+  
+  kindInitPhase = 1;
+}
+
+function deferredInitSpriteKinds() {
+  if (kindInitPhase >= 2) return;
+  
+  // Create custom kinds when engine is fully initialized (on first game update)
   KIND_NPC = SpriteKind.create();
   KIND_DOOR = SpriteKind.create();
   KIND_INTERACTABLE = SpriteKind.create();
@@ -57,6 +82,8 @@ function initSpriteKinds() {
   KIND_PADDLE = SpriteKind.create();
   KIND_BALL = SpriteKind.create();
   KIND_HUD = SpriteKind.create();
+  
+  kindInitPhase = 2;
 }
 
 // Tile Tags

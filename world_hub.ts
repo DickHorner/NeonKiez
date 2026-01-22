@@ -28,9 +28,7 @@ function spawnHubContent(roomRow: number, roomCol: number) {
 }
 
 function spawnNPC(npcId: string, x: number, y: number, dialogId: string) {
-  // DECISION: Use dedicated NPC kind (lazy init guarded in initSpriteKinds)
-  initSpriteKinds();
-
+  // KIND_NPC is guaranteed initialized (fallback at startup, upgraded on first update)
   const npc = sprites.create(imgNpc(npcId), KIND_NPC);
   npc.setPosition(x, y);
   (npc as any).isNPC = true;

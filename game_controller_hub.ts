@@ -4,9 +4,6 @@
 namespace GameController {
   export namespace HubMode {
     export function setup(payload: any) {
-      // Ensure sprite kinds exist before hub setup
-      initSpriteKinds();
-
       // Update hub room if specified
       if (payload && payload.hubRoom) {
         state.hubRoom = payload.hubRoom;
