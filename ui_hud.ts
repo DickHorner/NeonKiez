@@ -1,30 +1,43 @@
 // UI HUD: hearts, energy, tool, hint
-// NOTE: Relies on Arcade globals and story.TextSprite from arcade-storytelling
+// DECISION: Using standard Sprites with text images instead of story.TextSprite
+// because story.TextSprite lacks setFlag(), positioning props (right/bottom), and font control
 
-let hudHearts: story.TextSprite = null;
-let hudEnergy: story.TextSprite = null;
-let hudTool: story.TextSprite = null;
-let hudHint: story.TextSprite = null;
+let hudHearts: Sprite = null;
+let hudEnergy: Sprite = null;
+let hudTool: Sprite = null;
+let hudHint: Sprite = null;
+
+function createTextImage(text: string, color: number): Image {
+  const font = image.getFontForText(text);
+  const w = Math.max(1, font.charWidth * text.length);
+  const h = font.charHeight;
+  const img = image.create(w, h);
+  if (text) img.print(text, 0, 0, color);
+  return img;
+}
 
 function initHUD() {
-  hudHearts = new story.TextSprite(0);
+  // Hearts (top-left)
+  hudHearts = sprites.create(createTextImage("♥♥♥", 2), KIND_HUD);
   hudHearts.setFlag(SpriteFlag.RelativeToCamera, true);
   hudHearts.left = 2;
   hudHearts.top = 2;
 
-  hudEnergy = new story.TextSprite(0);
+  // Energy (below hearts)
+  hudEnergy = sprites.create(createTextImage("", 7), KIND_HUD);
   hudEnergy.setFlag(SpriteFlag.RelativeToCamera, true);
   hudEnergy.left = 2;
   hudEnergy.top = 12;
 
-  hudTool = new story.TextSprite(0);
+  // Tool (top-right)
+  hudTool = sprites.create(createTextImage("", 1), KIND_HUD);
   hudTool.setFlag(SpriteFlag.RelativeToCamera, true);
   hudTool.right = scene.screenWidth() - 2;
   hudTool.top = 2;
 
-  hudHint = new story.TextSprite(0);
+  // Hint (bottom-left)
+  hudHint = sprites.create(createTextImage("", 5), KIND_HUD);
   hudHint.setFlag(SpriteFlag.RelativeToCamera, true);
-  hudHint.setMaxFontHeight(7);
   hudHint.left = 2;
   hudHint.bottom = scene.screenHeight() - 2;
 }
@@ -37,26 +50,30 @@ function updateHUD() {
   for (let i = 0; i < state.hearts; i++) {
     heartStr += "♥";
   }
-  hudHearts.setText(heartStr);
+  hudHearts.setImage(createTextImage(heartStr, 2));
 
   // Energy (if needed)
-  // hudEnergy.setText("E:" + state.energy)
+  // hudEnergy.setImage(createTextImage("E:" + state.energy, 7));
 
   // Tool
   if (state.currentTool) {
-    hudTool.setText("[" + state.currentTool + "]");
+    hudTool.setImage(createTextImage("[" + state.currentTool + "]", 1));
+    hudTool.right = scene.screenWidth() - 2; // Maintain right alignment
   } else {
-    hudTool.setText("");
+    hudTool.setImage(createTextImage("", 1));
   }
 }
 
 function showHint(text: string, durationMs: number = 2000) {
   if (!hudHint) return;
-  hudHint.setText(text);
+  hudHint.setImage(createTextImage(text, 5));
+  hudHint.bottom = scene.screenHeight() - 2; // Maintain bottom alignment
 
   control.runInParallel(() => {
     pause(durationMs);
-    if (hudHint) hudHint.setText("");
+    if (hudHint) {
+      hudHint.setImage(createTextImage("", 5));
+    }
   });
 }
 

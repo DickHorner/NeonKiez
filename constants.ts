@@ -35,6 +35,7 @@ const KIND_TARGET = SpriteKind.create();
 const KIND_TOOL_EFFECT = SpriteKind.create();
 const KIND_PADDLE = SpriteKind.create();
 const KIND_BALL = SpriteKind.create();
+const KIND_HUD = SpriteKind.create();
 // Tile Tags
 const TILE_SPAWN_PLAYER = 1;
 const TILE_SPAWN_STAGE = 2;
