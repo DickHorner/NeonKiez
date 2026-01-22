@@ -25,6 +25,9 @@ function spawnHubContent(roomRow: number, roomCol: number) {
 }
 
 function spawnNPC(npcId: string, x: number, y: number, dialogId: string) {
+  // DECISION: Ensure sprite kinds are initialized (defensive)
+  initSpriteKinds();
+  
   const npc = sprites.create(imgNpc(npcId), KIND_NPC);
   npc.setPosition(x, y);
   (npc as any).dialogId = dialogId;
