@@ -611,7 +611,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P48876(s) {
+function _main___P49632(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1843,13 +1843,13 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-_main___P48876.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/arcade-background-scroll/main.ts","functionName":"<main>","argumentNames":[]}
-_main___P48876.continuations = [  ]
+_main___P49632.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/arcade-background-scroll/main.ts","functionName":"<main>","argumentNames":[]}
+_main___P49632.continuations = [  ]
 
-function _main___P48876_mk(s) {
+function _main___P49632_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P48876, depth: s.depth + 1,
+        parent: s, fn: _main___P49632, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -16725,14 +16725,14 @@ switch (step) {
 
     s.spec___46287 = undefined;
     s.flag___46301 = undefined;
-    s.unnamed752___U2 = undefined;
-    s.unnamed753___U3 = undefined;
+    s.unnamed788___U2 = undefined;
+    s.unnamed789___U3 = undefined;
     s.tool___46311 = undefined;
-    s.unnamed754___U5 = undefined;
-    s.unnamed755___U6 = undefined;
+    s.unnamed790___U5 = undefined;
+    s.unnamed791___U6 = undefined;
     s.item___46321 = undefined;
-    s.unnamed756___U8 = undefined;
-    s.unnamed757___U9 = undefined;
+    s.unnamed792___U8 = undefined;
+    s.unnamed793___U9 = undefined;
     s.tmp_3 = if_currentDungeonId_1_mk(s);
     s.tmp_3.arg0 = globals.state___10020;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -16796,15 +16796,15 @@ switch (step) {
     }
   case 20:
     r0 = s.retval;
-    s.unnamed752___U2 = (r0);
-    s.unnamed753___U3 = (0);
+    s.unnamed788___U2 = (r0);
+    s.unnamed789___U3 = (0);
   case 5:
-    s.tmp_0 = r0 = s.unnamed753___U3;
-    r0 = pxsim_Array__length(s.unnamed752___U2);
+    s.tmp_0 = r0 = s.unnamed789___U3;
+    r0 = pxsim_Array__length(s.unnamed788___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed752___U2, s.unnamed753___U3);
+    r0 = pxsim_Array__getAt(s.unnamed788___U2, s.unnamed789___U3);
     s.flag___46301 = (r0);
     s.tmp_2 = setFlag__P10024_mk(s);
     s.tmp_2.arg0 = s.flag___46301;
@@ -16812,11 +16812,11 @@ switch (step) {
     s.callLocIdx = 380; s.pc = 22; return s.tmp_2;
   case 22:
     r0 = s.retval;
-    r0 = (s.unnamed753___U3 + 1);
-    s.unnamed753___U3 = (r0);
+    r0 = (s.unnamed789___U3 + 1);
+    s.unnamed789___U3 = (r0);
     { step = 5; continue; }
   case 6:
-    s.unnamed752___U2 = (undefined);
+    s.unnamed788___U2 = (undefined);
     s.tmp_1 = if_toolUnlocks_1_mk(s);
     s.tmp_2 = if_rewards_1_mk(s);
     s.tmp_2.arg0 = s.spec___46287;
@@ -16869,26 +16869,26 @@ switch (step) {
     }
   case 25:
     r0 = s.retval;
-    s.unnamed754___U5 = (r0);
-    s.unnamed755___U6 = (0);
+    s.unnamed790___U5 = (r0);
+    s.unnamed791___U6 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed755___U6;
-    r0 = pxsim_Array__length(s.unnamed754___U5);
+    s.tmp_0 = r0 = s.unnamed791___U6;
+    r0 = pxsim_Array__length(s.unnamed790___U5);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed754___U5, s.unnamed755___U6);
+    r0 = pxsim_Array__getAt(s.unnamed790___U5, s.unnamed791___U6);
     s.tool___46311 = (r0);
     s.tmp_2 = unlockTool__P10026_mk(s);
     s.tmp_2.arg0 = s.tool___46311;
     s.callLocIdx = 385; s.pc = 27; return s.tmp_2;
   case 27:
     r0 = s.retval;
-    r0 = (s.unnamed755___U6 + 1);
-    s.unnamed755___U6 = (r0);
+    r0 = (s.unnamed791___U6 + 1);
+    s.unnamed791___U6 = (r0);
     { step = 7; continue; }
   case 8:
-    s.unnamed754___U5 = (undefined);
+    s.unnamed790___U5 = (undefined);
   case 9:
   case 10:
     s.tmp_1 = if_items_1_mk(s);
@@ -16943,15 +16943,15 @@ switch (step) {
     }
   case 30:
     r0 = s.retval;
-    s.unnamed756___U8 = (r0);
-    s.unnamed757___U9 = (0);
+    s.unnamed792___U8 = (r0);
+    s.unnamed793___U9 = (0);
   case 11:
-    s.tmp_0 = r0 = s.unnamed757___U9;
-    r0 = pxsim_Array__length(s.unnamed756___U8);
+    s.tmp_0 = r0 = s.unnamed793___U9;
+    r0 = pxsim_Array__length(s.unnamed792___U8);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed756___U8, s.unnamed757___U9);
+    r0 = pxsim_Array__getAt(s.unnamed792___U8, s.unnamed793___U9);
     s.item___46321 = (r0);
     s.tmp_2 = addItem__P10028_mk(s);
     s.tmp_3 = if_id_1_mk(s);
@@ -16983,11 +16983,11 @@ switch (step) {
     s.callLocIdx = 392; s.pc = 32; return s.tmp_2;
   case 32:
     r0 = s.retval;
-    r0 = (s.unnamed757___U9 + 1);
-    s.unnamed757___U9 = (r0);
+    r0 = (s.unnamed793___U9 + 1);
+    s.unnamed793___U9 = (r0);
     { step = 11; continue; }
   case 12:
-    s.unnamed756___U8 = (undefined);
+    s.unnamed792___U8 = (undefined);
   case 13:
   case 14:
     s.tmp_1 = checkAllDungeonsClearExceptFinal__P10164_mk(s);
@@ -17033,14 +17033,14 @@ function GameController_completeDungeon__P46125_mk(s) {
   tmp_4: undefined,
   spec___46287: undefined,
   flag___46301: undefined,
-  unnamed752___U2: undefined,
-  unnamed753___U3: undefined,
+  unnamed788___U2: undefined,
+  unnamed789___U3: undefined,
   tool___46311: undefined,
-  unnamed754___U5: undefined,
-  unnamed755___U6: undefined,
+  unnamed790___U5: undefined,
+  unnamed791___U6: undefined,
   item___46321: undefined,
-  unnamed756___U8: undefined,
-  unnamed757___U9: undefined,
+  unnamed792___U8: undefined,
+  unnamed793___U9: undefined,
 } }
 
 
@@ -30638,8 +30638,8 @@ switch (step) {
 
     s.allSprites___46551 = undefined;
     s.s___46556 = undefined;
-    s.unnamed750___U2 = undefined;
-    s.unnamed751___U3 = undefined;
+    s.unnamed786___U2 = undefined;
+    s.unnamed787___U3 = undefined;
     s.sprite___46562 = undefined;
     s.tmp_0 = game_currentScene__P8136_mk(s);
     s.callLocIdx = 246; s.pc = 6; return s.tmp_0;
@@ -30648,15 +30648,15 @@ switch (step) {
     r0 = r0.fields["allSprites"];
     s.allSprites___46551 = (r0);
     s.s___46556 = (undefined);
-    s.unnamed750___U2 = (s.allSprites___46551);
-    s.unnamed751___U3 = (0);
+    s.unnamed786___U2 = (s.allSprites___46551);
+    s.unnamed787___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed751___U3;
-    r0 = pxsim_Array__length(s.unnamed750___U2);
+    s.tmp_0 = r0 = s.unnamed787___U3;
+    r0 = pxsim_Array__length(s.unnamed786___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 5; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed750___U2, s.unnamed751___U3);
+    r0 = pxsim_Array__getAt(s.unnamed786___U2, s.unnamed787___U3);
     s.s___46556 = (r0);
     s.tmp_4 = if_flags_1_mk(s);
     s.tmp_4.arg0 = s.s___46556;
@@ -30687,11 +30687,11 @@ switch (step) {
   case 8:
     r0 = s.retval;
   case 4:
-    r0 = (s.unnamed751___U3 + 1);
-    s.unnamed751___U3 = (r0);
+    r0 = (s.unnamed787___U3 + 1);
+    s.unnamed787___U3 = (r0);
     { step = 1; continue; }
   case 5:
-    s.unnamed750___U2 = (undefined);
+    s.unnamed786___U2 = (undefined);
     s.tmp_0 = scene_centerCameraAt__P8011_mk(s);
     s.tmp_0.arg0 = 80;
     s.tmp_0.arg1 = 60;
@@ -30749,8 +30749,8 @@ function GameController_cleanupCurrentPlayMode__P46104_mk(s) {
   tmp_4: undefined,
   allSprites___46551: undefined,
   s___46556: undefined,
-  unnamed750___U2: undefined,
-  unnamed751___U3: undefined,
+  unnamed786___U2: undefined,
+  unnamed787___U3: undefined,
   sprite___46562: undefined,
 } }
 
@@ -48697,8 +48697,8 @@ switch (step) {
 
     s.balls___25094 = undefined;
     s.ball___25099 = undefined;
-    s.unnamed766___U2 = undefined;
-    s.unnamed767___U3 = undefined;
+    s.unnamed802___U2 = undefined;
+    s.unnamed803___U3 = undefined;
     s.tmp_3 = if_dungeonStageData_1_mk(s);
     s.tmp_3.arg0 = globals.state___10020;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -48728,15 +48728,15 @@ switch (step) {
     r0 = s.retval;
     s.balls___25094 = (r0);
     s.ball___25099 = (undefined);
-    s.unnamed766___U2 = (s.balls___25094);
-    s.unnamed767___U3 = (0);
+    s.unnamed802___U2 = (s.balls___25094);
+    s.unnamed803___U3 = (0);
   case 3:
-    s.tmp_0 = r0 = s.unnamed767___U3;
-    r0 = pxsim_Array__length(s.unnamed766___U2);
+    s.tmp_0 = r0 = s.unnamed803___U3;
+    r0 = pxsim_Array__length(s.unnamed802___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed766___U2, s.unnamed767___U3);
+    r0 = pxsim_Array__getAt(s.unnamed802___U2, s.unnamed803___U3);
     s.ball___25099 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.ball___25099);
     s.tmp_3 = r0;
@@ -48782,11 +48782,11 @@ switch (step) {
   case 8:
   case 9:
   case 10:
-    r0 = (s.unnamed767___U3 + 1);
-    s.unnamed767___U3 = (r0);
+    r0 = (s.unnamed803___U3 + 1);
+    s.unnamed803___U3 = (r0);
     { step = 3; continue; }
   case 11:
-    s.unnamed766___U2 = (undefined);
+    s.unnamed802___U2 = (undefined);
   case 12:
     r0 = undefined;
     return leave(s, r0)
@@ -48813,8 +48813,8 @@ function GameController_PuzzleMode_updateDungeon05Balls__P13082_mk(s) {
   tmp_11: undefined,
   balls___25094: undefined,
   ball___25099: undefined,
-  unnamed766___U2: undefined,
-  unnamed767___U3: undefined,
+  unnamed802___U2: undefined,
+  unnamed803___U3: undefined,
 } }
 
 
@@ -48833,8 +48833,8 @@ switch (step) {
 
     s.crates___25119 = undefined;
     s.crate___25124 = undefined;
-    s.unnamed764___U2 = undefined;
-    s.unnamed765___U3 = undefined;
+    s.unnamed800___U2 = undefined;
+    s.unnamed801___U3 = undefined;
     s.tmp_0 = sprites_allOfKind__P7395_mk(s);
     s.tmp_0.arg0 = globals.KIND_HAZARD___45259;
     s.callLocIdx = 744; s.pc = 16; return s.tmp_0;
@@ -48842,15 +48842,15 @@ switch (step) {
     r0 = s.retval;
     s.crates___25119 = (r0);
     s.crate___25124 = (undefined);
-    s.unnamed764___U2 = (s.crates___25119);
-    s.unnamed765___U3 = (0);
+    s.unnamed800___U2 = (s.crates___25119);
+    s.unnamed801___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed765___U3;
-    r0 = pxsim_Array__length(s.unnamed764___U2);
+    s.tmp_0 = r0 = s.unnamed801___U3;
+    r0 = pxsim_Array__length(s.unnamed800___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 15; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed764___U2, s.unnamed765___U3);
+    r0 = pxsim_Array__getAt(s.unnamed800___U2, s.unnamed801___U3);
     s.crate___25124 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.crate___25124);
     s.tmp_3 = r0;
@@ -48961,11 +48961,11 @@ switch (step) {
   case 12:
   case 13:
   case 14:
-    r0 = (s.unnamed765___U3 + 1);
-    s.unnamed765___U3 = (r0);
+    r0 = (s.unnamed801___U3 + 1);
+    s.unnamed801___U3 = (r0);
     { step = 1; continue; }
   case 15:
-    s.unnamed764___U2 = (undefined);
+    s.unnamed800___U2 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -48996,8 +48996,8 @@ function GameController_PuzzleMode_updateMovingCrates__P13079_mk(s) {
   tmp_16: undefined,
   crates___25119: undefined,
   crate___25124: undefined,
-  unnamed764___U2: undefined,
-  unnamed765___U3: undefined,
+  unnamed800___U2: undefined,
+  unnamed801___U3: undefined,
 } }
 
 
@@ -49016,8 +49016,8 @@ switch (step) {
 
     s.ghostBots___25163 = undefined;
     s.ghostBot___25168 = undefined;
-    s.unnamed762___U2 = undefined;
-    s.unnamed763___U3 = undefined;
+    s.unnamed798___U2 = undefined;
+    s.unnamed799___U3 = undefined;
     s.tmp_0 = sprites_allOfKind__P7395_mk(s);
     s.tmp_0.arg0 = globals.KIND_ENEMY___45253;
     s.callLocIdx = 667; s.pc = 12; return s.tmp_0;
@@ -49025,15 +49025,15 @@ switch (step) {
     r0 = s.retval;
     s.ghostBots___25163 = (r0);
     s.ghostBot___25168 = (undefined);
-    s.unnamed762___U2 = (s.ghostBots___25163);
-    s.unnamed763___U3 = (0);
+    s.unnamed798___U2 = (s.ghostBots___25163);
+    s.unnamed799___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed763___U3;
-    r0 = pxsim_Array__length(s.unnamed762___U2);
+    s.tmp_0 = r0 = s.unnamed799___U3;
+    r0 = pxsim_Array__length(s.unnamed798___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed762___U2, s.unnamed763___U3);
+    r0 = pxsim_Array__getAt(s.unnamed798___U2, s.unnamed799___U3);
     s.ghostBot___25168 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.ghostBot___25168);
     s.tmp_3 = r0;
@@ -49100,11 +49100,11 @@ switch (step) {
   case 8:
   case 9:
   case 10:
-    r0 = (s.unnamed763___U3 + 1);
-    s.unnamed763___U3 = (r0);
+    r0 = (s.unnamed799___U3 + 1);
+    s.unnamed799___U3 = (r0);
     { step = 1; continue; }
   case 11:
-    s.unnamed762___U2 = (undefined);
+    s.unnamed798___U2 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -49135,8 +49135,8 @@ function GameController_PuzzleMode_updateGhostBotPatrol__P13068_mk(s) {
   tmp_16: undefined,
   ghostBots___25163: undefined,
   ghostBot___25168: undefined,
-  unnamed762___U2: undefined,
-  unnamed763___U3: undefined,
+  unnamed798___U2: undefined,
+  unnamed799___U3: undefined,
 } }
 
 
@@ -50167,8 +50167,8 @@ switch (step) {
     s.stageData___25414 = undefined;
     s.gateLocations___25429 = undefined;
     s.gateLoc___25437 = undefined;
-    s.unnamed760___U3 = undefined;
-    s.unnamed761___U4 = undefined;
+    s.unnamed796___U3 = undefined;
+    s.unnamed797___U4 = undefined;
     s.tmp_3 = if_dungeonStageData_1_mk(s);
     s.tmp_3.arg0 = globals.state___10020;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -50365,15 +50365,15 @@ switch (step) {
     s.tmp_2 = r0;
     s.gateLocations___25429 = (s.tmp_2);
     s.gateLoc___25437 = (undefined);
-    s.unnamed760___U3 = (s.gateLocations___25429);
-    s.unnamed761___U4 = (0);
+    s.unnamed796___U3 = (s.gateLocations___25429);
+    s.unnamed797___U4 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed761___U4;
-    r0 = pxsim_Array__length(s.unnamed760___U3);
+    s.tmp_0 = r0 = s.unnamed797___U4;
+    r0 = pxsim_Array__length(s.unnamed796___U3);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 10; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed760___U3, s.unnamed761___U4);
+    r0 = pxsim_Array__getAt(s.unnamed796___U3, s.unnamed797___U4);
     s.gateLoc___25437 = (r0);
     s.tmp_3 = if_gatesOpen_1_mk(s);
     s.tmp_3.arg0 = s.stageData___25414;
@@ -50437,11 +50437,11 @@ switch (step) {
     s.callLocIdx = 575; s.pc = 33; return s.tmp_0;
   case 33:
     r0 = s.retval;
-    r0 = (s.unnamed761___U4 + 1);
-    s.unnamed761___U4 = (r0);
+    r0 = (s.unnamed797___U4 + 1);
+    s.unnamed797___U4 = (r0);
     { step = 7; continue; }
   case 10:
-    s.unnamed760___U3 = (undefined);
+    s.unnamed796___U3 = (undefined);
     s.tmp_1 = if_gatesOpen_1_mk(s);
     s.tmp_1.arg0 = s.stageData___25414;
     if (!s.tmp_1.arg0.vtable.iface) {
@@ -50498,8 +50498,8 @@ function GameController_PlatformMode_togglePlatformGates__P13061_mk(s) {
   stageData___25414: undefined,
   gateLocations___25429: undefined,
   gateLoc___25437: undefined,
-  unnamed760___U3: undefined,
-  unnamed761___U4: undefined,
+  unnamed796___U3: undefined,
+  unnamed797___U4: undefined,
 } }
 
 
@@ -52846,8 +52846,8 @@ switch (step) {
     s.playerSprite___25939 = undefined;
     s.nearby___25944 = undefined;
     s.s___25953 = undefined;
-    s.unnamed758___U3 = undefined;
-    s.unnamed759___U4 = undefined;
+    s.unnamed794___U3 = undefined;
+    s.unnamed795___U4 = undefined;
     s.tmp_2 = if_playMode_1_mk(s);
     s.tmp_2.arg0 = globals.state___10020;
     if (!s.tmp_2.arg0.vtable.iface) {
@@ -52911,15 +52911,15 @@ switch (step) {
     r0 = s.retval;
     s.nearby___25944 = (r0);
     s.s___25953 = (undefined);
-    s.unnamed758___U3 = (s.nearby___25944);
-    s.unnamed759___U4 = (0);
+    s.unnamed794___U3 = (s.nearby___25944);
+    s.unnamed795___U4 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed759___U4;
-    r0 = pxsim_Array__length(s.unnamed758___U3);
+    s.tmp_0 = r0 = s.unnamed795___U4;
+    r0 = pxsim_Array__length(s.unnamed794___U3);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed758___U3, s.unnamed759___U4);
+    r0 = pxsim_Array__getAt(s.unnamed794___U3, s.unnamed795___U4);
     s.s___25953 = (r0);
     s.tmp_4 = Math_abs__P5231_mk(s);
     s.tmp_6 = Sprite_x__P7471_mk(s);
@@ -52984,11 +52984,11 @@ switch (step) {
     { step = 13; continue; }
   case 10:
   case 11:
-    r0 = (s.unnamed759___U4 + 1);
-    s.unnamed759___U4 = (r0);
+    r0 = (s.unnamed795___U4 + 1);
+    s.unnamed795___U4 = (r0);
     { step = 7; continue; }
   case 12:
-    s.unnamed758___U3 = (undefined);
+    s.unnamed794___U3 = (undefined);
   case 13:
     r0 = undefined;
     return leave(s, r0)
@@ -53021,8 +53021,8 @@ function GameController_HubMode_handleInteract__P13056_mk(s) {
   playerSprite___25939: undefined,
   nearby___25944: undefined,
   s___25953: undefined,
-  unnamed758___U3: undefined,
-  unnamed759___U4: undefined,
+  unnamed794___U3: undefined,
+  unnamed795___U4: undefined,
 } }
 
 
@@ -84065,5 +84065,5 @@ const sprites_BaseSpriteSayRenderer__C7376_VT = mkVTable({
 
 const breakpoints = setupDebugger(1, ["DUNGEON_SPECS___45336","HUB_START_ROOM___45406","HUB_SPAWN_POINTS___45409","state___10020","QUESTS___10149","hudHearts___41606","hudTool___41610","KIND_PLAYER___45252","playerSprite___46095","KIND_INTERACTABLE___45257","hudHint___41612","KIND_TARGET___45262","KIND_PADDLE___45264","KIND_BALL___45265","KIND_HAZARD___45259","KIND_ENEMY___45253","KIND_COLLECTIBLE___45258","asteroidRotation___10189","asteroidVx___10190","asteroidVy___10191","KIND_PROJECTILE___45254","KIND_PLATFORM_MOVING___45261","isOnLadder___10182","HUB_ROOM_IDS___45404","KIND_DOOR___45256","KIND_NPC___45255","KIND_HUD___45266","hudEnergy___41608","TOOL_FREEZECAM___45410","TOOL_CONFETTI_BOMB___45411","TOOL_SOAP_SLIDE___45412","TOOL_DECOY_TOY___45413","TOOL_TAGGER___45414","KIND_DEBRIS___45260","KIND_TOOL_EFFECT___45263"])
 
-return _main___P48876
+return _main___P49632
 })
