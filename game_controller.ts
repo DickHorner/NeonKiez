@@ -343,23 +343,6 @@ namespace GameController {
       });
     });
   }
-    const spec = DUNGEON_SPECS.find((d) => d.id === dungeonId);
-    if (!spec) return;
-
-    // Transition → Cutscene → Dungeon
-    setGameMode(GameMode.Transition);
-    pause(TRANSITION_PAUSE_MS);
-
-    setGameMode(GameMode.Cutscene);
-    playCutscene(spec.introCutsceneId, () => {
-      // IMMEDIATE mode switch after cutscene
-      setGameMode(GameMode.Dungeon);
-      switchPlayMode(spec.playMode, {
-        dungeonId: dungeonId,
-        stageIndex: 0,
-      });
-    });
-  }
 
   export function exitDungeon() {
     if (!state.currentDungeonId) return;
@@ -517,30 +500,3 @@ function getPlayerSprite(): Sprite {
 function setPlayerSprite(sprite: Sprite) {
   GameController.setPlayerSprite(sprite);
 }
-
-// Global helper functions for puzzle modes (callable from player_modes.ts)
-
-function serveBall() {
-  if (!state.dungeonStageData) return;
-  
-  // Cap check - only allow serving if under ball limit
-  if (sprites.allOfKind(KIND_BALL).length >= CAP_MAX_BALLS) return;
-
-  const paddle = sprites.allOfKind(KIND_PADDLE)[0];
-  if (!paddle) return;
-
-  const ballSpeed = state.dungeonStageData.ballSpeed || BALL_SPEED_NORMAL;
-  
-  // Create ball on paddle
-  const ball = sprites.create(imgBall(), KIND_BALL);
-  ball.setPosition(paddle.x, paddle.y - 8);
-  
-  // Launch upward with deterministic slight rightward bias
-  ball.vx = 10;
-  ball.vy = -ballSpeed;
-  ball.setBounceOnWall(true);
-
-  sfxInteract();
-}
-
-// MANUAL TEST PASSED: GameController scaffold complete
