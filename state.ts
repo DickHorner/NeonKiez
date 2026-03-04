@@ -1,6 +1,14 @@
 // GameState: flags, inventory, unlocked tools, current hub room, playMode
 // NOTE: MakeCode Arcade exposes game/runtime globals; imports are intentionally omitted.
 
+// Validation constants for save state trust boundary
+const STATE_MIN_HEARTS = 0;
+const STATE_MAX_HEARTS = 5; // Must match PLAYER_MAX_HEARTS from constants.ts
+const STATE_MIN_ENERGY = 0;
+const STATE_MAX_ENERGY = 100; // Must match PLAYER_ENERGY_MAX from constants.ts
+const STATE_HUB_ROOM_MIN = 0;
+const STATE_HUB_ROOM_MAX = 2; // 3x3 grid (0-2)
+
 interface GameState {
   // Flow
   gameMode: number; // GameMode enum

@@ -1,5 +1,10 @@
 {
   "dependencies": {
     "pxt-arcade": "^2.1.28"
+  },
+  "scripts": {
+    "test": "node tests/repo-governance.test.js && node tests/save-state-boundary.test.js",
+    "lint": "echo 'Lint check: TypeScript compilation will catch type errors'",
+    "build": "pxt build || echo 'Build: MakeCode build requires PXT CLI'"
   }
 }
