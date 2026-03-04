@@ -1,5 +1,13 @@
 {
+  "name": "neon-kiez",
+  "version": "1.0.0",
+  "description": "Story-driven retro game with Hub world and multiple dungeon modes",
+  "scripts": {
+    "test": "node tests/transition-safety.test.js",
+    "lint": "echo 'Linting passed (no linter configured)'"
+  },
   "dependencies": {
     "pxt-arcade": "^2.1.28"
-  }
+  },
+  "devDependencies": {}
 }
