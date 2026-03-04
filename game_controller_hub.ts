@@ -4,18 +4,19 @@
 namespace GameController {
   export namespace HubMode {
     export function setup(payload: any) {
-      // Update hub room if specified
+      // Update hub room if specified - validate bounds and shape
       if (payload && payload.hubRoom) {
-        state.hubRoom = payload.hubRoom;
+        state.hubRoom = getSafeHubRoom(payload.hubRoom, "payload.hubRoom");
       }
 
-      // Handle spawn tag
+      // Handle spawn tag - validate spawn point room bounds
       if (payload && payload.spawnTag && HUB_SPAWN_POINTS[payload.spawnTag]) {
         const spawnPoint = HUB_SPAWN_POINTS[payload.spawnTag];
-        state.hubRoom = spawnPoint.room;
+        state.hubRoom = getSafeHubRoom(spawnPoint.room, "spawnTag:" + payload.spawnTag);
       }
 
-      // Load hub room
+      // Guard room ID lookup with validated state.hubRoom
+      state.hubRoom = getSafeHubRoom(state.hubRoom, "pre-load");
       const roomId = HUB_ROOM_IDS[state.hubRoom.row][state.hubRoom.col];
       const tm = getTilemapByID(roomId);
       if (tm) {

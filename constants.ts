@@ -379,3 +379,23 @@ const TOOL_CONFETTI_BOMB = "TOOL_CONFETTI_BOMB";
 const TOOL_SOAP_SLIDE = "TOOL_SOAP_SLIDE";
 const TOOL_DECOY_TOY = "TOOL_DECOY_TOY";
 const TOOL_TAGGER = "TOOL_TAGGER";
+
+// Hub room validation helpers
+function isValidHubRoom(room: any): boolean {
+  if (!room || typeof room !== "object") return false;
+  if (typeof room.row !== "number" || typeof room.col !== "number") return false;
+  // Guard against NaN, Infinity, and other non-finite numbers
+  if (!isFinite(room.row) || !isFinite(room.col)) return false;
+  if (room.row < 0 || room.row >= HUB_ROOM_IDS.length) return false;
+  if (room.col < 0 || room.col >= HUB_ROOM_IDS[0].length) return false;
+  return true;
+}
+
+function getSafeHubRoom(room: any, debugContext: string): { row: number; col: number } {
+  if (isValidHubRoom(room)) {
+    return room;
+  }
+  // DECISION: Fallback to center room (HUB_START_ROOM) for invalid input
+  console.log("DEBUG: Hub room fallback triggered - " + debugContext + " - invalid room:", room);
+  return HUB_START_ROOM;
+}
