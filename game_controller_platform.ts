@@ -3,7 +3,7 @@
 
 namespace GameController {
   export namespace PlatformMode {
-    export function setup(payload: any) {
+    export function setup(payload: DungeonModePayload) {
       const dungeonId = payload.dungeonId;
       const stageIndex = payload.stageIndex || 0;
 
@@ -49,7 +49,7 @@ namespace GameController {
 
       const loc = playerSprite.tilemapLocation();
       if (!loc) return;
-      const goalTile = tiles.getTileImage(TILE_GOAL_FLAG as any);
+      const goalTile = tileImg(TILE_GOAL_FLAG);
 
       // Check for goal
       if (
@@ -83,7 +83,7 @@ namespace GameController {
       for (let i = 0; i < spawners.length; i = i + 1) {
         const spawner = spawners[i];
         if (spawner.xEnd !== undefined) {
-          spawnMovingPlatform(spawner.xStart, spawner.xEnd, spawner.y, spawner.speed);
+          spawnMovingPlatform(spawner.xStart, spawner.xEnd, spawner.y || 0, spawner.speed || 0);
         } else if (spawner.rate !== undefined) {
           // TODO: wire barrel spawn loop to use this rate per stage
         }
@@ -119,7 +119,7 @@ namespace GameController {
       const loc = playerSprite.tilemapLocation();
       if (!loc) return;
 
-      const switchTile = tiles.getTileImage(TILE_SWITCH as any);
+      const switchTile = tileImg(TILE_SWITCH);
       if (switchTile && tiles.tileAtLocationEquals(loc, switchTile)) {
         if (controller.A.isPressed()) {
           state.lastInteractTime = game.runtime();
@@ -131,21 +131,21 @@ namespace GameController {
     function togglePlatformGates() {
       if (!state.dungeonStageData) return;
 
-      state.dungeonStageData.switchesActivated += 1;
-      state.dungeonStageData.gatesOpen = !state.dungeonStageData.gatesOpen;
+      const stageData = state.dungeonStageData;
+      stageData.switchesActivated = (stageData.switchesActivated || 0) + 1;
+      stageData.gatesOpen = !stageData.gatesOpen;
 
-      const stageData = state.dungeonStageData as any;
       if (!stageData.gateLocations) {
-        stageData.gateLocations = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+        stageData.gateLocations = tiles.getTilesByType(tileImg(TILE_GATE));
       }
 
-      const gateLocations = (stageData.gateLocations as tiles.Location[]) || [];
+      const gateLocations = stageData.gateLocations || [];
 
       for (const gateLoc of gateLocations) {
         if (stageData.gatesOpen) {
-          tiles.setTileAt(gateLoc, tiles.getTileImage(0 as any));
+          tiles.setTileAt(gateLoc, tileImg(0));
         } else {
-          tiles.setTileAt(gateLoc, tiles.getTileImage(TILE_GATE as any));
+          tiles.setTileAt(gateLoc, tileImg(TILE_GATE));
         }
         tiles.setWallAt(gateLoc, !stageData.gatesOpen);
       }
