@@ -8,3 +8,4 @@ _site
 *.tgz
 .header.json
 .simstate.json
+.motherlode/outputs/
