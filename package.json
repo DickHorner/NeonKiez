@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "pxt-arcade": "^2.1.28"
+  },
+  "scripts": {
+    "test": "node --test tests/**/*.test.js"
   }
 }
