@@ -1,0 +1,19 @@
+# CODEOWNERS — NeonKiez
+# Bus factor >= 2 for critical paths (Motherlode constitution §8).
+# DECISION: @Copilot is the confirmed AI-agent co-maintainer (copilot-swe-agent, active in this repo).
+
+# Default: repository owner covers all files
+* @DickHorner
+
+# Core game logic (state machine, save, constants)
+/constants.ts @DickHorner @Copilot
+/state.ts @DickHorner @Copilot
+/save.ts @DickHorner @Copilot
+/game_controller.ts @DickHorner @Copilot
+
+# CI / Build pipeline
+/.github/workflows/ @DickHorner @Copilot
+
+# Security and governance
+/SECURITY.md @DickHorner @Copilot
+/.github/CODEOWNERS @DickHorner @Copilot
