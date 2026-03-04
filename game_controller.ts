@@ -47,7 +47,10 @@ namespace GameController {
   // ============ MODE SWITCHING (THE HEART) ============
 
   export function switchPlayMode(nextMode: number, payload: any) {
-    if (state.transitionLock) return;
+    if (state.transitionLock) {
+      signalFailure(FailureReason.TRANSITION_LOCKED, `Attempted to switch to mode ${nextMode}`);
+      return;
+    }
 
     state.transitionLock = true;
 
@@ -139,7 +142,10 @@ namespace GameController {
     state.currentStageIndex = stageIndex;
 
     const spec = DUNGEON_SPECS.find((d) => d.id === dungeonId);
-    if (!spec) return;
+    if (!spec) {
+      signalFailure(FailureReason.SPEC_NOT_FOUND, `Dungeon ID: ${dungeonId}`);
+      return;
+    }
 
     const idx = stageIndex | 0;
     const stageId = spec.stages[idx];
@@ -284,7 +290,10 @@ namespace GameController {
   }
 
   function handleTargetHit(projectile: Sprite, target: Sprite) {
-    if (!state.dungeonStageData) return;
+    if (!state.dungeonStageData) {
+      signalFailure(FailureReason.NO_DUNGEON_STAGE_DATA, "handleTargetHit");
+      return;
+    }
 
     // Verify it's actually a target (overlap handlers can fire for different sprite kinds)
     if (target.kind() !== KIND_TARGET) return;
@@ -348,7 +357,10 @@ namespace GameController {
 
   export function enterDungeon(dungeonId: string) {
     const spec = DUNGEON_SPECS.find((d) => d.id === dungeonId);
-    if (!spec) return;
+    if (!spec) {
+      signalFailure(FailureReason.SPEC_NOT_FOUND, `enterDungeon: ${dungeonId}`);
+      return;
+    }
 
     // Transition → Cutscene → Dungeon
     setGameMode(GameMode.Transition);
@@ -366,10 +378,16 @@ namespace GameController {
   }
 
   export function exitDungeon() {
-    if (!state.currentDungeonId) return;
+    if (!state.currentDungeonId) {
+      signalFailure(FailureReason.NO_CURRENT_DUNGEON, "exitDungeon");
+      return;
+    }
 
     const spec = DUNGEON_SPECS.find((d) => d.id === state.currentDungeonId);
-    if (!spec) return;
+    if (!spec) {
+      signalFailure(FailureReason.SPEC_NOT_FOUND, `exitDungeon: ${state.currentDungeonId}`);
+      return;
+    }
 
     // Return to hub
     setGameMode(GameMode.Hub);
@@ -382,10 +400,16 @@ namespace GameController {
   }
 
   export function completeDungeon() {
-    if (!state.currentDungeonId) return;
+    if (!state.currentDungeonId) {
+      signalFailure(FailureReason.NO_CURRENT_DUNGEON, "completeDungeon");
+      return;
+    }
 
     const spec = DUNGEON_SPECS.find((d) => d.id === state.currentDungeonId);
-    if (!spec) return;
+    if (!spec) {
+      signalFailure(FailureReason.SPEC_NOT_FOUND, `completeDungeon: ${state.currentDungeonId}`);
+      return;
+    }
 
     // Apply rewards
     for (const flag of spec.rewards.flagsSet) {
@@ -460,7 +484,10 @@ namespace GameController {
   }
 
   function updateRhythmMode() {
-    if (!playerSprite || !state.dungeonStageData) return;
+    if (!playerSprite || !state.dungeonStageData) {
+      signalFailure(FailureReason.NO_PLAYER_SPRITE, "updateRhythmMode");
+      return;
+    }
 
     const now = game.runtime();
     const data = state.dungeonStageData;
@@ -485,10 +512,16 @@ namespace GameController {
 
 
   export function onStageComplete() {
-    if (!state.currentDungeonId) return;
+    if (!state.currentDungeonId) {
+      signalFailure(FailureReason.NO_CURRENT_DUNGEON, "onStageComplete");
+      return;
+    }
 
     const spec = DUNGEON_SPECS.find((d) => d.id === state.currentDungeonId);
-    if (!spec) return;
+    if (!spec) {
+      signalFailure(FailureReason.SPEC_NOT_FOUND, `onStageComplete: ${state.currentDungeonId}`);
+      return;
+    }
 
     const nextStageIndex = state.currentStageIndex + 1;
 

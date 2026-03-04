@@ -7,6 +7,21 @@ function initDebug() {
   // Toggle debug with controller combo (e.g., hold Menu + Down)
   // Placeholder: always available for testing
   debugMode = true;
+
+  // Enable failure signals debug logging when debug mode is on
+  if (debugMode) {
+    enableFailureSignalsDebug();
+  }
+}
+
+function toggleFailureSignalsDebug() {
+  if (isFailureSignalsDebugEnabled()) {
+    disableFailureSignalsDebug();
+    showHint("[FAILURE_SIGNALS_DEBUG_OFF]", 2000);
+  } else {
+    enableFailureSignalsDebug();
+    showHint("[FAILURE_SIGNALS_DEBUG_ON]", 2000);
+  }
 }
 
 function toggleGodMode() {
@@ -90,7 +105,7 @@ function showMetaModeDebug() {
   const data = state.dungeonStageData;
   let text = "META MODE DEBUG\n";
   text += "Stage: " + state.currentStageIndex + "\n";
-  
+
   if (state.currentStageIndex === 1) {
     text += "Goal reached: " + (data.reachedGoal ? "YES" : "NO") + "\n";
   } else if (state.currentStageIndex === 2) {
@@ -101,6 +116,22 @@ function showMetaModeDebug() {
   } else if (state.currentStageIndex === 4) {
     text += "Nodes: " + (data.nodesStabilized || 0) + "/" + (data.nodesRequired || 0) + "\n";
     text += "Current: " + (data.currentNodeIndex || 0) + "\n";
+  }
+
+  game.showLongText(text, DialogLayout.Top);
+}
+
+function showLastFailure() {
+  const failure = getLastFailure();
+  if (!failure.reason) {
+    showHint("[NO_FAILURE_RECORDED]", 2000);
+    return;
+  }
+
+  let text = "LAST FAILURE\n";
+  text += "Reason: " + failure.reason + "\n";
+  if (failure.context) {
+    text += "Context: " + failure.context + "\n";
   }
 
   game.showLongText(text, DialogLayout.Top);

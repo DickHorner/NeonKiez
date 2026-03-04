@@ -51,11 +51,20 @@ namespace GameController {
     }
 
     export function handleInteract() {
-      if (state.playMode !== PlayMode.HUB_TOPDOWN) return;
-      if (!canInteract()) return;
+      if (state.playMode !== PlayMode.HUB_TOPDOWN) {
+        signalFailure(FailureReason.WRONG_PLAY_MODE, `Expected HUB_TOPDOWN, got ${state.playMode}`);
+        return;
+      }
+      if (!canInteract()) {
+        signalFailure(FailureReason.INTERACT_COOLDOWN, "handleInteract");
+        return;
+      }
 
       const playerSprite = getPlayerSprite();
-      if (!playerSprite) return;
+      if (!playerSprite) {
+        signalFailure(FailureReason.NO_PLAYER_SPRITE, "HubMode.handleInteract");
+        return;
+      }
 
       // Check for nearby interactables (doors, NPCs)
       const nearby = sprites.allOfKind(KIND_DOOR)
