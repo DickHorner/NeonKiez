@@ -1,5 +1,14 @@
 {
+  "name": "neon-kiez",
+  "version": "1.0.0",
+  "description": "Story-driven retro game in MakeCode Arcade",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:watch": "node --test --watch tests/*.test.js",
+    "quality-check": "node scripts/repo-quality-check.js"
+  },
   "dependencies": {
     "pxt-arcade": "^2.1.28"
-  }
+  },
+  "devDependencies": {}
 }
