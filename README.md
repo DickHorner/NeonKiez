@@ -114,7 +114,19 @@ Run in MakeCode Arcade simulator:
 4. Play dungeon stages
 5. Complete dungeon → return to hub with rewards
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for branch conventions, PR guidelines, and how to run
+tests and lint locally.
+
+## Architecture Decisions
+
+Key scaffold choices are documented in [ARCHITECTURE_DECISIONS.md](ARCHITECTURE_DECISIONS.md).
+
+## Agent Guardrails
+
+AI-agent constraints for this repo are defined in [AGENTS.md](AGENTS.md).
+
 ## License
 
 MIT License.
-- `world_hub.ts` - Hub room grid, NPCs, doors, savehouse
