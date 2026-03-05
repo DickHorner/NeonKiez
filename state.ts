@@ -28,7 +28,7 @@ interface GameState {
   // Dungeon progress
   currentDungeonId: string | null;
   currentStageIndex: number;
-  dungeonStageData: any; // mode-specific stage state
+  dungeonStageData: DungeonStageData | null; // mode-specific stage state
 
   // Transitions
   transitionLock: boolean;
@@ -41,7 +41,7 @@ interface GameState {
   invincibleUntil: number;
 }
 
-let state: GameState = null as any;
+let state!: GameState;
 
 function initState() {
   state = {
