@@ -7,6 +7,21 @@ function initDebug() {
   // Toggle debug with controller combo (e.g., hold Menu + Down)
   // Placeholder: always available for testing
   debugMode = true;
+
+  if (debugMode) {
+    enableFailureSignalsDebug();
+  }
+}
+
+function toggleFailureSignalsDebug() {
+  if (isFailureSignalsDebugEnabled()) {
+    disableFailureSignalsDebug();
+    showHint("[FAILURE_SIGNALS_DEBUG_OFF]", 2000);
+    return;
+  }
+
+  enableFailureSignalsDebug();
+  showHint("[FAILURE_SIGNALS_DEBUG_ON]", 2000);
 }
 
 function toggleGodMode() {
@@ -101,6 +116,22 @@ function showMetaModeDebug() {
   } else if (state.currentStageIndex === 4) {
     text += "Nodes: " + (data.nodesStabilized || 0) + "/" + (data.nodesRequired || 0) + "\n";
     text += "Current: " + (data.currentNodeIndex || 0) + "\n";
+  }
+
+  game.showLongText(text, DialogLayout.Top);
+}
+
+function showLastFailure() {
+  const failure = getLastFailure();
+  if (!failure.reason) {
+    showHint("[NO_FAILURE_RECORDED]", 2000);
+    return;
+  }
+
+  let text = "LAST FAILURE\n";
+  text += "Reason: " + failure.reason + "\n";
+  if (failure.context) {
+    text += "Context: " + failure.context + "\n";
   }
 
   game.showLongText(text, DialogLayout.Top);

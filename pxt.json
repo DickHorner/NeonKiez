@@ -38,6 +38,7 @@
         "world_hub.ts",
         "world_dungeons.ts",
         "debug.ts",
+        "failure_signals.ts",
         "README.md"
     ],
     "testFiles": [],

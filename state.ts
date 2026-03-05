@@ -1,6 +1,14 @@
 // GameState: flags, inventory, unlocked tools, current hub room, playMode
 // NOTE: MakeCode Arcade exposes game/runtime globals; imports are intentionally omitted.
 
+// Save-state validation bounds derive from runtime gameplay caps to avoid drift.
+const STATE_MIN_HEARTS = 0;
+const STATE_MAX_HEARTS = PLAYER_MAX_HEARTS;
+const STATE_MIN_ENERGY = 0;
+const STATE_MAX_ENERGY = PLAYER_ENERGY_MAX;
+const STATE_HUB_ROOM_MIN = 0;
+const STATE_HUB_ROOM_MAX = 2;
+
 interface GameState {
   // Flow
   gameMode: number; // GameMode enum
@@ -28,7 +36,7 @@ interface GameState {
   // Dungeon progress
   currentDungeonId: string | null;
   currentStageIndex: number;
-  dungeonStageData: any; // mode-specific stage state
+  dungeonStageData: DungeonStageData | null; // mode-specific stage state
 
   // Transitions
   transitionLock: boolean;
@@ -41,7 +49,7 @@ interface GameState {
   invincibleUntil: number;
 }
 
-let state: GameState = null as any;
+let state!: GameState;
 
 function initState() {
   state = {

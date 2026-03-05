@@ -1,0 +1,11 @@
+# CODEOWNERS - NeonKiez
+
+* @DickHorner
+
+/constants.ts @DickHorner @Copilot
+/state.ts @DickHorner @Copilot
+/save.ts @DickHorner @Copilot
+/game_controller.ts @DickHorner @Copilot
+/.github/workflows/ @DickHorner @Copilot
+/SECURITY.md @DickHorner @Copilot
+/.github/CODEOWNERS @DickHorner @Copilot

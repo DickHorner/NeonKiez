@@ -3,19 +3,23 @@
 
 namespace GameController {
   export namespace HubMode {
-    export function setup(payload: any) {
-      // Update hub room if specified
+    export function setup(payload: HubModePayload) {
+      const spawnPoint = payload && payload.spawnTag
+        ? getSpawnPoint(payload.spawnTag)
+        : null;
+
+      // Update hub room if specified - validate bounds and shape
       if (payload && payload.hubRoom) {
-        state.hubRoom = payload.hubRoom;
+        state.hubRoom = getSafeHubRoom(payload.hubRoom, "payload.hubRoom");
       }
 
-      // Handle spawn tag
-      if (payload && payload.spawnTag && HUB_SPAWN_POINTS[payload.spawnTag]) {
-        const spawnPoint = HUB_SPAWN_POINTS[payload.spawnTag];
+      // Handle spawn tag - validate spawn point room bounds
+      if (spawnPoint) {
         state.hubRoom = spawnPoint.room;
       }
 
-      // Load hub room
+      // Guard room lookup with a safe fallback.
+      state.hubRoom = getSafeHubRoom(state.hubRoom, "pre-load");
       const roomId = HUB_ROOM_IDS[state.hubRoom.row][state.hubRoom.col];
       const tm = getTilemapByID(roomId);
       if (tm) {
@@ -26,8 +30,7 @@ namespace GameController {
       const playerSprite = sprites.create(imgPlayerTopdown(), KIND_PLAYER);
 
       // Find spawn point
-      if (payload && payload.spawnTag && HUB_SPAWN_POINTS[payload.spawnTag]) {
-        const spawnPoint = HUB_SPAWN_POINTS[payload.spawnTag];
+      if (spawnPoint) {
         playerSprite.setPosition(spawnPoint.x, spawnPoint.y);
       } else {
         playerSprite.setPosition(80, 60);
@@ -51,11 +54,20 @@ namespace GameController {
     }
 
     export function handleInteract() {
-      if (state.playMode !== PlayMode.HUB_TOPDOWN) return;
-      if (!canInteract()) return;
+      if (state.playMode !== PlayMode.HUB_TOPDOWN) {
+        signalFailure(FailureReason.WRONG_PLAY_MODE, "HubMode.handleInteract");
+        return;
+      }
+      if (!canInteract()) {
+        signalFailure(FailureReason.INTERACT_COOLDOWN, "HubMode.handleInteract");
+        return;
+      }
 
       const playerSprite = getPlayerSprite();
-      if (!playerSprite) return;
+      if (!playerSprite) {
+        signalFailure(FailureReason.NO_PLAYER_SPRITE, "HubMode.handleInteract");
+        return;
+      }
 
       // Check for nearby interactables (doors, NPCs)
       const nearby = sprites.allOfKind(KIND_DOOR)
@@ -73,14 +85,13 @@ namespace GameController {
     }
 
     function handleInteractable(s: Sprite) {
-      if ((s as any).isDoor) {
+      const hs = s as HubSprite;
+      if (hs.isDoor) {
         // Enter dungeon
-        const dungeonId = (s as any).dungeonId as string;
-        if (dungeonId) GameController.enterDungeon(dungeonId);
-      } else if ((s as any).isNPC) {
+        if (hs.dungeonId) GameController.enterDungeon(hs.dungeonId);
+      } else if (hs.isNPC) {
         // Talk to NPC
-        const dialogId = (s as any).dialogId as string;
-        if (dialogId) showDialog(dialogId);
+        if (hs.dialogId) showDialog(hs.dialogId);
       }
     }
   }
