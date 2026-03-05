@@ -137,6 +137,163 @@ interface DungeonReward {
   items?: { id: string; qty: number }[];
 }
 
+// ---- Typed DungeonSpec params shapes ----
+// Individual per-dungeon param interfaces are used for typed cast-based access
+// in setup functions. DungeonParams is a flat optional interface so that
+// call-sites without narrowing (e.g. spec.params?.bpm) continue to compile.
+
+interface PuzzleLabyrinthParams {
+  tokensPerStage: number[];
+  switchToggleBehavior: string;
+}
+
+interface PuzzleBlockworksParams {
+  switchToggleBehavior: string;
+  switchRequiredForStage: number[];
+}
+
+interface ShooterParams {
+  wavesPerStage: number[];
+  coreHP: number;
+}
+
+interface RhythmParams {
+  bpm: number;
+  missLimit: number;
+  streakTargets: number[];
+}
+
+interface PuzzlePongParams {
+  targetsPerStage: number[];
+  ballSpeed: number[];
+}
+
+interface AsteroidsParams {
+  splitDepth: number;
+  surviveTimeS: number;
+}
+
+interface PlatformSpawner {
+  xStart: number;
+  xEnd?: number;
+  y?: number;
+  speed?: number;
+  rate?: number;
+}
+
+interface PlatformTrialParams {
+  stageSpawners: PlatformSpawner[][];
+}
+
+interface PlatformDonkeyParams {
+  barrelSpawnCap: number;
+  stageSpawners: PlatformSpawner[][];
+}
+
+interface MetaParams {
+  microStageDurationS: number;
+}
+
+// Flat optional shape: all params fields in one interface so that
+// property access without narrowing (e.g. spec.params?.bpm) compiles cleanly.
+interface DungeonParams {
+  // PuzzleLabyrinthParams
+  tokensPerStage?: number[];
+  // PuzzleLabyrinthParams + PuzzleBlockworksParams
+  switchToggleBehavior?: string;
+  // PuzzleBlockworksParams
+  switchRequiredForStage?: number[];
+  // ShooterParams
+  wavesPerStage?: number[];
+  coreHP?: number;
+  // RhythmParams
+  bpm?: number;
+  missLimit?: number;
+  streakTargets?: number[];
+  // PuzzlePongParams
+  targetsPerStage?: number[];
+  ballSpeed?: number[];
+  // AsteroidsParams
+  splitDepth?: number;
+  surviveTimeS?: number;
+  // PlatformTrialParams + PlatformDonkeyParams
+  stageSpawners?: PlatformSpawner[][];
+  // PlatformDonkeyParams
+  barrelSpawnCap?: number;
+  // MetaParams
+  microStageDurationS?: number;
+}
+
+// ---- Typed play-mode payload shapes ----
+
+interface HubModePayload {
+  hubRoom?: { row: number; col: number };
+  spawnTag?: string | null;
+}
+
+interface DungeonModePayload {
+  dungeonId: string;
+  stageIndex: number;
+}
+
+type PlayModePayload = HubModePayload | DungeonModePayload;
+
+// ---- Typed dungeon stage-data shape ----
+// All mode-specific fields are optional; each mode only populates its own subset.
+
+interface DungeonStageData {
+  stageIndex: number;
+  stageComplete?: boolean;
+  // Platform / Platform-Donkey
+  reachedGoal?: boolean;
+  switchesActivated?: number;
+  gatesOpen?: boolean;
+  gateLocations?: tiles.Location[];
+  barrelSpawnCap?: number;
+  lastBarrelSpawn?: number;
+  // Shooter
+  wavesComplete?: number;
+  enemiesAlive?: number;
+  // Rhythm
+  bpm?: number;
+  beatIntervalMs?: number;
+  nextBeatTime?: number;
+  streak?: number;
+  misses?: number;
+  streakRequired?: number;
+  rhythmDoorLocations?: tiles.Location[];
+  rhythmDoorsOpen?: boolean;
+  // Puzzle
+  tokensCollected?: number;
+  tokensRequired?: number;
+  ballSpeed?: number;
+  // Asteroids
+  debrisCount?: number;
+  partsCollected?: number;
+  // Meta
+  nodesStabilized?: number;
+  nodesRequired?: number;
+  currentNodeIndex?: number;
+  startTime?: number;
+  timeLimit?: number;
+  targetsDestroyed?: number;
+  targetsRequired?: number;
+}
+
+// ---- Typed sprite augmentation shapes ----
+
+type HubSprite = Sprite & {
+  isDoor?: boolean;
+  dungeonId?: string;
+  isNPC?: boolean;
+  dialogId?: string;
+};
+
+type MetaNodeSprite = Sprite & {
+  isStabilizationNode?: boolean;
+  nodeIndex?: number;
+};
+
 interface DungeonSpec {
   id: string;
   playMode: PlayMode;
@@ -144,7 +301,15 @@ interface DungeonSpec {
   stages: string[];
   hubReturnSpawnTag: string;
   rewards: DungeonReward;
-  params?: any;
+  params?: DungeonParams;
+}
+
+// ---- Tile-index helper ----
+// MakeCode's public tiles.getTileImage() declares a Location argument but the
+// runtime also accepts a numeric palette index. This helper contains the cast
+// in one place so that call-sites stay free of `as any`.
+function tileImg(index: number): Image {
+  return tiles.getTileImage(index as unknown as tiles.Location);
 }
 
 // Dungeon Registry (9 dungeons)
