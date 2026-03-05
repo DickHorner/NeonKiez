@@ -296,16 +296,6 @@ test('Failure signals do not alter control flow (return after signal)', () => {
   }
 });
 
-// Summary
-console.log('\n=== TEST SUMMARY ===');
-console.log(`Total tests: ${totalTests}`);
-console.log(`Passed: ${passedTests}`);
-console.log(`Failed: ${failedTests}`);
-
-if (failedTests > 0) {
-  console.log('\n❌ TEST SUITE FAILED');
-  process.exit(1);
-} else {
-  console.log('\n✅ ALL TESTS PASSED');
-  process.exit(0);
-}
+// DECISION: Removed custom summary and process.exit calls to avoid interfering
+// with the node --test runner. Test failures are now signaled solely by
+// thrown errors within the individual test cases.
