@@ -3,7 +3,7 @@
 
 namespace GameController {
   export namespace HubMode {
-    export function setup(payload: any) {
+    export function setup(payload: HubModePayload) {
       // Update hub room if specified
       if (payload && payload.hubRoom) {
         state.hubRoom = payload.hubRoom;
@@ -82,14 +82,13 @@ namespace GameController {
     }
 
     function handleInteractable(s: Sprite) {
-      if ((s as any).isDoor) {
+      const hs = s as HubSprite;
+      if (hs.isDoor) {
         // Enter dungeon
-        const dungeonId = (s as any).dungeonId as string;
-        if (dungeonId) GameController.enterDungeon(dungeonId);
-      } else if ((s as any).isNPC) {
+        if (hs.dungeonId) GameController.enterDungeon(hs.dungeonId);
+      } else if (hs.isNPC) {
         // Talk to NPC
-        const dialogId = (s as any).dialogId as string;
-        if (dialogId) showDialog(dialogId);
+        if (hs.dialogId) showDialog(hs.dialogId);
       }
     }
   }

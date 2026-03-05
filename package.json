@@ -1,4 +1,12 @@
 {
+  "scripts": {
+    "build": "node scripts/typecheck.js",
+    "lint": "node scripts/typecheck.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
   "dependencies": {
     "pxt-arcade": "^2.1.28"
   },
