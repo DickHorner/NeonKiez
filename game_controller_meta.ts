@@ -3,7 +3,7 @@
 
 namespace GameController {
   export namespace MetaMode {
-    export function setup(payload: any) {
+    export function setup(payload: DungeonModePayload) {
       const dungeonId = payload.dungeonId;
       const stageIndex = payload.stageIndex || 0;
 
@@ -84,9 +84,10 @@ namespace GameController {
 
     export function handleStabilizationNode(node: Sprite) {
       if (!state.dungeonStageData) return;
-      if (!(node as any).isStabilizationNode) return;
+      const metaNode = node as MetaNodeSprite;
+      if (!metaNode.isStabilizationNode) return;
 
-      const nodeIndex = (node as any).nodeIndex;
+      const nodeIndex = metaNode.nodeIndex;
       const data = state.dungeonStageData;
 
       // Nodes must be activated in sequence
@@ -277,7 +278,6 @@ namespace GameController {
 
         const target = sprites.create(imgEnemy("TARGET"), KIND_TARGET);
         target.setPosition(x, y);
-        (target as any).isTarget = true;
       }
     }
 
@@ -290,10 +290,10 @@ namespace GameController {
       ];
 
       for (let i = 0; i < positions.length; i++) {
-        const node = sprites.create(imgCollectible("NODE_" + i), KIND_INTERACTABLE);
+        const node = sprites.create(imgCollectible("NODE_" + i), KIND_INTERACTABLE) as MetaNodeSprite;
         node.setPosition(positions[i].x, positions[i].y);
-        (node as any).nodeIndex = i;
-        (node as any).isStabilizationNode = true;
+        node.nodeIndex = i;
+        node.isStabilizationNode = true;
       }
     }
   }

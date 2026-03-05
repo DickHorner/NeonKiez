@@ -6,6 +6,13 @@
     "test": "node --test tests/*.test.js",
     "test:watch": "node --test --watch tests/*.test.js",
     "quality-check": "node scripts/repo-quality-check.js"
+  "scripts": {
+    "build": "node scripts/typecheck.js",
+    "lint": "node scripts/typecheck.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
   },
   "dependencies": {
     "pxt-arcade": "^2.1.28"

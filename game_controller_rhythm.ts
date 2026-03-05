@@ -3,7 +3,7 @@
 
 namespace GameController {
   export namespace RhythmMode {
-    export function setup(payload: any) {
+    export function setup(payload: DungeonModePayload) {
       const dungeonId = payload.dungeonId;
       const stageIndex = payload.stageIndex || 0;
 
@@ -54,8 +54,9 @@ namespace GameController {
     function setupRhythmStageContent(stageIndex: number) {
       if (stageIndex === 1) {
         // Stage 1: Setup rhythm doors
-        const stageData = state.dungeonStageData as any;
-        const doorTiles = tiles.getTilesByType(tiles.getTileImage(TILE_GATE as any));
+        if (!state.dungeonStageData) return;
+        const stageData = state.dungeonStageData;
+        const doorTiles = tiles.getTilesByType(tileImg(TILE_GATE));
         stageData.rhythmDoorLocations = doorTiles;
         stageData.rhythmDoorsOpen = false;
       }

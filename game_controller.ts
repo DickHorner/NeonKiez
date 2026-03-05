@@ -46,7 +46,7 @@ namespace GameController {
 
   // ============ MODE SWITCHING (THE HEART) ============
 
-  export function switchPlayMode(nextMode: number, payload: any) {
+  export function switchPlayMode(nextMode: number, payload: PlayModePayload) {
     if (state.transitionLock) return;
 
     state.transitionLock = true;
@@ -87,21 +87,21 @@ namespace GameController {
     state.dungeonStageData = null;
   }
 
-  function setupNextPlayMode(mode: number, payload: any) {
+  function setupNextPlayMode(mode: number, payload: PlayModePayload) {
     if (mode === PlayMode.HUB_TOPDOWN) {
-      setupHubMode(payload);
+      setupHubMode(payload as HubModePayload);
     } else if (mode === PlayMode.DUN_PLATFORM) {
-      setupPlatformMode(payload);
+      setupPlatformMode(payload as DungeonModePayload);
     } else if (mode === PlayMode.DUN_SHOOTER) {
-      setupShooterMode(payload);
+      setupShooterMode(payload as DungeonModePayload);
     } else if (mode === PlayMode.DUN_ASTEROIDS) {
-      setupAsteroidsMode(payload);
+      setupAsteroidsMode(payload as DungeonModePayload);
     } else if (mode === PlayMode.DUN_RHYTHM) {
-      setupRhythmMode(payload);
+      setupRhythmMode(payload as DungeonModePayload);
     } else if (mode === PlayMode.DUN_PUZZLE) {
-      setupPuzzleMode(payload);
+      setupPuzzleMode(payload as DungeonModePayload);
     } else if (mode === PlayMode.DUN_META) {
-      setupMetaMode(payload);
+      setupMetaMode(payload as DungeonModePayload);
     }
 
     updateHUD();
@@ -109,29 +109,29 @@ namespace GameController {
 
   // ============ HUB MODE SETUP ============
 
-  function setupHubMode(payload: any) {
+  function setupHubMode(payload: HubModePayload) {
     HubMode.setup(payload);
   }
 
   // ============ DUNGEON MODE SETUPS ============
 
-  function setupPlatformMode(payload: any) {
+  function setupPlatformMode(payload: DungeonModePayload) {
     PlatformMode.setup(payload);
   }
 
-  function setupShooterMode(payload: any) {
+  function setupShooterMode(payload: DungeonModePayload) {
     ShooterMode.setup(payload);
   }
 
-  function setupAsteroidsMode(payload: any) {
+  function setupAsteroidsMode(payload: DungeonModePayload) {
     AsteroidsMode.setup(payload);
   }
 
-  function setupRhythmMode(payload: any) {
+  function setupRhythmMode(payload: DungeonModePayload) {
     RhythmMode.setup(payload);
   }
 
-  function setupPuzzleMode(payload: any) {
+  function setupPuzzleMode(payload: DungeonModePayload) {
     const dungeonId = payload.dungeonId;
     const stageIndex = payload.stageIndex || 0;
 
@@ -152,7 +152,7 @@ namespace GameController {
     playerSprite = sprites.create(imgPuzzlePlayer(), KIND_PLAYER);
 
     // Find spawn tile
-    const spawnTiles = tiles.getTilesByType(tiles.getTileImage(1 as any));
+    const spawnTiles = tiles.getTilesByType(tileImg(1));
     if (spawnTiles && spawnTiles.length > 0) {
       tiles.placeOnTile(playerSprite, spawnTiles[0]);
     } else {
@@ -182,7 +182,7 @@ namespace GameController {
     PuzzleMode.spawnContent(dungeonId, stageIndex);
   }
 
-  function setupMetaMode(payload: any) {
+  function setupMetaMode(payload: DungeonModePayload) {
     MetaMode.setup(payload);
   }
 
