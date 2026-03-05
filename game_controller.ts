@@ -46,7 +46,7 @@ namespace GameController {
 
   // ============ MODE SWITCHING (THE HEART) ============
 
-  export function switchPlayMode(nextMode: number, payload: any) {
+  export function switchPlayMode(nextMode: PlayMode, payload?: PlayModePayload) {
     if (state.transitionLock) {
       signalFailure(FailureReason.TRANSITION_LOCKED, `Attempted to switch to mode ${nextMode}`);
       return;
