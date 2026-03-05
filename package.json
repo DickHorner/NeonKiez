@@ -1,4 +1,11 @@
 {
+  "name": "neon-kiez",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/repo-governance.test.js",
+    "lint": "node scripts/repo-quality-check.js lint",
+    "build": "node scripts/repo-quality-check.js build"
+  },
   "dependencies": {
     "pxt-arcade": "^2.1.28"
   }

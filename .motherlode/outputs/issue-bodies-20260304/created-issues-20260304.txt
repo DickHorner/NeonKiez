@@ -1,0 +1,34 @@
+
+[TASK] Harden save-state trust boundary (schema + clamps + tests)
+https://github.com/DickHorner/NeonKiez/issues/67
+
+[BUG] Guard hub payload bounds and room fallback safety
+https://github.com/DickHorner/NeonKiez/issues/68
+
+[TASK] Type-hardening pass for core controller contracts
+https://github.com/DickHorner/NeonKiez/issues/69
+
+[TASK] Replace silent critical exits with explicit failure signals
+https://github.com/DickHorner/NeonKiez/issues/70
+
+[QA] Automate dungeon registry invariants as deterministic tests
+https://github.com/DickHorner/NeonKiez/issues/71
+
+[QA] Add transition safety regression tests (lock + cleanup + idempotency)
+https://github.com/DickHorner/NeonKiez/issues/72
+
+[TASK] Consolidate duplicated hub implementation files
+https://github.com/DickHorner/NeonKiez/issues/73
+
+[QA] Add first wave of risk-based core gameplay logic tests
+https://github.com/DickHorner/NeonKiez/issues/74
+
+[DOCS] Complete governance docs baseline (CONTRIBUTING/ADR/AGENTS)
+https://github.com/DickHorner/NeonKiez/issues/75
+
+[TASK] Add CODEOWNERS with bus-factor >= 2 for critical paths
+https://github.com/DickHorner/NeonKiez/issues/76
+
+[TASK] Enable CodeQL SAST workflow baseline
+https://github.com/DickHorner/NeonKiez/issues/77
+

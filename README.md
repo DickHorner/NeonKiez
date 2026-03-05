@@ -118,3 +118,14 @@ Run in MakeCode Arcade simulator:
 
 MIT License.
 - `world_hub.ts` - Hub room grid, NPCs, doors, savehouse
+
+## Repository Quality Automation
+
+This repository now includes local automation aligned with Motherlode quality gates.
+
+- `npm run lint` validates repository policy files and CI workflow wiring.
+- `npm run test` runs governance regression tests in `tests/repo-governance.test.js`.
+- `npm run build` validates `pxt.json` source manifest integrity.
+- `./.motherlode/scripts/audit.ps1` provides weighted compliance scoring.
+
+For incident and recovery procedures, see `RUNBOOK.md`.
