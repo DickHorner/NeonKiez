@@ -484,11 +484,15 @@ namespace GameController {
   }
 
   function updateRhythmMode() {
-    if (!playerSprite || !state.dungeonStageData) {
+    if (!playerSprite) {
       signalFailure(FailureReason.NO_PLAYER_SPRITE, "updateRhythmMode");
       return;
     }
 
+    if (!state.dungeonStageData) {
+      signalFailure(FailureReason.NO_DUNGEON_STAGE_DATA, "updateRhythmMode");
+      return;
+    }
     const now = game.runtime();
     const data = state.dungeonStageData;
 
