@@ -9,6 +9,8 @@ Source basis: uploaded `kenney_filelist.txt` generated from the local Kenney All
 
 Do **not** import full candidate pools into MakeCode Arcade.
 
+Canonical asset IDs come from `.github/ASSET_REQUIREMENTS.md`.
+
 ---
 
 ## Batch 1 goals
@@ -18,7 +20,7 @@ The goal is to make the game visibly playable at boot:
 - `SPR_PLAYER_TOPDOWN`
 - `SPR_DOOR_DUNGEON`
 - `SPR_NPC_SAVEHOUSE`
-- `SPR_INPUT_A`
+- `SPR_INTERACT_PROMPT`
 - `TM_HUB_11`
 - first hub floor/wall/road/prop tiles
 
@@ -58,10 +60,12 @@ assets/selected/kenney/hub/RPG Urban Pack/
 Use for final asset IDs:
 
 ```text
-T_HUB_FLOOR_*
-T_HUB_WALL_*
-T_HUB_ROAD_*
-T_HUB_PROP_*
+T_HUB_FLOOR_01..03
+T_HUB_WALL_01..03
+T_HUB_EDGE / T_HUB_BORDER
+T_HUB_SIGN_01..06
+T_HUB_PROP_01..10
+T_HUB_DECAL_01..06
 TM_HUB_11
 ```
 
@@ -96,11 +100,13 @@ assets/selected/kenney/hub/Roguelike City Pack/
 Use for final asset IDs:
 
 ```text
-T_HUB_FLOOR_*
-T_HUB_WALL_*
-T_HUB_ROAD_*
-T_HUB_PROP_*
-SPR_DOOR_DUNGEON or T_MARK_DOOR_* if visually suitable
+T_HUB_FLOOR_01..03
+T_HUB_WALL_01..03
+T_HUB_EDGE / T_HUB_BORDER
+T_HUB_SIGN_01..06
+T_HUB_PROP_01..10
+T_HUB_DECAL_01..06
+SPR_DOOR_DUNGEON or T_MARK_DOOR_<DUN_ID> if visually suitable
 ```
 
 ---
@@ -135,7 +141,7 @@ Use for final asset IDs:
 ```text
 SPR_PLAYER_TOPDOWN
 SPR_NPC_SAVEHOUSE
-SPR_NPC_GENERIC_01
+SPR_NPC_GENERIC_01..03
 ```
 
 Note: This pack is sheet-based, not pre-sliced into named character PNG files. The asset agent must crop final character sprites from the transparent spritesheet.
@@ -170,9 +176,7 @@ assets/selected/kenney/ui/Input Prompts Pixel 16x/
 Use for final asset IDs:
 
 ```text
-SPR_INPUT_A
-SPR_INPUT_B
-SPR_INPUT_MENU
+SPR_INTERACT_PROMPT
 ```
 
 Note: Source folder uses the Unicode `×`; repo folder uses ASCII `x` for safer paths.
@@ -207,9 +211,8 @@ Use for final asset IDs:
 
 ```text
 SPR_UI_DIALOG_FRAME
-SPR_UI_CURSOR
-SPR_UI_HEART_FULL
-SPR_UI_HEART_EMPTY
+SPR_UI_CURSOR / SPR_UI_SELECTOR
+SPR_UI_HEART
 ```
 
 ---
@@ -225,7 +228,7 @@ After staging, the asset agent must inspect images and choose a **small MakeCode
 | Hub ground/road/wall tiles | 12-24 tiles |
 | Hub props/signs/door candidates | 6-12 sprites/tiles |
 | Top-down player/NPC sprites | 3-6 cropped sprites |
-| Input prompts | 1-3 icons |
+| Input prompts | 1 icon |
 | UI elements | 2-6 sprites |
 
 ### Hard rules
@@ -235,7 +238,7 @@ After staging, the asset agent must inspect images and choose a **small MakeCode
 - Prefer transparent PNGs over magenta-background PNGs.
 - Avoid perspective mismatch: no isometric/axonometric in Batch 1.
 - Keep final files in `assets/selected/kenney/...` only after visual approval by the asset agent.
-- Update `docs/ASSET_MANIFEST.md` with final exact filenames.
+- Update `docs/ASSET_MANIFEST.md` with final exact filenames and canonical asset IDs from `.github/ASSET_REQUIREMENTS.md`.
 
 ---
 
