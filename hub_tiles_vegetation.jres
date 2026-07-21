@@ -1,0 +1,32 @@
+{
+    "*": {
+        "namespace": "myTiles",
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64"
+    },
+    "rpgUrbanVegetation0259": {
+        "data": "hwQQABAAAAAAAAAAAAAAAGZmBgAAAAAAZmZmBgAAAABmZmZmAAAAAGZmZmbmDgAAZmZmZkbu7gBmZmZmRk7kDmZmZmZEREQOZmZmZkRERA5mZmZmRk7kDmZmZmZG7u4AZmZmZuYOAABmZmZmAAAAAGZmZgYAAAAAZmYGAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / vegetation / 0259"
+    },
+    "rpgUrbanVegetation0260": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAZmZmBgAAAABmZmZmAAAAAGZmZmYGAAAAZmZmZgbu7gBmZmZm5k7kDmZmZmZEREQOZmZmZkRERA5mZmZm5k7kDmZmZmYG7u4AZmZmZgYAAABmZmZmAAAAAGZmZgYAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / vegetation / 0260"
+    },
+    "rpgUrbanVegetation0265": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZmYAAAAAAGZmZgYAAGBmZmZmBgBgZmZmZmbmDmBmZmZmZkYOYGZmZmZmRg5gZmZmZmbmDgBgZmZmZgYAAAAAZmZmBgAAAAAAZmYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / vegetation / 0265"
+    },
+    "rpgUrbanVegetation0286": {
+        "data": "hwQQABAAAAAAAAAAAAAAAGZmBgAAAAAAZmZmBgAAAABmZmZm7u7uDmZmZmbW3b0OZmZmZkbuvQ5mZmZmRk69DmZmZmZERL0OZmZmZkREvQ5mZmZmRk69DmZmZmZG7r0OZmZmZtbdvQ5mZmZm7u7uDmZmZgYAAAAAZmYGAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / vegetation / 0286"
+    },
+    "rpgUrbanVegetation0287": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAZmZmBgAAAABmZmZm7u7uDmZmZmbW3b0OZmZmZtbuvQ5mZmZm5k69DmZmZmZERL0OZmZmZkREvQ5mZmZm5k69DmZmZmbW7r0OZmZmZtbdvQ5mZmZm7u7uDmZmZgYAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / vegetation / 0287"
+    }
+}
