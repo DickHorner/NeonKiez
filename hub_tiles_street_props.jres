@@ -1,0 +1,87 @@
+{
+    "*": {
+        "namespace": "myTiles",
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64"
+    },
+    "rpgUrbanStreetProps0164": {
+        "data": "hwQQABAAAAAAAAAAAAAAAADAzAAAAAAAAMzNAAAAAAAA3MsAAAAAAADcywAAAAAAANzLAAAAAAAA3M0AAAAAAAC8zAAAAAAAANwMAAAAAAAA3AwAAAAAAADczAAAAAAAALzNzMzMzMwAzNvd3d3d3QDAzMzMzMzMAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0164"
+    },
+    "rpgUrbanStreetProps0165": {
+        "data": "hwQQABAAAAAAAAAAAAAAAADAzAAAAAAAAMzNAAAAAAAA3MsAAAAAAADcywAAAAAAANzNAAAAAAAAvMwAAAAAAAC8zczMzMzMAMzb3d3d3d0AvM3MzMzMzAC8zAAAAAAAANzNAAAAAAAA3MsAAAAAAADcywAAAAAAAMzNAAAAAAAAwMwAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0165"
+    },
+    "rpgUrbanStreetProps0166": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMAAAAAAAAbMYAAO7u7g5sxgAA7kTkDmzGAMxO1ETObMbM3E7URL5sxtvMTtREzmzGzADuROQObMYAAO7u7g5sxgAAAAAAAGzGAAAAAAAAzMwAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0166"
+    },
+    "rpgUrbanStreetProps0168": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMzMzAzAAAbLu7xsDLAMyc293LzM3M3Jzb3cvLzdvMnNvdy8zNzABsu7vGwMsAAMzMzMzAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0168"
+    },
+    "rpgUrbanStreetProps0169": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMwMwMwAAADAbMzMxgAAAMxmZsbGzMzMbGYRYWZmZmbMZmbGxszMzMBszMzGAAAAAMwMwMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0169"
+    },
+    "rpgUrbanStreetProps0190": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADMzAwAAAAAwNy7zAwAAADAvbG7zMzMDMC9tLu7u7sMwL2xu8zMzAzA3LvMDAAAAADMzAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0190"
+    },
+    "rpgUrbanStreetProps0221": {
+        "data": "hwQQABAAAAAAAADM7u4AAAAAALzk7szMAADuzOTu28sAAE7L3c3MzAAATs3dzQAAAADuzOTuAAAAAAC85O4AAAAAANzdzQAAAAAA3N3NAAAAAAC85O4AAAAA7szk7gAAAABOzd3NAAAAAE7L3c3MzAAA7szk7tvLAAAAvOTuzMwAAADM7u4AAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0221"
+    },
+    "rpgUrbanStreetProps0222": {
+        "data": "hwQQABAAAAAAAMDs7g4AAAAAwEvuzszMAADATe6+3csAAMDd3cy8zAAAwN3dDNwMAADATe4O3AwAAMBN7g7cDAAAwN3dDNwMAADA3d0M3AwAAMBN7g7cDAAAwE3uDtwMAADA3d0M3AwAAMDd3cy8zAAAwE3uvt3LAADAS+7OzMwAAMDs7g4AAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0222"
+    },
+    "rpgUrbanStreetProps0223": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzMzAwAAADcu7u7CwAAAMxERMwMAAAATkREDgAAAABOREQOAAAAAE5ERA4AAAAATkREDgAAAABOREQOAAAAAE5ERA4AAAAAzEREzAwAAADcu7u7CwAAAMzMzMwMAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0223"
+    },
+    "rpgUrbanStreetProps0250": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAzMzMzMwMAADcu7u7uwsAAMxERETMDAAA4ERERA4AAADgREREDgAAAOBEREQOAAAA4ERERA4AAADgREREDgAAAOBEREQOAAAA4ERERA4AAADgREREDgAAAMxERETMDAAA3Lu7u7sLAADMzMzMzAwAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0250"
+    },
+    "rpgUrbanStreetProps0254": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAADMzMzMDAAAAMzMzMzMAADAzMzMzMwAAMDMzMzMzAAAwMzMzMzMAADAzMzMzMwAAMDMzMzMzAAAAMzMzMzMAAAAzMzMzMwAAADMzMzMzAAAAMDMzMzMAAAAwMwMzAwAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0254"
+    },
+    "rpgUrbanStreetProps0279": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzMzAwAAMC7vbu7ywAAwL3bu7u7AADAvdu7u7sAAMC927u7uwAAwL3bu7u7AADAu727u8sAAADMzMzMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0279"
+    },
+    "rpgUrbanStreetProps0280": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzMzAwAAMDbu7u7ywAAwMu9u7u7AADAy727u7sAAMDLvbu7uwAAwMu9u7u7AADA27u7u8sAAADMzMzMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0280"
+    },
+    "rpgUrbanStreetProps0305": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMzMzMzMDADMa2ZpZmYGAJy7m2ZmuwwAvLubzGZrDAC8u5vMZmEMALy7m8xmYQwAvLubzGZrDACcu5tmZrsMAMxrZmlmZgYAwMzMzMzMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0305"
+    },
+    "rpgUrbanStreetProps0306": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwMzMzMzMDADMa2ZpZmYGAJy7m2a7uwwAvLubZmtmDAC8u5tmbGYMALy7m2ZsZgwAvLubZmtmDACcu5tmu7sMAMxrZmlmZgYAwMzMzMzMDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0306"
+    },
+    "rpgUrbanStreetProps0307": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAODu7u4AAAAA7kRE5AAAAO6+tETkAAAATtTUROQAAABO1NRE5AAAAO6+tETkAAAAAO5EROQAAAAA4O7u7gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / street props / 0307"
+    }
+}

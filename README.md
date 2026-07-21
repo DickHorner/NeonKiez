@@ -114,6 +114,28 @@ Run in MakeCode Arcade simulator:
 4. Play dungeon stages
 5. Complete dungeon → return to hub with rewards
 
+## Hub Tile Asset Regeneration
+
+Use the committed generator to rebuild the curated hub tile JRES files from a local Kenney batch:
+
+```bash
+npm run assets:hub -- /path/to/NeonKiez_RPG_Urban_Hub_Batch_01
+```
+
+Expected batch layout:
+
+```text
+NeonKiez_RPG_Urban_Hub_Batch_01/
+  tiles/
+    pavement/
+      tile_0001.png
+    road/
+      tile_0002.png
+```
+
+- The first directory below `tiles/` becomes the output group name (for example `pavement` → `hub_tiles_pavement.jres`).
+- Nested subfolders below a group are allowed, but they still write into the top-level group output file.
+
 ## License
 
 MIT License.

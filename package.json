@@ -4,7 +4,8 @@
   "scripts": {
     "test": "node scripts/run-tests.js",
     "lint": "node scripts/repo-quality-check.js lint",
-    "build": "node scripts/typecheck.js && node scripts/repo-quality-check.js build"
+    "build": "node scripts/typecheck.js && node scripts/repo-quality-check.js build",
+    "assets:hub": "node scripts/import-kenney-hub-tiles.js"
   },
   "dependencies": {
     "pxt-arcade": "^2.1.28"

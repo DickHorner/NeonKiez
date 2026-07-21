@@ -1,0 +1,22 @@
+{
+    "*": {
+        "namespace": "myTiles",
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64"
+    },
+    "rpgUrbanDoorCandidates0283": {
+        "data": "hwQQABAAAADMzMzMzMzMzNy7u7u7u7vNvMzMzMzMzMy8TERERERE5LxMRERERETkvEzUHUREROS8TNTRRERE5LxMFN1ERETkvEzU3UREROS8TNTdRERE5LxM1N3kTkTkvExEREREROS8TERERERE5LzMzMzMzMzM3Lu7u7u7u83MzMzMzMzMzA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / door candidates / 0283"
+    },
+    "rpgUrbanDoorCandidates0284": {
+        "data": "hwQQABAAAADMzMzMzMzMzNy7u7u7u7vNvMzMzMzMzMy8TERERERE5LxM1N1ERETkvEzU3UREROS8TNTd5E5E5LxMRERERETkvExEREREROS8TNTd5E5E5LxM1N1ERETkvEzU3UREROS8TERERERE5LzMzMzMzMzM3Lu7u7u7u83MzMzMzMzMzA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / door candidates / 0284"
+    },
+    "rpgUrbanDoorCandidates0285": {
+        "data": "hwQQABAAAADMzMzMzMzMzNy7u7u7u7vNvMzMzMzMzMy8vLu7u7u7u7y8HRER0RGxvLwdERHREbG8vB0REbsbsby8u7u7u7u7vLy7u7u7u7u8vB0REbsbsby8HRER0RGxvLwdERHREbG8vLu7u7u7u7zMzMzMzMzM3Lu7u7u7u83MzMzMzMzMzA==",
+        "tilemapTile": true,
+        "displayName": "RPG Urban / door candidates / 0285"
+    }
+}
