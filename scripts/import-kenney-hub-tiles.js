@@ -5,7 +5,6 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const repoRoot = path.resolve(__dirname, "..");
-const outputPath = path.join(repoRoot, "hub_tiles.jres");
 const tileSize = 16;
 
 const DEFAULT_PALETTE = [
@@ -227,9 +226,23 @@ function main(args) {
 
   const batchRoot = path.resolve(args[0]);
   const tiles = loadTiles(batchRoot);
-  const jres = buildJres(tiles);
-  fs.writeFileSync(outputPath, JSON.stringify(jres, null, 4) + "\n", "utf8");
-  console.log(`Wrote ${tiles.length} hub tiles to ${outputPath}`);
+  const groups = new Map();
+
+  for (const tile of tiles) {
+    const groupTiles = groups.get(tile.group) || [];
+    groupTiles.push(tile);
+    groups.set(tile.group, groupTiles);
+  }
+
+  for (const [group, groupTiles] of groups) {
+    const outputPath = path.join(repoRoot, `hub_tiles_${group}.jres`);
+    fs.writeFileSync(
+      outputPath,
+      JSON.stringify(buildJres(groupTiles), null, 4) + "\n",
+      "utf8"
+    );
+    console.log(`Wrote ${groupTiles.length} ${group} tiles to ${outputPath}`);
+  }
 }
 
 if (require.main === module) {
