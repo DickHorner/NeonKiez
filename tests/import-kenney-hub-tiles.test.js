@@ -6,6 +6,7 @@ const {
   DEFAULT_PALETTE,
   buildJres,
   encodeF4,
+  getTileGroup,
   makeAssetId,
   quantizeRgba,
 } = require("../scripts/import-kenney-hub-tiles.js");
@@ -71,4 +72,14 @@ test("builds stable myTiles JRES entries", () => {
   assert.equal(decoded[1], 4);
   assert.equal(decoded.readUInt16LE(2), 16);
   assert.equal(decoded.readUInt16LE(4), 16);
+});
+
+test("groups nested tiles by the top-level category directory", () => {
+  assert.equal(
+    getTileGroup(
+      "/tmp/NeonKiez_RPG_Urban_Hub_Batch_01/tiles",
+      "/tmp/NeonKiez_RPG_Urban_Hub_Batch_01/tiles/pavement/variant_a/tile_0001.png"
+    ),
+    "pavement"
+  );
 });

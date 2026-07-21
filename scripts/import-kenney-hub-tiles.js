@@ -168,6 +168,16 @@ function makeDisplayName(group, fileName) {
   return `RPG Urban / ${group.replaceAll("_", " ")} / ${sourceIndex}`;
 }
 
+function getTileGroup(tilesRoot, filePath) {
+  const relativePath = path.relative(tilesRoot, filePath);
+  const [group] = relativePath.split(path.sep);
+  if (!group || group === "." || group === "..") {
+    throw new Error(`Expected ${filePath} to be inside a group directory below ${tilesRoot}`);
+  }
+
+  return group;
+}
+
 function buildJres(tiles) {
   const jres = {
     "*": {
@@ -208,7 +218,7 @@ function loadTiles(batchRoot) {
   return files.map((filePath) => {
     const image = readPng(filePath);
     return {
-      group: path.basename(path.dirname(filePath)),
+      group: getTileGroup(tilesRoot, filePath),
       fileName: path.basename(filePath),
       width: image.width,
       height: image.height,
@@ -258,6 +268,7 @@ module.exports = {
   DEFAULT_PALETTE,
   buildJres,
   encodeF4,
+  getTileGroup,
   makeAssetId,
   quantizeRgba,
 };
