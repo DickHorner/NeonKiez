@@ -33,7 +33,7 @@ Provide a repeatable operational process for validating repository quality contr
 - `npm run lint` fails repository quality checks.
 - `npm run test` fails governance regression tests.
 - `npm run build` fails source manifest checks.
-- `.motherlode/scripts/audit.ps1` reports score regression.
+- Repository docs or policy checks drift from local guardrails.
 
 ## Triage Steps
 
@@ -44,14 +44,14 @@ Provide a repeatable operational process for validating repository quality contr
 ## Recovery Steps
 
 1. Restore required scripts/workflows/docs from latest passing commit.
-2. Re-run local quality checks and Motherlode audit.
+2. Re-run local quality checks.
 3. Merge fix via pull request with verification evidence.
 
 ## Verification
 
 - Local commands pass: `npm run lint`, `npm run test`, `npm run build`.
 - CI run on pull request is green.
-- Motherlode audit score is stable or improved.
+- Repository-local guardrails and source manifests remain consistent.
 
 ## Escalation Path
 

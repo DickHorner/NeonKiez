@@ -1,6 +1,6 @@
 # Architecture Decisions
 
-Decisions recorded in chronological order. Use the ADR template in `.motherlode/templates/ADR.md` for new entries.
+Decisions recorded in chronological order. Follow the existing ADR structure in this file for new entries.
 
 ## ADR-001: MakeCode Arcade + TypeScript as target platform
 

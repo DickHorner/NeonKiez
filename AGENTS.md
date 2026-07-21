@@ -1,7 +1,7 @@
 # AGENTS.md - Agent Guardrails for Neon-Kiez
 
 This file defines constraints and expectations for AI agents operating in this repository.
-It supplements the [Motherlode Engineering Constitution](.motherlode/MOTHERLODE.md).
+It is the repository-local source of truth for agent guardrails.
 
 ## Scope
 

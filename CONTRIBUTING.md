@@ -49,4 +49,4 @@ New behavior must have corresponding test coverage. Tests live in `tests/` and f
 - Kinderfreundlich (target age 10): no blood, no gore, enemies freeze/dance/flee only.
 - Caps on all spawns; auto-destroy + lifespan enforced.
 - Event handlers registered once; each begins with `if (state.playMode !== EXPECTED) return;`.
-- Align with the [Motherlode Engineering Constitution](.motherlode/MOTHERLODE.md).
+- Follow the repository-local guardrails in `AGENTS.md` and `.github/copilot-instructions.md`.

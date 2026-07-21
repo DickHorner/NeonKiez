@@ -19,6 +19,9 @@ test("governance docs baseline exists", () => {
   assert.match(readRepoFile("ARCHITECTURE_DECISIONS.md"), /Architecture Decisions/i);
   assert.match(readRepoFile("AGENTS.md"), /Agent Guardrails/i);
   assert.match(readRepoFile(".github/CODEOWNERS"), /@DickHorner/);
+  assert.doesNotMatch(readRepoFile("README.md"), /Motherlode/i);
+  assert.doesNotMatch(readRepoFile("RUNBOOK.md"), /Motherlode/i);
+  assert.doesNotMatch(readRepoFile("CONTRIBUTING.md"), /Motherlode/i);
 });
 
 test("security policy and CI workflows enforce repository gates", () => {

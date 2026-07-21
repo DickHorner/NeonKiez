@@ -39,6 +39,10 @@ function runLintChecks() {
   readJson('pxt.json');
   readJson('tsconfig.json');
 
+  if (fs.existsSync(path.join(repoRoot, '.motherlode'))) {
+    fail('Legacy .motherlode directory must not be present');
+  }
+
   if (packageJson && typeof packageJson.scripts === 'object') {
     const requiredScripts = ['test', 'lint', 'build'];
     for (const scriptName of requiredScripts) {
@@ -69,6 +73,21 @@ function runLintChecks() {
       if (!workflowContent.includes(command)) {
         fail(`ci workflow is missing step: ${command}`);
       }
+    }
+  }
+
+  const filesThatMustNotReferenceMotherlode = [
+    'README.md',
+    'RUNBOOK.md',
+    'CONTRIBUTING.md',
+    'AGENTS.md',
+    'ARCHITECTURE_DECISIONS.md',
+  ];
+
+  for (const relativePath of filesThatMustNotReferenceMotherlode) {
+    const content = fs.readFileSync(path.join(repoRoot, relativePath), 'utf8');
+    if (/motherlode/i.test(content)) {
+      fail(`${relativePath} must not reference Motherlode`);
     }
   }
 }
