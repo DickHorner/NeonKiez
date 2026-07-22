@@ -85,17 +85,14 @@ namespace GameController {
     }
 
     function handleInteractable(s: Sprite) {
-      const hs = s as HubSprite;
-      if (hs.isDoor) {
-        // Enter dungeon
-        if (hs.dungeonId) GameController.enterDungeon(hs.dungeonId);
-      } else if (hs.isNPC) {
-        // Talk to NPC
-        if (hs.dialogId) showDialog(hs.dialogId);
+      if (s.data[HUB_SPRITE_DATA_IS_DOOR]) {
+        const dungeonId = s.data[HUB_SPRITE_DATA_DUNGEON_ID] as string;
+        if (dungeonId) GameController.enterDungeon(dungeonId);
+      } else if (s.data[HUB_SPRITE_DATA_IS_NPC]) {
+        const dialogId = s.data[HUB_SPRITE_DATA_DIALOG_ID] as string;
+        if (dialogId) showDialog(dialogId);
       }
     }
   }
 }
-
-
 
