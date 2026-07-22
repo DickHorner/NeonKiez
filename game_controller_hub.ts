@@ -21,7 +21,10 @@ namespace GameController {
       // Guard room lookup with a safe fallback.
       state.hubRoom = getSafeHubRoom(state.hubRoom, "pre-load");
       const roomId = HUB_ROOM_IDS[state.hubRoom.row][state.hubRoom.col];
-      const tm = getTilemapByID(roomId);
+      scene.setBackgroundColor(1);
+      const tm = roomId === "TM_HUB_11"
+        ? tmHub11Playable()
+        : getTilemapByID(roomId);
       if (tm) {
         tiles.setCurrentTilemap(tm);
       }
