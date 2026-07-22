@@ -83,7 +83,9 @@ namespace GameController {
       for (let i = 0; i < spawners.length; i = i + 1) {
         const spawner = spawners[i];
         if (spawner.xEnd !== undefined) {
-          spawnMovingPlatform(spawner.xStart, spawner.xEnd, spawner.y ?? 0, spawner.speed ?? 0);
+          const y = spawner.y !== undefined ? spawner.y : 0;
+          const speed = spawner.speed !== undefined ? spawner.speed : 0;
+          spawnMovingPlatform(spawner.xStart, spawner.xEnd, y, speed);
         } else if (spawner.rate !== undefined) {
           // TODO: wire barrel spawn loop to use this rate per stage
         }

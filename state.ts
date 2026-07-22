@@ -49,7 +49,7 @@ interface GameState {
   invincibleUntil: number;
 }
 
-let state!: GameState;
+let state: GameState = null;
 
 function initState() {
   state = {

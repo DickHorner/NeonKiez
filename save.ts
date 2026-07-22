@@ -17,8 +17,12 @@ function isDangerousObjectKey(key: string): boolean {
   return key === "__proto__" || key === "constructor" || key === "prototype";
 }
 
+function isFiniteNumberSave(value: any): boolean {
+  return typeof value === "number" && value <= 1e308 && value >= -1e308;
+}
+
 function clampNumber(value: any, min: number, max: number, defaultValue: number): number {
-  if (typeof value !== "number" || isNaN(value) || !isFinite(value)) {
+  if (typeof value !== "number" || isNaN(value) || !isFiniteNumberSave(value)) {
     return defaultValue;
   }
   if (value < min) return min;
@@ -51,7 +55,7 @@ function validateFlags(flags: any): { [key: string]: boolean } {
     return {};
   }
 
-  const validated = Object.create(null) as { [key: string]: boolean };
+  const validated = {} as { [key: string]: boolean };
   const keys = Object.keys(flags);
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
@@ -87,7 +91,7 @@ function validateInventory(inventory: any): { [itemId: string]: number } {
     return {};
   }
 
-  const validated = Object.create(null) as { [itemId: string]: number };
+  const validated = {} as { [itemId: string]: number };
   const keys = Object.keys(inventory);
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
@@ -95,7 +99,7 @@ function validateInventory(inventory: any): { [itemId: string]: number } {
     if (isDangerousObjectKey(key)) {
       continue;
     }
-    if (typeof value === "number" && !isNaN(value) && isFinite(value) && value >= 0) {
+    if (typeof value === "number" && !isNaN(value) && isFiniteNumberSave(value) && value >= 0) {
       validated[key] = Math.floor(value);
     }
   }
@@ -131,13 +135,13 @@ function loadGame(): boolean {
     const energy = clampNumber(data.energy, STATE_MIN_ENERGY, STATE_MAX_ENERGY, PLAYER_ENERGY_MAX);
 
     if (data.maxHearts !== maxHearts) {
-      logNormalization("maxHearts", String(data.maxHearts), maxHearts);
+      logNormalization("maxHearts", "" + data.maxHearts, maxHearts);
     }
     if (data.hearts !== hearts) {
-      logNormalization("hearts", String(data.hearts), hearts);
+      logNormalization("hearts", "" + data.hearts, hearts);
     }
     if (data.energy !== energy) {
-      logNormalization("energy", String(data.energy), energy);
+      logNormalization("energy", "" + data.energy, energy);
     }
 
     state.hearts = hearts;
