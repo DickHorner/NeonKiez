@@ -12,9 +12,14 @@ test("center hub uses imported urban tiles with a boundary layout", () => {
   assert.ok(pxtJson.files.includes("hub_center_tilemap.ts"));
   assert.match(tilemap, /function tmHub11Playable\(\): tiles\.TileMapData/);
   assert.match(tilemap, /hex`10000c00/);
-  assert.match(tilemap, /assets\.tile`rpgUrbanPavement0036`/);
-  assert.match(tilemap, /assets\.tile`rpgUrbanSavehouseFacade0365`/);
-  assert.match(tilemap, /assets\.tile`rpgUrbanRoad0441`/);
+  assert.match(tilemap, /namespace myTiles/);
+  assert.match(tilemap, /export const rpgUrbanPavement0036 = image\.ofBuffer\(hex``\)/);
+  assert.match(tilemap, /export const rpgUrbanSavehouseFacade0365 = image\.ofBuffer\(hex``\)/);
+  assert.match(tilemap, /export const rpgUrbanRoad0441 = image\.ofBuffer\(hex``\)/);
+  assert.match(tilemap, /myTiles\.rpgUrbanPavement0036/);
+  assert.match(tilemap, /myTiles\.rpgUrbanSavehouseFacade0365/);
+  assert.match(tilemap, /myTiles\.rpgUrbanRoad0441/);
+  assert.doesNotMatch(tilemap, /assets\.tile`rpgUrban/);
   assert.match(tilemap, /TileScale\.Sixteen/);
   assert.match(tilemap, /2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2/);
 

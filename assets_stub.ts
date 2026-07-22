@@ -189,11 +189,11 @@ function tmHub21(): tiles.TileMapData {
       2 . . . . . . . . . . . . . . 2
       2 . . . . . . . . . . . . . . 2
       2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-`,
+    `,
     [
-      assets.tile`rpgUrbanPavement0036`,
-      assets.tile`rpgUrbanSavehouseFacade0365`,
-      assets.tile`rpgUrbanRoad0441`,
+      myTiles.rpgUrbanPavement0036,
+      myTiles.rpgUrbanSavehouseFacade0365,
+      myTiles.rpgUrbanRoad0441,
     ],
     TileScale.Sixteen,
   );

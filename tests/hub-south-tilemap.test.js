@@ -10,9 +10,10 @@ test("south hub room uses imported tiles with a 16x12 wall boundary", () => {
   const tilemap = extractFunctionSource(assets, "tmHub21");
 
   assert.match(tilemap, /hex`10000c00/);
-  assert.match(tilemap, /assets\.tile`rpgUrbanPavement0036`/);
-  assert.match(tilemap, /assets\.tile`rpgUrbanSavehouseFacade0365`/);
-  assert.match(tilemap, /assets\.tile`rpgUrbanRoad0441`/);
+  assert.match(tilemap, /myTiles\.rpgUrbanPavement0036/);
+  assert.match(tilemap, /myTiles\.rpgUrbanSavehouseFacade0365/);
+  assert.match(tilemap, /myTiles\.rpgUrbanRoad0441/);
+  assert.doesNotMatch(tilemap, /assets\.tile`rpgUrban/);
   assert.match(tilemap, /TileScale\.Sixteen/);
   assert.match(tilemap, /2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2/);
 

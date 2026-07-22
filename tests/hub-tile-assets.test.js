@@ -28,6 +28,21 @@ function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(repoRoot, relativePath), "utf8"));
 }
 
+function assertValidF4(data, assetId) {
+  assert.equal(data[0], 0x87, `${assetId} has an invalid image header`);
+  assert.equal(data[1], 4, `${assetId} is not a four-bit image`);
+
+  const width = data.readUInt16LE(2);
+  const height = data.readUInt16LE(4);
+  assert.equal(width, 16, `${assetId} has the wrong width`);
+  assert.equal(height, 16, `${assetId} has the wrong height`);
+
+  const bytesPerColumn = Math.ceil(height / 2);
+  const paddedBytesPerColumn = Math.ceil(bytesPerColumn / 4) * 4;
+  const expectedLength = 8 + width * paddedBytesPerColumn;
+  assert.equal(data.length, expectedLength, `${assetId} has an invalid F4 payload length`);
+}
+
 test("hub tile assets are registered as MakeCode project tiles", () => {
   const pxtJson = readJson("pxt.json");
   const packageJson = readJson("package.json");
@@ -55,14 +70,21 @@ test("hub tile assets are registered as MakeCode project tiles", () => {
       const data = Buffer.from(entry.data, "base64");
 
       assert.equal(entry.tilemapTile, true, `${assetId} is not marked as a tile`);
-      assert.equal(data[0], 0x87, `${assetId} has an invalid image header`);
-      assert.equal(data[1], 4, `${assetId} is not a four-bit image`);
-      assert.equal(data.readUInt16LE(2), 16, `${assetId} has the wrong width`);
-      assert.equal(data.readUInt16LE(4), 16, `${assetId} has the wrong height`);
+      assertValidF4(data, assetId);
     }
   }
 
   assert.equal(assetCount, 88);
+});
+
+test("F4 validation rejects truncated and dimensionally inconsistent payloads", () => {
+  const valid = Buffer.from(readJson("hub_tiles_pavement.jres").rpgUrbanPavement0036.data, "base64");
+  const truncated = valid.subarray(0, valid.length - 1);
+  const wrongWidth = Buffer.from(valid);
+  wrongWidth.writeUInt16LE(15, 2);
+
+  assert.throws(() => assertValidF4(truncated, "truncated"), /invalid F4 payload length/);
+  assert.throws(() => assertValidF4(wrongWidth, "wrong-width"), /wrong width/);
 });
 
 test("asset manifest records the approved imported hub-tile baseline", () => {
