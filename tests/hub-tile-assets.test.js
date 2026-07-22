@@ -15,6 +15,15 @@ const assetFiles = [
   "hub_tiles_vegetation.jres",
 ];
 
+const approvedRepresentatives = [
+  "rpgUrbanPavement0036",
+  "rpgUrbanRoad0441",
+  "rpgUrbanSavehouseFacade0365",
+  "rpgUrbanStreetProps0250",
+  "rpgUrbanVegetation0259",
+  "rpgUrbanDoorCandidates0283",
+];
+
 function readJson(relativePath) {
   return JSON.parse(fs.readFileSync(path.join(repoRoot, relativePath), "utf8"));
 }
@@ -54,4 +63,19 @@ test("hub tile assets are registered as MakeCode project tiles", () => {
   }
 
   assert.equal(assetCount, 88);
+});
+
+test("asset manifest records the approved imported hub-tile baseline", () => {
+  const manifest = fs.readFileSync(path.join(repoRoot, "docs/ASSET_MANIFEST.md"), "utf8");
+
+  for (const assetFile of assetFiles) {
+    assert.match(manifest, new RegExp(assetFile));
+  }
+  for (const assetId of approvedRepresentatives) {
+    assert.match(manifest, new RegExp(assetId));
+  }
+
+  assert.match(manifest, /Center-room implementation is tracked by #12/);
+  assert.match(manifest, /additional hub-room work is tracked by #122/);
+  assert.doesNotMatch(manifest, /\| TBD \|/);
 });
