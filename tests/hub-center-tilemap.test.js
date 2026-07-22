@@ -4,7 +4,7 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const { readRepoFile } = require("./source-utils.js");
 
-test("center hub uses imported urban tiles with boundary collisions", () => {
+test("center hub uses imported urban tiles with a boundary layout", () => {
   const pxtJson = JSON.parse(readRepoFile("pxt.json"));
   const tilemap = readRepoFile("hub_center_tilemap.ts");
   const hubController = readRepoFile("game_controller_hub.ts");
