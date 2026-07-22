@@ -13,6 +13,18 @@ const HUB_SPRITE_DATA_DIALOG_ID = "dialogId";
 const HUB_SPRITE_DATA_IS_DOOR = "isDoor";
 const HUB_SPRITE_DATA_DUNGEON_ID = "dungeonId";
 
+function setHubSpriteData(sprite: Sprite, key: string, value: any) {
+  // Keep the data bag in a local variable. Direct `sprite.data[key]` access is
+  // incorrectly lowered to a property write on Sprite by the Arcade compiler.
+  const data = sprite.data;
+  data[key] = value;
+}
+
+function readHubSpriteData(sprite: Sprite, key: string): any {
+  const data = sprite.data;
+  return data[key];
+}
+
 function spawnHubContent(roomRow: number, roomCol: number) {
   // Ensure sprite kinds exist before spawning hub content
   initSpriteKinds();
@@ -36,8 +48,8 @@ function spawnNPC(npcId: string, x: number, y: number, dialogId: string) {
   // KIND_NPC is guaranteed initialized (fallback at startup, upgraded on first update)
   const npc = sprites.create(imgNpc(npcId), KIND_NPC);
   npc.setPosition(x, y);
-  npc.data[HUB_SPRITE_DATA_IS_NPC] = true;
-  npc.data[HUB_SPRITE_DATA_DIALOG_ID] = dialogId;
+  setHubSpriteData(npc, HUB_SPRITE_DATA_IS_NPC, true);
+  setHubSpriteData(npc, HUB_SPRITE_DATA_DIALOG_ID, dialogId);
 }
 
 function spawnDungeonDoors(roomRow: number, roomCol: number) {
@@ -81,8 +93,8 @@ function spawnDungeonDoors(roomRow: number, roomCol: number) {
 function spawnDoor(dungeonId: string, x: number, y: number) {
   const door = sprites.create(imgDoor(dungeonId), KIND_DOOR);
   door.setPosition(x, y);
-  door.data[HUB_SPRITE_DATA_DUNGEON_ID] = dungeonId;
-  door.data[HUB_SPRITE_DATA_IS_DOOR] = true;
+  setHubSpriteData(door, HUB_SPRITE_DATA_DUNGEON_ID, dungeonId);
+  setHubSpriteData(door, HUB_SPRITE_DATA_IS_DOOR, true);
 }
 
 function interactWithSavehouse() {
@@ -92,7 +104,6 @@ function interactWithSavehouse() {
 }
 
 // MANUAL TEST PASSED: Hub content spawn scaffold
-
 
 
 

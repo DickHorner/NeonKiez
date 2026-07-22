@@ -85,14 +85,13 @@ namespace GameController {
     }
 
     function handleInteractable(s: Sprite) {
-      if (s.data[HUB_SPRITE_DATA_IS_DOOR]) {
-        const dungeonId = s.data[HUB_SPRITE_DATA_DUNGEON_ID] as string;
+      if (readHubSpriteData(s, HUB_SPRITE_DATA_IS_DOOR)) {
+        const dungeonId = readHubSpriteData(s, HUB_SPRITE_DATA_DUNGEON_ID) as string;
         if (dungeonId) GameController.enterDungeon(dungeonId);
-      } else if (s.data[HUB_SPRITE_DATA_IS_NPC]) {
-        const dialogId = s.data[HUB_SPRITE_DATA_DIALOG_ID] as string;
+      } else if (readHubSpriteData(s, HUB_SPRITE_DATA_IS_NPC)) {
+        const dialogId = readHubSpriteData(s, HUB_SPRITE_DATA_DIALOG_ID) as string;
         if (dialogId) showDialog(dialogId);
       }
     }
   }
 }
-
