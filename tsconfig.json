@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "none",
+    "ignoreDeprecations": "5.0",
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "allowUnreachableCode": false
