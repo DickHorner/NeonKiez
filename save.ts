@@ -14,7 +14,7 @@ interface SavePayload {
 }
 
 function isDangerousObjectKey(key: string): boolean {
-  return key === "__proto__" || key === "constructor" || key === "prototype";
+  return key === "constructor" || key === "prototype";
 }
 
 function isFiniteNumberSave(value: any): boolean {
