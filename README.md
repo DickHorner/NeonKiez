@@ -84,6 +84,7 @@ Humans will replace these manually.
 - HUD system
 - Player mode inputs (scaffold)
 - Hub world structure
+- Bidirectional center/south hub transition between rooms `(1,1)` and `(2,1)`
 - Dungeon entry/exit flow
 - Tools system
 - Debug helpers

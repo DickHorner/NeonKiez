@@ -29,6 +29,8 @@ test("switchPlayMode follows lock -> cleanup -> setup -> unlock order", () => {
 });
 
 test("cleanupCurrentPlayMode clears runtime-owned state safely", () => {
+  assert.match(cleanupSource, /allSprites\.slice\(\)/);
+  assert.match(cleanupSource, /s instanceof Sprite/);
   assert.match(cleanupSource, /RelativeToCamera/);
   assert.match(cleanupSource, /tiles\.setCurrentTilemap\(null\)/);
   assert.match(cleanupSource, /playerSprite = null/);

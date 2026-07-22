@@ -102,6 +102,18 @@ const TILE_INDEX_TARGET = 4; // stairNorth sprite used as target marker in tilem
 // Interaction distances
 const INTERACT_DISTANCE = 20;
 
+// Center/south hub transition coordinates (#123, #124)
+const HUB_CENTER_SOUTH_EXIT_MIN_X = 112;
+const HUB_CENTER_SOUTH_EXIT_MAX_X = 144;
+const HUB_CENTER_SOUTH_EXIT_TRIGGER_Y = 176;
+const HUB_SOUTH_ENTRY_X = 120;
+const HUB_SOUTH_ENTRY_Y = 24;
+const SPAWN_HUB_21_FROM_NORTH = "SPAWN_HUB_21_FROM_NORTH";
+const HUB_SOUTH_NORTH_EXIT_TRIGGER_Y = 16;
+const HUB_CENTER_SOUTH_ENTRY_X = 120;
+const HUB_CENTER_SOUTH_ENTRY_Y = 160;
+const SPAWN_HUB_11_FROM_SOUTH = "SPAWN_HUB_11_FROM_SOUTH";
+
 // Spawn Caps
 const CAP_MAX_ENEMIES = 12;
 const CAP_MAX_PROJECTILES = 20;
@@ -536,6 +548,16 @@ const HUB_SPAWN_POINTS: { [tag: string]: SpawnPoint } = {
   SPAWN_HUB_FROM_DUN_07: { room: { row: 2, col: 1 }, x: 80, y: 80 },
   SPAWN_HUB_FROM_DUN_08: { room: { row: 2, col: 2 }, x: 80, y: 80 },
   SPAWN_HUB_FROM_DUN_09: { room: { row: 1, col: 1 }, x: 80, y: 100 },
+  SPAWN_HUB_21_FROM_NORTH: {
+    room: { row: 2, col: 1 },
+    x: HUB_SOUTH_ENTRY_X,
+    y: HUB_SOUTH_ENTRY_Y,
+  },
+  SPAWN_HUB_11_FROM_SOUTH: {
+    room: { row: 1, col: 1 },
+    x: HUB_CENTER_SOUTH_ENTRY_X,
+    y: HUB_CENTER_SOUTH_ENTRY_Y,
+  },
 };
 
 // Tools

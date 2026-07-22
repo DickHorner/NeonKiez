@@ -56,6 +56,51 @@ namespace GameController {
       setPlayerSprite(playerSprite);
     }
 
+    export function update() {
+      if (
+        state.gameMode !== GameMode.Hub ||
+        state.playMode !== PlayMode.HUB_TOPDOWN ||
+        state.transitionLock
+      ) {
+        return;
+      }
+
+      const playerSprite = getPlayerSprite();
+      if (!playerSprite) return;
+
+      if (state.hubRoom.row === 1 && state.hubRoom.col === 1) {
+        if (!controller.down.isPressed()) return;
+        if (
+          playerSprite.x < HUB_CENTER_SOUTH_EXIT_MIN_X ||
+          playerSprite.x >= HUB_CENTER_SOUTH_EXIT_MAX_X ||
+          playerSprite.y < HUB_CENTER_SOUTH_EXIT_TRIGGER_Y
+        ) {
+          return;
+        }
+
+        state.hubRoom = { row: 2, col: 1 };
+        GameController.switchPlayMode(PlayMode.HUB_TOPDOWN, {
+          spawnTag: SPAWN_HUB_21_FROM_NORTH,
+        });
+        return;
+      }
+
+      if (state.hubRoom.row !== 2 || state.hubRoom.col !== 1) return;
+      if (!controller.up.isPressed()) return;
+      if (
+        playerSprite.x < HUB_CENTER_SOUTH_EXIT_MIN_X ||
+        playerSprite.x >= HUB_CENTER_SOUTH_EXIT_MAX_X ||
+        playerSprite.y > HUB_SOUTH_NORTH_EXIT_TRIGGER_Y
+      ) {
+        return;
+      }
+
+      state.hubRoom = { row: 1, col: 1 };
+      GameController.switchPlayMode(PlayMode.HUB_TOPDOWN, {
+        spawnTag: SPAWN_HUB_11_FROM_SOUTH,
+      });
+    }
+
     export function handleInteract() {
       if (state.playMode !== PlayMode.HUB_TOPDOWN) {
         signalFailure(FailureReason.WRONG_PLAY_MODE, "HubMode.handleInteract");

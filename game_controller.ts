@@ -66,11 +66,13 @@ namespace GameController {
 
   function cleanupCurrentPlayMode() {
     // Destroy all sprites except HUD elements
-    const allSprites = game.currentScene().allSprites;
+    // destroy() removes entries from the scene list, so iterate a snapshot.
+    const allSprites = game.currentScene().allSprites.slice();
     for (const s of allSprites) {
+      // Scene renderables share this collection but are not Sprite instances.
+      if (!(s instanceof Sprite)) continue;
       if (s.flags & SpriteFlag.RelativeToCamera) continue;
-      const sprite = s as Sprite;
-      sprite.destroy();
+      s.destroy();
     }
 
     // Reset camera
@@ -453,7 +455,9 @@ namespace GameController {
     }
 
     // Mode-specific updates
-    if (state.playMode === PlayMode.DUN_PLATFORM) {
+    if (state.playMode === PlayMode.HUB_TOPDOWN) {
+      HubMode.update();
+    } else if (state.playMode === PlayMode.DUN_PLATFORM) {
       updatePlatformMode();
     } else if (state.playMode === PlayMode.DUN_SHOOTER) {
       updateShooterMode();
