@@ -18,7 +18,7 @@ test("center hub uses imported urban tiles with boundary collisions", () => {
   assert.match(tilemap, /TileScale\.Sixteen/);
   assert.match(tilemap, /2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2/);
 
-  assert.match(hubController, /scene\.setBackgroundColor\(15\)/);
+  assert.match(hubController, /scene\.setBackgroundColor\(1\)/);
   assert.match(
     hubController,
     /roomId === "TM_HUB_11"[\s\S]*\? tmHub11Playable\(\)[\s\S]*: getTilemapByID\(roomId\)/,
