@@ -8,6 +8,11 @@ const HUB_DOOR_X = 80;
 const HUB_DOOR_Y = 80;
 const HUB_FINAL_DOOR_Y = 100;
 
+const HUB_SPRITE_DATA_IS_NPC = "isNPC";
+const HUB_SPRITE_DATA_DIALOG_ID = "dialogId";
+const HUB_SPRITE_DATA_IS_DOOR = "isDoor";
+const HUB_SPRITE_DATA_DUNGEON_ID = "dungeonId";
+
 function spawnHubContent(roomRow: number, roomCol: number) {
   // Ensure sprite kinds exist before spawning hub content
   initSpriteKinds();
@@ -31,8 +36,8 @@ function spawnNPC(npcId: string, x: number, y: number, dialogId: string) {
   // KIND_NPC is guaranteed initialized (fallback at startup, upgraded on first update)
   const npc = sprites.create(imgNpc(npcId), KIND_NPC);
   npc.setPosition(x, y);
-  (npc as any).isNPC = true;
-  (npc as any).dialogId = dialogId;
+  npc.data[HUB_SPRITE_DATA_IS_NPC] = true;
+  npc.data[HUB_SPRITE_DATA_DIALOG_ID] = dialogId;
 }
 
 function spawnDungeonDoors(roomRow: number, roomCol: number) {
@@ -76,8 +81,8 @@ function spawnDungeonDoors(roomRow: number, roomCol: number) {
 function spawnDoor(dungeonId: string, x: number, y: number) {
   const door = sprites.create(imgDoor(dungeonId), KIND_DOOR);
   door.setPosition(x, y);
-  (door as any).dungeonId = dungeonId;
-  (door as any).isDoor = true;
+  door.data[HUB_SPRITE_DATA_DUNGEON_ID] = dungeonId;
+  door.data[HUB_SPRITE_DATA_IS_DOOR] = true;
 }
 
 function interactWithSavehouse() {
