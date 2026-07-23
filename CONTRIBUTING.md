@@ -1,52 +1,44 @@
 # Contributing to Neon-Kiez
 
-Thank you for contributing! Follow these guidelines to keep changes consistent and reviewable.
+Follow `AGENTS.md` for repository-wide working standards and `.github/instructions/makecode-arcade.instructions.md` for MakeCode-specific rules.
 
 ## Branches
 
-- Branch from `main`: `feat/<topic>`, `fix/<topic>`, or `docs/<topic>`.
-- Keep branches short-lived; open a PR as soon as work is ready for review.
+- Branch from `master`: `feat/<topic>`, `fix/<topic>`, `docs/<topic>`, or `issue/<number>-<slug>`.
+- Keep branches short-lived.
+- Keep one logical issue-sized change per PR.
 
-## Pull Requests
+## Pull requests
 
-- One logical change per PR.
-- PR title: `[TYPE] Short description` — types: `feat`, `fix`, `docs`, `refactor`, `chore`.
-- Fill in the PR description explaining what changed and why.
-- Link any related issue (`Closes #<n>`).
-- All CI checks must pass before requesting review.
+- Explain what changed, why it belongs in the touched files, and which repository precedents were followed.
+- Link the related issue. Use `Closes #<n>` only when its acceptance criteria and required evidence are complete.
+- Record deliberate non-goals and unverified checks.
+- Avoid drive-by refactors and formatting-only changes in feature patches.
 
-## Testing
+## Checks
 
-Run the test suite before pushing:
-
-```bash
-npm test
-```
-
-Run linting/type-checking:
+Run the applicable commands before requesting review:
 
 ```bash
 npm run lint
-```
-
-Build the project:
-
-```bash
+npm run test
 npm run build
 ```
 
-New behavior must have corresponding test coverage. Tests live in `tests/` and follow the `*.test.js` pattern.
+New behavior should have focused coverage under `tests/` using the existing `*.test.js` patterns. Rendering, input, collision, camera, transition, timing, audio, and gameplay work also requires the MakeCode simulator path named by the issue.
 
-## Code Style
+## Repository conventions
 
-- TypeScript only; no `any` unless unavoidable and documented.
-- No real dialog text — use placeholder IDs (`[CUT_DUN_01_ENTRY_BEAT_...]`).
-- Assets are stubs in `assets_stub.ts`; do not add binary assets to the repo.
-- Sprite/tilemap/sound naming convention: `SPR_*`, `TM_*`, `SFX_*`, `BGM_*`.
+- Use repository-local MakeCode Arcade TypeScript idioms.
+- Use placeholder IDs for unapproved dialog and story copy.
+- Keep language and feedback appropriate for a target age of 10.
+- Preserve existing imported JRES assets and their validation pipeline.
+- Add or replace assets only through a dedicated, reviewable asset task.
+- Follow established identifiers such as `TM_*`, `SFX_*`, `BGM_*`, `DIALOG_*`, `CUT_*`, and `QUEST_*`.
+- Register global event handlers once and guard them by the relevant play mode and state.
+- Route mode changes through `GameController.switchPlayMode()`.
+- Do not add dependencies or extensions without a concrete issue requirement.
 
-## Guardrails
+## Evidence
 
-- Kinderfreundlich (target age 10): no blood, no gore, enemies freeze/dance/flee only.
-- Caps on all spawns; auto-destroy + lifespan enforced.
-- Event handlers registered once; each begins with `if (state.playMode !== EXPECTED) return;`.
-- Follow the repository-local guardrails in `AGENTS.md` and `.github/copilot-instructions.md`.
+Source comments are not test evidence. Put command results, simulator steps, screenshots, clips, risks, and remaining uncertainty in the PR description or review thread.
