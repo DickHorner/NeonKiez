@@ -571,14 +571,10 @@ function hasOwnSpawnPoint(tag: string): boolean {
   return HUB_SPAWN_POINTS[tag] !== undefined;
 }
 
-function isFiniteNumber(value: any): boolean {
-  return typeof value === "number" && value <= 1e308 && value >= -1e308;
-}
-
 function isValidHubRoom(room: any): boolean {
   if (!room || typeof room !== "object") return false;
   if (typeof room.row !== "number" || typeof room.col !== "number") return false;
-  if (!isFiniteNumber(room.row) || !isFiniteNumber(room.col)) return false;
+  if (!isFinite(room.row) || !isFinite(room.col)) return false;
   if (Math.floor(room.row) !== room.row || Math.floor(room.col) !== room.col) return false;
   if (room.row < STATE_HUB_ROOM_MIN || room.row > STATE_HUB_ROOM_MAX) return false;
   if (room.col < STATE_HUB_ROOM_MIN || room.col > STATE_HUB_ROOM_MAX) return false;
@@ -602,10 +598,10 @@ function getSpawnPoint(tag: string | null | undefined): SpawnPoint | null {
   if (!spawnPoint || !isValidHubRoom(spawnPoint.room)) {
     return null;
   }
-  if (typeof spawnPoint.x !== "number" || !isFiniteNumber(spawnPoint.x)) {
+  if (typeof spawnPoint.x !== "number" || !isFinite(spawnPoint.x)) {
     return null;
   }
-  if (typeof spawnPoint.y !== "number" || !isFiniteNumber(spawnPoint.y)) {
+  if (typeof spawnPoint.y !== "number" || !isFinite(spawnPoint.y)) {
     return null;
   }
   return spawnPoint;
