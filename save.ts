@@ -14,15 +14,11 @@ interface SavePayload {
 }
 
 function isDangerousObjectKey(key: string): boolean {
-  return key === "constructor" || key === "prototype";
-}
-
-function isFiniteNumberSave(value: any): boolean {
-  return typeof value === "number" && value <= 1e308 && value >= -1e308;
+  return key === "constructor" || key === "prototype" || key === "__proto__";
 }
 
 function clampNumber(value: any, min: number, max: number, defaultValue: number): number {
-  if (typeof value !== "number" || isNaN(value) || !isFiniteNumberSave(value)) {
+  if (typeof value !== "number" || isNaN(value) || !isFinite(value)) {
     return defaultValue;
   }
   if (value < min) return min;
@@ -55,7 +51,7 @@ function validateFlags(flags: any): { [key: string]: boolean } {
     return {};
   }
 
-  const validated = {} as { [key: string]: boolean };
+  const validated = Object.create(null) as { [key: string]: boolean };
   const keys = Object.keys(flags);
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
@@ -91,7 +87,7 @@ function validateInventory(inventory: any): { [itemId: string]: number } {
     return {};
   }
 
-  const validated = {} as { [itemId: string]: number };
+  const validated = Object.create(null) as { [itemId: string]: number };
   const keys = Object.keys(inventory);
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
@@ -99,7 +95,7 @@ function validateInventory(inventory: any): { [itemId: string]: number } {
     if (isDangerousObjectKey(key)) {
       continue;
     }
-    if (typeof value === "number" && !isNaN(value) && isFiniteNumberSave(value) && value >= 0) {
+    if (typeof value === "number" && !isNaN(value) && isFinite(value) && value >= 0) {
       validated[key] = Math.floor(value);
     }
   }
