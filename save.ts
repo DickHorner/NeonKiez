@@ -18,7 +18,7 @@ function isDangerousObjectKey(key: string): boolean {
 }
 
 function clampNumber(value: any, min: number, max: number, defaultValue: number): number {
-  if (typeof value !== "number" || isNaN(value) || !isFinite(value)) {
+  if (typeof value !== "number" || value !== value || value === 1 / 0 || value === -1 / 0) {
     return defaultValue;
   }
   if (value < min) return min;
@@ -51,7 +51,7 @@ function validateFlags(flags: any): { [key: string]: boolean } {
     return {};
   }
 
-  const validated = Object.create(null) as { [key: string]: boolean };
+  const validated: { [key: string]: boolean } = { __proto__: null };
   const keys = Object.keys(flags);
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
@@ -87,7 +87,7 @@ function validateInventory(inventory: any): { [itemId: string]: number } {
     return {};
   }
 
-  const validated = Object.create(null) as { [itemId: string]: number };
+  const validated: { [itemId: string]: number } = { __proto__: null };
   const keys = Object.keys(inventory);
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
@@ -95,7 +95,7 @@ function validateInventory(inventory: any): { [itemId: string]: number } {
     if (isDangerousObjectKey(key)) {
       continue;
     }
-    if (typeof value === "number" && !isNaN(value) && isFinite(value) && value >= 0) {
+    if (typeof value === "number" && value === value && value !== 1 / 0 && value !== -1 / 0 && value >= 0) {
       validated[key] = Math.floor(value);
     }
   }
