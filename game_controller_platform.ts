@@ -58,7 +58,15 @@ namespace GameController {
         !state.dungeonStageData.reachedGoal
       ) {
         state.dungeonStageData.reachedGoal = true;
-        GameController.onStageComplete();
+        // Temporary Stage 0 completion route for unfinished Dungeon 7 content
+        if (
+          state.currentDungeonId === "DUN_VIDEO_STORE_PLATFORM_TRIAL" &&
+          state.currentStageIndex === 0
+        ) {
+          GameController.completeDungeon();
+        } else {
+          GameController.onStageComplete();
+        }
       }
 
       // Check for switch interaction in platform mode (Dungeon 7 Stage 2)
