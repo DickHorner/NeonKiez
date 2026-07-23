@@ -1,13 +1,13 @@
 // Failure Signals: lightweight observability for critical guard exits.
 
 enum FailureReason {
-  TRANSITION_LOCKED,
-  SPEC_NOT_FOUND,
-  NO_CURRENT_DUNGEON,
-  NO_DUNGEON_STAGE_DATA,
-  NO_PLAYER_SPRITE,
-  WRONG_PLAY_MODE,
-  INTERACT_COOLDOWN,
+  TRANSITION_LOCKED = 0,
+  SPEC_NOT_FOUND = 1,
+  NO_CURRENT_DUNGEON = 2,
+  NO_DUNGEON_STAGE_DATA = 3,
+  NO_PLAYER_SPRITE = 4,
+  WRONG_PLAY_MODE = 5,
+  INTERACT_COOLDOWN = 6,
 }
 
 let failureSignalsDebugMode = false;
