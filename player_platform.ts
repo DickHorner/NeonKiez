@@ -43,7 +43,7 @@ function updateLadderClimbing() {
   const loc = plyr.tilemapLocation();
   if (!loc) return;
 
-  const ladderTile = tiles.getTileImage(TILE_LADDER as any);
+  const ladderTile = tileImg(TILE_LADDER);
   const onLadderTile = ladderTile && tiles.tileAtLocationEquals(loc, ladderTile);
 
   if (onLadderTile) {

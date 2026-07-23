@@ -317,11 +317,14 @@ interface DungeonSpec {
 }
 
 // ---- Tile-index helper ----
-// MakeCode's public tiles.getTileImage() declares a Location argument but the
-// runtime also accepts a numeric palette index. This helper contains the cast
-// in one place so that call-sites stay free of `as any`.
+// Resolve a tile image from the active tilemap's tileset index.
 function tileImg(index: number): Image {
-  return tiles.getTileImage(index as any);
+  const scene = game.currentScene();
+  if (!scene || !scene.tileMap || !scene.tileMap.data) {
+    return img``;
+  }
+
+  return scene.tileMap.data.getTileImage(index);
 }
 
 // Dungeon Registry (9 dungeons)

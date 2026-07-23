@@ -1,5 +1,5 @@
 // meta={"simUrl":"https://trg-arcade.userpxt.io/---simulator","cdnUrl":"https://cdn.makecode.com","version":"v0.0.0","target":"arcade","targetVersion":"4.0.14"}
-// total=3122588 new=28.56% cached=51.85% other=19.59%
+// total=3124653 new=28.61% cached=51.81% other=19.58%
 (function (ectx) {
 'use strict';
 const runtime = ectx.runtime;
@@ -163,6 +163,7 @@ const _hex12005 = pxsim.BufferMethods.createBufferFromHex("870410000b00000000000
 const _hex12016 = pxsim.BufferMethods.createBufferFromHex("10000c00010101010101010101010101010101010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000400000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010100000000000000000000000000010101010101010101010101010101010101")
 const _hex12018 = pxsim.BufferMethods.createBufferFromHex("870410000b000000000000000000000020222222220000002000000000000000200000000000000020000000000000002000000000000000200000000000000020000d000000000020000000000000002000000000000000200000000000000020000000000000002000000000000000200000000000000020222222220000000000000000000000")
 const _hex13513 = pxsim.BufferMethods.createBufferFromHex("8704000000000000")
+const _hex36623 = pxsim.BufferMethods.createBufferFromHex("8704000000000000")
 const _hex16044 = pxsim.BufferMethods.createBufferFromHex("10000c00010101010101010101010101010101010100000000000000000000000000000101000000000000000000000000000001010000000000000000000000000000010100000000000000000000000000000101000000000000000000000000000001010000000000000000000000000000010100000000000000000000000000000101020202020202020202020202020201010202020202020202020202020202010100000000000000000000000000000101010101010101000001010101010101")
 const _hex16046 = pxsim.BufferMethods.createBufferFromHex("870410000c0000002222222222220000020000000020000002000000002000000200000000200000020000000020000002000000002000000200000000200000020000000000000002000000000000000200000000200000020000000020000002000000002000000200000000200000020000000020000002000000002000002222222222220000")
 const _hex20960 = pxsim.BufferMethods.createBufferFromHex("8704030003000000010100000101000001010000")
@@ -772,7 +773,7 @@ const pxsim_pxtrt = pxsim.pxtrt;
 const pxsim_numops = pxsim.numops;
 
 
-function _main___P34877(s) {
+function _main___P38537(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -1421,9 +1422,9 @@ switch (step) {
   case 44:
     r0 = s.retval;
     globals.tickSound___8092 = (s.tmp_0);
-    globals.kindInitPhase___8166 = (0);
-    globals.SPAWN_HUB_21_FROM_NORTH___8203 = ("SPAWN_HUB_21_FROM_NORTH");
-    globals.SPAWN_HUB_11_FROM_SOUTH___8210 = ("SPAWN_HUB_11_FROM_SOUTH");
+    globals.kindInitPhase___36348 = (0);
+    globals.SPAWN_HUB_21_FROM_NORTH___36385 = ("SPAWN_HUB_21_FROM_NORTH");
+    globals.SPAWN_HUB_11_FROM_SOUTH___36392 = ("SPAWN_HUB_11_FROM_SOUTH");
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "id", "DUN_LAUNDROMAT_LABYRINTH");
@@ -1833,7 +1834,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_85, "microStageDurationS", 20);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_81, "params", s.tmp_85);
     r0 = pxsim_Array__push(s.tmp_9, s.tmp_81);
-    globals.DUNGEON_SPECS___8270 = (s.tmp_9);
+    globals.DUNGEON_SPECS___36452 = (s.tmp_9);
     r0 = pxsim_Array__mk();
     s.tmp_0 = r0;
     r0 = pxsim_Array__push(s.tmp_0, "TM_HUB_00");
@@ -1854,12 +1855,12 @@ switch (step) {
     r0 = pxsim_Array__push(s.tmp_3, "TM_HUB_21");
     r0 = pxsim_Array__push(s.tmp_3, "TM_HUB_22");
     r0 = pxsim_Array__push(s.tmp_1, s.tmp_3);
-    globals.HUB_ROOM_IDS___8338 = (s.tmp_1);
+    globals.HUB_ROOM_IDS___36520 = (s.tmp_1);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "row", 1);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "col", 1);
-    globals.HUB_START_ROOM___8340 = (s.tmp_0);
+    globals.HUB_START_ROOM___36522 = (s.tmp_0);
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "row", 0);
@@ -1972,12 +1973,12 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_22, "x", 120);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_22, "y", 160);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_2, "SPAWN_HUB_11_FROM_SOUTH", s.tmp_22);
-    globals.HUB_SPAWN_POINTS___8343 = (s.tmp_2);
-    globals.TOOL_FREEZECAM___8348 = ("TOOL_FREEZECAM");
-    globals.TOOL_CONFETTI_BOMB___8349 = ("TOOL_CONFETTI_BOMB");
-    globals.TOOL_SOAP_SLIDE___8350 = ("TOOL_SOAP_SLIDE");
-    globals.TOOL_DECOY_TOY___8351 = ("TOOL_DECOY_TOY");
-    globals.TOOL_TAGGER___8352 = ("TOOL_TAGGER");
+    globals.HUB_SPAWN_POINTS___36525 = (s.tmp_2);
+    globals.TOOL_FREEZECAM___36530 = ("TOOL_FREEZECAM");
+    globals.TOOL_CONFETTI_BOMB___36531 = ("TOOL_CONFETTI_BOMB");
+    globals.TOOL_SOAP_SLIDE___36532 = ("TOOL_SOAP_SLIDE");
+    globals.TOOL_DECOY_TOY___36533 = ("TOOL_DECOY_TOY");
+    globals.TOOL_TAGGER___36534 = ("TOOL_TAGGER");
     globals.state___5156 = (null);
     r0 = pxsim.image.ofBuffer(_hex8377);
     globals.rpgUrbanPavement0036___5420 = (r0);
@@ -1989,10 +1990,10 @@ switch (step) {
     s.tmp_0 = scene_onHitWall__P2505_mk(s);
     s.tmp_0.arg0 = globals.Player___2524;
     s.tmp_0.arg1 = inline__P8451;
-    s.callLocIdx = 1094; s.pc = 45; return s.tmp_0;
+    s.callLocIdx = 1096; s.pc = 45; return s.tmp_0;
   case 45:
     r0 = s.retval;
-    globals.isOnLadder___5342 = (false);
+    globals.isOnLadder___37923 = (false);
     globals.asteroidRotation___5349 = (0);
     globals.asteroidVx___5350 = (0);
     globals.asteroidVy___5351 = (0);
@@ -2034,20 +2035,20 @@ switch (step) {
     globals.lastFailureReason___5433 = (null);
     globals.lastFailureContext___5434 = (null);
     s.tmp_0 = GameController_start__P5404_mk(s);
-    s.callLocIdx = 1336; s.pc = 46; return s.tmp_0;
+    s.callLocIdx = 1338; s.pc = 46; return s.tmp_0;
   case 46:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-_main___P34877.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/arcade-background-scroll/main.ts","functionName":"<main>","argumentNames":[]}
-_main___P34877.continuations = [  ]
+_main___P38537.info = {"start":0,"length":0,"line":0,"column":0,"endLine":0,"endColumn":0,"fileName":"pxt_modules/arcade-background-scroll/main.ts","functionName":"<main>","argumentNames":[]}
+_main___P38537.continuations = [  ]
 
-function _main___P34877_mk(s) {
+function _main___P38537_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: _main___P34877, depth: s.depth + 1,
+        parent: s, fn: _main___P38537, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -2662,7 +2663,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1093; s.pc = 4; return s.tmp_2; }
+     else { s.callLocIdx = 1095; s.pc = 4; return s.tmp_2; }
     }
   case 4:
     r0 = s.retval;
@@ -2706,29 +2707,29 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.tmp_0 = initSpriteKinds__P8167_mk(s);
-    s.callLocIdx = 303; s.pc = 1; return s.tmp_0;
+    s.tmp_0 = initSpriteKinds__P36349_mk(s);
+    s.callLocIdx = 305; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = initState__P5157_mk(s);
-    s.callLocIdx = 304; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 306; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.tmp_0 = runDungeonRegistryValidation__P5325_mk(s);
-    s.callLocIdx = 305; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 307; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = GameController_registerGlobalHandlers__P8399_mk(s);
-    s.callLocIdx = 306; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 308; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = setGameMode__P5158_mk(s);
     s.tmp_0.arg0 = 1;
-    s.callLocIdx = 307; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 309; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = GameController_showTitle__P8388_mk(s);
-    s.callLocIdx = 308; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 310; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     r0 = undefined;
@@ -2761,17 +2762,17 @@ switch (step) {
     s.cont___8500 = undefined;
     s.tmp_0 = scene_setBackgroundColor__P2928_mk(s);
     s.tmp_0.arg0 = 1;
-    s.callLocIdx = 310; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 312; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = game_splash__P3010_mk(s);
     s.tmp_0.arg0 = "[TITLE_NEON_KIEZ]";
     s.tmp_0.arg1 = undefined;
-    s.callLocIdx = 311; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 313; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_1 = hasSaveData__P34891_mk(s);
-    s.callLocIdx = 312; s.pc = 7; return s.tmp_1;
+    s.callLocIdx = 314; s.pc = 7; return s.tmp_1;
   case 7:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -2781,7 +2782,7 @@ switch (step) {
     s.tmp_2.arg0 = "Continue? 1=Yes 0=New";
     s.tmp_2.arg1 = 1;
     s.tmp_2.arg2 = false;
-    s.callLocIdx = 313; s.pc = 8; return s.tmp_2;
+    s.callLocIdx = 315; s.pc = 8; return s.tmp_2;
   case 8:
     r0 = s.retval;
     s.cont___8500 = (r0);
@@ -2790,7 +2791,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_1 = loadGame__P34890_mk(s);
-    s.callLocIdx = 314; s.pc = 9; return s.tmp_1;
+    s.callLocIdx = 316; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
   case 1:
@@ -2798,7 +2799,7 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_0 = GameController_startHub__P8389_mk(s);
-    s.callLocIdx = 315; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 317; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
     r0 = undefined;
@@ -2833,7 +2834,7 @@ switch (step) {
 
     s.tmp_0 = setGameMode__P5158_mk(s);
     s.tmp_0.arg0 = 2;
-    s.callLocIdx = 316; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 318; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -2846,7 +2847,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["hubRoom"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["hubRoom"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 317; s.pc = 2; return s.tmp_2; }
+     else { s.callLocIdx = 319; s.pc = 2; return s.tmp_2; }
     }
   case 2:
     r0 = s.retval;
@@ -2856,7 +2857,7 @@ switch (step) {
     s.tmp_3 = GameController_switchPlayMode__P5406_mk(s);
     s.tmp_3.arg0 = 0;
     s.tmp_3.arg1 = s.tmp_0;
-    s.callLocIdx = 318; s.pc = 3; return s.tmp_3;
+    s.callLocIdx = 320; s.pc = 3; return s.tmp_3;
   case 3:
     r0 = s.retval;
     r0 = undefined;
@@ -2902,7 +2903,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["transitionLock"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["transitionLock"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 319; s.pc = 4; return s.tmp_1; }
+     else { s.callLocIdx = 321; s.pc = 4; return s.tmp_1; }
     }
   case 4:
     r0 = s.retval;
@@ -2922,7 +2923,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_String__concat("switchPlayMode:", s.tmp_3);
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 320; s.pc = 5; return s.tmp_2;
+    s.callLocIdx = 322; s.pc = 5; return s.tmp_2;
   case 5:
     r0 = s.retval;
     { step = 3; continue; }
@@ -2937,12 +2938,12 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/transitionLock"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["transitionLock"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 321; s.pc = 7; return s.tmp_0; }
+     else { s.callLocIdx = 323; s.pc = 7; return s.tmp_0; }
     }
   case 7:
     r0 = s.retval;
     s.tmp_0 = GameController_cleanupCurrentPlayMode__P8390_mk(s);
-    s.callLocIdx = 322; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 324; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = if_playMode_2_mk(s);
@@ -2954,14 +2955,14 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/playMode"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["playMode"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 323; s.pc = 9; return s.tmp_0; }
+     else { s.callLocIdx = 325; s.pc = 9; return s.tmp_0; }
     }
   case 9:
     r0 = s.retval;
     s.tmp_0 = GameController_setupNextPlayMode__P8391_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.callLocIdx = 324; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 326; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
     s.tmp_0 = if_transitionLock_2_mk(s);
@@ -2973,7 +2974,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/transitionLock"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["transitionLock"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 325; s.pc = 11; return s.tmp_0; }
+     else { s.callLocIdx = 327; s.pc = 11; return s.tmp_0; }
     }
   case 11:
     r0 = s.retval;
@@ -3021,7 +3022,7 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_1 = GameController_setupHubMode__P8392_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 334; s.pc = 15; return s.tmp_1;
+    s.callLocIdx = 336; s.pc = 15; return s.tmp_1;
   case 15:
     r0 = s.retval;
     { step = 14; continue; }
@@ -3032,7 +3033,7 @@ switch (step) {
     if (!r0) { step = 2; continue; }
     s.tmp_1 = GameController_setupPlatformMode__P8393_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 335; s.pc = 16; return s.tmp_1;
+    s.callLocIdx = 337; s.pc = 16; return s.tmp_1;
   case 16:
     r0 = s.retval;
     { step = 13; continue; }
@@ -3043,7 +3044,7 @@ switch (step) {
     if (!r0) { step = 3; continue; }
     s.tmp_1 = GameController_setupShooterMode__P8394_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 336; s.pc = 17; return s.tmp_1;
+    s.callLocIdx = 338; s.pc = 17; return s.tmp_1;
   case 17:
     r0 = s.retval;
     { step = 12; continue; }
@@ -3054,7 +3055,7 @@ switch (step) {
     if (!r0) { step = 4; continue; }
     s.tmp_1 = GameController_setupAsteroidsMode__P8395_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 337; s.pc = 18; return s.tmp_1;
+    s.callLocIdx = 339; s.pc = 18; return s.tmp_1;
   case 18:
     r0 = s.retval;
     { step = 11; continue; }
@@ -3065,7 +3066,7 @@ switch (step) {
     if (!r0) { step = 5; continue; }
     s.tmp_1 = GameController_setupRhythmMode__P8396_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 338; s.pc = 19; return s.tmp_1;
+    s.callLocIdx = 340; s.pc = 19; return s.tmp_1;
   case 19:
     r0 = s.retval;
     { step = 10; continue; }
@@ -3076,7 +3077,7 @@ switch (step) {
     if (!r0) { step = 6; continue; }
     s.tmp_1 = GameController_setupPuzzleMode__P8397_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 339; s.pc = 20; return s.tmp_1;
+    s.callLocIdx = 341; s.pc = 20; return s.tmp_1;
   case 20:
     r0 = s.retval;
     { step = 9; continue; }
@@ -3087,7 +3088,7 @@ switch (step) {
     if (!r0) { step = 7; continue; }
     s.tmp_1 = GameController_setupMetaMode__P8398_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 340; s.pc = 21; return s.tmp_1;
+    s.callLocIdx = 342; s.pc = 21; return s.tmp_1;
   case 21:
     r0 = s.retval;
   case 7:
@@ -3099,7 +3100,7 @@ switch (step) {
   case 13:
   case 14:
     s.tmp_0 = updateHUD__P5279_mk(s);
-    s.callLocIdx = 341; s.pc = 22; return s.tmp_0;
+    s.callLocIdx = 343; s.pc = 22; return s.tmp_0;
   case 22:
     r0 = s.retval;
     r0 = undefined;
@@ -3156,7 +3157,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["hearts"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["hearts"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1237; s.pc = 8; return s.tmp_3; }
+     else { s.callLocIdx = 1239; s.pc = 8; return s.tmp_3; }
     }
   case 8:
     r0 = s.retval;
@@ -3185,11 +3186,11 @@ switch (step) {
     s.tmp_1 = createTextImage__P5277_mk(s);
     s.tmp_1.arg0 = s.heartStr___8578;
     s.tmp_1.arg1 = 2;
-    s.callLocIdx = 1238; s.pc = 11; return s.tmp_1;
+    s.callLocIdx = 1240; s.pc = 11; return s.tmp_1;
   case 11:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1239; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 1241; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
     s.tmp_1 = if_currentTool_1_mk(s);
@@ -3200,7 +3201,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["currentTool"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["currentTool"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 1240; s.pc = 12; return s.tmp_1; }
+     else { s.callLocIdx = 1242; s.pc = 12; return s.tmp_1; }
     }
   case 12:
     r0 = s.retval;
@@ -3218,7 +3219,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["currentTool"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["currentTool"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 1241; s.pc = 15; return s.tmp_8; }
+     else { s.callLocIdx = 1243; s.pc = 15; return s.tmp_8; }
     }
   case 15:
     r0 = s.retval;
@@ -3246,11 +3247,11 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_4, "]");
     s.tmp_3.arg0 = r0;
     s.tmp_3.arg1 = 1;
-    s.callLocIdx = 1242; s.pc = 14; return s.tmp_3;
+    s.callLocIdx = 1244; s.pc = 14; return s.tmp_3;
   case 14:
     r0 = s.retval;
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 1243; s.pc = 13; return s.tmp_2;
+    s.callLocIdx = 1245; s.pc = 13; return s.tmp_2;
   case 13:
     r0 = s.retval;
     s.tmp_0 = Sprite_right__P2444_mk(s);
@@ -3259,7 +3260,7 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = (s.tmp_1 - 2);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1245; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 1247; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
     { step = 6; continue; }
@@ -3270,11 +3271,11 @@ switch (step) {
     r0 = pxsim_String_.mkEmpty();
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 1;
-    s.callLocIdx = 1246; s.pc = 20; return s.tmp_1;
+    s.callLocIdx = 1248; s.pc = 20; return s.tmp_1;
   case 20:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1247; s.pc = 19; return s.tmp_0;
+    s.callLocIdx = 1249; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
   case 6:
@@ -3697,7 +3698,7 @@ switch (step) {
     }
     s.tmp_0 = image_getFontForText__P1983_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 1210; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1212; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.font___8670 = (r0);
@@ -3711,7 +3712,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["charWidth"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["charWidth"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1211; s.pc = 5; return s.tmp_2; }
+     else { s.callLocIdx = 1213; s.pc = 5; return s.tmp_2; }
     }
   case 5:
     r0 = s.retval;
@@ -3720,7 +3721,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = (s.tmp_1 * s.tmp_3);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1212; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1214; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.w___8674 = (r0);
@@ -3732,7 +3733,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["charHeight"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["charHeight"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 1213; s.pc = 6; return s.tmp_0; }
+     else { s.callLocIdx = 1215; s.pc = 6; return s.tmp_0; }
     }
   case 6:
     r0 = s.retval;
@@ -3749,7 +3750,7 @@ switch (step) {
     s.tmp_0.arg4 = s.arg1;
     s.tmp_0.arg5 = undefined;
     s.tmp_0.arg6 = undefined;
-    s.callLocIdx = 1214; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 1216; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
   case 1:
@@ -6457,7 +6458,7 @@ switch (step) {
     }
     s.tmp_0 = GameController_MetaMode_setup__P5397_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 371; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 373; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -6503,7 +6504,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonId"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonId"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 960; s.pc = 16; return s.tmp_0; }
+     else { s.callLocIdx = 962; s.pc = 16; return s.tmp_0; }
     }
   case 16:
     r0 = s.retval;
@@ -6516,7 +6517,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stageIndex"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stageIndex"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 961; s.pc = 17; return s.tmp_1; }
+     else { s.callLocIdx = 963; s.pc = 17; return s.tmp_1; }
     }
   case 17:
     r0 = s.retval;
@@ -6540,7 +6541,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentDungeonId"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentDungeonId"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 962; s.pc = 18; return s.tmp_0; }
+     else { s.callLocIdx = 964; s.pc = 18; return s.tmp_0; }
     }
   case 18:
     r0 = s.retval;
@@ -6553,7 +6554,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentStageIndex"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentStageIndex"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 963; s.pc = 19; return s.tmp_0; }
+     else { s.callLocIdx = 965; s.pc = 19; return s.tmp_0; }
     }
   case 19:
     r0 = s.retval;
@@ -6561,9 +6562,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.dungeonId___9705);
     s.tmp_1 = helpers_arrayFind__P112_mk(s);
-    s.tmp_1.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_1.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 965; s.pc = 20; return s.tmp_1;
+    s.callLocIdx = 967; s.pc = 20; return s.tmp_1;
   case 20:
     r0 = s.retval;
     s.spec___9720 = (r0);
@@ -6581,7 +6582,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 5; continue; }
     s.tmp_3 = GameController_MetaMode_setupMetaIntro__P8441_mk(s);
-    s.callLocIdx = 966; s.pc = 21; return s.tmp_3;
+    s.callLocIdx = 968; s.pc = 21; return s.tmp_3;
   case 21:
     r0 = s.retval;
     { step = 14; continue; }
@@ -6591,7 +6592,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
     s.tmp_1 = GameController_MetaMode_setupMicroPlatform__P8442_mk(s);
-    s.callLocIdx = 967; s.pc = 22; return s.tmp_1;
+    s.callLocIdx = 969; s.pc = 22; return s.tmp_1;
   case 22:
     r0 = s.retval;
     { step = 13; continue; }
@@ -6601,7 +6602,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
     s.tmp_1 = GameController_MetaMode_setupMicroShooter__P8443_mk(s);
-    s.callLocIdx = 968; s.pc = 23; return s.tmp_1;
+    s.callLocIdx = 970; s.pc = 23; return s.tmp_1;
   case 23:
     r0 = s.retval;
     { step = 12; continue; }
@@ -6611,7 +6612,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
     s.tmp_1 = GameController_MetaMode_setupMicroRhythm__P8444_mk(s);
-    s.callLocIdx = 969; s.pc = 24; return s.tmp_1;
+    s.callLocIdx = 971; s.pc = 24; return s.tmp_1;
   case 24:
     r0 = s.retval;
     { step = 11; continue; }
@@ -6621,7 +6622,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_1 = GameController_MetaMode_setupStabilizeFinale__P8445_mk(s);
-    s.callLocIdx = 970; s.pc = 25; return s.tmp_1;
+    s.callLocIdx = 972; s.pc = 25; return s.tmp_1;
   case 25:
     r0 = s.retval;
   case 9:
@@ -6677,7 +6678,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 964; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 966; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -6717,7 +6718,7 @@ switch (step) {
     s.stageId___9748 = ("TM_DUN_09_STAGE_04_STABILIZE");
     s.tmp_0 = getTilemapByID__P5269_mk(s);
     s.tmp_0.arg0 = s.stageId___9748;
-    s.callLocIdx = 1061; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1063; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tm___9750 = (r0);
@@ -6725,7 +6726,7 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = s.tm___9750;
-    s.callLocIdx = 1062; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1064; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
   case 1:
@@ -6733,8 +6734,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1064; s.pc = 5; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1066; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.playerSprite___9757 = (r0);
@@ -6742,14 +6743,14 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___9757;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 1065; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 1067; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = controller_moveSprite__P2184_mk(s);
     s.tmp_0.arg0 = s.playerSprite___9757;
     s.tmp_0.arg1 = 60;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 1066; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 1068; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -6768,23 +6769,23 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_1.fn === null) { s.tmp_1.arg0.fields["dungeonStageData"] = s.tmp_1.arg1; }
       else if (s.tmp_1.fn === undefined) { failedCast(s.tmp_1.arg0) } 
-     else { s.callLocIdx = 1067; s.pc = 8; return s.tmp_1; }
+     else { s.callLocIdx = 1069; s.pc = 8; return s.tmp_1; }
     }
   case 8:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[STABILIZE_NODES]";
     s.tmp_0.arg1 = 3000;
-    s.callLocIdx = 1068; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 1070; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     s.tmp_0 = GameController_MetaMode_spawnStabilizationNodes__P8448_mk(s);
-    s.callLocIdx = 1069; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 1071; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___9757;
-    s.callLocIdx = 1070; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 1072; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
     r0 = undefined;
@@ -6898,8 +6899,8 @@ switch (step) {
     r0 = pxsim_String__concat("NODE_", s.tmp_4);
     r0 = pxsim.image.create(8, 8);
     s.tmp_3.arg0 = r0;
-    s.tmp_3.arg1 = globals.KIND_INTERACTABLE___8155;
-    s.callLocIdx = 1087; s.pc = 3; return s.tmp_3;
+    s.tmp_3.arg1 = globals.KIND_INTERACTABLE___36337;
+    s.callLocIdx = 1089; s.pc = 3; return s.tmp_3;
   case 3:
     r0 = s.retval;
     s.node___9783 = (r0);
@@ -6914,7 +6915,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["x"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["x"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 1088; s.pc = 6; return s.tmp_1; }
+     else { s.callLocIdx = 1090; s.pc = 6; return s.tmp_1; }
     }
   case 6:
     r0 = s.retval;
@@ -6928,12 +6929,12 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["y"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["y"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1089; s.pc = 7; return s.tmp_2; }
+     else { s.callLocIdx = 1091; s.pc = 7; return s.tmp_2; }
     }
   case 7:
     r0 = s.retval;
     s.tmp_0.arg2 = r0;
-    s.callLocIdx = 1090; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 1092; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = if_nodeIndex_2_mk(s);
@@ -6945,7 +6946,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/nodeIndex"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["nodeIndex"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 1091; s.pc = 8; return s.tmp_0; }
+     else { s.callLocIdx = 1093; s.pc = 8; return s.tmp_0; }
     }
   case 8:
     r0 = s.retval;
@@ -6958,7 +6959,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/isStabilizationNode"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["isStabilizationNode"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 1092; s.pc = 9; return s.tmp_0; }
+     else { s.callLocIdx = 1094; s.pc = 9; return s.tmp_0; }
     }
   case 9:
     r0 = s.retval;
@@ -7050,11 +7051,11 @@ switch (step) {
     s.tmp_3 = createTextImage__P5277_mk(s);
     s.tmp_3.arg0 = s.arg0;
     s.tmp_3.arg1 = 5;
-    s.callLocIdx = 1248; s.pc = 5; return s.tmp_3;
+    s.callLocIdx = 1250; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 1249; s.pc = 4; return s.tmp_2;
+    s.callLocIdx = 1251; s.pc = 4; return s.tmp_2;
   case 4:
     r0 = s.retval;
     s.tmp_0 = Sprite_bottom__P2448_mk(s);
@@ -7063,7 +7064,7 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = (s.tmp_1 - 2);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1251; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 1253; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     r0 = pxsim_pxtcore_mkAction(1, showHint_inline__P9831);
@@ -7105,7 +7106,7 @@ switch (step) {
 
     s.tmp_0 = pause__P415_mk(s);
     s.tmp_0.arg0 = s.caps[0];
-    s.callLocIdx = 1252; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1254; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     r0 = pxsim_numops_toBoolDecr(globals.hudHint___5276);
@@ -7116,11 +7117,11 @@ switch (step) {
     r0 = pxsim_String_.mkEmpty();
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 5;
-    s.callLocIdx = 1253; s.pc = 5; return s.tmp_1;
+    s.callLocIdx = 1255; s.pc = 5; return s.tmp_1;
   case 5:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1254; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1256; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
   case 1:
@@ -11424,7 +11425,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_1 = tmHub00__P5206_mk(s);
-    s.callLocIdx = 254; s.pc = 94; return s.tmp_1;
+    s.callLocIdx = 256; s.pc = 94; return s.tmp_1;
   case 94:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11435,7 +11436,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 3; continue; }
     s.tmp_3 = tmHub01__P5207_mk(s);
-    s.callLocIdx = 255; s.pc = 95; return s.tmp_3;
+    s.callLocIdx = 257; s.pc = 95; return s.tmp_3;
   case 95:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11446,7 +11447,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 5; continue; }
     s.tmp_5 = tmHub02__P5208_mk(s);
-    s.callLocIdx = 256; s.pc = 96; return s.tmp_5;
+    s.callLocIdx = 258; s.pc = 96; return s.tmp_5;
   case 96:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11457,7 +11458,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_6);
     if (!r0) { step = 7; continue; }
     s.tmp_7 = tmHub10__P5209_mk(s);
-    s.callLocIdx = 257; s.pc = 97; return s.tmp_7;
+    s.callLocIdx = 259; s.pc = 97; return s.tmp_7;
   case 97:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11468,7 +11469,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_8);
     if (!r0) { step = 9; continue; }
     s.tmp_9 = tmHub11__P5210_mk(s);
-    s.callLocIdx = 258; s.pc = 98; return s.tmp_9;
+    s.callLocIdx = 260; s.pc = 98; return s.tmp_9;
   case 98:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11479,7 +11480,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_10);
     if (!r0) { step = 11; continue; }
     s.tmp_11 = tmHub12__P5211_mk(s);
-    s.callLocIdx = 259; s.pc = 99; return s.tmp_11;
+    s.callLocIdx = 261; s.pc = 99; return s.tmp_11;
   case 99:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11490,7 +11491,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_12);
     if (!r0) { step = 13; continue; }
     s.tmp_13 = tmHub20__P5212_mk(s);
-    s.callLocIdx = 260; s.pc = 100; return s.tmp_13;
+    s.callLocIdx = 262; s.pc = 100; return s.tmp_13;
   case 100:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11501,7 +11502,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_14);
     if (!r0) { step = 15; continue; }
     s.tmp_15 = tmHub21__P5213_mk(s);
-    s.callLocIdx = 261; s.pc = 101; return s.tmp_15;
+    s.callLocIdx = 263; s.pc = 101; return s.tmp_15;
   case 101:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11512,7 +11513,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_16);
     if (!r0) { step = 17; continue; }
     s.tmp_17 = tmHub22__P5214_mk(s);
-    s.callLocIdx = 262; s.pc = 102; return s.tmp_17;
+    s.callLocIdx = 264; s.pc = 102; return s.tmp_17;
   case 102:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11523,7 +11524,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_18);
     if (!r0) { step = 19; continue; }
     s.tmp_19 = tmDun01Stage00__P5215_mk(s);
-    s.callLocIdx = 263; s.pc = 103; return s.tmp_19;
+    s.callLocIdx = 265; s.pc = 103; return s.tmp_19;
   case 103:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11534,7 +11535,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_20);
     if (!r0) { step = 21; continue; }
     s.tmp_21 = tmDun01Stage01__P5216_mk(s);
-    s.callLocIdx = 264; s.pc = 104; return s.tmp_21;
+    s.callLocIdx = 266; s.pc = 104; return s.tmp_21;
   case 104:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11545,7 +11546,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_22);
     if (!r0) { step = 23; continue; }
     s.tmp_23 = tmDun01Stage02__P5217_mk(s);
-    s.callLocIdx = 265; s.pc = 105; return s.tmp_23;
+    s.callLocIdx = 267; s.pc = 105; return s.tmp_23;
   case 105:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11556,7 +11557,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_24);
     if (!r0) { step = 25; continue; }
     s.tmp_25 = tmDun01Stage03__P5218_mk(s);
-    s.callLocIdx = 266; s.pc = 106; return s.tmp_25;
+    s.callLocIdx = 268; s.pc = 106; return s.tmp_25;
   case 106:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11567,7 +11568,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_26);
     if (!r0) { step = 27; continue; }
     s.tmp_27 = tmDun02Stage00__P5219_mk(s);
-    s.callLocIdx = 267; s.pc = 107; return s.tmp_27;
+    s.callLocIdx = 269; s.pc = 107; return s.tmp_27;
   case 107:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11578,7 +11579,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_28);
     if (!r0) { step = 29; continue; }
     s.tmp_29 = tmDun02Stage01__P5220_mk(s);
-    s.callLocIdx = 268; s.pc = 108; return s.tmp_29;
+    s.callLocIdx = 270; s.pc = 108; return s.tmp_29;
   case 108:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11589,7 +11590,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_30);
     if (!r0) { step = 31; continue; }
     s.tmp_31 = tmDun02Stage02__P5221_mk(s);
-    s.callLocIdx = 269; s.pc = 109; return s.tmp_31;
+    s.callLocIdx = 271; s.pc = 109; return s.tmp_31;
   case 109:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11600,7 +11601,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_32);
     if (!r0) { step = 33; continue; }
     s.tmp_33 = tmDun02Stage03__P5222_mk(s);
-    s.callLocIdx = 270; s.pc = 110; return s.tmp_33;
+    s.callLocIdx = 272; s.pc = 110; return s.tmp_33;
   case 110:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11611,7 +11612,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_34);
     if (!r0) { step = 35; continue; }
     s.tmp_35 = tmDun03Stage00__P5223_mk(s);
-    s.callLocIdx = 271; s.pc = 111; return s.tmp_35;
+    s.callLocIdx = 273; s.pc = 111; return s.tmp_35;
   case 111:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11622,7 +11623,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_36);
     if (!r0) { step = 37; continue; }
     s.tmp_37 = tmDun03Stage01__P5224_mk(s);
-    s.callLocIdx = 272; s.pc = 112; return s.tmp_37;
+    s.callLocIdx = 274; s.pc = 112; return s.tmp_37;
   case 112:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11633,7 +11634,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_38);
     if (!r0) { step = 39; continue; }
     s.tmp_39 = tmDun03Stage02__P5225_mk(s);
-    s.callLocIdx = 273; s.pc = 113; return s.tmp_39;
+    s.callLocIdx = 275; s.pc = 113; return s.tmp_39;
   case 113:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11644,7 +11645,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_40);
     if (!r0) { step = 41; continue; }
     s.tmp_41 = tmDun03Stage03__P5226_mk(s);
-    s.callLocIdx = 274; s.pc = 114; return s.tmp_41;
+    s.callLocIdx = 276; s.pc = 114; return s.tmp_41;
   case 114:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11655,7 +11656,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_42);
     if (!r0) { step = 43; continue; }
     s.tmp_43 = tmDun04Stage00__P5227_mk(s);
-    s.callLocIdx = 275; s.pc = 115; return s.tmp_43;
+    s.callLocIdx = 277; s.pc = 115; return s.tmp_43;
   case 115:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11666,7 +11667,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_44);
     if (!r0) { step = 45; continue; }
     s.tmp_45 = tmDun04Stage01__P5228_mk(s);
-    s.callLocIdx = 276; s.pc = 116; return s.tmp_45;
+    s.callLocIdx = 278; s.pc = 116; return s.tmp_45;
   case 116:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11677,7 +11678,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_46);
     if (!r0) { step = 47; continue; }
     s.tmp_47 = tmDun04Stage02__P5229_mk(s);
-    s.callLocIdx = 277; s.pc = 117; return s.tmp_47;
+    s.callLocIdx = 279; s.pc = 117; return s.tmp_47;
   case 117:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11688,7 +11689,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_48);
     if (!r0) { step = 49; continue; }
     s.tmp_49 = tmDun04Stage03__P5230_mk(s);
-    s.callLocIdx = 278; s.pc = 118; return s.tmp_49;
+    s.callLocIdx = 280; s.pc = 118; return s.tmp_49;
   case 118:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11699,7 +11700,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_50);
     if (!r0) { step = 51; continue; }
     s.tmp_51 = tmDun05Stage00__P5231_mk(s);
-    s.callLocIdx = 279; s.pc = 119; return s.tmp_51;
+    s.callLocIdx = 281; s.pc = 119; return s.tmp_51;
   case 119:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11710,7 +11711,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_52);
     if (!r0) { step = 53; continue; }
     s.tmp_53 = tmDun05Stage01__P5232_mk(s);
-    s.callLocIdx = 280; s.pc = 120; return s.tmp_53;
+    s.callLocIdx = 282; s.pc = 120; return s.tmp_53;
   case 120:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11721,7 +11722,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_54);
     if (!r0) { step = 55; continue; }
     s.tmp_55 = tmDun05Stage02__P5233_mk(s);
-    s.callLocIdx = 281; s.pc = 121; return s.tmp_55;
+    s.callLocIdx = 283; s.pc = 121; return s.tmp_55;
   case 121:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11732,7 +11733,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_56);
     if (!r0) { step = 57; continue; }
     s.tmp_57 = tmDun05Stage03__P5234_mk(s);
-    s.callLocIdx = 282; s.pc = 122; return s.tmp_57;
+    s.callLocIdx = 284; s.pc = 122; return s.tmp_57;
   case 122:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11743,7 +11744,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_58);
     if (!r0) { step = 59; continue; }
     s.tmp_59 = tmDun06Stage00__P5235_mk(s);
-    s.callLocIdx = 283; s.pc = 123; return s.tmp_59;
+    s.callLocIdx = 285; s.pc = 123; return s.tmp_59;
   case 123:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11754,7 +11755,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_60);
     if (!r0) { step = 61; continue; }
     s.tmp_61 = tmDun06Stage01__P5236_mk(s);
-    s.callLocIdx = 284; s.pc = 124; return s.tmp_61;
+    s.callLocIdx = 286; s.pc = 124; return s.tmp_61;
   case 124:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11765,7 +11766,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_62);
     if (!r0) { step = 63; continue; }
     s.tmp_63 = tmDun06Stage02__P5237_mk(s);
-    s.callLocIdx = 285; s.pc = 125; return s.tmp_63;
+    s.callLocIdx = 287; s.pc = 125; return s.tmp_63;
   case 125:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11776,7 +11777,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_64);
     if (!r0) { step = 65; continue; }
     s.tmp_65 = tmDun06Stage03__P5238_mk(s);
-    s.callLocIdx = 286; s.pc = 126; return s.tmp_65;
+    s.callLocIdx = 288; s.pc = 126; return s.tmp_65;
   case 126:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11787,7 +11788,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_66);
     if (!r0) { step = 67; continue; }
     s.tmp_67 = tmDun07Stage00__P5239_mk(s);
-    s.callLocIdx = 287; s.pc = 127; return s.tmp_67;
+    s.callLocIdx = 289; s.pc = 127; return s.tmp_67;
   case 127:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11798,7 +11799,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_68);
     if (!r0) { step = 69; continue; }
     s.tmp_69 = tmDun07Stage01__P5240_mk(s);
-    s.callLocIdx = 288; s.pc = 128; return s.tmp_69;
+    s.callLocIdx = 290; s.pc = 128; return s.tmp_69;
   case 128:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11809,7 +11810,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_70);
     if (!r0) { step = 71; continue; }
     s.tmp_71 = tmDun07Stage02__P5241_mk(s);
-    s.callLocIdx = 289; s.pc = 129; return s.tmp_71;
+    s.callLocIdx = 291; s.pc = 129; return s.tmp_71;
   case 129:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11820,7 +11821,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_72);
     if (!r0) { step = 73; continue; }
     s.tmp_73 = tmDun07Stage03__P5242_mk(s);
-    s.callLocIdx = 290; s.pc = 130; return s.tmp_73;
+    s.callLocIdx = 292; s.pc = 130; return s.tmp_73;
   case 130:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11831,7 +11832,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_74);
     if (!r0) { step = 75; continue; }
     s.tmp_75 = tmDun08Stage00__P5243_mk(s);
-    s.callLocIdx = 291; s.pc = 131; return s.tmp_75;
+    s.callLocIdx = 293; s.pc = 131; return s.tmp_75;
   case 131:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11842,7 +11843,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_76);
     if (!r0) { step = 77; continue; }
     s.tmp_77 = tmDun08Stage01__P5244_mk(s);
-    s.callLocIdx = 292; s.pc = 132; return s.tmp_77;
+    s.callLocIdx = 294; s.pc = 132; return s.tmp_77;
   case 132:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11853,7 +11854,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_78);
     if (!r0) { step = 79; continue; }
     s.tmp_79 = tmDun08Stage02__P5245_mk(s);
-    s.callLocIdx = 293; s.pc = 133; return s.tmp_79;
+    s.callLocIdx = 295; s.pc = 133; return s.tmp_79;
   case 133:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11864,7 +11865,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_80);
     if (!r0) { step = 81; continue; }
     s.tmp_81 = tmDun08Stage03__P5246_mk(s);
-    s.callLocIdx = 294; s.pc = 134; return s.tmp_81;
+    s.callLocIdx = 296; s.pc = 134; return s.tmp_81;
   case 134:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11875,7 +11876,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_82);
     if (!r0) { step = 83; continue; }
     s.tmp_83 = tmDun09Stage00__P5247_mk(s);
-    s.callLocIdx = 295; s.pc = 135; return s.tmp_83;
+    s.callLocIdx = 297; s.pc = 135; return s.tmp_83;
   case 135:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11886,7 +11887,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_84);
     if (!r0) { step = 85; continue; }
     s.tmp_85 = tmDun09Stage01__P5248_mk(s);
-    s.callLocIdx = 296; s.pc = 136; return s.tmp_85;
+    s.callLocIdx = 298; s.pc = 136; return s.tmp_85;
   case 136:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11897,7 +11898,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_86);
     if (!r0) { step = 87; continue; }
     s.tmp_87 = tmDun09Stage02__P5249_mk(s);
-    s.callLocIdx = 297; s.pc = 137; return s.tmp_87;
+    s.callLocIdx = 299; s.pc = 137; return s.tmp_87;
   case 137:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11908,7 +11909,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_88);
     if (!r0) { step = 89; continue; }
     s.tmp_89 = tmDun09Stage03__P5250_mk(s);
-    s.callLocIdx = 298; s.pc = 138; return s.tmp_89;
+    s.callLocIdx = 300; s.pc = 138; return s.tmp_89;
   case 138:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11919,7 +11920,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_90);
     if (!r0) { step = 91; continue; }
     s.tmp_91 = tmDun09Stage04__P5251_mk(s);
-    s.callLocIdx = 299; s.pc = 139; return s.tmp_91;
+    s.callLocIdx = 301; s.pc = 139; return s.tmp_91;
   case 139:
     r0 = s.retval;
     { step = 93; continue; }
@@ -11937,11 +11938,11 @@ switch (step) {
     s.tmp_93 = r0;
     r0 = pxsim_String__concat("Unknown tilemap ID: ", s.tmp_93);
     s.tmp_92.arg0 = r0;
-    s.callLocIdx = 300; s.pc = 140; return s.tmp_92;
+    s.callLocIdx = 302; s.pc = 140; return s.tmp_92;
   case 140:
     r0 = s.retval;
     s.tmp_0 = createEmptyTilemap__P5205_mk(s);
-    s.callLocIdx = 301; s.pc = 142; return s.tmp_0;
+    s.callLocIdx = 303; s.pc = 142; return s.tmp_0;
   case 142:
     r0 = s.retval;
   case 93:
@@ -12072,7 +12073,7 @@ switch (step) {
     r0 = pxsim_Array__mk();
     s.tmp_0.arg2 = r0;
     s.tmp_0.arg3 = 4;
-    s.callLocIdx = 207; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 209; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13089,7 +13090,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 253; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 255; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13131,7 +13132,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 252; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 254; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13173,7 +13174,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 251; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 253; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13219,7 +13220,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 250; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 252; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13261,7 +13262,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 249; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 251; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13310,7 +13311,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 248; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 250; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13359,7 +13360,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 247; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 249; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13408,7 +13409,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 246; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 248; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13454,7 +13455,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 245; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 247; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13500,7 +13501,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 244; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 246; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13549,7 +13550,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 243; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 245; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13595,7 +13596,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 242; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 244; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13641,7 +13642,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 241; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 243; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13685,7 +13686,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 240; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 242; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13729,7 +13730,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 239; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 241; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13773,7 +13774,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 238; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 240; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13817,7 +13818,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 237; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 239; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13860,7 +13861,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 236; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 238; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13903,7 +13904,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 235; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 237; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13946,7 +13947,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 234; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 236; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -13988,7 +13989,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 233; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 235; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14036,7 +14037,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 232; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 234; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14084,7 +14085,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 231; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 233; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14133,7 +14134,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 230; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 232; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14179,7 +14180,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 229; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 231; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14228,7 +14229,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 228; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 230; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14277,7 +14278,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 227; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 229; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14326,7 +14327,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 226; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 228; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14375,7 +14376,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 225; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 227; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14416,7 +14417,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 224; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 226; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14456,7 +14457,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 223; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 225; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14496,7 +14497,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 222; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 224; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14536,7 +14537,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 221; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 223; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14585,7 +14586,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 220; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 222; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14635,7 +14636,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 219; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 221; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14684,7 +14685,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 218; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 220; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14733,7 +14734,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 217; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 219; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14764,7 +14765,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = createEmptyTilemap__P5205_mk(s);
-    s.callLocIdx = 216; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 218; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14804,7 +14805,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 215; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 217; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14847,7 +14848,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 214; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 216; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14878,7 +14879,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = createEmptyTilemap__P5205_mk(s);
-    s.callLocIdx = 213; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 215; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14908,7 +14909,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = createEmptyTilemap__P5205_mk(s);
-    s.callLocIdx = 212; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 214; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14938,7 +14939,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = createEmptyTilemap__P5205_mk(s);
-    s.callLocIdx = 211; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 213; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -14980,7 +14981,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 210; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 212; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -15011,7 +15012,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = createEmptyTilemap__P5205_mk(s);
-    s.callLocIdx = 209; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 211; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -15053,7 +15054,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 208; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 210; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -15089,7 +15090,7 @@ switch (step) {
     s.stageId___12026 = ("TM_DUN_09_STAGE_03_MICRO_RHYTHM");
     s.tmp_0 = getTilemapByID__P5269_mk(s);
     s.tmp_0.arg0 = s.stageId___12026;
-    s.callLocIdx = 1049; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1051; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tm___12028 = (r0);
@@ -15097,7 +15098,7 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = s.tm___12028;
-    s.callLocIdx = 1050; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1052; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
   case 1:
@@ -15105,8 +15106,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1052; s.pc = 5; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1054; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.playerSprite___12035 = (r0);
@@ -15114,14 +15115,14 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___12035;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 1053; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 1055; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = controller_moveSprite__P2184_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12035;
     s.tmp_0.arg1 = 30;
     s.tmp_0.arg2 = 30;
-    s.callLocIdx = 1054; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 1056; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -15129,7 +15130,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "stageIndex", 3);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "stageComplete", false);
     s.tmp_2 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 1055; s.pc = 8; return s.tmp_2;
+    s.callLocIdx = 1057; s.pc = 8; return s.tmp_2;
   case 8:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -15138,7 +15139,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "bpm", 120);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "beatIntervalMs", 500);
     s.tmp_5 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 1056; s.pc = 9; return s.tmp_5;
+    s.callLocIdx = 1058; s.pc = 9; return s.tmp_5;
   case 9:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -15157,23 +15158,23 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_6.fn === null) { s.tmp_6.arg0.fields["dungeonStageData"] = s.tmp_6.arg1; }
       else if (s.tmp_6.fn === undefined) { failedCast(s.tmp_6.arg0) } 
-     else { s.callLocIdx = 1057; s.pc = 10; return s.tmp_6; }
+     else { s.callLocIdx = 1059; s.pc = 10; return s.tmp_6; }
     }
   case 10:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[MICRO_RHYTHM_STREAK]";
     s.tmp_0.arg1 = 2000;
-    s.callLocIdx = 1058; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 1060; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
     s.tmp_0 = GameController_MetaMode_startMicroStageTimer__P8446_mk(s);
-    s.callLocIdx = 1059; s.pc = 12; return s.tmp_0;
+    s.callLocIdx = 1061; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12035;
-    s.callLocIdx = 1060; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 1062; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     r0 = undefined;
@@ -15222,7 +15223,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1071; s.pc = 4; return s.tmp_3; }
+     else { s.callLocIdx = 1073; s.pc = 4; return s.tmp_3; }
     }
   case 4:
     r0 = s.retval;
@@ -15244,7 +15245,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 1072; s.pc = 5; return s.tmp_4; }
+     else { s.callLocIdx = 1074; s.pc = 5; return s.tmp_4; }
     }
   case 5:
     r0 = s.retval;
@@ -15257,7 +15258,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["timeLimit"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["timeLimit"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 1073; s.pc = 6; return s.tmp_0; }
+     else { s.callLocIdx = 1075; s.pc = 6; return s.tmp_0; }
     }
   case 6:
     r0 = s.retval;
@@ -15303,7 +15304,7 @@ switch (step) {
 
     s.tmp_0 = pause__P415_mk(s);
     s.tmp_0.arg0 = s.caps[0];
-    s.callLocIdx = 1074; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 1076; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_2 = if_currentStageIndex_1_mk(s);
@@ -15314,7 +15315,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1075; s.pc = 6; return s.tmp_2; }
+     else { s.callLocIdx = 1077; s.pc = 6; return s.tmp_2; }
     }
   case 6:
     r0 = s.retval;
@@ -15327,7 +15328,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["stageIndex"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["stageIndex"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 1076; s.pc = 7; return s.tmp_4; }
+     else { s.callLocIdx = 1078; s.pc = 7; return s.tmp_4; }
     }
   case 7:
     r0 = s.retval;
@@ -15347,7 +15348,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["stageComplete"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["stageComplete"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 1077; s.pc = 8; return s.tmp_7; }
+     else { s.callLocIdx = 1079; s.pc = 8; return s.tmp_7; }
     }
   case 8:
     r0 = s.retval;
@@ -15363,12 +15364,12 @@ switch (step) {
     s.tmp_9 = showHint__P5280_mk(s);
     s.tmp_9.arg0 = "[MICRO_STAGE_TIME_UP]";
     s.tmp_9.arg1 = 2000;
-    s.callLocIdx = 1078; s.pc = 9; return s.tmp_9;
+    s.callLocIdx = 1080; s.pc = 9; return s.tmp_9;
   case 9:
     r0 = s.retval;
     s.tmp_0 = pause__P415_mk(s);
     s.tmp_0.arg0 = 2000;
-    s.callLocIdx = 1079; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 1081; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -15381,7 +15382,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1080; s.pc = 11; return s.tmp_2; }
+     else { s.callLocIdx = 1082; s.pc = 11; return s.tmp_2; }
     }
   case 11:
     r0 = s.retval;
@@ -15395,7 +15396,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["stageIndex"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["stageIndex"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 1081; s.pc = 12; return s.tmp_4; }
+     else { s.callLocIdx = 1083; s.pc = 12; return s.tmp_4; }
     }
   case 12:
     r0 = s.retval;
@@ -15404,7 +15405,7 @@ switch (step) {
     s.tmp_5 = GameController_switchPlayMode__P5406_mk(s);
     s.tmp_5.arg0 = 6;
     s.tmp_5.arg1 = s.tmp_0;
-    s.callLocIdx = 1082; s.pc = 13; return s.tmp_5;
+    s.callLocIdx = 1084; s.pc = 13; return s.tmp_5;
   case 13:
     r0 = s.retval;
   case 3:
@@ -15543,7 +15544,7 @@ switch (step) {
     s.stageId___12105 = ("TM_DUN_09_STAGE_02_MICRO_SHOOTER");
     s.tmp_0 = getTilemapByID__P5269_mk(s);
     s.tmp_0.arg0 = s.stageId___12105;
-    s.callLocIdx = 1036; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1038; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tm___12107 = (r0);
@@ -15551,7 +15552,7 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = s.tm___12107;
-    s.callLocIdx = 1037; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1039; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
   case 1:
@@ -15559,8 +15560,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1039; s.pc = 5; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1041; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.playerSprite___12114 = (r0);
@@ -15568,20 +15569,20 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___12114;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 100;
-    s.callLocIdx = 1040; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 1042; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = Sprite_setStayInScreen__P2459_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12114;
     s.tmp_0.arg1 = true;
-    s.callLocIdx = 1041; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 1043; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     s.tmp_0 = controller_moveSprite__P2184_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12114;
     s.tmp_0.arg1 = 100;
     s.tmp_0.arg2 = 100;
-    s.callLocIdx = 1042; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 1044; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -15589,7 +15590,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "stageIndex", 2);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "stageComplete", false);
     s.tmp_2 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 1043; s.pc = 9; return s.tmp_2;
+    s.callLocIdx = 1045; s.pc = 9; return s.tmp_2;
   case 9:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -15606,28 +15607,28 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_3.fn === null) { s.tmp_3.arg0.fields["dungeonStageData"] = s.tmp_3.arg1; }
       else if (s.tmp_3.fn === undefined) { failedCast(s.tmp_3.arg0) } 
-     else { s.callLocIdx = 1044; s.pc = 10; return s.tmp_3; }
+     else { s.callLocIdx = 1046; s.pc = 10; return s.tmp_3; }
     }
   case 10:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[MICRO_SHOOTER_TARGETS]";
     s.tmp_0.arg1 = 2000;
-    s.callLocIdx = 1045; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 1047; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
     s.tmp_0 = GameController_MetaMode_spawnShooterTargets__P8447_mk(s);
     s.tmp_0.arg0 = 10;
-    s.callLocIdx = 1046; s.pc = 12; return s.tmp_0;
+    s.callLocIdx = 1048; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
     s.tmp_0 = GameController_MetaMode_startMicroStageTimer__P8446_mk(s);
-    s.callLocIdx = 1047; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 1049; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12114;
-    s.callLocIdx = 1048; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 1050; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     r0 = undefined;
@@ -15701,8 +15702,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_TARGET___8160;
-    s.callLocIdx = 1084; s.pc = 3; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_TARGET___36342;
+    s.callLocIdx = 1086; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.target___12177 = (r0);
@@ -15710,7 +15711,7 @@ switch (step) {
     s.tmp_0.arg0 = s.target___12177;
     s.tmp_0.arg1 = s.x___12165;
     s.tmp_0.arg2 = s.y___12171;
-    s.callLocIdx = 1085; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1087; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     r0 = (s.i___12150 + 1);
@@ -15922,7 +15923,7 @@ switch (step) {
     s.stageId___12217 = ("TM_DUN_09_STAGE_01_MICRO_PLATFORM");
     s.tmp_0 = getTilemapByID__P5269_mk(s);
     s.tmp_0.arg0 = s.stageId___12217;
-    s.callLocIdx = 1023; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1025; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tm___12219 = (r0);
@@ -15930,19 +15931,19 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = s.tm___12219;
-    s.callLocIdx = 1024; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1026; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
   case 1:
   case 2:
     s.tmp_0 = sprites_create__P2311_mk(s);
     s.tmp_1 = imgPlatformPlayer__P5190_mk(s);
-    s.callLocIdx = 1025; s.pc = 6; return s.tmp_1;
+    s.callLocIdx = 1027; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1026; s.pc = 5; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1028; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.playerSprite___12226 = (r0);
@@ -15950,25 +15951,25 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___12226;
     s.tmp_0.arg1 = 20;
     s.tmp_0.arg2 = 100;
-    s.callLocIdx = 1027; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 1029; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     s.tmp_0 = Sprite_ay__P2402_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12226;
     s.tmp_0.arg1 = 300;
-    s.callLocIdx = 1028; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 1030; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = controller_moveSprite__P2184_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12226;
     s.tmp_0.arg1 = 100;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 1029; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 1031; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     s.tmp_0 = scene_cameraFollowSprite__P2935_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12226;
-    s.callLocIdx = 1030; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 1032; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -15976,7 +15977,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "stageIndex", 1);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "stageComplete", false);
     s.tmp_2 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 1031; s.pc = 11; return s.tmp_2;
+    s.callLocIdx = 1033; s.pc = 11; return s.tmp_2;
   case 11:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -15992,23 +15993,23 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_3.fn === null) { s.tmp_3.arg0.fields["dungeonStageData"] = s.tmp_3.arg1; }
       else if (s.tmp_3.fn === undefined) { failedCast(s.tmp_3.arg0) } 
-     else { s.callLocIdx = 1032; s.pc = 12; return s.tmp_3; }
+     else { s.callLocIdx = 1034; s.pc = 12; return s.tmp_3; }
     }
   case 12:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[MICRO_PLATFORM_GO]";
     s.tmp_0.arg1 = 2000;
-    s.callLocIdx = 1033; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 1035; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     s.tmp_0 = GameController_MetaMode_startMicroStageTimer__P8446_mk(s);
-    s.callLocIdx = 1034; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 1036; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12226;
-    s.callLocIdx = 1035; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 1037; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
     r0 = undefined;
@@ -16841,14 +16842,14 @@ switch (step) {
     s.playerSprite___12472 = undefined;
     s.tmp_0 = scene_setBackgroundColor__P2928_mk(s);
     s.tmp_0.arg0 = 1;
-    s.callLocIdx = 1011; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1013; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1013; s.pc = 2; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1015; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.playerSprite___12472 = (r0);
@@ -16856,14 +16857,14 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___12472;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 1014; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1016; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = controller_moveSprite__P2184_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12472;
     s.tmp_0.arg1 = 50;
     s.tmp_0.arg2 = 50;
-    s.callLocIdx = 1015; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1017; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -16871,7 +16872,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "stageIndex", 0);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "stageComplete", false);
     s.tmp_2 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 1016; s.pc = 5; return s.tmp_2;
+    s.callLocIdx = 1018; s.pc = 5; return s.tmp_2;
   case 5:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -16886,20 +16887,20 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_3.fn === null) { s.tmp_3.arg0.fields["dungeonStageData"] = s.tmp_3.arg1; }
       else if (s.tmp_3.fn === undefined) { failedCast(s.tmp_3.arg0) } 
-     else { s.callLocIdx = 1017; s.pc = 6; return s.tmp_3; }
+     else { s.callLocIdx = 1019; s.pc = 6; return s.tmp_3; }
     }
   case 6:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[META_INTRO_GET_READY]";
     s.tmp_0.arg1 = 5000;
-    s.callLocIdx = 1018; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 1020; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     r0 = pxsim.control.runInParallel(GameController_MetaMode_setupMetaIntro_inline__P12487);
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___12472;
-    s.callLocIdx = 1022; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 1024; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     r0 = undefined;
@@ -16935,7 +16936,7 @@ switch (step) {
 
     s.tmp_0 = pause__P415_mk(s);
     s.tmp_0.arg0 = 5000;
-    s.callLocIdx = 1019; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1021; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_2 = if_currentStageIndex_1_mk(s);
@@ -16946,7 +16947,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1020; s.pc = 4; return s.tmp_2; }
+     else { s.callLocIdx = 1022; s.pc = 4; return s.tmp_2; }
     }
   case 4:
     r0 = s.retval;
@@ -16956,7 +16957,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_3 = GameController_onStageComplete__P5410_mk(s);
-    s.callLocIdx = 1021; s.pc = 5; return s.tmp_3;
+    s.callLocIdx = 1023; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
   case 1:
@@ -17001,7 +17002,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 520; s.pc = 8; return s.tmp_3; }
+     else { s.callLocIdx = 522; s.pc = 8; return s.tmp_3; }
     }
   case 8:
     r0 = s.retval;
@@ -17015,16 +17016,16 @@ switch (step) {
     s.tmp_4 = signalFailure__P5440_mk(s);
     s.tmp_4.arg0 = 2;
     s.tmp_4.arg1 = "onStageComplete";
-    s.callLocIdx = 521; s.pc = 9; return s.tmp_4;
+    s.callLocIdx = 523; s.pc = 9; return s.tmp_4;
   case 9:
     r0 = s.retval;
     { step = 7; continue; }
   case 1:
   case 2:
     s.tmp_0 = helpers_arrayFind__P112_mk(s);
-    s.tmp_0.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_0.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_0.arg1 = spec_inline__P12502;
-    s.callLocIdx = 524; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 526; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
     s.spec___12500 = (r0);
@@ -17044,7 +17045,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 525; s.pc = 12; return s.tmp_5; }
+     else { s.callLocIdx = 527; s.pc = 12; return s.tmp_5; }
     }
   case 12:
     r0 = s.retval;
@@ -17060,7 +17061,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_String__concat("onStageComplete:", s.tmp_3);
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 526; s.pc = 11; return s.tmp_2;
+    s.callLocIdx = 528; s.pc = 11; return s.tmp_2;
   case 11:
     r0 = s.retval;
     { step = 7; continue; }
@@ -17074,7 +17075,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 527; s.pc = 14; return s.tmp_1; }
+     else { s.callLocIdx = 529; s.pc = 14; return s.tmp_1; }
     }
   case 14:
     r0 = s.retval;
@@ -17090,7 +17091,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["stages"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["stages"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 528; s.pc = 15; return s.tmp_4; }
+     else { s.callLocIdx = 530; s.pc = 15; return s.tmp_4; }
     }
   case 15:
     r0 = s.retval;
@@ -17102,7 +17103,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
     s.tmp_5 = GameController_completeDungeon__P5409_mk(s);
-    s.callLocIdx = 529; s.pc = 16; return s.tmp_5;
+    s.callLocIdx = 531; s.pc = 16; return s.tmp_5;
   case 16:
     r0 = s.retval;
     { step = 6; continue; }
@@ -17117,7 +17118,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 531; s.pc = 17; return s.tmp_2; }
+     else { s.callLocIdx = 533; s.pc = 17; return s.tmp_2; }
     }
   case 17:
     r0 = s.retval;
@@ -17133,13 +17134,13 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["playMode"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["playMode"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 530; s.pc = 19; return s.tmp_4; }
+     else { s.callLocIdx = 532; s.pc = 19; return s.tmp_4; }
     }
   case 19:
     r0 = s.retval;
     s.tmp_3.arg0 = r0;
     s.tmp_3.arg1 = s.tmp_0;
-    s.callLocIdx = 532; s.pc = 18; return s.tmp_3;
+    s.callLocIdx = 534; s.pc = 18; return s.tmp_3;
   case 18:
     r0 = s.retval;
   case 6:
@@ -17190,7 +17191,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 522; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 524; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -17203,7 +17204,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 523; s.pc = 2; return s.tmp_3; }
+     else { s.callLocIdx = 525; s.pc = 2; return s.tmp_3; }
     }
   case 2:
     r0 = s.retval;
@@ -17241,14 +17242,14 @@ switch (step) {
 
     s.spec___12544 = undefined;
     s.flag___12566 = undefined;
-    s.unnamed392___U2 = undefined;
-    s.unnamed393___U3 = undefined;
+    s.unnamed572___U2 = undefined;
+    s.unnamed573___U3 = undefined;
     s.tool___12579 = undefined;
-    s.unnamed394___U5 = undefined;
-    s.unnamed395___U6 = undefined;
+    s.unnamed574___U5 = undefined;
+    s.unnamed575___U6 = undefined;
     s.item___12590 = undefined;
-    s.unnamed396___U8 = undefined;
-    s.unnamed397___U9 = undefined;
+    s.unnamed576___U8 = undefined;
+    s.unnamed577___U9 = undefined;
     s.tmp_3 = if_currentDungeonId_1_mk(s);
     s.tmp_3.arg0 = globals.state___5156;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -17257,7 +17258,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 460; s.pc = 18; return s.tmp_3; }
+     else { s.callLocIdx = 462; s.pc = 18; return s.tmp_3; }
     }
   case 18:
     r0 = s.retval;
@@ -17271,16 +17272,16 @@ switch (step) {
     s.tmp_4 = signalFailure__P5440_mk(s);
     s.tmp_4.arg0 = 2;
     s.tmp_4.arg1 = "completeDungeon";
-    s.callLocIdx = 461; s.pc = 19; return s.tmp_4;
+    s.callLocIdx = 463; s.pc = 19; return s.tmp_4;
   case 19:
     r0 = s.retval;
     { step = 17; continue; }
   case 1:
   case 2:
     s.tmp_0 = helpers_arrayFind__P112_mk(s);
-    s.tmp_0.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_0.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_0.arg1 = spec_inline__P12546;
-    s.callLocIdx = 464; s.pc = 20; return s.tmp_0;
+    s.callLocIdx = 466; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
     s.spec___12544 = (r0);
@@ -17300,7 +17301,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 465; s.pc = 22; return s.tmp_5; }
+     else { s.callLocIdx = 467; s.pc = 22; return s.tmp_5; }
     }
   case 22:
     r0 = s.retval;
@@ -17316,7 +17317,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_String__concat("completeDungeon:", s.tmp_3);
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 466; s.pc = 21; return s.tmp_2;
+    s.callLocIdx = 468; s.pc = 21; return s.tmp_2;
   case 21:
     r0 = s.retval;
     { step = 17; continue; }
@@ -17332,7 +17333,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["rewards"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["rewards"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 467; s.pc = 25; return s.tmp_1; }
+     else { s.callLocIdx = 469; s.pc = 25; return s.tmp_1; }
     }
   case 25:
     r0 = s.retval;
@@ -17343,31 +17344,31 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["flagsSet"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["flagsSet"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 468; s.pc = 24; return s.tmp_0; }
+     else { s.callLocIdx = 470; s.pc = 24; return s.tmp_0; }
     }
   case 24:
     r0 = s.retval;
-    s.unnamed392___U2 = (r0);
-    s.unnamed393___U3 = (0);
+    s.unnamed572___U2 = (r0);
+    s.unnamed573___U3 = (0);
   case 5:
-    s.tmp_0 = r0 = s.unnamed393___U3;
-    r0 = pxsim_Array__length(s.unnamed392___U2);
+    s.tmp_0 = r0 = s.unnamed573___U3;
+    r0 = pxsim_Array__length(s.unnamed572___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 6; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed392___U2, s.unnamed393___U3);
+    r0 = pxsim_Array__getAt(s.unnamed572___U2, s.unnamed573___U3);
     s.flag___12566 = (r0);
     s.tmp_2 = setFlag__P5160_mk(s);
     s.tmp_2.arg0 = s.flag___12566;
     s.tmp_2.arg1 = true;
-    s.callLocIdx = 469; s.pc = 26; return s.tmp_2;
+    s.callLocIdx = 471; s.pc = 26; return s.tmp_2;
   case 26:
     r0 = s.retval;
-    r0 = (s.unnamed393___U3 + 1);
-    s.unnamed393___U3 = (r0);
+    r0 = (s.unnamed573___U3 + 1);
+    s.unnamed573___U3 = (r0);
     { step = 5; continue; }
   case 6:
-    s.unnamed392___U2 = (undefined);
+    s.unnamed572___U2 = (undefined);
     s.tmp_1 = if_toolUnlocks_1_mk(s);
     s.tmp_2 = if_rewards_1_mk(s);
     s.tmp_2.arg0 = s.spec___12544;
@@ -17377,7 +17378,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["rewards"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["rewards"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 470; s.pc = 28; return s.tmp_2; }
+     else { s.callLocIdx = 472; s.pc = 28; return s.tmp_2; }
     }
   case 28:
     r0 = s.retval;
@@ -17388,7 +17389,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["toolUnlocks"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["toolUnlocks"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 471; s.pc = 27; return s.tmp_1; }
+     else { s.callLocIdx = 473; s.pc = 27; return s.tmp_1; }
     }
   case 27:
     r0 = s.retval;
@@ -17405,7 +17406,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["rewards"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["rewards"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 472; s.pc = 30; return s.tmp_1; }
+     else { s.callLocIdx = 474; s.pc = 30; return s.tmp_1; }
     }
   case 30:
     r0 = s.retval;
@@ -17416,30 +17417,30 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["toolUnlocks"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["toolUnlocks"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 473; s.pc = 29; return s.tmp_0; }
+     else { s.callLocIdx = 475; s.pc = 29; return s.tmp_0; }
     }
   case 29:
     r0 = s.retval;
-    s.unnamed394___U5 = (r0);
-    s.unnamed395___U6 = (0);
+    s.unnamed574___U5 = (r0);
+    s.unnamed575___U6 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed395___U6;
-    r0 = pxsim_Array__length(s.unnamed394___U5);
+    s.tmp_0 = r0 = s.unnamed575___U6;
+    r0 = pxsim_Array__length(s.unnamed574___U5);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 8; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed394___U5, s.unnamed395___U6);
+    r0 = pxsim_Array__getAt(s.unnamed574___U5, s.unnamed575___U6);
     s.tool___12579 = (r0);
     s.tmp_2 = unlockTool__P5162_mk(s);
     s.tmp_2.arg0 = s.tool___12579;
-    s.callLocIdx = 474; s.pc = 31; return s.tmp_2;
+    s.callLocIdx = 476; s.pc = 31; return s.tmp_2;
   case 31:
     r0 = s.retval;
-    r0 = (s.unnamed395___U6 + 1);
-    s.unnamed395___U6 = (r0);
+    r0 = (s.unnamed575___U6 + 1);
+    s.unnamed575___U6 = (r0);
     { step = 7; continue; }
   case 8:
-    s.unnamed394___U5 = (undefined);
+    s.unnamed574___U5 = (undefined);
   case 9:
   case 10:
     s.tmp_1 = if_items_1_mk(s);
@@ -17451,7 +17452,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["rewards"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["rewards"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 475; s.pc = 33; return s.tmp_2; }
+     else { s.callLocIdx = 477; s.pc = 33; return s.tmp_2; }
     }
   case 33:
     r0 = s.retval;
@@ -17462,7 +17463,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["items"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["items"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 476; s.pc = 32; return s.tmp_1; }
+     else { s.callLocIdx = 478; s.pc = 32; return s.tmp_1; }
     }
   case 32:
     r0 = s.retval;
@@ -17479,7 +17480,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["rewards"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["rewards"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 477; s.pc = 35; return s.tmp_1; }
+     else { s.callLocIdx = 479; s.pc = 35; return s.tmp_1; }
     }
   case 35:
     r0 = s.retval;
@@ -17490,19 +17491,19 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["items"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["items"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 478; s.pc = 34; return s.tmp_0; }
+     else { s.callLocIdx = 480; s.pc = 34; return s.tmp_0; }
     }
   case 34:
     r0 = s.retval;
-    s.unnamed396___U8 = (r0);
-    s.unnamed397___U9 = (0);
+    s.unnamed576___U8 = (r0);
+    s.unnamed577___U9 = (0);
   case 11:
-    s.tmp_0 = r0 = s.unnamed397___U9;
-    r0 = pxsim_Array__length(s.unnamed396___U8);
+    s.tmp_0 = r0 = s.unnamed577___U9;
+    r0 = pxsim_Array__length(s.unnamed576___U8);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed396___U8, s.unnamed397___U9);
+    r0 = pxsim_Array__getAt(s.unnamed576___U8, s.unnamed577___U9);
     s.item___12590 = (r0);
     s.tmp_2 = addItem__P5164_mk(s);
     s.tmp_3 = if_id_1_mk(s);
@@ -17513,7 +17514,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["id"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["id"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 479; s.pc = 37; return s.tmp_3; }
+     else { s.callLocIdx = 481; s.pc = 37; return s.tmp_3; }
     }
   case 37:
     r0 = s.retval;
@@ -17526,23 +17527,23 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["qty"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["qty"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 480; s.pc = 38; return s.tmp_4; }
+     else { s.callLocIdx = 482; s.pc = 38; return s.tmp_4; }
     }
   case 38:
     r0 = s.retval;
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 481; s.pc = 36; return s.tmp_2;
+    s.callLocIdx = 483; s.pc = 36; return s.tmp_2;
   case 36:
     r0 = s.retval;
-    r0 = (s.unnamed397___U9 + 1);
-    s.unnamed397___U9 = (r0);
+    r0 = (s.unnamed577___U9 + 1);
+    s.unnamed577___U9 = (r0);
     { step = 11; continue; }
   case 12:
-    s.unnamed396___U8 = (undefined);
+    s.unnamed576___U8 = (undefined);
   case 13:
   case 14:
     s.tmp_1 = checkAllDungeonsClearExceptFinal__P5322_mk(s);
-    s.callLocIdx = 482; s.pc = 39; return s.tmp_1;
+    s.callLocIdx = 484; s.pc = 39; return s.tmp_1;
   case 39:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -17551,18 +17552,18 @@ switch (step) {
     s.tmp_2 = setFlag__P5160_mk(s);
     s.tmp_2.arg0 = "FLAG_ALL_DUNGEONS_CLEARED";
     s.tmp_2.arg1 = true;
-    s.callLocIdx = 483; s.pc = 40; return s.tmp_2;
+    s.callLocIdx = 485; s.pc = 40; return s.tmp_2;
   case 40:
     r0 = s.retval;
     r0 = pxsim.control.runInParallel(GameController_completeDungeon_inline__P12605);
   case 15:
   case 16:
     s.tmp_0 = saveGame__P34889_mk(s);
-    s.callLocIdx = 486; s.pc = 41; return s.tmp_0;
+    s.callLocIdx = 488; s.pc = 41; return s.tmp_0;
   case 41:
     r0 = s.retval;
     s.tmp_0 = GameController_exitDungeon__P5408_mk(s);
-    s.callLocIdx = 487; s.pc = 42; return s.tmp_0;
+    s.callLocIdx = 489; s.pc = 42; return s.tmp_0;
   case 42:
     r0 = s.retval;
   case 17:
@@ -17585,14 +17586,14 @@ function GameController_completeDungeon__P5409_mk(s) {
   tmp_5: undefined,
   spec___12544: undefined,
   flag___12566: undefined,
-  unnamed392___U2: undefined,
-  unnamed393___U3: undefined,
+  unnamed572___U2: undefined,
+  unnamed573___U3: undefined,
   tool___12579: undefined,
-  unnamed394___U5: undefined,
-  unnamed395___U6: undefined,
+  unnamed574___U5: undefined,
+  unnamed575___U6: undefined,
   item___12590: undefined,
-  unnamed396___U8: undefined,
-  unnamed397___U9: undefined,
+  unnamed576___U8: undefined,
+  unnamed577___U9: undefined,
 } }
 
 
@@ -17620,7 +17621,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 462; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 464; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -17633,7 +17634,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 463; s.pc = 2; return s.tmp_3; }
+     else { s.callLocIdx = 465; s.pc = 2; return s.tmp_3; }
     }
   case 2:
     r0 = s.retval;
@@ -17671,13 +17672,13 @@ switch (step) {
 
     s.tmp_0 = pause__P415_mk(s);
     s.tmp_0.arg0 = 1000;
-    s.callLocIdx = 484; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 486; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = game_splash__P3010_mk(s);
     s.tmp_0.arg0 = "[FINAL_DUNGEON_UNLOCKED]";
     s.tmp_0.arg1 = undefined;
-    s.callLocIdx = 485; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 487; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     r0 = undefined;
@@ -17716,7 +17717,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 448; s.pc = 6; return s.tmp_3; }
+     else { s.callLocIdx = 450; s.pc = 6; return s.tmp_3; }
     }
   case 6:
     r0 = s.retval;
@@ -17730,16 +17731,16 @@ switch (step) {
     s.tmp_4 = signalFailure__P5440_mk(s);
     s.tmp_4.arg0 = 2;
     s.tmp_4.arg1 = "exitDungeon";
-    s.callLocIdx = 449; s.pc = 7; return s.tmp_4;
+    s.callLocIdx = 451; s.pc = 7; return s.tmp_4;
   case 7:
     r0 = s.retval;
     { step = 5; continue; }
   case 1:
   case 2:
     s.tmp_0 = helpers_arrayFind__P112_mk(s);
-    s.tmp_0.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_0.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_0.arg1 = spec_inline__P12618;
-    s.callLocIdx = 452; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 454; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.spec___12616 = (r0);
@@ -17759,7 +17760,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 453; s.pc = 10; return s.tmp_5; }
+     else { s.callLocIdx = 455; s.pc = 10; return s.tmp_5; }
     }
   case 10:
     r0 = s.retval;
@@ -17775,7 +17776,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_String__concat("exitDungeon:", s.tmp_3);
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 454; s.pc = 9; return s.tmp_2;
+    s.callLocIdx = 456; s.pc = 9; return s.tmp_2;
   case 9:
     r0 = s.retval;
     { step = 5; continue; }
@@ -17783,7 +17784,7 @@ switch (step) {
   case 4:
     s.tmp_0 = setGameMode__P5158_mk(s);
     s.tmp_0.arg0 = 2;
-    s.callLocIdx = 455; s.pc = 12; return s.tmp_0;
+    s.callLocIdx = 457; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -17796,7 +17797,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["hubReturnSpawnTag"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["hubReturnSpawnTag"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 456; s.pc = 13; return s.tmp_2; }
+     else { s.callLocIdx = 458; s.pc = 13; return s.tmp_2; }
     }
   case 13:
     r0 = s.retval;
@@ -17805,7 +17806,7 @@ switch (step) {
     s.tmp_3 = GameController_switchPlayMode__P5406_mk(s);
     s.tmp_3.arg0 = 0;
     s.tmp_3.arg1 = s.tmp_0;
-    s.callLocIdx = 457; s.pc = 14; return s.tmp_3;
+    s.callLocIdx = 459; s.pc = 14; return s.tmp_3;
   case 14:
     r0 = s.retval;
     s.tmp_0 = if_currentDungeonId_2_mk(s);
@@ -17817,7 +17818,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentDungeonId"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentDungeonId"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 458; s.pc = 15; return s.tmp_0; }
+     else { s.callLocIdx = 460; s.pc = 15; return s.tmp_0; }
     }
   case 15:
     r0 = s.retval;
@@ -17830,7 +17831,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentStageIndex"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentStageIndex"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 459; s.pc = 16; return s.tmp_0; }
+     else { s.callLocIdx = 461; s.pc = 16; return s.tmp_0; }
     }
   case 16:
     r0 = s.retval;
@@ -17880,7 +17881,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 450; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 452; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -17893,7 +17894,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 451; s.pc = 2; return s.tmp_3; }
+     else { s.callLocIdx = 453; s.pc = 2; return s.tmp_3; }
     }
   case 2:
     r0 = s.retval;
@@ -17940,7 +17941,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["hearts"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["hearts"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 164; s.pc = 1; return s.tmp_2; }
+     else { s.callLocIdx = 166; s.pc = 1; return s.tmp_2; }
     }
   case 1:
     r0 = s.retval;
@@ -17954,7 +17955,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["maxHearts"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["maxHearts"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 165; s.pc = 2; return s.tmp_4; }
+     else { s.callLocIdx = 167; s.pc = 2; return s.tmp_4; }
     }
   case 2:
     r0 = s.retval;
@@ -17968,7 +17969,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["energy"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["energy"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 166; s.pc = 3; return s.tmp_6; }
+     else { s.callLocIdx = 168; s.pc = 3; return s.tmp_6; }
     }
   case 3:
     r0 = s.retval;
@@ -17982,7 +17983,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["hubRoom"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["hubRoom"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 167; s.pc = 4; return s.tmp_8; }
+     else { s.callLocIdx = 169; s.pc = 4; return s.tmp_8; }
     }
   case 4:
     r0 = s.retval;
@@ -17996,7 +17997,7 @@ switch (step) {
       s.tmp_10.fn = s.tmp_10.arg0.vtable.iface["flags"];
       if (s.tmp_10.fn == null) { s.retval = s.tmp_10.arg0.fields["flags"]; }
       else if (!s.tmp_10.fn.isGetter) { s.retval = bind(s.tmp_10); }
-     else { s.callLocIdx = 168; s.pc = 5; return s.tmp_10; }
+     else { s.callLocIdx = 170; s.pc = 5; return s.tmp_10; }
     }
   case 5:
     r0 = s.retval;
@@ -18010,7 +18011,7 @@ switch (step) {
       s.tmp_12.fn = s.tmp_12.arg0.vtable.iface["unlockedTools"];
       if (s.tmp_12.fn == null) { s.retval = s.tmp_12.arg0.fields["unlockedTools"]; }
       else if (!s.tmp_12.fn.isGetter) { s.retval = bind(s.tmp_12); }
-     else { s.callLocIdx = 169; s.pc = 6; return s.tmp_12; }
+     else { s.callLocIdx = 171; s.pc = 6; return s.tmp_12; }
     }
   case 6:
     r0 = s.retval;
@@ -18024,7 +18025,7 @@ switch (step) {
       s.tmp_14.fn = s.tmp_14.arg0.vtable.iface["inventory"];
       if (s.tmp_14.fn == null) { s.retval = s.tmp_14.arg0.fields["inventory"]; }
       else if (!s.tmp_14.fn.isGetter) { s.retval = bind(s.tmp_14); }
-     else { s.callLocIdx = 170; s.pc = 7; return s.tmp_14; }
+     else { s.callLocIdx = 172; s.pc = 7; return s.tmp_14; }
     }
   case 7:
     r0 = s.retval;
@@ -18037,11 +18038,11 @@ switch (step) {
     s.tmp_1.arg0 = s.data___34919;
     s.tmp_1.arg1 = null;
     s.tmp_1.arg2 = 0;
-    s.callLocIdx = 171; s.pc = 9; return s.tmp_1;
+    s.callLocIdx = 173; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 172; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 174; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     r0 = undefined;
@@ -19102,7 +19103,7 @@ switch (step) {
     s.i___13035 = (0);
   case 1:
     s.tmp_1 = r0 = s.i___13035;
-    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___8270);
+    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___36452);
     s.tmp_3 = r0;
     r0 = (s.tmp_3 - 1);
     s.tmp_2 = r0;
@@ -19112,7 +19113,7 @@ switch (step) {
     if (!r0) { step = 4; continue; }
     s.tmp_5 = isDungeonCleared__P5321_mk(s);
     s.tmp_6 = if_id_1_mk(s);
-    r0 = pxsim_Array__getAt(globals.DUNGEON_SPECS___8270, s.i___13035);
+    r0 = pxsim_Array__getAt(globals.DUNGEON_SPECS___36452, s.i___13035);
     s.tmp_6.arg0 = r0;
     if (!s.tmp_6.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_6.arg0, "id");
@@ -19120,12 +19121,12 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["id"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["id"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 1288; s.pc = 6; return s.tmp_6; }
+     else { s.callLocIdx = 1290; s.pc = 6; return s.tmp_6; }
     }
   case 6:
     r0 = s.retval;
     s.tmp_5.arg0 = r0;
-    s.callLocIdx = 1289; s.pc = 5; return s.tmp_5;
+    s.callLocIdx = 1291; s.pc = 5; return s.tmp_5;
   case 5:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -19140,7 +19141,7 @@ switch (step) {
     { step = 1; continue; }
   case 4:
     s.tmp_0 = r0 = s.count___13034;
-    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___8270);
+    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___36452);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 - 1);
     s.tmp_1 = r0;
@@ -19189,7 +19190,7 @@ switch (step) {
     }
     s.tmp_0 = getDungeonSpec__P5320_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 1283; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 1285; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.spec___13056 = (r0);
@@ -19212,7 +19213,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["rewards"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["rewards"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 1284; s.pc = 15; return s.tmp_1; }
+     else { s.callLocIdx = 1286; s.pc = 15; return s.tmp_1; }
     }
   case 15:
     r0 = s.retval;
@@ -19231,7 +19232,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["rewards"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["rewards"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1285; s.pc = 17; return s.tmp_3; }
+     else { s.callLocIdx = 1287; s.pc = 17; return s.tmp_3; }
     }
   case 17:
     r0 = s.retval;
@@ -19242,7 +19243,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["flagsSet"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["flagsSet"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1286; s.pc = 16; return s.tmp_2; }
+     else { s.callLocIdx = 1288; s.pc = 16; return s.tmp_2; }
     }
   case 16:
     r0 = s.retval;
@@ -19287,7 +19288,7 @@ switch (step) {
     if (!r0) { step = 11; continue; }
     s.tmp_0 = hasFlag__P5161_mk(s);
     s.tmp_0.arg0 = s.clearFlag___13062;
-    s.callLocIdx = 1287; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 1289; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
     { step = 12; continue; }
@@ -19346,7 +19347,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["flags"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["flags"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 123; s.pc = 1; return s.tmp_5; }
+     else { s.callLocIdx = 125; s.pc = 1; return s.tmp_5; }
     }
   case 1:
     r0 = s.retval;
@@ -19400,9 +19401,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = helpers_arrayFind__P112_mk(s);
-    s.tmp_1.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_1.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 1282; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 1284; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -19445,7 +19446,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 1281; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 1283; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -19492,7 +19493,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["inventory"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["inventory"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 127; s.pc = 3; return s.tmp_4; }
+     else { s.callLocIdx = 129; s.pc = 3; return s.tmp_4; }
     }
   case 3:
     r0 = s.retval;
@@ -19513,7 +19514,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["inventory"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["inventory"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 128; s.pc = 4; return s.tmp_6; }
+     else { s.callLocIdx = 130; s.pc = 4; return s.tmp_6; }
     }
   case 4:
     r0 = s.retval;
@@ -19529,7 +19530,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["inventory"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["inventory"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 129; s.pc = 5; return s.tmp_1; }
+     else { s.callLocIdx = 131; s.pc = 5; return s.tmp_1; }
     }
   case 5:
     r0 = s.retval;
@@ -19587,7 +19588,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["unlockedTools"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["unlockedTools"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 124; s.pc = 3; return s.tmp_3; }
+     else { s.callLocIdx = 126; s.pc = 3; return s.tmp_3; }
     }
   case 3:
     r0 = s.retval;
@@ -19606,7 +19607,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["unlockedTools"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["unlockedTools"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 125; s.pc = 4; return s.tmp_5; }
+     else { s.callLocIdx = 127; s.pc = 4; return s.tmp_5; }
     }
   case 4:
     r0 = s.retval;
@@ -19660,7 +19661,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["flags"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["flags"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 122; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 124; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -19787,7 +19788,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonId"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonId"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 347; s.pc = 20; return s.tmp_0; }
+     else { s.callLocIdx = 349; s.pc = 20; return s.tmp_0; }
     }
   case 20:
     r0 = s.retval;
@@ -19800,7 +19801,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stageIndex"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stageIndex"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 348; s.pc = 21; return s.tmp_1; }
+     else { s.callLocIdx = 350; s.pc = 21; return s.tmp_1; }
     }
   case 21:
     r0 = s.retval;
@@ -19824,7 +19825,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentDungeonId"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentDungeonId"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 349; s.pc = 22; return s.tmp_0; }
+     else { s.callLocIdx = 351; s.pc = 22; return s.tmp_0; }
     }
   case 22:
     r0 = s.retval;
@@ -19837,7 +19838,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentStageIndex"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentStageIndex"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 350; s.pc = 23; return s.tmp_0; }
+     else { s.callLocIdx = 352; s.pc = 23; return s.tmp_0; }
     }
   case 23:
     r0 = s.retval;
@@ -19845,9 +19846,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.dungeonId___13169);
     s.tmp_1 = helpers_arrayFind__P112_mk(s);
-    s.tmp_1.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_1.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 352; s.pc = 24; return s.tmp_1;
+    s.callLocIdx = 354; s.pc = 24; return s.tmp_1;
   case 24:
     r0 = s.retval;
     s.spec___13182 = (r0);
@@ -19870,7 +19871,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_String__concat("setupPuzzleMode:", s.tmp_3);
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 353; s.pc = 25; return s.tmp_2;
+    s.callLocIdx = 355; s.pc = 25; return s.tmp_2;
   case 25:
     r0 = s.retval;
     { step = 19; continue; }
@@ -19886,7 +19887,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stages"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stages"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 354; s.pc = 27; return s.tmp_1; }
+     else { s.callLocIdx = 356; s.pc = 27; return s.tmp_1; }
     }
   case 27:
     r0 = s.retval;
@@ -19895,7 +19896,7 @@ switch (step) {
     s.stageId___13204 = (r0);
     s.tmp_0 = getTilemapByID__P5269_mk(s);
     s.tmp_0.arg0 = s.stageId___13204;
-    s.callLocIdx = 355; s.pc = 28; return s.tmp_0;
+    s.callLocIdx = 357; s.pc = 28; return s.tmp_0;
   case 28:
     r0 = s.retval;
     s.tm___13209 = (r0);
@@ -19903,7 +19904,7 @@ switch (step) {
     if (!r0) { step = 5; continue; }
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = s.tm___13209;
-    s.callLocIdx = 356; s.pc = 29; return s.tmp_0;
+    s.callLocIdx = 358; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
   case 5:
@@ -19911,19 +19912,19 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 358; s.pc = 30; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 360; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
     globals.playerSprite___8383 = (r0);
     s.tmp_0 = tiles_getTilesByType__P2820_mk(s);
-    s.tmp_1 = tileImg__P8268_mk(s);
+    s.tmp_1 = tileImg__P36450_mk(s);
     s.tmp_1.arg0 = 1;
-    s.callLocIdx = 359; s.pc = 32; return s.tmp_1;
+    s.callLocIdx = 361; s.pc = 32; return s.tmp_1;
   case 32:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 360; s.pc = 31; return s.tmp_0;
+    s.callLocIdx = 362; s.pc = 31; return s.tmp_0;
   case 31:
     r0 = s.retval;
     s.spawnTiles___13220 = (r0);
@@ -19945,7 +19946,7 @@ switch (step) {
     s.tmp_3.arg0 = globals.playerSprite___8383;
     r0 = pxsim_Array__getAt(s.spawnTiles___13220, 0);
     s.tmp_3.arg1 = r0;
-    s.callLocIdx = 361; s.pc = 33; return s.tmp_3;
+    s.callLocIdx = 363; s.pc = 33; return s.tmp_3;
   case 33:
     r0 = s.retval;
     { step = 10; continue; }
@@ -19954,13 +19955,13 @@ switch (step) {
     s.tmp_0.arg0 = globals.playerSprite___8383;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 362; s.pc = 34; return s.tmp_0;
+    s.callLocIdx = 364; s.pc = 34; return s.tmp_0;
   case 34:
     r0 = s.retval;
   case 10:
     s.tmp_0 = initPuzzlePlayer__P5358_mk(s);
     s.tmp_0.arg0 = globals.playerSprite___8383;
-    s.callLocIdx = 363; s.pc = 35; return s.tmp_0;
+    s.callLocIdx = 365; s.pc = 35; return s.tmp_0;
   case 35:
     r0 = s.retval;
     s.tokensRequired___13238 = (0);
@@ -19979,7 +19980,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["params"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["params"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 364; s.pc = 36; return s.tmp_1; }
+     else { s.callLocIdx = 366; s.pc = 36; return s.tmp_1; }
     }
   case 36:
     r0 = s.retval;
@@ -20000,7 +20001,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["params"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["params"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 365; s.pc = 38; return s.tmp_4; }
+     else { s.callLocIdx = 367; s.pc = 38; return s.tmp_4; }
     }
   case 38:
     r0 = s.retval;
@@ -20011,7 +20012,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["tokensPerStage"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["tokensPerStage"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 366; s.pc = 37; return s.tmp_3; }
+     else { s.callLocIdx = 368; s.pc = 37; return s.tmp_3; }
     }
   case 37:
     r0 = s.retval;
@@ -20029,7 +20030,7 @@ switch (step) {
       s.tmp_9.fn = s.tmp_9.arg0.vtable.iface["params"];
       if (s.tmp_9.fn == null) { s.retval = s.tmp_9.arg0.fields["params"]; }
       else if (!s.tmp_9.fn.isGetter) { s.retval = bind(s.tmp_9); }
-     else { s.callLocIdx = 367; s.pc = 40; return s.tmp_9; }
+     else { s.callLocIdx = 369; s.pc = 40; return s.tmp_9; }
     }
   case 40:
     r0 = s.retval;
@@ -20040,7 +20041,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["tokensPerStage"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["tokensPerStage"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 368; s.pc = 39; return s.tmp_8; }
+     else { s.callLocIdx = 370; s.pc = 39; return s.tmp_8; }
     }
   case 39:
     r0 = s.retval;
@@ -20076,14 +20077,14 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_1.fn === null) { s.tmp_1.arg0.fields["dungeonStageData"] = s.tmp_1.arg1; }
       else if (s.tmp_1.fn === undefined) { failedCast(s.tmp_1.arg0) } 
-     else { s.callLocIdx = 369; s.pc = 41; return s.tmp_1; }
+     else { s.callLocIdx = 371; s.pc = 41; return s.tmp_1; }
     }
   case 41:
     r0 = s.retval;
     s.tmp_0 = GameController_PuzzleMode_spawnContent__P5391_mk(s);
     s.tmp_0.arg0 = s.dungeonId___13169;
     s.tmp_0.arg1 = s.stageIndex___13172;
-    s.callLocIdx = 370; s.pc = 42; return s.tmp_0;
+    s.callLocIdx = 372; s.pc = 42; return s.tmp_0;
   case 42:
     r0 = s.retval;
   case 19:
@@ -20145,7 +20146,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 351; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 353; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -20190,7 +20191,7 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_1 = GameController_PuzzleMode_spawnDungeon01Content__P8431_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 790; s.pc = 7; return s.tmp_1;
+    s.callLocIdx = 792; s.pc = 7; return s.tmp_1;
   case 7:
     r0 = s.retval;
     { step = 6; continue; }
@@ -20201,7 +20202,7 @@ switch (step) {
     if (!r0) { step = 2; continue; }
     s.tmp_1 = GameController_PuzzleMode_spawnDungeon03Content__P8434_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 791; s.pc = 8; return s.tmp_1;
+    s.callLocIdx = 793; s.pc = 8; return s.tmp_1;
   case 8:
     r0 = s.retval;
     { step = 5; continue; }
@@ -20212,7 +20213,7 @@ switch (step) {
     if (!r0) { step = 3; continue; }
     s.tmp_1 = GameController_PuzzleMode_spawnDungeon05Content__P8437_mk(s);
     s.tmp_1.arg0 = s.arg1;
-    s.callLocIdx = 792; s.pc = 9; return s.tmp_1;
+    s.callLocIdx = 794; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
   case 3:
@@ -20259,7 +20260,7 @@ switch (step) {
     }
     s.tmp_0 = getDungeonSpec__P5320_mk(s);
     s.tmp_0.arg0 = "DUN_SCHOOL_PONG_COURT";
-    s.callLocIdx = 881; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 883; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.spec___13279 = (r0);
@@ -20280,7 +20281,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["params"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["params"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 882; s.pc = 15; return s.tmp_4; }
+     else { s.callLocIdx = 884; s.pc = 15; return s.tmp_4; }
     }
   case 15:
     r0 = s.retval;
@@ -20305,7 +20306,7 @@ switch (step) {
       s.tmp_9.fn = s.tmp_9.arg0.vtable.iface["params"];
       if (s.tmp_9.fn == null) { s.retval = s.tmp_9.arg0.fields["params"]; }
       else if (!s.tmp_9.fn.isGetter) { s.retval = bind(s.tmp_9); }
-     else { s.callLocIdx = 883; s.pc = 17; return s.tmp_9; }
+     else { s.callLocIdx = 885; s.pc = 17; return s.tmp_9; }
     }
   case 17:
     r0 = s.retval;
@@ -20316,7 +20317,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["targetsPerStage"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["targetsPerStage"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 884; s.pc = 16; return s.tmp_8; }
+     else { s.callLocIdx = 886; s.pc = 16; return s.tmp_8; }
     }
   case 16:
     r0 = s.retval;
@@ -20342,7 +20343,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["params"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["params"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 885; s.pc = 19; return s.tmp_3; }
+     else { s.callLocIdx = 887; s.pc = 19; return s.tmp_3; }
     }
   case 19:
     r0 = s.retval;
@@ -20353,7 +20354,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["ballSpeed"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["ballSpeed"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 886; s.pc = 18; return s.tmp_2; }
+     else { s.callLocIdx = 888; s.pc = 18; return s.tmp_2; }
     }
   case 18:
     r0 = s.retval;
@@ -20378,7 +20379,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 887; s.pc = 20; return s.tmp_1; }
+     else { s.callLocIdx = 889; s.pc = 20; return s.tmp_1; }
     }
   case 20:
     r0 = s.retval;
@@ -20394,7 +20395,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 888; s.pc = 22; return s.tmp_3; }
+     else { s.callLocIdx = 890; s.pc = 22; return s.tmp_3; }
     }
   case 22:
     r0 = s.retval;
@@ -20406,7 +20407,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["set/targetsRequired"];
       if (s.tmp_2.fn === null) { s.tmp_2.arg0.fields["targetsRequired"] = s.tmp_2.arg1; }
       else if (s.tmp_2.fn === undefined) { failedCast(s.tmp_2.arg0) } 
-     else { s.callLocIdx = 889; s.pc = 21; return s.tmp_2; }
+     else { s.callLocIdx = 891; s.pc = 21; return s.tmp_2; }
     }
   case 21:
     r0 = s.retval;
@@ -20419,7 +20420,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 890; s.pc = 24; return s.tmp_1; }
+     else { s.callLocIdx = 892; s.pc = 24; return s.tmp_1; }
     }
   case 24:
     r0 = s.retval;
@@ -20431,7 +20432,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/targetsDestroyed"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["targetsDestroyed"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 891; s.pc = 23; return s.tmp_0; }
+     else { s.callLocIdx = 893; s.pc = 23; return s.tmp_0; }
     }
   case 23:
     r0 = s.retval;
@@ -20444,7 +20445,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 892; s.pc = 26; return s.tmp_1; }
+     else { s.callLocIdx = 894; s.pc = 26; return s.tmp_1; }
     }
   case 26:
     r0 = s.retval;
@@ -20456,7 +20457,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/ballSpeed"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["ballSpeed"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 893; s.pc = 25; return s.tmp_0; }
+     else { s.callLocIdx = 895; s.pc = 25; return s.tmp_0; }
     }
   case 25:
     r0 = s.retval;
@@ -20470,44 +20471,44 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___13322;
     r0 = pxsim.image.create(32, 8);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 896; s.pc = 27; return s.tmp_0;
+    s.callLocIdx = 898; s.pc = 27; return s.tmp_0;
   case 27:
     r0 = s.retval;
     s.tmp_0 = Sprite_setKind__P2450_mk(s);
     s.tmp_0.arg0 = s.playerSprite___13322;
-    s.tmp_0.arg1 = globals.KIND_PADDLE___8162;
-    s.callLocIdx = 897; s.pc = 28; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PADDLE___36344;
+    s.callLocIdx = 899; s.pc = 28; return s.tmp_0;
   case 28:
     r0 = s.retval;
     s.tmp_0 = Sprite_setPosition__P2451_mk(s);
     s.tmp_0.arg0 = s.playerSprite___13322;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 110;
-    s.callLocIdx = 898; s.pc = 29; return s.tmp_0;
+    s.callLocIdx = 900; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
     s.tmp_0 = Sprite_setStayInScreen__P2459_mk(s);
     s.tmp_0.arg0 = s.playerSprite___13322;
     s.tmp_0.arg1 = true;
-    s.callLocIdx = 899; s.pc = 30; return s.tmp_0;
+    s.callLocIdx = 901; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
     s.tmp_0 = controller_moveSprite__P2184_mk(s);
     s.tmp_0.arg0 = s.playerSprite___13322;
     s.tmp_0.arg1 = 120;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 900; s.pc = 31; return s.tmp_0;
+    s.callLocIdx = 902; s.pc = 31; return s.tmp_0;
   case 31:
     r0 = s.retval;
   case 11:
   case 12:
     s.tmp_0 = GameController_PuzzleMode_spawnTargets__P8438_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 901; s.pc = 32; return s.tmp_0;
+    s.callLocIdx = 903; s.pc = 32; return s.tmp_0;
   case 32:
     r0 = s.retval;
     s.tmp_0 = GameController_PuzzleMode_serveBall__P5392_mk(s);
-    s.callLocIdx = 902; s.pc = 33; return s.tmp_0;
+    s.callLocIdx = 904; s.pc = 33; return s.tmp_0;
   case 33:
     r0 = s.retval;
   case 13:
@@ -20564,7 +20565,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 920; s.pc = 10; return s.tmp_3; }
+     else { s.callLocIdx = 922; s.pc = 10; return s.tmp_3; }
     }
   case 10:
     r0 = s.retval;
@@ -20579,8 +20580,8 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_7 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_7.arg0 = globals.KIND_BALL___8163;
-    s.callLocIdx = 921; s.pc = 11; return s.tmp_7;
+    s.tmp_7.arg0 = globals.KIND_BALL___36345;
+    s.callLocIdx = 923; s.pc = 11; return s.tmp_7;
   case 11:
     r0 = s.retval;
     s.tmp_6 = r0;
@@ -20594,8 +20595,8 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_9 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_9.arg0 = globals.KIND_PADDLE___8162;
-    s.callLocIdx = 922; s.pc = 12; return s.tmp_9;
+    s.tmp_9.arg0 = globals.KIND_PADDLE___36344;
+    s.callLocIdx = 924; s.pc = 12; return s.tmp_9;
   case 12:
     r0 = s.retval;
     s.tmp_8 = r0;
@@ -20619,7 +20620,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 923; s.pc = 14; return s.tmp_4; }
+     else { s.callLocIdx = 925; s.pc = 14; return s.tmp_4; }
     }
   case 14:
     r0 = s.retval;
@@ -20630,7 +20631,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["ballSpeed"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["ballSpeed"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 924; s.pc = 13; return s.tmp_3; }
+     else { s.callLocIdx = 926; s.pc = 13; return s.tmp_3; }
     }
   case 13:
     r0 = s.retval;
@@ -20648,8 +20649,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(6, 6);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_BALL___8163;
-    s.callLocIdx = 926; s.pc = 15; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_BALL___36345;
+    s.callLocIdx = 928; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
     s.ball___13363 = (r0);
@@ -20657,39 +20658,39 @@ switch (step) {
     s.tmp_0.arg0 = s.ball___13363;
     s.tmp_1 = Sprite_x__P2391_mk(s);
     s.tmp_1.arg0 = s.paddle___13350;
-    s.callLocIdx = 927; s.pc = 17; return s.tmp_1;
+    s.callLocIdx = 929; s.pc = 17; return s.tmp_1;
   case 17:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
     s.tmp_3 = Sprite_y__P2393_mk(s);
     s.tmp_3.arg0 = s.paddle___13350;
-    s.callLocIdx = 928; s.pc = 18; return s.tmp_3;
+    s.callLocIdx = 930; s.pc = 18; return s.tmp_3;
   case 18:
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = (s.tmp_2 - 10);
     s.tmp_0.arg2 = r0;
-    s.callLocIdx = 929; s.pc = 16; return s.tmp_0;
+    s.callLocIdx = 931; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
     s.tmp_0 = Sprite_vx__P2396_mk(s);
     s.tmp_0.arg0 = s.ball___13363;
     s.tmp_0.arg1 = 0;
-    s.callLocIdx = 930; s.pc = 19; return s.tmp_0;
+    s.callLocIdx = 932; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
     s.tmp_0 = Sprite_vy__P2398_mk(s);
     s.tmp_0.arg0 = s.ball___13363;
     r0 = (0 - s.ballSpeed___13357);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 931; s.pc = 20; return s.tmp_0;
+    s.callLocIdx = 933; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
     s.tmp_0 = Sprite_setFlag__P2461_mk(s);
     s.tmp_0.arg0 = s.ball___13363;
     s.tmp_0.arg1 = 4;
     s.tmp_0.arg2 = true;
-    s.callLocIdx = 932; s.pc = 21; return s.tmp_0;
+    s.callLocIdx = 934; s.pc = 21; return s.tmp_0;
   case 21:
     r0 = s.retval;
   case 9:
@@ -20939,7 +20940,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 903; s.pc = 18; return s.tmp_3; }
+     else { s.callLocIdx = 905; s.pc = 18; return s.tmp_3; }
     }
   case 18:
     r0 = s.retval;
@@ -20962,7 +20963,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 904; s.pc = 20; return s.tmp_5; }
+     else { s.callLocIdx = 906; s.pc = 20; return s.tmp_5; }
     }
   case 20:
     r0 = s.retval;
@@ -20973,7 +20974,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["targetsRequired"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["targetsRequired"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 905; s.pc = 19; return s.tmp_4; }
+     else { s.callLocIdx = 907; s.pc = 19; return s.tmp_4; }
     }
   case 19:
     r0 = s.retval;
@@ -20981,11 +20982,11 @@ switch (step) {
     s.tmp_0 = tiles_getTilesByType__P2820_mk(s);
     s.tmp_1 = tiles_getTileImage__P2813_mk(s);
     s.tmp_1.arg0 = 4;
-    s.callLocIdx = 906; s.pc = 22; return s.tmp_1;
+    s.callLocIdx = 908; s.pc = 22; return s.tmp_1;
   case 22:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 907; s.pc = 21; return s.tmp_0;
+    s.callLocIdx = 909; s.pc = 21; return s.tmp_0;
   case 21:
     r0 = s.retval;
     s.targetTiles___13425 = (r0);
@@ -21010,7 +21011,7 @@ switch (step) {
     s.tmp_3.arg0 = s.targetsRequired___13421;
     r0 = pxsim_Array__length(s.targetTiles___13425);
     s.tmp_3.arg1 = r0;
-    s.callLocIdx = 908; s.pc = 23; return s.tmp_3;
+    s.callLocIdx = 910; s.pc = 23; return s.tmp_3;
   case 23:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -21021,8 +21022,8 @@ switch (step) {
     s.tmp_4 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 8);
     s.tmp_4.arg0 = r0;
-    s.tmp_4.arg1 = globals.KIND_TARGET___8160;
-    s.callLocIdx = 910; s.pc = 24; return s.tmp_4;
+    s.tmp_4.arg1 = globals.KIND_TARGET___36342;
+    s.callLocIdx = 912; s.pc = 24; return s.tmp_4;
   case 24:
     r0 = s.retval;
     s.target___13445 = (r0);
@@ -21030,7 +21031,7 @@ switch (step) {
     s.tmp_0.arg0 = s.target___13445;
     r0 = pxsim_Array__getAt(s.targetTiles___13425, s.i___13437);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 911; s.pc = 25; return s.tmp_0;
+    s.callLocIdx = 913; s.pc = 25; return s.tmp_0;
   case 25:
     r0 = s.retval;
     r0 = (s.i___13437 + 1);
@@ -21077,8 +21078,8 @@ switch (step) {
     s.tmp_2 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 8);
     s.tmp_2.arg0 = r0;
-    s.tmp_2.arg1 = globals.KIND_TARGET___8160;
-    s.callLocIdx = 913; s.pc = 26; return s.tmp_2;
+    s.tmp_2.arg1 = globals.KIND_TARGET___36342;
+    s.callLocIdx = 915; s.pc = 26; return s.tmp_2;
   case 26:
     r0 = s.retval;
     s.target___13479 = (r0);
@@ -21092,7 +21093,7 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = (20 + s.tmp_2);
     s.tmp_0.arg2 = r0;
-    s.callLocIdx = 914; s.pc = 27; return s.tmp_0;
+    s.callLocIdx = 916; s.pc = 27; return s.tmp_0;
   case 27:
     r0 = s.retval;
     r0 = (s.count___13461 + 1);
@@ -21529,7 +21530,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_1 = GameController_PuzzleMode_spawnMovingCrates__P8435_mk(s);
-    s.callLocIdx = 860; s.pc = 3; return s.tmp_1;
+    s.callLocIdx = 862; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
   case 1:
@@ -21605,8 +21606,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_HAZARD___8157;
-    s.callLocIdx = 862; s.pc = 3; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_HAZARD___36339;
+    s.callLocIdx = 864; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.crate___13570 = (r0);
@@ -21620,7 +21621,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["x"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["x"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 863; s.pc = 5; return s.tmp_1; }
+     else { s.callLocIdx = 865; s.pc = 5; return s.tmp_1; }
     }
   case 5:
     r0 = s.retval;
@@ -21633,12 +21634,12 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["y"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["y"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 864; s.pc = 6; return s.tmp_2; }
+     else { s.callLocIdx = 866; s.pc = 6; return s.tmp_2; }
     }
   case 6:
     r0 = s.retval;
     s.tmp_0.arg2 = r0;
-    s.callLocIdx = 865; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 867; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = Sprite_vx__P2396_mk(s);
@@ -21651,12 +21652,12 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["vx"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["vx"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 866; s.pc = 8; return s.tmp_1; }
+     else { s.callLocIdx = 868; s.pc = 8; return s.tmp_1; }
     }
   case 8:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 867; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 869; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     s.tmp_0 = Sprite_vy__P2398_mk(s);
@@ -21669,12 +21670,12 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["vy"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["vy"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 868; s.pc = 10; return s.tmp_1; }
+     else { s.callLocIdx = 870; s.pc = 10; return s.tmp_1; }
     }
   case 10:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 869; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 871; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     r0 = (s.i___13560 + 1);
@@ -21733,7 +21734,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 841; s.pc = 5; return s.tmp_3; }
+     else { s.callLocIdx = 843; s.pc = 5; return s.tmp_3; }
     }
   case 5:
     r0 = s.retval;
@@ -21744,16 +21745,16 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["tokensRequired"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["tokensRequired"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 842; s.pc = 4; return s.tmp_2; }
+     else { s.callLocIdx = 844; s.pc = 4; return s.tmp_2; }
     }
   case 4:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 843; s.pc = 3; return s.tmp_1;
+    s.callLocIdx = 845; s.pc = 3; return s.tmp_1;
   case 3:
     r0 = s.retval;
     s.tmp_0 = GameController_PuzzleMode_spawnGhostBot__P8433_mk(s);
-    s.callLocIdx = 844; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 846; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
   case 1:
@@ -21793,8 +21794,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_ENEMY___8151;
-    s.callLocIdx = 857; s.pc = 1; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_ENEMY___36333;
+    s.callLocIdx = 859; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.ghostBot___13604 = (r0);
@@ -21802,13 +21803,13 @@ switch (step) {
     s.tmp_0.arg0 = s.ghostBot___13604;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 30;
-    s.callLocIdx = 858; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 860; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.tmp_0 = Sprite_vx__P2396_mk(s);
     s.tmp_0.arg0 = s.ghostBot___13604;
     s.tmp_0.arg1 = 20;
-    s.callLocIdx = 859; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 861; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     r0 = undefined;
@@ -21851,11 +21852,11 @@ switch (step) {
     s.tmp_0 = tiles_getTilesByType__P2820_mk(s);
     s.tmp_1 = tiles_getTileImage__P2813_mk(s);
     s.tmp_1.arg0 = 11;
-    s.callLocIdx = 845; s.pc = 10; return s.tmp_1;
+    s.callLocIdx = 847; s.pc = 10; return s.tmp_1;
   case 10:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 846; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 848; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     s.tokenTiles___13617 = (r0);
@@ -21880,7 +21881,7 @@ switch (step) {
     s.tmp_3.arg0 = s.arg0;
     r0 = pxsim_Array__length(s.tokenTiles___13617);
     s.tmp_3.arg1 = r0;
-    s.callLocIdx = 847; s.pc = 11; return s.tmp_3;
+    s.callLocIdx = 849; s.pc = 11; return s.tmp_3;
   case 11:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -21891,8 +21892,8 @@ switch (step) {
     s.tmp_4 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(8, 8);
     s.tmp_4.arg0 = r0;
-    s.tmp_4.arg1 = globals.KIND_COLLECTIBLE___8156;
-    s.callLocIdx = 849; s.pc = 12; return s.tmp_4;
+    s.tmp_4.arg1 = globals.KIND_COLLECTIBLE___36338;
+    s.callLocIdx = 851; s.pc = 12; return s.tmp_4;
   case 12:
     r0 = s.retval;
     s.token___13637 = (r0);
@@ -21900,7 +21901,7 @@ switch (step) {
     s.tmp_0.arg0 = s.token___13637;
     r0 = pxsim_Array__getAt(s.tokenTiles___13617, s.i___13629);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 850; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 852; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     r0 = (s.i___13629 + 1);
@@ -21918,8 +21919,8 @@ switch (step) {
     s.tmp_1 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(8, 8);
     s.tmp_1.arg0 = r0;
-    s.tmp_1.arg1 = globals.KIND_COLLECTIBLE___8156;
-    s.callLocIdx = 852; s.pc = 14; return s.tmp_1;
+    s.tmp_1.arg1 = globals.KIND_COLLECTIBLE___36338;
+    s.callLocIdx = 854; s.pc = 14; return s.tmp_1;
   case 14:
     r0 = s.retval;
     s.token___13653 = (r0);
@@ -21941,7 +21942,7 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = (20 + s.tmp_4);
     s.tmp_0.arg2 = r0;
-    s.callLocIdx = 855; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 857; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
     r0 = (s.i___13648 + 1);
@@ -21996,12 +21997,12 @@ switch (step) {
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = 60;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 1177; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1179; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = scene_cameraFollowSprite__P2935_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 1178; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 1180; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     r0 = undefined;
@@ -22287,7 +22288,7 @@ function tiles_Location_x__P2743_mk(s) {
 
 
 
-function tileImg__P8268(s) {
+function tileImg__P36450(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -22297,26 +22298,88 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
+    s.scene___36608 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = tiles_getTileImage__P2813_mk(s);
-    s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 83; s.pc = 1; return s.tmp_0;
-  case 1:
+    s.tmp_0 = game_currentScene__P3061_mk(s);
+    s.callLocIdx = 83; s.pc = 8; return s.tmp_0;
+  case 8:
     r0 = s.retval;
+    s.scene___36608 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.scene___36608);
+    s.tmp_1 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_1);
+    s.tmp_0 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_0);
+    if (!r0) { step = 1; continue; }
+    r0 = s.tmp_0;
+    { step = 2; continue; }
+  case 1:
+    r0 = s.scene___36608.fields["tileMap"];
+    s.tmp_3 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_3);
+    s.tmp_2 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_2);
+  case 2:
+    // jmp value (already in r0)
+    s.tmp_4 = r0;
+    r0 = pxsim_numops_toBool(s.tmp_4);
+    if (!r0) { step = 3; continue; }
+    r0 = s.tmp_4;
+    { step = 4; continue; }
+  case 3:
+    r0 = s.scene___36608.fields["tileMap"];
+    s.tmp_7 = r0;
+    r0 = s.tmp_7.fields["_map"];
+    s.tmp_6 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_6);
+    s.tmp_5 = r0;
+    r0 = pxsim_Boolean__bang(s.tmp_5);
+  case 4:
+    // jmp value (already in r0)
+    s.tmp_8 = r0;
+    r0 = pxsim_numops_toBoolDecr(s.tmp_8);
+    if (!r0) { step = 5; continue; }
+    r0 = pxsim.image.ofBuffer(_hex36623);
+    { step = 7; continue; }
+  case 5:
+  case 6:
+    s.tmp_9 = tiles_TileMapData__C2762_v5_2_mk(s);
+    r0 = s.scene___36608.fields["tileMap"];
+    s.tmp_10 = r0;
+    r0 = s.tmp_10.fields["_map"];
+    s.tmp_9.arg0 = r0;
+    s.tmp_9.arg1 = s.arg0;
+    if (!checkSubtype(s.tmp_9.arg0, tiles_TileMapData__C2762_VT)) failedCast(s.tmp_9.arg0, tiles_TileMapData__C2762_VT);
+    s.tmp_9.fn = s.tmp_9.arg0.vtable.methods.getTileImage;
+    s.pc = 9; return s.tmp_9;
+  case 9:
+    r0 = s.retval;
+  case 7:
     return leave(s, r0)
   default: oops()
 } } }
-tileImg__P8268.info = {"start":8140,"length":85,"line":322,"column":0,"endLine":324,"endColumn":1,"fileName":"constants.ts","functionName":"tileImg","argumentNames":["index"]}
+tileImg__P36450.info = {"start":7989,"length":208,"line":320,"column":0,"endLine":327,"endColumn":1,"fileName":"constants.ts","functionName":"tileImg","argumentNames":["index"]}
 
-function tileImg__P8268_mk(s) {
+function tileImg__P36450_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: tileImg__P8268, depth: s.depth + 1,
+        parent: s, fn: tileImg__P36450, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
+  tmp_1: undefined,
+  tmp_2: undefined,
+  tmp_3: undefined,
+  tmp_4: undefined,
+  tmp_5: undefined,
+  tmp_6: undefined,
+  tmp_7: undefined,
+  tmp_8: undefined,
+  tmp_9: undefined,
+  tmp_10: undefined,
+  scene___36608: undefined,
   arg0: undefined,
 } }
 
@@ -22805,7 +22868,7 @@ switch (step) {
     }
     s.tmp_0 = GameController_RhythmMode_setup__P5386_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 346; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 348; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -22857,7 +22920,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonId"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonId"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 749; s.pc = 12; return s.tmp_0; }
+     else { s.callLocIdx = 751; s.pc = 12; return s.tmp_0; }
     }
   case 12:
     r0 = s.retval;
@@ -22870,7 +22933,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stageIndex"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stageIndex"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 750; s.pc = 13; return s.tmp_1; }
+     else { s.callLocIdx = 752; s.pc = 13; return s.tmp_1; }
     }
   case 13:
     r0 = s.retval;
@@ -22894,7 +22957,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentDungeonId"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentDungeonId"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 751; s.pc = 14; return s.tmp_0; }
+     else { s.callLocIdx = 753; s.pc = 14; return s.tmp_0; }
     }
   case 14:
     r0 = s.retval;
@@ -22907,7 +22970,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentStageIndex"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentStageIndex"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 752; s.pc = 15; return s.tmp_0; }
+     else { s.callLocIdx = 754; s.pc = 15; return s.tmp_0; }
     }
   case 15:
     r0 = s.retval;
@@ -22915,9 +22978,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.dungeonId___13866);
     s.tmp_1 = helpers_arrayFind__P112_mk(s);
-    s.tmp_1.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_1.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 754; s.pc = 16; return s.tmp_1;
+    s.callLocIdx = 756; s.pc = 16; return s.tmp_1;
   case 16:
     r0 = s.retval;
     s.spec___13879 = (r0);
@@ -22940,7 +23003,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stages"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stages"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 755; s.pc = 17; return s.tmp_1; }
+     else { s.callLocIdx = 757; s.pc = 17; return s.tmp_1; }
     }
   case 17:
     r0 = s.retval;
@@ -22949,7 +23012,7 @@ switch (step) {
     s.stageId___13894 = (r0);
     s.tmp_0 = getTilemapByID__P5269_mk(s);
     s.tmp_0.arg0 = s.stageId___13894;
-    s.callLocIdx = 756; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 758; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
     s.tm___13899 = (r0);
@@ -22957,7 +23020,7 @@ switch (step) {
     if (!r0) { step = 5; continue; }
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = s.tm___13899;
-    s.callLocIdx = 757; s.pc = 19; return s.tmp_0;
+    s.callLocIdx = 759; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
   case 5:
@@ -22965,8 +23028,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 759; s.pc = 20; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 761; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
     s.playerSprite___13906 = (r0);
@@ -22974,12 +23037,12 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___13906;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 760; s.pc = 21; return s.tmp_0;
+    s.callLocIdx = 762; s.pc = 21; return s.tmp_0;
   case 21:
     r0 = s.retval;
     s.tmp_0 = initRhythmPlayer__P5356_mk(s);
     s.tmp_0.arg0 = s.playerSprite___13906;
-    s.callLocIdx = 761; s.pc = 22; return s.tmp_0;
+    s.callLocIdx = 763; s.pc = 22; return s.tmp_0;
   case 22:
     r0 = s.retval;
     s.tmp_1 = if_params_1_mk(s);
@@ -22990,7 +23053,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["params"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["params"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 762; s.pc = 23; return s.tmp_1; }
+     else { s.callLocIdx = 764; s.pc = 23; return s.tmp_1; }
     }
   case 23:
     r0 = s.retval;
@@ -23009,7 +23072,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["params"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["params"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 763; s.pc = 25; return s.tmp_3; }
+     else { s.callLocIdx = 765; s.pc = 25; return s.tmp_3; }
     }
   case 25:
     r0 = s.retval;
@@ -23020,7 +23083,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["bpm"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["bpm"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 764; s.pc = 24; return s.tmp_2; }
+     else { s.callLocIdx = 766; s.pc = 24; return s.tmp_2; }
     }
   case 24:
     r0 = s.retval;
@@ -23045,7 +23108,7 @@ switch (step) {
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "bpm", s.bpm___13915);
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "beatIntervalMs", s.beatIntervalMs___13925);
     s.tmp_3 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 765; s.pc = 26; return s.tmp_3;
+    s.callLocIdx = 767; s.pc = 26; return s.tmp_3;
   case 26:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -23063,18 +23126,18 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_4.fn === null) { s.tmp_4.arg0.fields["dungeonStageData"] = s.tmp_4.arg1; }
       else if (s.tmp_4.fn === undefined) { failedCast(s.tmp_4.arg0) } 
-     else { s.callLocIdx = 766; s.pc = 27; return s.tmp_4; }
+     else { s.callLocIdx = 768; s.pc = 27; return s.tmp_4; }
     }
   case 27:
     r0 = s.retval;
     s.tmp_0 = GameController_RhythmMode_setupRhythmStageContent__P8423_mk(s);
     s.tmp_0.arg0 = s.stageIndex___13869;
-    s.callLocIdx = 767; s.pc = 28; return s.tmp_0;
+    s.callLocIdx = 769; s.pc = 28; return s.tmp_0;
   case 28:
     r0 = s.retval;
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___13906;
-    s.callLocIdx = 768; s.pc = 29; return s.tmp_0;
+    s.callLocIdx = 770; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
   case 11:
@@ -23132,7 +23195,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 753; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 755; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -23184,7 +23247,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 769; s.pc = 6; return s.tmp_4; }
+     else { s.callLocIdx = 771; s.pc = 6; return s.tmp_4; }
     }
   case 6:
     r0 = s.retval;
@@ -23206,19 +23269,19 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 770; s.pc = 7; return s.tmp_5; }
+     else { s.callLocIdx = 772; s.pc = 7; return s.tmp_5; }
     }
   case 7:
     r0 = s.retval;
     s.stageData___13948 = (r0);
     s.tmp_0 = tiles_getTilesByType__P2820_mk(s);
-    s.tmp_1 = tileImg__P8268_mk(s);
+    s.tmp_1 = tileImg__P36450_mk(s);
     s.tmp_1.arg0 = 10;
-    s.callLocIdx = 771; s.pc = 9; return s.tmp_1;
+    s.callLocIdx = 773; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 772; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 774; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.doorTiles___13951 = (r0);
@@ -23231,7 +23294,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/rhythmDoorLocations"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["rhythmDoorLocations"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 773; s.pc = 10; return s.tmp_0; }
+     else { s.callLocIdx = 775; s.pc = 10; return s.tmp_0; }
     }
   case 10:
     r0 = s.retval;
@@ -23244,7 +23307,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/rhythmDoorsOpen"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["rhythmDoorsOpen"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 774; s.pc = 11; return s.tmp_0; }
+     else { s.callLocIdx = 776; s.pc = 11; return s.tmp_0; }
     }
   case 11:
     r0 = s.retval;
@@ -23294,14 +23357,14 @@ switch (step) {
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = 50;
     s.tmp_0.arg2 = 50;
-    s.callLocIdx = 1158; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1160; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2213_mk(s);
     s.tmp_0.arg0 = globals.A___2130;
     s.tmp_0.arg1 = 2049;
     s.tmp_0.arg2 = initRhythmPlayer_inline__P13971;
-    s.callLocIdx = 1161; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 1163; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     r0 = undefined;
@@ -23340,7 +23403,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1159; s.pc = 4; return s.tmp_2; }
+     else { s.callLocIdx = 1161; s.pc = 4; return s.tmp_2; }
     }
   case 4:
     r0 = s.retval;
@@ -23353,7 +23416,7 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_3 = handleRhythmTap__P5357_mk(s);
-    s.callLocIdx = 1160; s.pc = 5; return s.tmp_3;
+    s.callLocIdx = 1162; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
   case 3:
@@ -23397,7 +23460,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1162; s.pc = 6; return s.tmp_3; }
+     else { s.callLocIdx = 1164; s.pc = 6; return s.tmp_3; }
     }
   case 6:
     r0 = s.retval;
@@ -23412,7 +23475,7 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_4 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 1163; s.pc = 7; return s.tmp_4;
+    s.callLocIdx = 1165; s.pc = 7; return s.tmp_4;
   case 7:
     r0 = s.retval;
     s.now___13980 = (r0);
@@ -23425,7 +23488,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 1164; s.pc = 9; return s.tmp_1; }
+     else { s.callLocIdx = 1166; s.pc = 9; return s.tmp_1; }
     }
   case 9:
     r0 = s.retval;
@@ -23436,7 +23499,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["nextBeatTime"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["nextBeatTime"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 1165; s.pc = 8; return s.tmp_0; }
+     else { s.callLocIdx = 1167; s.pc = 8; return s.tmp_0; }
     }
   case 8:
     r0 = s.retval;
@@ -23444,7 +23507,7 @@ switch (step) {
     s.tmp_2 = Math_abs__P129_mk(s);
     r0 = (s.now___13980 - s.nextBeat___13983);
     s.tmp_2.arg0 = r0;
-    s.callLocIdx = 1166; s.pc = 10; return s.tmp_2;
+    s.callLocIdx = 1168; s.pc = 10; return s.tmp_2;
   case 10:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -23461,7 +23524,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 1167; s.pc = 12; return s.tmp_5; }
+     else { s.callLocIdx = 1169; s.pc = 12; return s.tmp_5; }
     }
   case 12:
     r0 = s.retval;
@@ -23475,7 +23538,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["streak"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["streak"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 1168; s.pc = 13; return s.tmp_7; }
+     else { s.callLocIdx = 1170; s.pc = 13; return s.tmp_7; }
     }
   case 13:
     r0 = s.retval;
@@ -23488,14 +23551,14 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["set/streak"];
       if (s.tmp_3.fn === null) { s.tmp_3.arg0.fields["streak"] = s.tmp_3.arg1; }
       else if (s.tmp_3.fn === undefined) { failedCast(s.tmp_3.arg0) } 
-     else { s.callLocIdx = 1169; s.pc = 11; return s.tmp_3; }
+     else { s.callLocIdx = 1171; s.pc = 11; return s.tmp_3; }
     }
   case 11:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[RHYTHM_GOOD]";
     s.tmp_0.arg1 = 500;
-    s.callLocIdx = 1170; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 1172; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     { step = 4; continue; }
@@ -23509,7 +23572,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1171; s.pc = 16; return s.tmp_2; }
+     else { s.callLocIdx = 1173; s.pc = 16; return s.tmp_2; }
     }
   case 16:
     r0 = s.retval;
@@ -23523,7 +23586,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["misses"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["misses"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 1172; s.pc = 17; return s.tmp_4; }
+     else { s.callLocIdx = 1174; s.pc = 17; return s.tmp_4; }
     }
   case 17:
     r0 = s.retval;
@@ -23536,7 +23599,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/misses"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["misses"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 1173; s.pc = 15; return s.tmp_0; }
+     else { s.callLocIdx = 1175; s.pc = 15; return s.tmp_0; }
     }
   case 15:
     r0 = s.retval;
@@ -23549,7 +23612,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 1174; s.pc = 19; return s.tmp_1; }
+     else { s.callLocIdx = 1176; s.pc = 19; return s.tmp_1; }
     }
   case 19:
     r0 = s.retval;
@@ -23561,14 +23624,14 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/streak"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["streak"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 1175; s.pc = 18; return s.tmp_0; }
+     else { s.callLocIdx = 1177; s.pc = 18; return s.tmp_0; }
     }
   case 18:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[RHYTHM_MISS]";
     s.tmp_0.arg1 = 500;
-    s.callLocIdx = 1176; s.pc = 20; return s.tmp_0;
+    s.callLocIdx = 1178; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
   case 4:
@@ -24560,7 +24623,7 @@ switch (step) {
     }
     s.tmp_0 = GameController_AsteroidsMode_setup__P5382_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 345; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 347; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -24609,7 +24672,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonId"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonId"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 735; s.pc = 6; return s.tmp_0; }
+     else { s.callLocIdx = 737; s.pc = 6; return s.tmp_0; }
     }
   case 6:
     r0 = s.retval;
@@ -24622,7 +24685,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stageIndex"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stageIndex"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 736; s.pc = 7; return s.tmp_1; }
+     else { s.callLocIdx = 738; s.pc = 7; return s.tmp_1; }
     }
   case 7:
     r0 = s.retval;
@@ -24646,7 +24709,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentDungeonId"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentDungeonId"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 737; s.pc = 8; return s.tmp_0; }
+     else { s.callLocIdx = 739; s.pc = 8; return s.tmp_0; }
     }
   case 8:
     r0 = s.retval;
@@ -24659,7 +24722,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentStageIndex"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentStageIndex"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 738; s.pc = 9; return s.tmp_0; }
+     else { s.callLocIdx = 740; s.pc = 9; return s.tmp_0; }
     }
   case 9:
     r0 = s.retval;
@@ -24667,9 +24730,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.dungeonId___14215);
     s.tmp_1 = helpers_arrayFind__P112_mk(s);
-    s.tmp_1.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_1.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 740; s.pc = 10; return s.tmp_1;
+    s.callLocIdx = 742; s.pc = 10; return s.tmp_1;
   case 10:
     r0 = s.retval;
     s.spec___14230 = (r0);
@@ -24692,7 +24755,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stages"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stages"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 741; s.pc = 11; return s.tmp_1; }
+     else { s.callLocIdx = 743; s.pc = 11; return s.tmp_1; }
     }
   case 11:
     r0 = s.retval;
@@ -24701,14 +24764,14 @@ switch (step) {
     s.stageId___14245 = (r0);
     s.tmp_0 = scene_setBackgroundColor__P2928_mk(s);
     s.tmp_0.arg0 = 1;
-    s.callLocIdx = 742; s.pc = 12; return s.tmp_0;
+    s.callLocIdx = 744; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(12, 12);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 744; s.pc = 13; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 746; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     s.playerSprite___14251 = (r0);
@@ -24716,12 +24779,12 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___14251;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 745; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 747; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.tmp_0 = initAsteroidsPlayer__P5352_mk(s);
     s.tmp_0.arg0 = s.playerSprite___14251;
-    s.callLocIdx = 746; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 748; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -24738,13 +24801,13 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_1.fn === null) { s.tmp_1.arg0.fields["dungeonStageData"] = s.tmp_1.arg1; }
       else if (s.tmp_1.fn === undefined) { failedCast(s.tmp_1.arg0) } 
-     else { s.callLocIdx = 747; s.pc = 16; return s.tmp_1; }
+     else { s.callLocIdx = 749; s.pc = 16; return s.tmp_1; }
     }
   case 16:
     r0 = s.retval;
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___14251;
-    s.callLocIdx = 748; s.pc = 17; return s.tmp_0;
+    s.callLocIdx = 750; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
   case 5:
@@ -24796,7 +24859,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 739; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 741; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -24841,12 +24904,12 @@ switch (step) {
     s.tmp_0.arg0 = globals.A___2130;
     s.tmp_0.arg1 = 2049;
     s.tmp_0.arg2 = initAsteroidsPlayer_inline__P14272;
-    s.callLocIdx = 1131; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1133; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = game_onUpdate__P3085_mk(s);
     s.tmp_0.arg0 = initAsteroidsPlayer_inline__P14279;
-    s.callLocIdx = 1134; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 1136; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     r0 = undefined;
@@ -24885,7 +24948,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1129; s.pc = 4; return s.tmp_2; }
+     else { s.callLocIdx = 1131; s.pc = 4; return s.tmp_2; }
     }
   case 4:
     r0 = s.retval;
@@ -24898,7 +24961,7 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_3 = shootAsteroidPing__P5354_mk(s);
-    s.callLocIdx = 1130; s.pc = 5; return s.tmp_3;
+    s.callLocIdx = 1132; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
   case 3:
@@ -24940,7 +25003,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1132; s.pc = 4; return s.tmp_2; }
+     else { s.callLocIdx = 1134; s.pc = 4; return s.tmp_2; }
     }
   case 4:
     r0 = s.retval;
@@ -24953,7 +25016,7 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_3 = updateAsteroidsControls__P5353_mk(s);
-    s.callLocIdx = 1133; s.pc = 5; return s.tmp_3;
+    s.callLocIdx = 1135; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
   case 3:
@@ -24990,8 +25053,8 @@ switch (step) {
     s.plyr___14285 = undefined;
     s.rad___14306 = undefined;
     s.tmp_1 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_1.arg0 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1135; s.pc = 18; return s.tmp_1;
+    s.tmp_1.arg0 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1137; s.pc = 18; return s.tmp_1;
   case 18:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -25073,13 +25136,13 @@ switch (step) {
     s.tmp_0.arg0 = r0;
     s.tmp_3 = Sprite_x__P2391_mk(s);
     s.tmp_3.arg0 = s.tmp_1;
-    s.callLocIdx = 1136; s.pc = 23; return s.tmp_3;
+    s.callLocIdx = 1138; s.pc = 23; return s.tmp_3;
   case 23:
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = (s.tmp_2 + globals.asteroidVx___5350);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1137; s.pc = 22; return s.tmp_0;
+    s.callLocIdx = 1139; s.pc = 22; return s.tmp_0;
   case 22:
     r0 = s.retval;
     s.tmp_0 = Sprite_y__P2394_mk(s);
@@ -25087,18 +25150,18 @@ switch (step) {
     s.tmp_0.arg0 = r0;
     s.tmp_3 = Sprite_y__P2393_mk(s);
     s.tmp_3.arg0 = s.tmp_1;
-    s.callLocIdx = 1138; s.pc = 25; return s.tmp_3;
+    s.callLocIdx = 1140; s.pc = 25; return s.tmp_3;
   case 25:
     r0 = s.retval;
     s.tmp_2 = r0;
     r0 = (s.tmp_2 + globals.asteroidVy___5351);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1139; s.pc = 24; return s.tmp_0;
+    s.callLocIdx = 1141; s.pc = 24; return s.tmp_0;
   case 24:
     r0 = s.retval;
     s.tmp_2 = Sprite_x__P2391_mk(s);
     s.tmp_2.arg0 = s.plyr___14285;
-    s.callLocIdx = 1140; s.pc = 26; return s.tmp_2;
+    s.callLocIdx = 1142; s.pc = 26; return s.tmp_2;
   case 26:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -25110,14 +25173,14 @@ switch (step) {
     s.tmp_3.arg0 = s.plyr___14285;
     r0 = pxsim_ImageMethods.width(globals.screen___2038);
     s.tmp_3.arg1 = r0;
-    s.callLocIdx = 1142; s.pc = 27; return s.tmp_3;
+    s.callLocIdx = 1144; s.pc = 27; return s.tmp_3;
   case 27:
     r0 = s.retval;
   case 9:
   case 10:
     s.tmp_2 = Sprite_x__P2391_mk(s);
     s.tmp_2.arg0 = s.plyr___14285;
-    s.callLocIdx = 1143; s.pc = 28; return s.tmp_2;
+    s.callLocIdx = 1145; s.pc = 28; return s.tmp_2;
   case 28:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -25130,14 +25193,14 @@ switch (step) {
     s.tmp_4 = Sprite_x__P2392_mk(s);
     s.tmp_4.arg0 = s.plyr___14285;
     s.tmp_4.arg1 = 0;
-    s.callLocIdx = 1145; s.pc = 29; return s.tmp_4;
+    s.callLocIdx = 1147; s.pc = 29; return s.tmp_4;
   case 29:
     r0 = s.retval;
   case 11:
   case 12:
     s.tmp_2 = Sprite_y__P2393_mk(s);
     s.tmp_2.arg0 = s.plyr___14285;
-    s.callLocIdx = 1146; s.pc = 30; return s.tmp_2;
+    s.callLocIdx = 1148; s.pc = 30; return s.tmp_2;
   case 30:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -25149,14 +25212,14 @@ switch (step) {
     s.tmp_3.arg0 = s.plyr___14285;
     r0 = pxsim_ImageMethods.height(globals.screen___2038);
     s.tmp_3.arg1 = r0;
-    s.callLocIdx = 1148; s.pc = 31; return s.tmp_3;
+    s.callLocIdx = 1150; s.pc = 31; return s.tmp_3;
   case 31:
     r0 = s.retval;
   case 13:
   case 14:
     s.tmp_2 = Sprite_y__P2393_mk(s);
     s.tmp_2.arg0 = s.plyr___14285;
-    s.callLocIdx = 1149; s.pc = 32; return s.tmp_2;
+    s.callLocIdx = 1151; s.pc = 32; return s.tmp_2;
   case 32:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -25169,7 +25232,7 @@ switch (step) {
     s.tmp_4 = Sprite_y__P2394_mk(s);
     s.tmp_4.arg0 = s.plyr___14285;
     s.tmp_4.arg1 = 0;
-    s.callLocIdx = 1151; s.pc = 33; return s.tmp_4;
+    s.callLocIdx = 1153; s.pc = 33; return s.tmp_4;
   case 33:
     r0 = s.retval;
   case 15:
@@ -26349,8 +26412,8 @@ switch (step) {
     s.vy___14775 = undefined;
     s.ping___14781 = undefined;
     s.tmp_1 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_1.arg0 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1152; s.pc = 6; return s.tmp_1;
+    s.tmp_1.arg0 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1154; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -26366,8 +26429,8 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_5 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_5.arg0 = globals.KIND_PROJECTILE___8152;
-    s.callLocIdx = 1153; s.pc = 7; return s.tmp_5;
+    s.tmp_5.arg0 = globals.KIND_PROJECTILE___36334;
+    s.callLocIdx = 1155; s.pc = 7; return s.tmp_5;
   case 7:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -26400,19 +26463,19 @@ switch (step) {
     s.tmp_0.arg1 = s.plyr___14752;
     s.tmp_0.arg2 = s.vx___14770;
     s.tmp_0.arg3 = s.vy___14775;
-    s.callLocIdx = 1155; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 1157; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.ping___14781 = (r0);
     s.tmp_0 = Sprite_setKind__P2450_mk(s);
     s.tmp_0.arg0 = s.ping___14781;
-    s.tmp_0.arg1 = globals.KIND_PROJECTILE___8152;
-    s.callLocIdx = 1156; s.pc = 9; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PROJECTILE___36334;
+    s.callLocIdx = 1158; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     r0 = (s.ping___14781).fields["lifespan"] = (1500);
     s.tmp_0 = sfxShoot__P5255_mk(s);
-    s.callLocIdx = 1157; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 1159; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
   case 5:
@@ -26835,7 +26898,7 @@ switch (step) {
     }
     s.tmp_0 = GameController_ShooterMode_setup__P5378_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 344; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 346; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -26885,7 +26948,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonId"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonId"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 719; s.pc = 8; return s.tmp_0; }
+     else { s.callLocIdx = 721; s.pc = 8; return s.tmp_0; }
     }
   case 8:
     r0 = s.retval;
@@ -26898,7 +26961,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stageIndex"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stageIndex"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 720; s.pc = 9; return s.tmp_1; }
+     else { s.callLocIdx = 722; s.pc = 9; return s.tmp_1; }
     }
   case 9:
     r0 = s.retval;
@@ -26922,7 +26985,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentDungeonId"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentDungeonId"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 721; s.pc = 10; return s.tmp_0; }
+     else { s.callLocIdx = 723; s.pc = 10; return s.tmp_0; }
     }
   case 10:
     r0 = s.retval;
@@ -26935,7 +26998,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentStageIndex"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentStageIndex"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 722; s.pc = 11; return s.tmp_0; }
+     else { s.callLocIdx = 724; s.pc = 11; return s.tmp_0; }
     }
   case 11:
     r0 = s.retval;
@@ -26943,9 +27006,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.dungeonId___14923);
     s.tmp_1 = helpers_arrayFind__P112_mk(s);
-    s.tmp_1.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_1.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 724; s.pc = 12; return s.tmp_1;
+    s.callLocIdx = 726; s.pc = 12; return s.tmp_1;
   case 12:
     r0 = s.retval;
     s.spec___14938 = (r0);
@@ -26968,7 +27031,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stages"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stages"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 725; s.pc = 13; return s.tmp_1; }
+     else { s.callLocIdx = 727; s.pc = 13; return s.tmp_1; }
     }
   case 13:
     r0 = s.retval;
@@ -26977,7 +27040,7 @@ switch (step) {
     s.stageId___14953 = (r0);
     s.tmp_0 = getTilemapByID__P5269_mk(s);
     s.tmp_0.arg0 = s.stageId___14953;
-    s.callLocIdx = 726; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 728; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.tm___14958 = (r0);
@@ -26985,7 +27048,7 @@ switch (step) {
     if (!r0) { step = 5; continue; }
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = s.tm___14958;
-    s.callLocIdx = 727; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 729; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
   case 5:
@@ -26993,8 +27056,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 729; s.pc = 16; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 731; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
     s.playerSprite___14965 = (r0);
@@ -27002,18 +27065,18 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___14965;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 100;
-    s.callLocIdx = 730; s.pc = 17; return s.tmp_0;
+    s.callLocIdx = 732; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
     s.tmp_0 = Sprite_setStayInScreen__P2459_mk(s);
     s.tmp_0.arg0 = s.playerSprite___14965;
     s.tmp_0.arg1 = true;
-    s.callLocIdx = 731; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 733; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
     s.tmp_0 = initShooterPlayer__P5346_mk(s);
     s.tmp_0.arg0 = s.playerSprite___14965;
-    s.callLocIdx = 732; s.pc = 19; return s.tmp_0;
+    s.callLocIdx = 734; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -27030,13 +27093,13 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_1.fn === null) { s.tmp_1.arg0.fields["dungeonStageData"] = s.tmp_1.arg1; }
       else if (s.tmp_1.fn === undefined) { failedCast(s.tmp_1.arg0) } 
-     else { s.callLocIdx = 733; s.pc = 20; return s.tmp_1; }
+     else { s.callLocIdx = 735; s.pc = 20; return s.tmp_1; }
     }
   case 20:
     r0 = s.retval;
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___14965;
-    s.callLocIdx = 734; s.pc = 21; return s.tmp_0;
+    s.callLocIdx = 736; s.pc = 21; return s.tmp_0;
   case 21:
     r0 = s.retval;
   case 7:
@@ -27089,7 +27152,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 723; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 725; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -27131,14 +27194,14 @@ switch (step) {
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = 100;
     s.tmp_0.arg2 = 100;
-    s.callLocIdx = 1119; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1121; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2213_mk(s);
     s.tmp_0.arg0 = globals.A___2130;
     s.tmp_0.arg1 = 2049;
     s.tmp_0.arg2 = initShooterPlayer_inline__P14989;
-    s.callLocIdx = 1122; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 1124; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     r0 = undefined;
@@ -27177,7 +27240,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1120; s.pc = 4; return s.tmp_2; }
+     else { s.callLocIdx = 1122; s.pc = 4; return s.tmp_2; }
     }
   case 4:
     r0 = s.retval;
@@ -27190,7 +27253,7 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_3 = shootBullet__P5347_mk(s);
-    s.callLocIdx = 1121; s.pc = 5; return s.tmp_3;
+    s.callLocIdx = 1123; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
   case 3:
@@ -27227,8 +27290,8 @@ switch (step) {
     s.plyr___14995 = undefined;
     s.bullet___15007 = undefined;
     s.tmp_1 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_1.arg0 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1123; s.pc = 6; return s.tmp_1;
+    s.tmp_1.arg0 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1125; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -27244,8 +27307,8 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_5 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_5.arg0 = globals.KIND_PROJECTILE___8152;
-    s.callLocIdx = 1124; s.pc = 7; return s.tmp_5;
+    s.tmp_5.arg0 = globals.KIND_PROJECTILE___36334;
+    s.callLocIdx = 1126; s.pc = 7; return s.tmp_5;
   case 7:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -27264,19 +27327,19 @@ switch (step) {
     s.tmp_6.arg1 = s.plyr___14995;
     s.tmp_6.arg2 = 0;
     s.tmp_6.arg3 = -100;
-    s.callLocIdx = 1126; s.pc = 8; return s.tmp_6;
+    s.callLocIdx = 1128; s.pc = 8; return s.tmp_6;
   case 8:
     r0 = s.retval;
     s.bullet___15007 = (r0);
     s.tmp_0 = Sprite_setKind__P2450_mk(s);
     s.tmp_0.arg0 = s.bullet___15007;
-    s.tmp_0.arg1 = globals.KIND_PROJECTILE___8152;
-    s.callLocIdx = 1127; s.pc = 9; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PROJECTILE___36334;
+    s.callLocIdx = 1129; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     r0 = (s.bullet___15007).fields["lifespan"] = (2000);
     s.tmp_0 = sfxShoot__P5255_mk(s);
-    s.callLocIdx = 1128; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 1130; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
   case 5:
@@ -27321,7 +27384,7 @@ switch (step) {
     }
     s.tmp_0 = GameController_PlatformMode_setup__P5374_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 343; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 345; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -27371,7 +27434,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonId"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonId"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 613; s.pc = 8; return s.tmp_0; }
+     else { s.callLocIdx = 615; s.pc = 8; return s.tmp_0; }
     }
   case 8:
     r0 = s.retval;
@@ -27384,7 +27447,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stageIndex"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stageIndex"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 614; s.pc = 9; return s.tmp_1; }
+     else { s.callLocIdx = 616; s.pc = 9; return s.tmp_1; }
     }
   case 9:
     r0 = s.retval;
@@ -27408,7 +27471,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentDungeonId"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentDungeonId"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 615; s.pc = 10; return s.tmp_0; }
+     else { s.callLocIdx = 617; s.pc = 10; return s.tmp_0; }
     }
   case 10:
     r0 = s.retval;
@@ -27421,7 +27484,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentStageIndex"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentStageIndex"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 616; s.pc = 11; return s.tmp_0; }
+     else { s.callLocIdx = 618; s.pc = 11; return s.tmp_0; }
     }
   case 11:
     r0 = s.retval;
@@ -27429,9 +27492,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.dungeonId___15023);
     s.tmp_1 = helpers_arrayFind__P112_mk(s);
-    s.tmp_1.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_1.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 618; s.pc = 12; return s.tmp_1;
+    s.callLocIdx = 620; s.pc = 12; return s.tmp_1;
   case 12:
     r0 = s.retval;
     s.spec___15036 = (r0);
@@ -27454,7 +27517,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stages"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stages"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 619; s.pc = 13; return s.tmp_1; }
+     else { s.callLocIdx = 621; s.pc = 13; return s.tmp_1; }
     }
   case 13:
     r0 = s.retval;
@@ -27463,7 +27526,7 @@ switch (step) {
     s.stageId___15051 = (r0);
     s.tmp_0 = getTilemapByID__P5269_mk(s);
     s.tmp_0.arg0 = s.stageId___15051;
-    s.callLocIdx = 620; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 622; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.tm___15056 = (r0);
@@ -27471,19 +27534,19 @@ switch (step) {
     if (!r0) { step = 5; continue; }
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = s.tm___15056;
-    s.callLocIdx = 621; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 623; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
   case 5:
   case 6:
     s.tmp_0 = sprites_create__P2311_mk(s);
     s.tmp_1 = imgPlatformPlayer__P5190_mk(s);
-    s.callLocIdx = 622; s.pc = 17; return s.tmp_1;
+    s.callLocIdx = 624; s.pc = 17; return s.tmp_1;
   case 17:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 623; s.pc = 16; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 625; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
     s.playerSprite___15063 = (r0);
@@ -27491,18 +27554,18 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___15063;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 624; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 626; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
     s.tmp_0 = Sprite_ay__P2402_mk(s);
     s.tmp_0.arg0 = s.playerSprite___15063;
     s.tmp_0.arg1 = 300;
-    s.callLocIdx = 625; s.pc = 19; return s.tmp_0;
+    s.callLocIdx = 627; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
-    s.tmp_0 = initPlatformPlayer__P5343_mk(s);
+    s.tmp_0 = initPlatformPlayer__P37924_mk(s);
     s.tmp_0.arg0 = s.playerSprite___15063;
-    s.callLocIdx = 626; s.pc = 20; return s.tmp_0;
+    s.callLocIdx = 628; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -27520,19 +27583,19 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_1.fn === null) { s.tmp_1.arg0.fields["dungeonStageData"] = s.tmp_1.arg1; }
       else if (s.tmp_1.fn === undefined) { failedCast(s.tmp_1.arg0) } 
-     else { s.callLocIdx = 627; s.pc = 21; return s.tmp_1; }
+     else { s.callLocIdx = 629; s.pc = 21; return s.tmp_1; }
     }
   case 21:
     r0 = s.retval;
     s.tmp_0 = GameController_PlatformMode_spawnPlatformStageContent__P8417_mk(s);
     s.tmp_0.arg0 = s.dungeonId___15023;
     s.tmp_0.arg1 = s.stageIndex___15026;
-    s.callLocIdx = 628; s.pc = 22; return s.tmp_0;
+    s.callLocIdx = 630; s.pc = 22; return s.tmp_0;
   case 22:
     r0 = s.retval;
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___15063;
-    s.callLocIdx = 629; s.pc = 23; return s.tmp_0;
+    s.callLocIdx = 631; s.pc = 23; return s.tmp_0;
   case 23:
     r0 = s.retval;
   case 7:
@@ -27585,7 +27648,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 617; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 619; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -27632,7 +27695,7 @@ switch (step) {
     }
     s.tmp_0 = getDungeonSpec__P5320_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 649; s.pc = 20; return s.tmp_0;
+    s.callLocIdx = 651; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
     s.spec___15084 = (r0);
@@ -27653,7 +27716,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["params"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["params"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 650; s.pc = 21; return s.tmp_4; }
+     else { s.callLocIdx = 652; s.pc = 21; return s.tmp_4; }
     }
   case 21:
     r0 = s.retval;
@@ -27678,7 +27741,7 @@ switch (step) {
       s.tmp_9.fn = s.tmp_9.arg0.vtable.iface["params"];
       if (s.tmp_9.fn == null) { s.retval = s.tmp_9.arg0.fields["params"]; }
       else if (!s.tmp_9.fn.isGetter) { s.retval = bind(s.tmp_9); }
-     else { s.callLocIdx = 651; s.pc = 23; return s.tmp_9; }
+     else { s.callLocIdx = 653; s.pc = 23; return s.tmp_9; }
     }
   case 23:
     r0 = s.retval;
@@ -27689,7 +27752,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["stageSpawners"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["stageSpawners"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 652; s.pc = 22; return s.tmp_8; }
+     else { s.callLocIdx = 654; s.pc = 22; return s.tmp_8; }
     }
   case 22:
     r0 = s.retval;
@@ -27714,7 +27777,7 @@ switch (step) {
       s.tmp_14.fn = s.tmp_14.arg0.vtable.iface["params"];
       if (s.tmp_14.fn == null) { s.retval = s.tmp_14.arg0.fields["params"]; }
       else if (!s.tmp_14.fn.isGetter) { s.retval = bind(s.tmp_14); }
-     else { s.callLocIdx = 653; s.pc = 25; return s.tmp_14; }
+     else { s.callLocIdx = 655; s.pc = 25; return s.tmp_14; }
     }
   case 25:
     r0 = s.retval;
@@ -27725,7 +27788,7 @@ switch (step) {
       s.tmp_13.fn = s.tmp_13.arg0.vtable.iface["stageSpawners"];
       if (s.tmp_13.fn == null) { s.retval = s.tmp_13.arg0.fields["stageSpawners"]; }
       else if (!s.tmp_13.fn.isGetter) { s.retval = bind(s.tmp_13); }
-     else { s.callLocIdx = 654; s.pc = 24; return s.tmp_13; }
+     else { s.callLocIdx = 656; s.pc = 24; return s.tmp_13; }
     }
   case 24:
     r0 = s.retval;
@@ -27761,7 +27824,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["xEnd"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["xEnd"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 655; s.pc = 26; return s.tmp_2; }
+     else { s.callLocIdx = 657; s.pc = 26; return s.tmp_2; }
     }
   case 26:
     r0 = s.retval;
@@ -27778,7 +27841,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["y"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["y"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 656; s.pc = 27; return s.tmp_5; }
+     else { s.callLocIdx = 658; s.pc = 27; return s.tmp_5; }
     }
   case 27:
     r0 = s.retval;
@@ -27795,7 +27858,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["y"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["y"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 657; s.pc = 28; return s.tmp_6; }
+     else { s.callLocIdx = 659; s.pc = 28; return s.tmp_6; }
     }
   case 28:
     r0 = s.retval;
@@ -27814,7 +27877,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["speed"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["speed"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 658; s.pc = 29; return s.tmp_2; }
+     else { s.callLocIdx = 660; s.pc = 29; return s.tmp_2; }
     }
   case 29:
     r0 = s.retval;
@@ -27831,7 +27894,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["speed"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["speed"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 659; s.pc = 30; return s.tmp_3; }
+     else { s.callLocIdx = 661; s.pc = 30; return s.tmp_3; }
     }
   case 30:
     r0 = s.retval;
@@ -27851,7 +27914,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["xStart"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["xStart"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 660; s.pc = 32; return s.tmp_1; }
+     else { s.callLocIdx = 662; s.pc = 32; return s.tmp_1; }
     }
   case 32:
     r0 = s.retval;
@@ -27864,14 +27927,14 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["xEnd"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["xEnd"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 661; s.pc = 33; return s.tmp_2; }
+     else { s.callLocIdx = 663; s.pc = 33; return s.tmp_2; }
     }
   case 33:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
     s.tmp_0.arg2 = s.y___15123;
     s.tmp_0.arg3 = s.speed___15132;
-    s.callLocIdx = 662; s.pc = 31; return s.tmp_0;
+    s.callLocIdx = 664; s.pc = 31; return s.tmp_0;
   case 31:
     r0 = s.retval;
     { step = 17; continue; }
@@ -27884,7 +27947,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["rate"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["rate"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 663; s.pc = 34; return s.tmp_2; }
+     else { s.callLocIdx = 665; s.pc = 34; return s.tmp_2; }
     }
   case 34:
     r0 = s.retval;
@@ -27963,8 +28026,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(32, 8);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLATFORM_MOVING___8159;
-    s.callLocIdx = 664; s.pc = 1; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLATFORM_MOVING___36341;
+    s.callLocIdx = 666; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.platform___15162 = (r0);
@@ -27972,14 +28035,14 @@ switch (step) {
     s.tmp_0.arg0 = s.platform___15162;
     s.tmp_0.arg1 = s.arg0;
     s.tmp_0.arg2 = s.arg2;
-    s.callLocIdx = 665; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 667; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.tmp_0 = Sprite_setFlag__P2461_mk(s);
     s.tmp_0.arg0 = s.platform___15162;
     s.tmp_0.arg1 = 7168;
     s.tmp_0.arg2 = false;
-    s.callLocIdx = 666; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 668; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mklocRef();
@@ -27994,7 +28057,7 @@ switch (step) {
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 4, s.arg0);
     s.tmp_1 = game_onUpdate__P3085_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.callLocIdx = 672; s.pc = 4; return s.tmp_1;
+    s.callLocIdx = 674; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
     r0 = undefined;
@@ -28039,7 +28102,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 667; s.pc = 10; return s.tmp_2; }
+     else { s.callLocIdx = 669; s.pc = 10; return s.tmp_2; }
     }
   case 10:
     r0 = s.retval;
@@ -28065,7 +28128,7 @@ switch (step) {
     s.tmp_5.arg0 = r0;
     s.tmp_8 = Sprite_x__P2391_mk(s);
     s.tmp_8.arg0 = s.tmp_6;
-    s.callLocIdx = 668; s.pc = 12; return s.tmp_8;
+    s.callLocIdx = 670; s.pc = 12; return s.tmp_8;
   case 12:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -28077,12 +28140,12 @@ switch (step) {
     s.tmp_9 = r0;
     r0 = (s.tmp_7 + s.tmp_9);
     s.tmp_5.arg1 = r0;
-    s.callLocIdx = 669; s.pc = 11; return s.tmp_5;
+    s.callLocIdx = 671; s.pc = 11; return s.tmp_5;
   case 11:
     r0 = s.retval;
     s.tmp_2 = Sprite_x__P2391_mk(s);
     s.tmp_2.arg0 = s.caps[0];
-    s.callLocIdx = 670; s.pc = 13; return s.tmp_2;
+    s.callLocIdx = 672; s.pc = 13; return s.tmp_2;
   case 13:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -28095,7 +28158,7 @@ switch (step) {
   case 5:
     s.tmp_2 = Sprite_x__P2391_mk(s);
     s.tmp_2.arg0 = s.caps[0];
-    s.callLocIdx = 671; s.pc = 14; return s.tmp_2;
+    s.callLocIdx = 673; s.pc = 14; return s.tmp_2;
   case 14:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -28136,7 +28199,7 @@ function GameController_PlatformMode_spawnMovingPlatform_inline__P15178_mk(s) {
 
 
 
-function initPlatformPlayer__P5343(s) {
+function initPlatformPlayer__P37924(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -28154,36 +28217,36 @@ switch (step) {
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = 100;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 1095; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1097; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = scene_cameraFollowSprite__P2935_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 1096; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 1098; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2213_mk(s);
     s.tmp_0.arg0 = globals.A___2130;
     s.tmp_0.arg1 = 2049;
-    s.tmp_0.arg2 = initPlatformPlayer_inline__P15217;
-    s.callLocIdx = 1104; s.pc = 3; return s.tmp_0;
+    s.tmp_0.arg2 = initPlatformPlayer_inline__P37989;
+    s.callLocIdx = 1106; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = game_onUpdate__P3085_mk(s);
-    s.tmp_0.arg0 = initPlatformPlayer_inline__P15246;
-    s.callLocIdx = 1107; s.pc = 4; return s.tmp_0;
+    s.tmp_0.arg0 = initPlatformPlayer_inline__P38018;
+    s.callLocIdx = 1109; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-initPlatformPlayer__P5343.info = {"start":212,"length":844,"line":7,"column":0,"endLine":36,"endColumn":1,"fileName":"player_platform.ts","functionName":"initPlatformPlayer","argumentNames":["player"]}
+initPlatformPlayer__P37924.info = {"start":212,"length":844,"line":7,"column":0,"endLine":36,"endColumn":1,"fileName":"player_platform.ts","functionName":"initPlatformPlayer","argumentNames":["player"]}
 
-function initPlatformPlayer__P5343_mk(s) {
+function initPlatformPlayer__P37924_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: initPlatformPlayer__P5343, depth: s.depth + 1,
+        parent: s, fn: initPlatformPlayer__P37924, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -28192,7 +28255,7 @@ function initPlatformPlayer__P5343_mk(s) {
 
 
 
-function initPlatformPlayer_inline__P15217(s) {
+function initPlatformPlayer_inline__P37989(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -28202,7 +28265,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.plyr___15222 = undefined;
+    s.plyr___37994 = undefined;
     s.tmp_2 = if_playMode_1_mk(s);
     s.tmp_2.arg0 = globals.state___5156;
     if (!s.tmp_2.arg0.vtable.iface) {
@@ -28211,7 +28274,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1097; s.pc = 12; return s.tmp_2; }
+     else { s.callLocIdx = 1099; s.pc = 12; return s.tmp_2; }
     }
   case 12:
     r0 = s.retval;
@@ -28224,14 +28287,14 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_4 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_4.arg0 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1098; s.pc = 13; return s.tmp_4;
+    s.tmp_4.arg0 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1100; s.pc = 13; return s.tmp_4;
   case 13:
     r0 = s.retval;
     s.tmp_3 = r0;
     r0 = pxsim_Array__getAt(s.tmp_3, 0);
-    s.plyr___15222 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.plyr___15222);
+    s.plyr___37994 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.plyr___37994);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -28240,15 +28303,15 @@ switch (step) {
     { step = 11; continue; }
   case 3:
   case 4:
-    r0 = pxsim_numops_toBoolDecr(globals.isOnLadder___5342);
+    r0 = pxsim_numops_toBoolDecr(globals.isOnLadder___37923);
     if (!r0) { step = 5; continue; }
     { step = 11; continue; }
   case 5:
   case 6:
     s.tmp_3 = Sprite_isHittingTile__P2463_mk(s);
-    s.tmp_3.arg0 = s.plyr___15222;
+    s.tmp_3.arg0 = s.plyr___37994;
     s.tmp_3.arg1 = 3;
-    s.callLocIdx = 1099; s.pc = 14; return s.tmp_3;
+    s.callLocIdx = 1101; s.pc = 14; return s.tmp_3;
   case 14:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -28259,12 +28322,12 @@ switch (step) {
   case 7:
     s.tmp_5 = Math_abs__P129_mk(s);
     s.tmp_6 = Sprite_vy__P2397_mk(s);
-    s.tmp_6.arg0 = s.plyr___15222;
-    s.callLocIdx = 1100; s.pc = 16; return s.tmp_6;
+    s.tmp_6.arg0 = s.plyr___37994;
+    s.callLocIdx = 1102; s.pc = 16; return s.tmp_6;
   case 16:
     r0 = s.retval;
     s.tmp_5.arg0 = r0;
-    s.callLocIdx = 1101; s.pc = 15; return s.tmp_5;
+    s.callLocIdx = 1103; s.pc = 15; return s.tmp_5;
   case 15:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -28275,13 +28338,13 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_7);
     if (!r0) { step = 9; continue; }
     s.tmp_8 = Sprite_vy__P2398_mk(s);
-    s.tmp_8.arg0 = s.plyr___15222;
+    s.tmp_8.arg0 = s.plyr___37994;
     s.tmp_8.arg1 = -150;
-    s.callLocIdx = 1102; s.pc = 17; return s.tmp_8;
+    s.callLocIdx = 1104; s.pc = 17; return s.tmp_8;
   case 17:
     r0 = s.retval;
     s.tmp_0 = sfxJump__P5254_mk(s);
-    s.callLocIdx = 1103; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 1105; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
   case 9:
@@ -28291,12 +28354,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-initPlatformPlayer_inline__P15217.info = {"start":423,"length":468,"line":12,"column":54,"endLine":29,"endColumn":3,"fileName":"player_platform.ts","functionName":"inline","argumentNames":[]}
+initPlatformPlayer_inline__P37989.info = {"start":423,"length":468,"line":12,"column":54,"endLine":29,"endColumn":3,"fileName":"player_platform.ts","functionName":"inline","argumentNames":[]}
 
-function initPlatformPlayer_inline__P15217_mk(s) {
+function initPlatformPlayer_inline__P37989_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: initPlatformPlayer_inline__P15217, depth: s.depth + 1,
+        parent: s, fn: initPlatformPlayer_inline__P37989, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -28307,13 +28370,13 @@ function initPlatformPlayer_inline__P15217_mk(s) {
   tmp_6: undefined,
   tmp_7: undefined,
   tmp_8: undefined,
-  plyr___15222: undefined,
+  plyr___37994: undefined,
 } }
 
 
 
 
-function initPlatformPlayer_inline__P15246(s) {
+function initPlatformPlayer_inline__P38018(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -28331,7 +28394,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1105; s.pc = 4; return s.tmp_2; }
+     else { s.callLocIdx = 1107; s.pc = 4; return s.tmp_2; }
     }
   case 4:
     r0 = s.retval;
@@ -28343,8 +28406,8 @@ switch (step) {
     { step = 3; continue; }
   case 1:
   case 2:
-    s.tmp_3 = updateLadderClimbing__P5344_mk(s);
-    s.callLocIdx = 1106; s.pc = 5; return s.tmp_3;
+    s.tmp_3 = updateLadderClimbing__P37925_mk(s);
+    s.callLocIdx = 1108; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
   case 3:
@@ -28352,12 +28415,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-initPlatformPlayer_inline__P15246.info = {"start":951,"length":100,"line":32,"column":16,"endLine":35,"endColumn":3,"fileName":"player_platform.ts","functionName":"inline","argumentNames":[]}
+initPlatformPlayer_inline__P38018.info = {"start":951,"length":100,"line":32,"column":16,"endLine":35,"endColumn":3,"fileName":"player_platform.ts","functionName":"inline","argumentNames":[]}
 
-function initPlatformPlayer_inline__P15246_mk(s) {
+function initPlatformPlayer_inline__P38018_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: initPlatformPlayer_inline__P15246, depth: s.depth + 1,
+        parent: s, fn: initPlatformPlayer_inline__P38018, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -28368,7 +28431,7 @@ function initPlatformPlayer_inline__P15246_mk(s) {
 
 
 
-function updateLadderClimbing__P5344(s) {
+function updateLadderClimbing__P37925(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -28378,19 +28441,19 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.plyr___15252 = undefined;
-    s.loc___15264 = undefined;
-    s.ladderTile___15270 = undefined;
-    s.onLadderTile___15275 = undefined;
+    s.plyr___38024 = undefined;
+    s.loc___38036 = undefined;
+    s.ladderTile___38042 = undefined;
+    s.onLadderTile___38046 = undefined;
     s.tmp_1 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_1.arg0 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 1108; s.pc = 18; return s.tmp_1;
+    s.tmp_1.arg0 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 1110; s.pc = 18; return s.tmp_1;
   case 18:
     r0 = s.retval;
     s.tmp_0 = r0;
     r0 = pxsim_Array__getAt(s.tmp_0, 0);
-    s.plyr___15252 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.plyr___15252);
+    s.plyr___38024 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.plyr___38024);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -28400,7 +28463,7 @@ switch (step) {
     { step = 2; continue; }
   case 1:
     s.tmp_4 = game_currentScene__P3061_mk(s);
-    s.callLocIdx = 1109; s.pc = 19; return s.tmp_4;
+    s.callLocIdx = 1111; s.pc = 19; return s.tmp_4;
   case 19:
     r0 = s.retval;
     r0 = r0.fields["tileMap"];
@@ -28417,12 +28480,12 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_6 = Sprite_tilemapLocation__P2466_mk(s);
-    s.tmp_6.arg0 = s.plyr___15252;
-    s.callLocIdx = 1110; s.pc = 20; return s.tmp_6;
+    s.tmp_6.arg0 = s.plyr___38024;
+    s.callLocIdx = 1112; s.pc = 20; return s.tmp_6;
   case 20:
     r0 = s.retval;
-    s.loc___15264 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.loc___15264);
+    s.loc___38036 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.loc___38036);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -28431,41 +28494,41 @@ switch (step) {
     { step = 17; continue; }
   case 5:
   case 6:
-    s.tmp_2 = tiles_getTileImage__P2813_mk(s);
+    s.tmp_2 = tileImg__P36450_mk(s);
     s.tmp_2.arg0 = 6;
-    s.callLocIdx = 1111; s.pc = 21; return s.tmp_2;
+    s.callLocIdx = 1113; s.pc = 21; return s.tmp_2;
   case 21:
     r0 = s.retval;
-    s.ladderTile___15270 = (r0);
-    s.tmp_0 = r0 = s.ladderTile___15270;
+    s.ladderTile___38042 = (r0);
+    s.tmp_0 = r0 = s.ladderTile___38042;
     r0 = pxsim_numops_toBool(s.tmp_0);
     if (r0) { step = 7; continue; }
     r0 = s.tmp_0;
     { step = 8; continue; }
   case 7:
     s.tmp_1 = tiles_tileAtLocationEquals__P2815_mk(s);
-    s.tmp_1.arg0 = s.loc___15264;
-    s.tmp_1.arg1 = s.ladderTile___15270;
-    s.callLocIdx = 1112; s.pc = 22; return s.tmp_1;
+    s.tmp_1.arg0 = s.loc___38036;
+    s.tmp_1.arg1 = s.ladderTile___38042;
+    s.callLocIdx = 1114; s.pc = 22; return s.tmp_1;
   case 22:
     r0 = s.retval;
   case 8:
     // jmp value (already in r0)
     s.tmp_2 = r0;
-    s.onLadderTile___15275 = (s.tmp_2);
-    r0 = pxsim_numops_toBoolDecr(s.onLadderTile___15275);
+    s.onLadderTile___38046 = (s.tmp_2);
+    r0 = pxsim_numops_toBoolDecr(s.onLadderTile___38046);
     if (!r0) { step = 13; continue; }
-    globals.isOnLadder___5342 = (true);
+    globals.isOnLadder___37923 = (true);
     s.tmp_0 = Sprite_ay__P2402_mk(s);
-    s.tmp_0.arg0 = s.plyr___15252;
+    s.tmp_0.arg0 = s.plyr___38024;
     s.tmp_0.arg1 = 0;
-    s.callLocIdx = 1113; s.pc = 23; return s.tmp_0;
+    s.callLocIdx = 1115; s.pc = 23; return s.tmp_0;
   case 23:
     r0 = s.retval;
     s.tmp_0 = Sprite_vy__P2398_mk(s);
-    s.tmp_0.arg0 = s.plyr___15252;
+    s.tmp_0.arg0 = s.plyr___38024;
     s.tmp_0.arg1 = 0;
-    s.callLocIdx = 1114; s.pc = 24; return s.tmp_0;
+    s.callLocIdx = 1116; s.pc = 24; return s.tmp_0;
   case 24:
     r0 = s.retval;
     s.tmp_1 = controller_Button__C2206_v0_1_mk(s);
@@ -28479,9 +28542,9 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_2 = Sprite_vy__P2398_mk(s);
-    s.tmp_2.arg0 = s.plyr___15252;
+    s.tmp_2.arg0 = s.plyr___38024;
     s.tmp_2.arg1 = -50;
-    s.callLocIdx = 1115; s.pc = 26; return s.tmp_2;
+    s.callLocIdx = 1117; s.pc = 26; return s.tmp_2;
   case 26:
     r0 = s.retval;
     { step = 12; continue; }
@@ -28497,32 +28560,32 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
     s.tmp_2 = Sprite_vy__P2398_mk(s);
-    s.tmp_2.arg0 = s.plyr___15252;
+    s.tmp_2.arg0 = s.plyr___38024;
     s.tmp_2.arg1 = 50;
-    s.callLocIdx = 1116; s.pc = 28; return s.tmp_2;
+    s.callLocIdx = 1118; s.pc = 28; return s.tmp_2;
   case 28:
     r0 = s.retval;
     { step = 11; continue; }
   case 10:
     s.tmp_0 = Sprite_vy__P2398_mk(s);
-    s.tmp_0.arg0 = s.plyr___15252;
+    s.tmp_0.arg0 = s.plyr___38024;
     s.tmp_0.arg1 = 0;
-    s.callLocIdx = 1117; s.pc = 29; return s.tmp_0;
+    s.callLocIdx = 1119; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
   case 11:
   case 12:
     { step = 16; continue; }
   case 13:
-    r0 = pxsim_numops_toBoolDecr(globals.isOnLadder___5342);
+    r0 = pxsim_numops_toBoolDecr(globals.isOnLadder___37923);
     if (!r0) { step = 14; continue; }
     s.tmp_0 = Sprite_ay__P2402_mk(s);
-    s.tmp_0.arg0 = s.plyr___15252;
+    s.tmp_0.arg0 = s.plyr___38024;
     s.tmp_0.arg1 = 300;
-    s.callLocIdx = 1118; s.pc = 30; return s.tmp_0;
+    s.callLocIdx = 1120; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
-    globals.isOnLadder___5342 = (false);
+    globals.isOnLadder___37923 = (false);
   case 14:
   case 15:
   case 16:
@@ -28531,12 +28594,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-updateLadderClimbing__P5344.info = {"start":1060,"length":819,"line":38,"column":0,"endLine":70,"endColumn":1,"fileName":"player_platform.ts","functionName":"updateLadderClimbing","argumentNames":[]}
+updateLadderClimbing__P37925.info = {"start":1060,"length":801,"line":38,"column":0,"endLine":70,"endColumn":1,"fileName":"player_platform.ts","functionName":"updateLadderClimbing","argumentNames":[]}
 
-function updateLadderClimbing__P5344_mk(s) {
+function updateLadderClimbing__P37925_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: updateLadderClimbing__P5344, depth: s.depth + 1,
+        parent: s, fn: updateLadderClimbing__P37925, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -28545,10 +28608,10 @@ function updateLadderClimbing__P5344_mk(s) {
   tmp_4: undefined,
   tmp_5: undefined,
   tmp_6: undefined,
-  plyr___15252: undefined,
-  loc___15264: undefined,
-  ladderTile___15270: undefined,
-  onLadderTile___15275: undefined,
+  plyr___38024: undefined,
+  loc___38036: undefined,
+  ladderTile___38042: undefined,
+  onLadderTile___38046: undefined,
 } }
 
 
@@ -28984,7 +29047,7 @@ switch (step) {
     }
     s.tmp_0 = GameController_HubMode_setup__P5369_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 342; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 344; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -29037,7 +29100,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["spawnTag"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["spawnTag"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 533; s.pc = 17; return s.tmp_1; }
+     else { s.callLocIdx = 535; s.pc = 17; return s.tmp_1; }
     }
   case 17:
     r0 = s.retval;
@@ -29046,7 +29109,7 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_2);
     if (!r0) { step = 3; continue; }
-    s.tmp_3 = getSpawnPoint__P8356_mk(s);
+    s.tmp_3 = getSpawnPoint__P36538_mk(s);
     s.tmp_4 = if_spawnTag_1_mk(s);
     s.tmp_4.arg0 = s.arg0;
     if (!s.tmp_4.arg0.vtable.iface) {
@@ -29055,12 +29118,12 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["spawnTag"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["spawnTag"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 534; s.pc = 19; return s.tmp_4; }
+     else { s.callLocIdx = 536; s.pc = 19; return s.tmp_4; }
     }
   case 19:
     r0 = s.retval;
     s.tmp_3.arg0 = r0;
-    s.callLocIdx = 535; s.pc = 18; return s.tmp_3;
+    s.callLocIdx = 537; s.pc = 18; return s.tmp_3;
   case 18:
     r0 = s.retval;
     { step = 4; continue; }
@@ -29084,7 +29147,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["hubRoom"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["hubRoom"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 536; s.pc = 20; return s.tmp_1; }
+     else { s.callLocIdx = 538; s.pc = 20; return s.tmp_1; }
     }
   case 20:
     r0 = s.retval;
@@ -29095,7 +29158,7 @@ switch (step) {
     if (!r0) { step = 7; continue; }
     s.tmp_3 = if_hubRoom_2_mk(s);
     s.tmp_3.arg0 = globals.state___5156;
-    s.tmp_4 = getSafeHubRoom__P8355_mk(s);
+    s.tmp_4 = getSafeHubRoom__P36537_mk(s);
     s.tmp_5 = if_hubRoom_1_mk(s);
     s.tmp_5.arg0 = s.arg0;
     if (!s.tmp_5.arg0.vtable.iface) {
@@ -29104,13 +29167,13 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["hubRoom"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["hubRoom"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 537; s.pc = 23; return s.tmp_5; }
+     else { s.callLocIdx = 539; s.pc = 23; return s.tmp_5; }
     }
   case 23:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
     s.tmp_4.arg1 = "payload.hubRoom";
-    s.callLocIdx = 538; s.pc = 22; return s.tmp_4;
+    s.callLocIdx = 540; s.pc = 22; return s.tmp_4;
   case 22:
     r0 = s.retval;
     s.tmp_3.arg1 = r0;
@@ -29120,7 +29183,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["set/hubRoom"];
       if (s.tmp_3.fn === null) { s.tmp_3.arg0.fields["hubRoom"] = s.tmp_3.arg1; }
       else if (s.tmp_3.fn === undefined) { failedCast(s.tmp_3.arg0) } 
-     else { s.callLocIdx = 539; s.pc = 21; return s.tmp_3; }
+     else { s.callLocIdx = 541; s.pc = 21; return s.tmp_3; }
     }
   case 21:
     r0 = s.retval;
@@ -29138,7 +29201,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["room"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["room"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 540; s.pc = 25; return s.tmp_1; }
+     else { s.callLocIdx = 542; s.pc = 25; return s.tmp_1; }
     }
   case 25:
     r0 = s.retval;
@@ -29149,7 +29212,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/hubRoom"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["hubRoom"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 541; s.pc = 24; return s.tmp_0; }
+     else { s.callLocIdx = 543; s.pc = 24; return s.tmp_0; }
     }
   case 24:
     r0 = s.retval;
@@ -29157,7 +29220,7 @@ switch (step) {
   case 10:
     s.tmp_0 = if_hubRoom_2_mk(s);
     s.tmp_0.arg0 = globals.state___5156;
-    s.tmp_1 = getSafeHubRoom__P8355_mk(s);
+    s.tmp_1 = getSafeHubRoom__P36537_mk(s);
     s.tmp_2 = if_hubRoom_1_mk(s);
     s.tmp_2.arg0 = globals.state___5156;
     if (!s.tmp_2.arg0.vtable.iface) {
@@ -29166,13 +29229,13 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["hubRoom"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["hubRoom"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 542; s.pc = 28; return s.tmp_2; }
+     else { s.callLocIdx = 544; s.pc = 28; return s.tmp_2; }
     }
   case 28:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = "pre-load";
-    s.callLocIdx = 543; s.pc = 27; return s.tmp_1;
+    s.callLocIdx = 545; s.pc = 27; return s.tmp_1;
   case 27:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
@@ -29182,11 +29245,11 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/hubRoom"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["hubRoom"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 544; s.pc = 26; return s.tmp_0; }
+     else { s.callLocIdx = 546; s.pc = 26; return s.tmp_0; }
     }
   case 26:
     r0 = s.retval;
-    s.tmp_1 = r0 = globals.HUB_ROOM_IDS___8338;
+    s.tmp_1 = r0 = globals.HUB_ROOM_IDS___36520;
     s.tmp_3 = if_row_1_mk(s);
     s.tmp_4 = if_hubRoom_1_mk(s);
     s.tmp_4.arg0 = globals.state___5156;
@@ -29196,7 +29259,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["hubRoom"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["hubRoom"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 545; s.pc = 30; return s.tmp_4; }
+     else { s.callLocIdx = 547; s.pc = 30; return s.tmp_4; }
     }
   case 30:
     r0 = s.retval;
@@ -29207,7 +29270,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["row"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["row"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 546; s.pc = 29; return s.tmp_3; }
+     else { s.callLocIdx = 548; s.pc = 29; return s.tmp_3; }
     }
   case 29:
     r0 = s.retval;
@@ -29223,7 +29286,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["hubRoom"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["hubRoom"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 547; s.pc = 32; return s.tmp_7; }
+     else { s.callLocIdx = 549; s.pc = 32; return s.tmp_7; }
     }
   case 32:
     r0 = s.retval;
@@ -29234,7 +29297,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["col"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["col"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 548; s.pc = 31; return s.tmp_6; }
+     else { s.callLocIdx = 550; s.pc = 31; return s.tmp_6; }
     }
   case 31:
     r0 = s.retval;
@@ -29243,7 +29306,7 @@ switch (step) {
     s.roomId___15419 = (r0);
     s.tmp_0 = scene_setBackgroundColor__P2928_mk(s);
     s.tmp_0.arg0 = 1;
-    s.callLocIdx = 549; s.pc = 33; return s.tmp_0;
+    s.callLocIdx = 551; s.pc = 33; return s.tmp_0;
   case 33:
     r0 = s.retval;
     r0 = (s.roomId___15419 === "TM_HUB_11");
@@ -29251,14 +29314,14 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
     s.tmp_1 = tmHub11Playable__P5423_mk(s);
-    s.callLocIdx = 550; s.pc = 34; return s.tmp_1;
+    s.callLocIdx = 552; s.pc = 34; return s.tmp_1;
   case 34:
     r0 = s.retval;
     { step = 12; continue; }
   case 11:
     s.tmp_2 = getTilemapByID__P5269_mk(s);
     s.tmp_2.arg0 = s.roomId___15419;
-    s.callLocIdx = 551; s.pc = 35; return s.tmp_2;
+    s.callLocIdx = 553; s.pc = 35; return s.tmp_2;
   case 35:
     r0 = s.retval;
   case 12:
@@ -29269,19 +29332,19 @@ switch (step) {
     if (!r0) { step = 13; continue; }
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = s.tm___15433;
-    s.callLocIdx = 552; s.pc = 36; return s.tmp_0;
+    s.callLocIdx = 554; s.pc = 36; return s.tmp_0;
   case 36:
     r0 = s.retval;
   case 13:
   case 14:
     s.tmp_0 = sprites_create__P2311_mk(s);
     s.tmp_1 = imgPlayerTopdown__P5189_mk(s);
-    s.callLocIdx = 553; s.pc = 38; return s.tmp_1;
+    s.callLocIdx = 555; s.pc = 38; return s.tmp_1;
   case 38:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_PLAYER___8150;
-    s.callLocIdx = 554; s.pc = 37; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PLAYER___36332;
+    s.callLocIdx = 556; s.pc = 37; return s.tmp_0;
   case 37:
     r0 = s.retval;
     s.playerSprite___15443 = (r0);
@@ -29297,7 +29360,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["x"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["x"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 555; s.pc = 40; return s.tmp_1; }
+     else { s.callLocIdx = 557; s.pc = 40; return s.tmp_1; }
     }
   case 40:
     r0 = s.retval;
@@ -29310,12 +29373,12 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["y"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["y"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 556; s.pc = 41; return s.tmp_2; }
+     else { s.callLocIdx = 558; s.pc = 41; return s.tmp_2; }
     }
   case 41:
     r0 = s.retval;
     s.tmp_0.arg2 = r0;
-    s.callLocIdx = 557; s.pc = 39; return s.tmp_0;
+    s.callLocIdx = 559; s.pc = 39; return s.tmp_0;
   case 39:
     r0 = s.retval;
     { step = 16; continue; }
@@ -29324,7 +29387,7 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___15443;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 60;
-    s.callLocIdx = 558; s.pc = 42; return s.tmp_0;
+    s.callLocIdx = 560; s.pc = 42; return s.tmp_0;
   case 42:
     r0 = s.retval;
   case 16:
@@ -29332,19 +29395,19 @@ switch (step) {
     s.tmp_0.arg0 = s.playerSprite___15443;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 80;
-    s.callLocIdx = 559; s.pc = 43; return s.tmp_0;
+    s.callLocIdx = 561; s.pc = 43; return s.tmp_0;
   case 43:
     r0 = s.retval;
     s.tmp_0 = scene_cameraFollowSprite__P2935_mk(s);
     s.tmp_0.arg0 = s.playerSprite___15443;
-    s.callLocIdx = 560; s.pc = 44; return s.tmp_0;
+    s.callLocIdx = 562; s.pc = 44; return s.tmp_0;
   case 44:
     r0 = s.retval;
     s.tmp_0 = scroller_scrollBackgroundWithSpeed__P4441_mk(s);
     s.tmp_0.arg0 = -10;
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = 0;
-    s.callLocIdx = 561; s.pc = 45; return s.tmp_0;
+    s.callLocIdx = 563; s.pc = 45; return s.tmp_0;
   case 45:
     r0 = s.retval;
     s.tmp_0 = spawnHubContent__P5315_mk(s);
@@ -29357,7 +29420,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["hubRoom"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["hubRoom"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 562; s.pc = 48; return s.tmp_2; }
+     else { s.callLocIdx = 564; s.pc = 48; return s.tmp_2; }
     }
   case 48:
     r0 = s.retval;
@@ -29368,7 +29431,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["row"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["row"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 563; s.pc = 47; return s.tmp_1; }
+     else { s.callLocIdx = 565; s.pc = 47; return s.tmp_1; }
     }
   case 47:
     r0 = s.retval;
@@ -29382,7 +29445,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["hubRoom"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["hubRoom"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 564; s.pc = 50; return s.tmp_4; }
+     else { s.callLocIdx = 566; s.pc = 50; return s.tmp_4; }
     }
   case 50:
     r0 = s.retval;
@@ -29393,17 +29456,17 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["col"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["col"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 565; s.pc = 49; return s.tmp_3; }
+     else { s.callLocIdx = 567; s.pc = 49; return s.tmp_3; }
     }
   case 49:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 566; s.pc = 46; return s.tmp_0;
+    s.callLocIdx = 568; s.pc = 46; return s.tmp_0;
   case 46:
     r0 = s.retval;
     s.tmp_0 = GameController_setPlayerSprite__P5412_mk(s);
     s.tmp_0.arg0 = s.playerSprite___15443;
-    s.callLocIdx = 567; s.pc = 51; return s.tmp_0;
+    s.callLocIdx = 569; s.pc = 51; return s.tmp_0;
   case 51:
     r0 = s.retval;
     r0 = undefined;
@@ -29450,8 +29513,8 @@ switch (step) {
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    s.tmp_0 = initSpriteKinds__P8167_mk(s);
-    s.callLocIdx = 1265; s.pc = 5; return s.tmp_0;
+    s.tmp_0 = initSpriteKinds__P36349_mk(s);
+    s.callLocIdx = 1267; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     r0 = (s.arg0 === 1);
@@ -29472,7 +29535,7 @@ switch (step) {
     s.tmp_2.arg1 = 50;
     s.tmp_2.arg2 = 50;
     s.tmp_2.arg3 = "DIALOG_NPC_SAVEHOUSE_WELCOME";
-    s.callLocIdx = 1266; s.pc = 6; return s.tmp_2;
+    s.callLocIdx = 1268; s.pc = 6; return s.tmp_2;
   case 6:
     r0 = s.retval;
   case 3:
@@ -29480,7 +29543,7 @@ switch (step) {
     s.tmp_0 = spawnDungeonDoors__P5317_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.callLocIdx = 1267; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 1269; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     r0 = undefined;
@@ -29594,7 +29657,7 @@ switch (step) {
     s.tmp_0.arg0 = s.dungeonId___15516;
     s.tmp_0.arg1 = 80;
     s.tmp_0.arg2 = 80;
-    s.callLocIdx = 1273; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 1275; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
   case 9:
@@ -29617,7 +29680,7 @@ switch (step) {
   case 13:
     s.tmp_2 = hasFlag__P5161_mk(s);
     s.tmp_2.arg0 = "FLAG_ALL_DUNGEONS_CLEARED";
-    s.callLocIdx = 1274; s.pc = 19; return s.tmp_2;
+    s.callLocIdx = 1276; s.pc = 19; return s.tmp_2;
   case 19:
     r0 = s.retval;
   case 14:
@@ -29629,7 +29692,7 @@ switch (step) {
     s.tmp_4.arg0 = "DUN_FINAL_GLITCH_PANOPTICON";
     s.tmp_4.arg1 = 80;
     s.tmp_4.arg2 = 100;
-    s.callLocIdx = 1275; s.pc = 20; return s.tmp_4;
+    s.callLocIdx = 1277; s.pc = 20; return s.tmp_4;
   case 20:
     r0 = s.retval;
   case 15:
@@ -29685,12 +29748,12 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     s.tmp_1 = imgDoor__P5196_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.callLocIdx = 1276; s.pc = 2; return s.tmp_1;
+    s.callLocIdx = 1278; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_DOOR___8154;
-    s.callLocIdx = 1277; s.pc = 1; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_DOOR___36336;
+    s.callLocIdx = 1279; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.door___15540 = (r0);
@@ -29698,21 +29761,21 @@ switch (step) {
     s.tmp_0.arg0 = s.door___15540;
     s.tmp_0.arg1 = s.arg1;
     s.tmp_0.arg2 = s.arg2;
-    s.callLocIdx = 1278; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1280; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = setHubSpriteData__P5313_mk(s);
     s.tmp_0.arg0 = s.door___15540;
     s.tmp_0.arg1 = globals.HUB_SPRITE_DATA_DUNGEON_ID___5312;
     s.tmp_0.arg2 = s.arg0;
-    s.callLocIdx = 1279; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1281; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = setHubSpriteData__P5313_mk(s);
     s.tmp_0.arg0 = s.door___15540;
     s.tmp_0.arg1 = globals.HUB_SPRITE_DATA_IS_DOOR___5311;
     s.tmp_0.arg2 = true;
-    s.callLocIdx = 1280; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 1282; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     r0 = undefined;
@@ -29756,7 +29819,7 @@ switch (step) {
     }
     s.tmp_0 = Sprite_data__P2417_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 1263; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1265; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.data___15562 = (r0);
@@ -29892,12 +29955,12 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     s.tmp_1 = imgNpc__P5195_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.callLocIdx = 1268; s.pc = 2; return s.tmp_1;
+    s.callLocIdx = 1270; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_NPC___8153;
-    s.callLocIdx = 1269; s.pc = 1; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_NPC___36335;
+    s.callLocIdx = 1271; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.npc___15590 = (r0);
@@ -29905,21 +29968,21 @@ switch (step) {
     s.tmp_0.arg0 = s.npc___15590;
     s.tmp_0.arg1 = s.arg1;
     s.tmp_0.arg2 = s.arg2;
-    s.callLocIdx = 1270; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1272; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = setHubSpriteData__P5313_mk(s);
     s.tmp_0.arg0 = s.npc___15590;
     s.tmp_0.arg1 = globals.HUB_SPRITE_DATA_IS_NPC___5309;
     s.tmp_0.arg2 = true;
-    s.callLocIdx = 1271; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1273; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = setHubSpriteData__P5313_mk(s);
     s.tmp_0.arg0 = s.npc___15590;
     s.tmp_0.arg1 = globals.HUB_SPRITE_DATA_DIALOG_ID___5310;
     s.tmp_0.arg2 = s.arg3;
-    s.callLocIdx = 1272; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 1274; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     r0 = undefined;
@@ -31284,7 +31347,7 @@ switch (step) {
     s.tmp_1.arg1 = r0;
     s.tmp_1.arg2 = s.tmp_0;
     s.tmp_1.arg3 = 4;
-    s.callLocIdx = 302; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 304; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     return leave(s, r0)
@@ -31304,7 +31367,7 @@ function tmHub11Playable__P5423_mk(s) {
 
 
 
-function getSafeHubRoom__P8355(s) {
+function getSafeHubRoom__P36537(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -31319,9 +31382,9 @@ switch (step) {
       s.arg1 = (s.lambdaArgs[1]);
       s.lambdaArgs = null;
     }
-    s.tmp_1 = isValidHubRoom__P8354_mk(s);
+    s.tmp_1 = isValidHubRoom__P36536_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.callLocIdx = 102; s.pc = 4; return s.tmp_1;
+    s.callLocIdx = 104; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -31337,7 +31400,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["row"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["row"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 103; s.pc = 5; return s.tmp_4; }
+     else { s.callLocIdx = 105; s.pc = 5; return s.tmp_4; }
     }
   case 5:
     r0 = s.retval;
@@ -31351,7 +31414,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["col"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["col"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 104; s.pc = 6; return s.tmp_6; }
+     else { s.callLocIdx = 106; s.pc = 6; return s.tmp_6; }
     }
   case 6:
     r0 = s.retval;
@@ -31373,34 +31436,34 @@ switch (step) {
     s.tmp_8 = r0;
     r0 = pxsim_String__concat("DEBUG: Hub room fallback triggered - ", s.tmp_8);
     s.tmp_7.arg0 = r0;
-    s.callLocIdx = 105; s.pc = 7; return s.tmp_7;
+    s.callLocIdx = 107; s.pc = 7; return s.tmp_7;
   case 7:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
     s.tmp_2 = if_row_1_mk(s);
-    s.tmp_2.arg0 = globals.HUB_START_ROOM___8340;
+    s.tmp_2.arg0 = globals.HUB_START_ROOM___36522;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "row");
     } else {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["row"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["row"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 106; s.pc = 9; return s.tmp_2; }
+     else { s.callLocIdx = 108; s.pc = 9; return s.tmp_2; }
     }
   case 9:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "row", s.tmp_1);
     s.tmp_4 = if_col_1_mk(s);
-    s.tmp_4.arg0 = globals.HUB_START_ROOM___8340;
+    s.tmp_4.arg0 = globals.HUB_START_ROOM___36522;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "col");
     } else {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["col"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["col"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 107; s.pc = 10; return s.tmp_4; }
+     else { s.callLocIdx = 109; s.pc = 10; return s.tmp_4; }
     }
   case 10:
     r0 = s.retval;
@@ -31411,12 +31474,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-getSafeHubRoom__P8355.info = {"start":16699,"length":303,"line":585,"column":0,"endLine":591,"endColumn":1,"fileName":"constants.ts","functionName":"getSafeHubRoom","argumentNames":["room","debugContext"]}
+getSafeHubRoom__P36537.info = {"start":16671,"length":303,"line":588,"column":0,"endLine":594,"endColumn":1,"fileName":"constants.ts","functionName":"getSafeHubRoom","argumentNames":["room","debugContext"]}
 
-function getSafeHubRoom__P8355_mk(s) {
+function getSafeHubRoom__P36537_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: getSafeHubRoom__P8355, depth: s.depth + 1,
+        parent: s, fn: getSafeHubRoom__P36537, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -31434,7 +31497,7 @@ function getSafeHubRoom__P8355_mk(s) {
 
 
 
-function isValidHubRoom__P8354(s) {
+function isValidHubRoom__P36536(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -31477,7 +31540,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["row"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["row"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 84; s.pc = 34; return s.tmp_7; }
+     else { s.callLocIdx = 86; s.pc = 34; return s.tmp_7; }
     }
   case 34:
     r0 = s.retval;
@@ -31499,7 +31562,7 @@ switch (step) {
       s.tmp_10.fn = s.tmp_10.arg0.vtable.iface["col"];
       if (s.tmp_10.fn == null) { s.retval = s.tmp_10.arg0.fields["col"]; }
       else if (!s.tmp_10.fn.isGetter) { s.retval = bind(s.tmp_10); }
-     else { s.callLocIdx = 85; s.pc = 35; return s.tmp_10; }
+     else { s.callLocIdx = 87; s.pc = 35; return s.tmp_10; }
     }
   case 35:
     r0 = s.retval;
@@ -31524,7 +31587,7 @@ switch (step) {
       s.tmp_14.fn = s.tmp_14.arg0.vtable.iface["row"];
       if (s.tmp_14.fn == null) { s.retval = s.tmp_14.arg0.fields["row"]; }
       else if (!s.tmp_14.fn.isGetter) { s.retval = bind(s.tmp_14); }
-     else { s.callLocIdx = 86; s.pc = 36; return s.tmp_14; }
+     else { s.callLocIdx = 88; s.pc = 36; return s.tmp_14; }
     }
   case 36:
     r0 = s.retval;
@@ -31537,7 +31600,7 @@ switch (step) {
       s.tmp_16.fn = s.tmp_16.arg0.vtable.iface["row"];
       if (s.tmp_16.fn == null) { s.retval = s.tmp_16.arg0.fields["row"]; }
       else if (!s.tmp_16.fn.isGetter) { s.retval = bind(s.tmp_16); }
-     else { s.callLocIdx = 87; s.pc = 37; return s.tmp_16; }
+     else { s.callLocIdx = 89; s.pc = 37; return s.tmp_16; }
     }
   case 37:
     r0 = s.retval;
@@ -31557,7 +31620,7 @@ switch (step) {
       s.tmp_18.fn = s.tmp_18.arg0.vtable.iface["col"];
       if (s.tmp_18.fn == null) { s.retval = s.tmp_18.arg0.fields["col"]; }
       else if (!s.tmp_18.fn.isGetter) { s.retval = bind(s.tmp_18); }
-     else { s.callLocIdx = 88; s.pc = 38; return s.tmp_18; }
+     else { s.callLocIdx = 90; s.pc = 38; return s.tmp_18; }
     }
   case 38:
     r0 = s.retval;
@@ -31570,7 +31633,7 @@ switch (step) {
       s.tmp_20.fn = s.tmp_20.arg0.vtable.iface["col"];
       if (s.tmp_20.fn == null) { s.retval = s.tmp_20.arg0.fields["col"]; }
       else if (!s.tmp_20.fn.isGetter) { s.retval = bind(s.tmp_20); }
-     else { s.callLocIdx = 89; s.pc = 39; return s.tmp_20; }
+     else { s.callLocIdx = 91; s.pc = 39; return s.tmp_20; }
     }
   case 39:
     r0 = s.retval;
@@ -31593,7 +31656,7 @@ switch (step) {
       s.tmp_24.fn = s.tmp_24.arg0.vtable.iface["row"];
       if (s.tmp_24.fn == null) { s.retval = s.tmp_24.arg0.fields["row"]; }
       else if (!s.tmp_24.fn.isGetter) { s.retval = bind(s.tmp_24); }
-     else { s.callLocIdx = 90; s.pc = 40; return s.tmp_24; }
+     else { s.callLocIdx = 92; s.pc = 40; return s.tmp_24; }
     }
   case 40:
     r0 = s.retval;
@@ -31613,7 +31676,7 @@ switch (step) {
       s.tmp_26.fn = s.tmp_26.arg0.vtable.iface["row"];
       if (s.tmp_26.fn == null) { s.retval = s.tmp_26.arg0.fields["row"]; }
       else if (!s.tmp_26.fn.isGetter) { s.retval = bind(s.tmp_26); }
-     else { s.callLocIdx = 91; s.pc = 41; return s.tmp_26; }
+     else { s.callLocIdx = 93; s.pc = 41; return s.tmp_26; }
     }
   case 41:
     r0 = s.retval;
@@ -31636,7 +31699,7 @@ switch (step) {
       s.tmp_30.fn = s.tmp_30.arg0.vtable.iface["col"];
       if (s.tmp_30.fn == null) { s.retval = s.tmp_30.arg0.fields["col"]; }
       else if (!s.tmp_30.fn.isGetter) { s.retval = bind(s.tmp_30); }
-     else { s.callLocIdx = 92; s.pc = 42; return s.tmp_30; }
+     else { s.callLocIdx = 94; s.pc = 42; return s.tmp_30; }
     }
   case 42:
     r0 = s.retval;
@@ -31656,7 +31719,7 @@ switch (step) {
       s.tmp_32.fn = s.tmp_32.arg0.vtable.iface["col"];
       if (s.tmp_32.fn == null) { s.retval = s.tmp_32.arg0.fields["col"]; }
       else if (!s.tmp_32.fn.isGetter) { s.retval = bind(s.tmp_32); }
-     else { s.callLocIdx = 93; s.pc = 43; return s.tmp_32; }
+     else { s.callLocIdx = 95; s.pc = 43; return s.tmp_32; }
     }
   case 43:
     r0 = s.retval;
@@ -31679,7 +31742,7 @@ switch (step) {
       s.tmp_37.fn = s.tmp_37.arg0.vtable.iface["row"];
       if (s.tmp_37.fn == null) { s.retval = s.tmp_37.arg0.fields["row"]; }
       else if (!s.tmp_37.fn.isGetter) { s.retval = bind(s.tmp_37); }
-     else { s.callLocIdx = 94; s.pc = 44; return s.tmp_37; }
+     else { s.callLocIdx = 96; s.pc = 44; return s.tmp_37; }
     }
   case 44:
     r0 = s.retval;
@@ -31694,7 +31757,7 @@ switch (step) {
       s.tmp_39.fn = s.tmp_39.arg0.vtable.iface["row"];
       if (s.tmp_39.fn == null) { s.retval = s.tmp_39.arg0.fields["row"]; }
       else if (!s.tmp_39.fn.isGetter) { s.retval = bind(s.tmp_39); }
-     else { s.callLocIdx = 95; s.pc = 45; return s.tmp_39; }
+     else { s.callLocIdx = 97; s.pc = 45; return s.tmp_39; }
     }
   case 45:
     r0 = s.retval;
@@ -31714,7 +31777,7 @@ switch (step) {
       s.tmp_42.fn = s.tmp_42.arg0.vtable.iface["col"];
       if (s.tmp_42.fn == null) { s.retval = s.tmp_42.arg0.fields["col"]; }
       else if (!s.tmp_42.fn.isGetter) { s.retval = bind(s.tmp_42); }
-     else { s.callLocIdx = 96; s.pc = 46; return s.tmp_42; }
+     else { s.callLocIdx = 98; s.pc = 46; return s.tmp_42; }
     }
   case 46:
     r0 = s.retval;
@@ -31729,7 +31792,7 @@ switch (step) {
       s.tmp_44.fn = s.tmp_44.arg0.vtable.iface["col"];
       if (s.tmp_44.fn == null) { s.retval = s.tmp_44.arg0.fields["col"]; }
       else if (!s.tmp_44.fn.isGetter) { s.retval = bind(s.tmp_44); }
-     else { s.callLocIdx = 97; s.pc = 47; return s.tmp_44; }
+     else { s.callLocIdx = 99; s.pc = 47; return s.tmp_44; }
     }
   case 47:
     r0 = s.retval;
@@ -31752,7 +31815,7 @@ switch (step) {
       s.tmp_48.fn = s.tmp_48.arg0.vtable.iface["row"];
       if (s.tmp_48.fn == null) { s.retval = s.tmp_48.arg0.fields["row"]; }
       else if (!s.tmp_48.fn.isGetter) { s.retval = bind(s.tmp_48); }
-     else { s.callLocIdx = 98; s.pc = 48; return s.tmp_48; }
+     else { s.callLocIdx = 100; s.pc = 48; return s.tmp_48; }
     }
   case 48:
     r0 = s.retval;
@@ -31772,7 +31835,7 @@ switch (step) {
       s.tmp_50.fn = s.tmp_50.arg0.vtable.iface["row"];
       if (s.tmp_50.fn == null) { s.retval = s.tmp_50.arg0.fields["row"]; }
       else if (!s.tmp_50.fn.isGetter) { s.retval = bind(s.tmp_50); }
-     else { s.callLocIdx = 99; s.pc = 49; return s.tmp_50; }
+     else { s.callLocIdx = 101; s.pc = 49; return s.tmp_50; }
     }
   case 49:
     r0 = s.retval;
@@ -31795,7 +31858,7 @@ switch (step) {
       s.tmp_54.fn = s.tmp_54.arg0.vtable.iface["col"];
       if (s.tmp_54.fn == null) { s.retval = s.tmp_54.arg0.fields["col"]; }
       else if (!s.tmp_54.fn.isGetter) { s.retval = bind(s.tmp_54); }
-     else { s.callLocIdx = 100; s.pc = 50; return s.tmp_54; }
+     else { s.callLocIdx = 102; s.pc = 50; return s.tmp_54; }
     }
   case 50:
     r0 = s.retval;
@@ -31815,7 +31878,7 @@ switch (step) {
       s.tmp_56.fn = s.tmp_56.arg0.vtable.iface["col"];
       if (s.tmp_56.fn == null) { s.retval = s.tmp_56.arg0.fields["col"]; }
       else if (!s.tmp_56.fn.isGetter) { s.retval = bind(s.tmp_56); }
-     else { s.callLocIdx = 101; s.pc = 51; return s.tmp_56; }
+     else { s.callLocIdx = 103; s.pc = 51; return s.tmp_56; }
     }
   case 51:
     r0 = s.retval;
@@ -31835,12 +31898,12 @@ switch (step) {
     return leave(s, r0)
   default: oops()
 } } }
-isValidHubRoom__P8354.info = {"start":16044,"length":653,"line":573,"column":0,"endLine":583,"endColumn":1,"fileName":"constants.ts","functionName":"isValidHubRoom","argumentNames":["room"]}
+isValidHubRoom__P36536.info = {"start":16016,"length":653,"line":576,"column":0,"endLine":586,"endColumn":1,"fileName":"constants.ts","functionName":"isValidHubRoom","argumentNames":["room"]}
 
-function isValidHubRoom__P8354_mk(s) {
+function isValidHubRoom__P36536_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: isValidHubRoom__P8354, depth: s.depth + 1,
+        parent: s, fn: isValidHubRoom__P36536, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -31906,7 +31969,7 @@ function isValidHubRoom__P8354_mk(s) {
 
 
 
-function getSpawnPoint__P8356(s) {
+function getSpawnPoint__P36538(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -31916,7 +31979,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.spawnPoint___16192 = undefined;
+    s.spawnPoint___36800 = undefined;
     if (s.lambdaArgs) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
@@ -31930,7 +31993,7 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 2; continue; }
   case 1:
-    r0 = pxsim_pxtrt.mapGetGeneric(globals.HUB_SPAWN_POINTS___8343, s.arg0);
+    r0 = pxsim_pxtrt.mapGetGeneric(globals.HUB_SPAWN_POINTS___36525, s.arg0);
     s.tmp_4 = r0;
     r0 = (s.tmp_4 !== undefined);
     s.tmp_3 = r0;
@@ -31946,9 +32009,9 @@ switch (step) {
     { step = 25; continue; }
   case 3:
   case 4:
-    r0 = pxsim_pxtrt.mapGetGeneric(globals.HUB_SPAWN_POINTS___8343, s.arg0);
-    s.spawnPoint___16192 = (r0);
-    r0 = pxsim_numops_toBoolDecr(s.spawnPoint___16192);
+    r0 = pxsim_pxtrt.mapGetGeneric(globals.HUB_SPAWN_POINTS___36525, s.arg0);
+    s.spawnPoint___36800 = (r0);
+    r0 = pxsim_numops_toBoolDecr(s.spawnPoint___36800);
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0 = r0;
@@ -31957,21 +32020,21 @@ switch (step) {
     r0 = s.tmp_0;
     { step = 6; continue; }
   case 5:
-    s.tmp_4 = isValidHubRoom__P8354_mk(s);
+    s.tmp_4 = isValidHubRoom__P36536_mk(s);
     s.tmp_5 = if_room_1_mk(s);
-    s.tmp_5.arg0 = s.spawnPoint___16192;
+    s.tmp_5.arg0 = s.spawnPoint___36800;
     if (!s.tmp_5.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_5.arg0, "room");
     } else {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["room"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["room"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 109; s.pc = 27; return s.tmp_5; }
+     else { s.callLocIdx = 111; s.pc = 27; return s.tmp_5; }
     }
   case 27:
     r0 = s.retval;
     s.tmp_4.arg0 = r0;
-    s.callLocIdx = 110; s.pc = 26; return s.tmp_4;
+    s.callLocIdx = 112; s.pc = 26; return s.tmp_4;
   case 26:
     r0 = s.retval;
     s.tmp_3 = r0;
@@ -31988,14 +32051,14 @@ switch (step) {
   case 7:
   case 8:
     s.tmp_10 = if_x_1_mk(s);
-    s.tmp_10.arg0 = s.spawnPoint___16192;
+    s.tmp_10.arg0 = s.spawnPoint___36800;
     if (!s.tmp_10.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_10.arg0, "x");
     } else {
       s.tmp_10.fn = s.tmp_10.arg0.vtable.iface["x"];
       if (s.tmp_10.fn == null) { s.retval = s.tmp_10.arg0.fields["x"]; }
       else if (!s.tmp_10.fn.isGetter) { s.retval = bind(s.tmp_10); }
-     else { s.callLocIdx = 111; s.pc = 28; return s.tmp_10; }
+     else { s.callLocIdx = 113; s.pc = 28; return s.tmp_10; }
     }
   case 28:
     r0 = s.retval;
@@ -32010,27 +32073,27 @@ switch (step) {
     { step = 10; continue; }
   case 9:
     s.tmp_12 = if_x_1_mk(s);
-    s.tmp_12.arg0 = s.spawnPoint___16192;
+    s.tmp_12.arg0 = s.spawnPoint___36800;
     if (!s.tmp_12.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_12.arg0, "x");
     } else {
       s.tmp_12.fn = s.tmp_12.arg0.vtable.iface["x"];
       if (s.tmp_12.fn == null) { s.retval = s.tmp_12.arg0.fields["x"]; }
       else if (!s.tmp_12.fn.isGetter) { s.retval = bind(s.tmp_12); }
-     else { s.callLocIdx = 112; s.pc = 29; return s.tmp_12; }
+     else { s.callLocIdx = 114; s.pc = 29; return s.tmp_12; }
     }
   case 29:
     r0 = s.retval;
     s.tmp_11 = r0;
     s.tmp_14 = if_x_1_mk(s);
-    s.tmp_14.arg0 = s.spawnPoint___16192;
+    s.tmp_14.arg0 = s.spawnPoint___36800;
     if (!s.tmp_14.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_14.arg0, "x");
     } else {
       s.tmp_14.fn = s.tmp_14.arg0.vtable.iface["x"];
       if (s.tmp_14.fn == null) { s.retval = s.tmp_14.arg0.fields["x"]; }
       else if (!s.tmp_14.fn.isGetter) { s.retval = bind(s.tmp_14); }
-     else { s.callLocIdx = 113; s.pc = 30; return s.tmp_14; }
+     else { s.callLocIdx = 115; s.pc = 30; return s.tmp_14; }
     }
   case 30:
     r0 = s.retval;
@@ -32045,14 +32108,14 @@ switch (step) {
     { step = 12; continue; }
   case 11:
     s.tmp_17 = if_x_1_mk(s);
-    s.tmp_17.arg0 = s.spawnPoint___16192;
+    s.tmp_17.arg0 = s.spawnPoint___36800;
     if (!s.tmp_17.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_17.arg0, "x");
     } else {
       s.tmp_17.fn = s.tmp_17.arg0.vtable.iface["x"];
       if (s.tmp_17.fn == null) { s.retval = s.tmp_17.arg0.fields["x"]; }
       else if (!s.tmp_17.fn.isGetter) { s.retval = bind(s.tmp_17); }
-     else { s.callLocIdx = 114; s.pc = 31; return s.tmp_17; }
+     else { s.callLocIdx = 116; s.pc = 31; return s.tmp_17; }
     }
   case 31:
     r0 = s.retval;
@@ -32067,14 +32130,14 @@ switch (step) {
     { step = 14; continue; }
   case 13:
     s.tmp_20 = if_x_1_mk(s);
-    s.tmp_20.arg0 = s.spawnPoint___16192;
+    s.tmp_20.arg0 = s.spawnPoint___36800;
     if (!s.tmp_20.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_20.arg0, "x");
     } else {
       s.tmp_20.fn = s.tmp_20.arg0.vtable.iface["x"];
       if (s.tmp_20.fn == null) { s.retval = s.tmp_20.arg0.fields["x"]; }
       else if (!s.tmp_20.fn.isGetter) { s.retval = bind(s.tmp_20); }
-     else { s.callLocIdx = 115; s.pc = 32; return s.tmp_20; }
+     else { s.callLocIdx = 117; s.pc = 32; return s.tmp_20; }
     }
   case 32:
     r0 = s.retval;
@@ -32090,14 +32153,14 @@ switch (step) {
   case 15:
   case 16:
     s.tmp_25 = if_y_1_mk(s);
-    s.tmp_25.arg0 = s.spawnPoint___16192;
+    s.tmp_25.arg0 = s.spawnPoint___36800;
     if (!s.tmp_25.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_25.arg0, "y");
     } else {
       s.tmp_25.fn = s.tmp_25.arg0.vtable.iface["y"];
       if (s.tmp_25.fn == null) { s.retval = s.tmp_25.arg0.fields["y"]; }
       else if (!s.tmp_25.fn.isGetter) { s.retval = bind(s.tmp_25); }
-     else { s.callLocIdx = 116; s.pc = 33; return s.tmp_25; }
+     else { s.callLocIdx = 118; s.pc = 33; return s.tmp_25; }
     }
   case 33:
     r0 = s.retval;
@@ -32112,27 +32175,27 @@ switch (step) {
     { step = 18; continue; }
   case 17:
     s.tmp_27 = if_y_1_mk(s);
-    s.tmp_27.arg0 = s.spawnPoint___16192;
+    s.tmp_27.arg0 = s.spawnPoint___36800;
     if (!s.tmp_27.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_27.arg0, "y");
     } else {
       s.tmp_27.fn = s.tmp_27.arg0.vtable.iface["y"];
       if (s.tmp_27.fn == null) { s.retval = s.tmp_27.arg0.fields["y"]; }
       else if (!s.tmp_27.fn.isGetter) { s.retval = bind(s.tmp_27); }
-     else { s.callLocIdx = 117; s.pc = 34; return s.tmp_27; }
+     else { s.callLocIdx = 119; s.pc = 34; return s.tmp_27; }
     }
   case 34:
     r0 = s.retval;
     s.tmp_26 = r0;
     s.tmp_29 = if_y_1_mk(s);
-    s.tmp_29.arg0 = s.spawnPoint___16192;
+    s.tmp_29.arg0 = s.spawnPoint___36800;
     if (!s.tmp_29.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_29.arg0, "y");
     } else {
       s.tmp_29.fn = s.tmp_29.arg0.vtable.iface["y"];
       if (s.tmp_29.fn == null) { s.retval = s.tmp_29.arg0.fields["y"]; }
       else if (!s.tmp_29.fn.isGetter) { s.retval = bind(s.tmp_29); }
-     else { s.callLocIdx = 118; s.pc = 35; return s.tmp_29; }
+     else { s.callLocIdx = 120; s.pc = 35; return s.tmp_29; }
     }
   case 35:
     r0 = s.retval;
@@ -32147,14 +32210,14 @@ switch (step) {
     { step = 20; continue; }
   case 19:
     s.tmp_32 = if_y_1_mk(s);
-    s.tmp_32.arg0 = s.spawnPoint___16192;
+    s.tmp_32.arg0 = s.spawnPoint___36800;
     if (!s.tmp_32.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_32.arg0, "y");
     } else {
       s.tmp_32.fn = s.tmp_32.arg0.vtable.iface["y"];
       if (s.tmp_32.fn == null) { s.retval = s.tmp_32.arg0.fields["y"]; }
       else if (!s.tmp_32.fn.isGetter) { s.retval = bind(s.tmp_32); }
-     else { s.callLocIdx = 119; s.pc = 36; return s.tmp_32; }
+     else { s.callLocIdx = 121; s.pc = 36; return s.tmp_32; }
     }
   case 36:
     r0 = s.retval;
@@ -32169,14 +32232,14 @@ switch (step) {
     { step = 22; continue; }
   case 21:
     s.tmp_35 = if_y_1_mk(s);
-    s.tmp_35.arg0 = s.spawnPoint___16192;
+    s.tmp_35.arg0 = s.spawnPoint___36800;
     if (!s.tmp_35.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_35.arg0, "y");
     } else {
       s.tmp_35.fn = s.tmp_35.arg0.vtable.iface["y"];
       if (s.tmp_35.fn == null) { s.retval = s.tmp_35.arg0.fields["y"]; }
       else if (!s.tmp_35.fn.isGetter) { s.retval = bind(s.tmp_35); }
-     else { s.callLocIdx = 120; s.pc = 37; return s.tmp_35; }
+     else { s.callLocIdx = 122; s.pc = 37; return s.tmp_35; }
     }
   case 37:
     r0 = s.retval;
@@ -32191,17 +32254,17 @@ switch (step) {
     { step = 25; continue; }
   case 23:
   case 24:
-    r0 = s.spawnPoint___16192;
+    r0 = s.spawnPoint___36800;
   case 25:
     return leave(s, r0)
   default: oops()
 } } }
-getSpawnPoint__P8356.info = {"start":17004,"length":580,"line":593,"column":0,"endLine":609,"endColumn":1,"fileName":"constants.ts","functionName":"getSpawnPoint","argumentNames":["tag"]}
+getSpawnPoint__P36538.info = {"start":16976,"length":580,"line":596,"column":0,"endLine":612,"endColumn":1,"fileName":"constants.ts","functionName":"getSpawnPoint","argumentNames":["tag"]}
 
-function getSpawnPoint__P8356_mk(s) {
+function getSpawnPoint__P36538_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: getSpawnPoint__P8356, depth: s.depth + 1,
+        parent: s, fn: getSpawnPoint__P36538, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -32240,14 +32303,14 @@ function getSpawnPoint__P8356_mk(s) {
   tmp_34: undefined,
   tmp_35: undefined,
   tmp_36: undefined,
-  spawnPoint___16192: undefined,
+  spawnPoint___36800: undefined,
   arg0: undefined,
 } }
 
 
 
 
-function hasOwnSpawnPoint__P8353(s) {
+function hasOwnSpawnPoint__P36535(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -32261,18 +32324,18 @@ switch (step) {
       s.arg0 = (s.lambdaArgs[0]);
       s.lambdaArgs = null;
     }
-    r0 = pxsim_pxtrt.mapGetGeneric(globals.HUB_SPAWN_POINTS___8343, s.arg0);
+    r0 = pxsim_pxtrt.mapGetGeneric(globals.HUB_SPAWN_POINTS___36525, s.arg0);
     s.tmp_0 = r0;
     r0 = (s.tmp_0 !== undefined);
     return leave(s, r0)
   default: oops()
 } } }
-hasOwnSpawnPoint__P8353.info = {"start":15945,"length":97,"line":569,"column":0,"endLine":571,"endColumn":1,"fileName":"constants.ts","functionName":"hasOwnSpawnPoint","argumentNames":["tag"]}
+hasOwnSpawnPoint__P36535.info = {"start":15917,"length":97,"line":572,"column":0,"endLine":574,"endColumn":1,"fileName":"constants.ts","functionName":"hasOwnSpawnPoint","argumentNames":["tag"]}
 
-function hasOwnSpawnPoint__P8353_mk(s) {
+function hasOwnSpawnPoint__P36535_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: hasOwnSpawnPoint__P8353, depth: s.depth + 1,
+        parent: s, fn: hasOwnSpawnPoint__P36535, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   arg0: undefined,
@@ -32293,31 +32356,31 @@ switch (step) {
 
     s.allSprites___16264 = undefined;
     s.s___16273 = undefined;
-    s.unnamed390___U2 = undefined;
-    s.unnamed391___U3 = undefined;
+    s.unnamed570___U2 = undefined;
+    s.unnamed571___U3 = undefined;
     s.tmp_0 = helpers_arraySlice__P116_mk(s);
     s.tmp_1 = game_currentScene__P3061_mk(s);
-    s.callLocIdx = 326; s.pc = 9; return s.tmp_1;
+    s.callLocIdx = 328; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
     r0 = r0.fields["allSprites"];
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = undefined;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 327; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 329; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.allSprites___16264 = (r0);
     s.s___16273 = (undefined);
-    s.unnamed390___U2 = (s.allSprites___16264);
-    s.unnamed391___U3 = (0);
+    s.unnamed570___U2 = (s.allSprites___16264);
+    s.unnamed571___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed391___U3;
-    r0 = pxsim_Array__length(s.unnamed390___U2);
+    s.tmp_0 = r0 = s.unnamed571___U3;
+    r0 = pxsim_Array__length(s.unnamed570___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 7; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed390___U2, s.unnamed391___U3);
+    r0 = pxsim_Array__getAt(s.unnamed570___U2, s.unnamed571___U3);
     s.s___16273 = (r0);
     r0 = s.s___16273;
     r0 = checkSubtype(r0, Sprite__C2377_VT);
@@ -32344,38 +32407,38 @@ switch (step) {
     s.tmp_7.arg0 = s.s___16273;
     s.tmp_7.arg1 = undefined;
     s.tmp_7.arg2 = undefined;
-    s.callLocIdx = 328; s.pc = 10; return s.tmp_7;
+    s.callLocIdx = 330; s.pc = 10; return s.tmp_7;
   case 10:
     r0 = s.retval;
   case 6:
-    r0 = (s.unnamed391___U3 + 1);
-    s.unnamed391___U3 = (r0);
+    r0 = (s.unnamed571___U3 + 1);
+    s.unnamed571___U3 = (r0);
     { step = 1; continue; }
   case 7:
-    s.unnamed390___U2 = (undefined);
+    s.unnamed570___U2 = (undefined);
     s.tmp_0 = scene_centerCameraAt__P2936_mk(s);
     s.tmp_0.arg0 = 80;
     s.tmp_0.arg1 = 60;
-    s.callLocIdx = 329; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 331; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
     s.tmp_0 = scroller_setLayerImage__P4446_mk(s);
     s.tmp_0.arg0 = 0;
     r0 = pxsim.image.create(1, 1);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 330; s.pc = 12; return s.tmp_0;
+    s.callLocIdx = 332; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
     s.tmp_0 = scroller_setLayerImage__P4446_mk(s);
     s.tmp_0.arg0 = 1;
     r0 = pxsim.image.create(1, 1);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 331; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 333; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     s.tmp_0 = tiles_setCurrentTilemap__P2809_mk(s);
     s.tmp_0.arg0 = null;
-    s.callLocIdx = 332; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 334; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     globals.playerSprite___8383 = (null);
@@ -32388,7 +32451,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/dungeonStageData"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["dungeonStageData"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 333; s.pc = 15; return s.tmp_0; }
+     else { s.callLocIdx = 335; s.pc = 15; return s.tmp_0; }
     }
   case 15:
     r0 = s.retval;
@@ -32413,8 +32476,8 @@ function GameController_cleanupCurrentPlayMode__P8390_mk(s) {
   tmp_7: undefined,
   allSprites___16264: undefined,
   s___16273: undefined,
-  unnamed390___U2: undefined,
-  unnamed391___U3: undefined,
+  unnamed570___U2: undefined,
+  unnamed571___U3: undefined,
 } }
 
 
@@ -33726,7 +33789,7 @@ switch (step) {
     s.tmp_0 = logFailure__P5436_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.callLocIdx = 1335; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1337; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     r0 = undefined;
@@ -33776,7 +33839,7 @@ switch (step) {
   case 2:
     s.tmp_4 = failureReasonLabel__P5435_mk(s);
     s.tmp_4.arg0 = s.arg0;
-    s.callLocIdx = 1333; s.pc = 6; return s.tmp_4;
+    s.callLocIdx = 1335; s.pc = 6; return s.tmp_4;
   case 6:
     r0 = s.retval;
     s.tmp_3 = r0;
@@ -33828,7 +33891,7 @@ switch (step) {
   case 4:
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = s.message___16680;
-    s.callLocIdx = 1334; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 1336; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
   case 5:
@@ -33969,7 +34032,7 @@ switch (step) {
     s.e___35111 = undefined;
     s.tmp_0 = settings_readString__P2073_mk(s);
     s.tmp_0.arg0 = "NEON_KIEZ_SAVE";
-    s.callLocIdx = 173; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 175; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.json___35000 = (r0);
@@ -33997,7 +34060,7 @@ switch (step) {
     r0 = pxsim_pxtcore.beginTry(11);
     s.tmp_0 = JSON_parse__P390_mk(s);
     s.tmp_0.arg0 = s.json___35000;
-    s.callLocIdx = 174; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 176; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
     s.data___35011 = (r0);
@@ -34010,7 +34073,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["maxHearts"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["maxHearts"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 175; s.pc = 17; return s.tmp_1; }
+     else { s.callLocIdx = 177; s.pc = 17; return s.tmp_1; }
     }
   case 17:
     r0 = s.retval;
@@ -34018,7 +34081,7 @@ switch (step) {
     s.tmp_0.arg1 = 1;
     s.tmp_0.arg2 = 5;
     s.tmp_0.arg3 = 5;
-    s.callLocIdx = 176; s.pc = 16; return s.tmp_0;
+    s.callLocIdx = 178; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
     s.maxHearts___35016 = (r0);
@@ -34031,7 +34094,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["hearts"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["hearts"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 177; s.pc = 19; return s.tmp_1; }
+     else { s.callLocIdx = 179; s.pc = 19; return s.tmp_1; }
     }
   case 19:
     r0 = s.retval;
@@ -34039,7 +34102,7 @@ switch (step) {
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = s.maxHearts___35016;
     s.tmp_0.arg3 = 5;
-    s.callLocIdx = 178; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 180; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
     s.hearts___35024 = (r0);
@@ -34052,7 +34115,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["energy"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["energy"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 179; s.pc = 21; return s.tmp_1; }
+     else { s.callLocIdx = 181; s.pc = 21; return s.tmp_1; }
     }
   case 21:
     r0 = s.retval;
@@ -34060,7 +34123,7 @@ switch (step) {
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = 100;
     s.tmp_0.arg3 = 100;
-    s.callLocIdx = 180; s.pc = 20; return s.tmp_0;
+    s.callLocIdx = 182; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
     s.energy___35033 = (r0);
@@ -34072,7 +34135,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["maxHearts"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["maxHearts"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 181; s.pc = 22; return s.tmp_2; }
+     else { s.callLocIdx = 183; s.pc = 22; return s.tmp_2; }
     }
   case 22:
     r0 = s.retval;
@@ -34093,7 +34156,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["maxHearts"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["maxHearts"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 182; s.pc = 24; return s.tmp_7; }
+     else { s.callLocIdx = 184; s.pc = 24; return s.tmp_7; }
     }
   case 24:
     r0 = s.retval;
@@ -34110,7 +34173,7 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_4, s.tmp_5);
     s.tmp_3.arg1 = r0;
     s.tmp_3.arg2 = s.maxHearts___35016;
-    s.callLocIdx = 183; s.pc = 23; return s.tmp_3;
+    s.callLocIdx = 185; s.pc = 23; return s.tmp_3;
   case 23:
     r0 = s.retval;
   case 5:
@@ -34123,7 +34186,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["hearts"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["hearts"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 184; s.pc = 26; return s.tmp_2; }
+     else { s.callLocIdx = 186; s.pc = 26; return s.tmp_2; }
     }
   case 26:
     r0 = s.retval;
@@ -34144,7 +34207,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["hearts"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["hearts"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 185; s.pc = 28; return s.tmp_7; }
+     else { s.callLocIdx = 187; s.pc = 28; return s.tmp_7; }
     }
   case 28:
     r0 = s.retval;
@@ -34161,7 +34224,7 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_4, s.tmp_5);
     s.tmp_3.arg1 = r0;
     s.tmp_3.arg2 = s.hearts___35024;
-    s.callLocIdx = 186; s.pc = 27; return s.tmp_3;
+    s.callLocIdx = 188; s.pc = 27; return s.tmp_3;
   case 27:
     r0 = s.retval;
   case 7:
@@ -34174,7 +34237,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["energy"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["energy"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 187; s.pc = 30; return s.tmp_2; }
+     else { s.callLocIdx = 189; s.pc = 30; return s.tmp_2; }
     }
   case 30:
     r0 = s.retval;
@@ -34195,7 +34258,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["energy"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["energy"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 188; s.pc = 32; return s.tmp_7; }
+     else { s.callLocIdx = 190; s.pc = 32; return s.tmp_7; }
     }
   case 32:
     r0 = s.retval;
@@ -34212,7 +34275,7 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_4, s.tmp_5);
     s.tmp_3.arg1 = r0;
     s.tmp_3.arg2 = s.energy___35033;
-    s.callLocIdx = 189; s.pc = 31; return s.tmp_3;
+    s.callLocIdx = 191; s.pc = 31; return s.tmp_3;
   case 31:
     r0 = s.retval;
   case 9:
@@ -34226,7 +34289,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/hearts"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["hearts"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 190; s.pc = 34; return s.tmp_0; }
+     else { s.callLocIdx = 192; s.pc = 34; return s.tmp_0; }
     }
   case 34:
     r0 = s.retval;
@@ -34239,7 +34302,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/maxHearts"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["maxHearts"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 191; s.pc = 35; return s.tmp_0; }
+     else { s.callLocIdx = 193; s.pc = 35; return s.tmp_0; }
     }
   case 35:
     r0 = s.retval;
@@ -34252,7 +34315,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/energy"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["energy"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 192; s.pc = 36; return s.tmp_0; }
+     else { s.callLocIdx = 194; s.pc = 36; return s.tmp_0; }
     }
   case 36:
     r0 = s.retval;
@@ -34267,12 +34330,12 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["hubRoom"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["hubRoom"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 193; s.pc = 39; return s.tmp_2; }
+     else { s.callLocIdx = 195; s.pc = 39; return s.tmp_2; }
     }
   case 39:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 194; s.pc = 38; return s.tmp_1;
+    s.callLocIdx = 196; s.pc = 38; return s.tmp_1;
   case 38:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
@@ -34282,7 +34345,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/hubRoom"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["hubRoom"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 195; s.pc = 37; return s.tmp_0; }
+     else { s.callLocIdx = 197; s.pc = 37; return s.tmp_0; }
     }
   case 37:
     r0 = s.retval;
@@ -34297,12 +34360,12 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["flags"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["flags"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 196; s.pc = 42; return s.tmp_2; }
+     else { s.callLocIdx = 198; s.pc = 42; return s.tmp_2; }
     }
   case 42:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 197; s.pc = 41; return s.tmp_1;
+    s.callLocIdx = 199; s.pc = 41; return s.tmp_1;
   case 41:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
@@ -34312,7 +34375,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/flags"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["flags"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 198; s.pc = 40; return s.tmp_0; }
+     else { s.callLocIdx = 200; s.pc = 40; return s.tmp_0; }
     }
   case 40:
     r0 = s.retval;
@@ -34327,13 +34390,13 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["unlockedTools"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["unlockedTools"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 199; s.pc = 45; return s.tmp_2; }
+     else { s.callLocIdx = 201; s.pc = 45; return s.tmp_2; }
     }
   case 45:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = "unlockedTools";
-    s.callLocIdx = 200; s.pc = 44; return s.tmp_1;
+    s.callLocIdx = 202; s.pc = 44; return s.tmp_1;
   case 44:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
@@ -34343,7 +34406,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/unlockedTools"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["unlockedTools"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 201; s.pc = 43; return s.tmp_0; }
+     else { s.callLocIdx = 203; s.pc = 43; return s.tmp_0; }
     }
   case 43:
     r0 = s.retval;
@@ -34358,12 +34421,12 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["inventory"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["inventory"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 202; s.pc = 48; return s.tmp_2; }
+     else { s.callLocIdx = 204; s.pc = 48; return s.tmp_2; }
     }
   case 48:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 203; s.pc = 47; return s.tmp_1;
+    s.callLocIdx = 205; s.pc = 47; return s.tmp_1;
   case 47:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
@@ -34373,7 +34436,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/inventory"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["inventory"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 204; s.pc = 46; return s.tmp_0; }
+     else { s.callLocIdx = 206; s.pc = 46; return s.tmp_0; }
     }
   case 46:
     r0 = s.retval;
@@ -34387,7 +34450,7 @@ switch (step) {
     s.e___35111 = (r0);
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "[SAVE] loadGame failed: corrupt JSON or parse error";
-    s.callLocIdx = 205; s.pc = 49; return s.tmp_0;
+    s.callLocIdx = 207; s.pc = 49; return s.tmp_0;
   case 49:
     r0 = s.retval;
     r0 = false;
@@ -34474,7 +34537,7 @@ switch (step) {
     s.tmp_5.arg1 = "invalid object";
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_5.arg2 = r0;
-    s.callLocIdx = 162; s.pc = 23; return s.tmp_5;
+    s.callLocIdx = 164; s.pc = 23; return s.tmp_5;
   case 23:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -34502,7 +34565,7 @@ switch (step) {
     s.value___35142 = (r0);
     s.tmp_1 = isDangerousObjectKey__P34882_mk(s);
     s.tmp_1.arg0 = s.key___35138;
-    s.callLocIdx = 163; s.pc = 24; return s.tmp_1;
+    s.callLocIdx = 165; s.pc = 24; return s.tmp_1;
   case 24:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -34683,7 +34746,7 @@ switch (step) {
     s.tmp_3.arg1 = "not array";
     r0 = pxsim_Array__mk();
     s.tmp_3.arg2 = r0;
-    s.callLocIdx = 160; s.pc = 8; return s.tmp_3;
+    s.callLocIdx = 162; s.pc = 8; return s.tmp_3;
   case 8:
     r0 = s.retval;
     r0 = pxsim_Array__mk();
@@ -34703,7 +34766,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["length"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["length"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 161; s.pc = 9; return s.tmp_3; }
+     else { s.callLocIdx = 163; s.pc = 9; return s.tmp_3; }
     }
   case 9:
     r0 = s.retval;
@@ -34809,7 +34872,7 @@ switch (step) {
     s.tmp_5.arg1 = "invalid object";
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_5.arg2 = r0;
-    s.callLocIdx = 158; s.pc = 15; return s.tmp_5;
+    s.callLocIdx = 160; s.pc = 15; return s.tmp_5;
   case 15:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -34835,7 +34898,7 @@ switch (step) {
     s.key___35245 = (r0);
     s.tmp_1 = isDangerousObjectKey__P34882_mk(s);
     s.tmp_1.arg0 = s.key___35245;
-    s.callLocIdx = 159; s.pc = 16; return s.tmp_1;
+    s.callLocIdx = 161; s.pc = 16; return s.tmp_1;
   case 16:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -34914,28 +34977,28 @@ switch (step) {
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
     s.tmp_2 = if_row_1_mk(s);
-    s.tmp_2.arg0 = globals.HUB_START_ROOM___8340;
+    s.tmp_2.arg0 = globals.HUB_START_ROOM___36522;
     if (!s.tmp_2.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_2.arg0, "row");
     } else {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["row"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["row"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 144; s.pc = 10; return s.tmp_2; }
+     else { s.callLocIdx = 146; s.pc = 10; return s.tmp_2; }
     }
   case 10:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "row", s.tmp_1);
     s.tmp_4 = if_col_1_mk(s);
-    s.tmp_4.arg0 = globals.HUB_START_ROOM___8340;
+    s.tmp_4.arg0 = globals.HUB_START_ROOM___36522;
     if (!s.tmp_4.arg0.vtable.iface) {
       s.retval = pxsim_pxtrt.mapGetByString(s.tmp_4.arg0, "col");
     } else {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["col"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["col"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 145; s.pc = 11; return s.tmp_4; }
+     else { s.callLocIdx = 147; s.pc = 11; return s.tmp_4; }
     }
   case 11:
     r0 = s.retval;
@@ -34963,7 +35026,7 @@ switch (step) {
     s.tmp_4.arg0 = "hubRoom";
     s.tmp_4.arg1 = "invalid object";
     s.tmp_4.arg2 = s.defaultRoom___35264;
-    s.callLocIdx = 146; s.pc = 12; return s.tmp_4;
+    s.callLocIdx = 148; s.pc = 12; return s.tmp_4;
   case 12:
     r0 = s.retval;
     r0 = s.defaultRoom___35264;
@@ -34979,7 +35042,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["row"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["row"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 147; s.pc = 14; return s.tmp_1; }
+     else { s.callLocIdx = 149; s.pc = 14; return s.tmp_1; }
     }
   case 14:
     r0 = s.retval;
@@ -34994,12 +35057,12 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["row"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["row"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 148; s.pc = 15; return s.tmp_2; }
+     else { s.callLocIdx = 150; s.pc = 15; return s.tmp_2; }
     }
   case 15:
     r0 = s.retval;
     s.tmp_0.arg3 = r0;
-    s.callLocIdx = 149; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 151; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     s.row___35279 = (r0);
@@ -35012,7 +35075,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["col"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["col"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 150; s.pc = 17; return s.tmp_1; }
+     else { s.callLocIdx = 152; s.pc = 17; return s.tmp_1; }
     }
   case 17:
     r0 = s.retval;
@@ -35027,12 +35090,12 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["col"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["col"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 151; s.pc = 18; return s.tmp_2; }
+     else { s.callLocIdx = 153; s.pc = 18; return s.tmp_2; }
     }
   case 18:
     r0 = s.retval;
     s.tmp_0.arg3 = r0;
-    s.callLocIdx = 152; s.pc = 16; return s.tmp_0;
+    s.callLocIdx = 154; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
     s.col___35290 = (r0);
@@ -35045,7 +35108,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["row"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["row"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 153; s.pc = 19; return s.tmp_3; }
+     else { s.callLocIdx = 155; s.pc = 19; return s.tmp_3; }
     }
   case 19:
     r0 = s.retval;
@@ -35066,7 +35129,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["col"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["col"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 154; s.pc = 20; return s.tmp_6; }
+     else { s.callLocIdx = 156; s.pc = 20; return s.tmp_6; }
     }
   case 20:
     r0 = s.retval;
@@ -35091,7 +35154,7 @@ switch (step) {
       s.tmp_18.fn = s.tmp_18.arg0.vtable.iface["row"];
       if (s.tmp_18.fn == null) { s.retval = s.tmp_18.arg0.fields["row"]; }
       else if (!s.tmp_18.fn.isGetter) { s.retval = bind(s.tmp_18); }
-     else { s.callLocIdx = 155; s.pc = 22; return s.tmp_18; }
+     else { s.callLocIdx = 157; s.pc = 22; return s.tmp_18; }
     }
   case 22:
     r0 = s.retval;
@@ -35135,7 +35198,7 @@ switch (step) {
       s.tmp_21.fn = s.tmp_21.arg0.vtable.iface["col"];
       if (s.tmp_21.fn == null) { s.retval = s.tmp_21.arg0.fields["col"]; }
       else if (!s.tmp_21.fn.isGetter) { s.retval = bind(s.tmp_21); }
-     else { s.callLocIdx = 156; s.pc = 26; return s.tmp_21; }
+     else { s.callLocIdx = 158; s.pc = 26; return s.tmp_21; }
     }
   case 26:
     r0 = s.retval;
@@ -35163,7 +35226,7 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_10, "}");
     s.tmp_9.arg1 = r0;
     s.tmp_9.arg2 = s.tmp_8;
-    s.callLocIdx = 157; s.pc = 21; return s.tmp_9;
+    s.callLocIdx = 159; s.pc = 21; return s.tmp_9;
   case 21:
     r0 = s.retval;
   case 7:
@@ -35298,7 +35361,7 @@ switch (step) {
     s.tmp_13.arg0 = s.arg2;
     s.tmp_13.arg1 = null;
     s.tmp_13.arg2 = 0;
-    s.callLocIdx = 142; s.pc = 8; return s.tmp_13;
+    s.callLocIdx = 144; s.pc = 8; return s.tmp_13;
   case 8:
     r0 = s.retval;
     s.tmp_12 = r0;
@@ -35313,7 +35376,7 @@ switch (step) {
     s.tmp_11 = r0;
     r0 = pxsim_String__concat(s.tmp_1, s.tmp_11);
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 143; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 145; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -47401,7 +47464,7 @@ switch (step) {
     s.json___35401 = undefined;
     s.tmp_0 = settings_readString__P2073_mk(s);
     s.tmp_0.arg0 = "NEON_KIEZ_SAVE";
-    s.callLocIdx = 206; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 208; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.json___35401 = (r0);
@@ -49549,7 +49612,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/gameMode"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["gameMode"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 121; s.pc = 1; return s.tmp_0; }
+     else { s.callLocIdx = 123; s.pc = 1; return s.tmp_0; }
     }
   case 1:
     r0 = s.retval;
@@ -49590,63 +49653,63 @@ switch (step) {
     s.tmp_0.arg0 = globals.menu___2136;
     s.tmp_0.arg1 = 2049;
     s.tmp_0.arg2 = GameController_registerGlobalHandlers_inline__P21183;
-    s.callLocIdx = 375; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 377; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2213_mk(s);
     s.tmp_0.arg0 = globals.B___2131;
     s.tmp_0.arg1 = 2049;
     s.tmp_0.arg2 = GameController_registerGlobalHandlers_inline__P21198;
-    s.callLocIdx = 380; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 382; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.tmp_0 = controller_Button_onEvent__P2213_mk(s);
     s.tmp_0.arg0 = globals.A___2130;
     s.tmp_0.arg1 = 2049;
     s.tmp_0.arg2 = GameController_registerGlobalHandlers_inline__P21211;
-    s.callLocIdx = 382; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 384; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P2502_mk(s);
-    s.tmp_0.arg0 = globals.KIND_PLAYER___8150;
-    s.tmp_0.arg1 = globals.KIND_COLLECTIBLE___8156;
+    s.tmp_0.arg0 = globals.KIND_PLAYER___36332;
+    s.tmp_0.arg1 = globals.KIND_COLLECTIBLE___36338;
     s.tmp_0.arg2 = GameController_registerGlobalHandlers_inline__P21216;
-    s.callLocIdx = 389; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 391; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P2502_mk(s);
-    s.tmp_0.arg0 = globals.KIND_PLAYER___8150;
-    s.tmp_0.arg1 = globals.KIND_ENEMY___8151;
+    s.tmp_0.arg0 = globals.KIND_PLAYER___36332;
+    s.tmp_0.arg1 = globals.KIND_ENEMY___36333;
     s.tmp_0.arg2 = GameController_registerGlobalHandlers_inline__P21238;
-    s.callLocIdx = 394; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 396; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P2502_mk(s);
-    s.tmp_0.arg0 = globals.KIND_PROJECTILE___8152;
-    s.tmp_0.arg1 = globals.KIND_TARGET___8160;
+    s.tmp_0.arg0 = globals.KIND_PROJECTILE___36334;
+    s.tmp_0.arg1 = globals.KIND_TARGET___36342;
     s.tmp_0.arg2 = GameController_registerGlobalHandlers_inline__P21256;
-    s.callLocIdx = 398; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 400; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P2502_mk(s);
-    s.tmp_0.arg0 = globals.KIND_PLAYER___8150;
-    s.tmp_0.arg1 = globals.KIND_INTERACTABLE___8155;
+    s.tmp_0.arg0 = globals.KIND_PLAYER___36332;
+    s.tmp_0.arg1 = globals.KIND_INTERACTABLE___36337;
     s.tmp_0.arg2 = GameController_registerGlobalHandlers_inline__P21272;
-    s.callLocIdx = 406; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 408; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P2502_mk(s);
-    s.tmp_0.arg0 = globals.KIND_BALL___8163;
-    s.tmp_0.arg1 = globals.KIND_PADDLE___8162;
+    s.tmp_0.arg0 = globals.KIND_BALL___36345;
+    s.tmp_0.arg1 = globals.KIND_PADDLE___36344;
     s.tmp_0.arg2 = GameController_registerGlobalHandlers_inline__P21297;
-    s.callLocIdx = 410; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 412; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = sprites_onOverlap__P2502_mk(s);
-    s.tmp_0.arg0 = globals.KIND_BALL___8163;
-    s.tmp_0.arg1 = globals.KIND_TARGET___8160;
+    s.tmp_0.arg0 = globals.KIND_BALL___36345;
+    s.tmp_0.arg1 = globals.KIND_TARGET___36342;
     s.tmp_0.arg2 = GameController_registerGlobalHandlers_inline__P21313;
-    s.callLocIdx = 414; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 416; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mklocRef();
@@ -49658,7 +49721,7 @@ switch (step) {
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 1, s.hudInitialized___21179);
     s.tmp_1 = game_onUpdate__P3085_mk(s);
     s.tmp_1.arg0 = s.tmp_0;
-    s.callLocIdx = 418; s.pc = 10; return s.tmp_1;
+    s.callLocIdx = 420; s.pc = 10; return s.tmp_1;
   case 10:
     r0 = s.retval;
     r0 = undefined;
@@ -49699,7 +49762,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["gameMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["gameMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 372; s.pc = 5; return s.tmp_2; }
+     else { s.callLocIdx = 374; s.pc = 5; return s.tmp_2; }
     }
   case 5:
     r0 = s.retval;
@@ -49719,7 +49782,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["gameMode"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["gameMode"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 373; s.pc = 6; return s.tmp_4; }
+     else { s.callLocIdx = 375; s.pc = 6; return s.tmp_4; }
     }
   case 6:
     r0 = s.retval;
@@ -49731,7 +49794,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 3; continue; }
     s.tmp_6 = showPauseMenu__P5283_mk(s);
-    s.callLocIdx = 374; s.pc = 7; return s.tmp_6;
+    s.callLocIdx = 376; s.pc = 7; return s.tmp_6;
   case 7:
     r0 = s.retval;
   case 3:
@@ -49777,7 +49840,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["currentTool"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["currentTool"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 376; s.pc = 5; return s.tmp_1; }
+     else { s.callLocIdx = 378; s.pc = 5; return s.tmp_1; }
     }
   case 5:
     r0 = s.retval;
@@ -49795,7 +49858,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["transitionLock"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["transitionLock"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 377; s.pc = 6; return s.tmp_4; }
+     else { s.callLocIdx = 379; s.pc = 6; return s.tmp_4; }
     }
   case 6:
     r0 = s.retval;
@@ -49817,12 +49880,12 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["currentTool"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["currentTool"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 378; s.pc = 8; return s.tmp_7; }
+     else { s.callLocIdx = 380; s.pc = 8; return s.tmp_7; }
     }
   case 8:
     r0 = s.retval;
     s.tmp_6.arg0 = r0;
-    s.callLocIdx = 379; s.pc = 7; return s.tmp_6;
+    s.callLocIdx = 381; s.pc = 7; return s.tmp_6;
   case 7:
     r0 = s.retval;
   case 3:
@@ -49862,7 +49925,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = GameController_handleInteract__P8408_mk(s);
-    s.callLocIdx = 381; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 383; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -49905,7 +49968,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 383; s.pc = 6; return s.tmp_2; }
+     else { s.callLocIdx = 385; s.pc = 6; return s.tmp_2; }
     }
   case 6:
     r0 = s.retval;
@@ -49918,7 +49981,7 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_5 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 384; s.pc = 7; return s.tmp_5;
+    s.callLocIdx = 386; s.pc = 7; return s.tmp_5;
   case 7:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -49930,7 +49993,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["lastOverlapTime"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["lastOverlapTime"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 385; s.pc = 8; return s.tmp_8; }
+     else { s.callLocIdx = 387; s.pc = 8; return s.tmp_8; }
     }
   case 8:
     r0 = s.retval;
@@ -49946,13 +50009,13 @@ switch (step) {
   case 4:
     s.tmp_9 = collectToken__P5362_mk(s);
     s.tmp_9.arg0 = s.arg1;
-    s.callLocIdx = 386; s.pc = 9; return s.tmp_9;
+    s.callLocIdx = 388; s.pc = 9; return s.tmp_9;
   case 9:
     r0 = s.retval;
     s.tmp_0 = if_lastOverlapTime_2_mk(s);
     s.tmp_0.arg0 = globals.state___5156;
     s.tmp_1 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 387; s.pc = 11; return s.tmp_1;
+    s.callLocIdx = 389; s.pc = 11; return s.tmp_1;
   case 11:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
@@ -49962,7 +50025,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/lastOverlapTime"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["lastOverlapTime"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 388; s.pc = 10; return s.tmp_0; }
+     else { s.callLocIdx = 390; s.pc = 10; return s.tmp_0; }
     }
   case 10:
     r0 = s.retval;
@@ -50018,7 +50081,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 390; s.pc = 6; return s.tmp_2; }
+     else { s.callLocIdx = 392; s.pc = 6; return s.tmp_2; }
     }
   case 6:
     r0 = s.retval;
@@ -50031,7 +50094,7 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_5 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 391; s.pc = 7; return s.tmp_5;
+    s.callLocIdx = 393; s.pc = 7; return s.tmp_5;
   case 7:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -50043,7 +50106,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["invincibleUntil"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["invincibleUntil"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 392; s.pc = 8; return s.tmp_7; }
+     else { s.callLocIdx = 394; s.pc = 8; return s.tmp_7; }
     }
   case 8:
     r0 = s.retval;
@@ -50058,7 +50121,7 @@ switch (step) {
     s.tmp_8 = handleGhostBotCollision__P5363_mk(s);
     s.tmp_8.arg0 = s.arg0;
     s.tmp_8.arg1 = s.arg1;
-    s.callLocIdx = 393; s.pc = 9; return s.tmp_8;
+    s.callLocIdx = 395; s.pc = 9; return s.tmp_8;
   case 9:
     r0 = s.retval;
   case 5:
@@ -50112,7 +50175,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 395; s.pc = 6; return s.tmp_2; }
+     else { s.callLocIdx = 397; s.pc = 6; return s.tmp_2; }
     }
   case 6:
     r0 = s.retval;
@@ -50132,7 +50195,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 396; s.pc = 7; return s.tmp_5; }
+     else { s.callLocIdx = 398; s.pc = 7; return s.tmp_5; }
     }
   case 7:
     r0 = s.retval;
@@ -50147,7 +50210,7 @@ switch (step) {
     s.tmp_6 = GameController_handleTargetHit__P8400_mk(s);
     s.tmp_6.arg0 = s.arg0;
     s.tmp_6.arg1 = s.arg1;
-    s.callLocIdx = 397; s.pc = 8; return s.tmp_6;
+    s.callLocIdx = 399; s.pc = 8; return s.tmp_6;
   case 8:
     r0 = s.retval;
   case 5:
@@ -50199,7 +50262,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 399; s.pc = 8; return s.tmp_2; }
+     else { s.callLocIdx = 401; s.pc = 8; return s.tmp_2; }
     }
   case 8:
     r0 = s.retval;
@@ -50219,7 +50282,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 400; s.pc = 9; return s.tmp_5; }
+     else { s.callLocIdx = 402; s.pc = 9; return s.tmp_5; }
     }
   case 9:
     r0 = s.retval;
@@ -50232,7 +50295,7 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_8 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 401; s.pc = 10; return s.tmp_8;
+    s.callLocIdx = 403; s.pc = 10; return s.tmp_8;
   case 10:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -50244,7 +50307,7 @@ switch (step) {
       s.tmp_11.fn = s.tmp_11.arg0.vtable.iface["lastOverlapTime"];
       if (s.tmp_11.fn == null) { s.retval = s.tmp_11.arg0.fields["lastOverlapTime"]; }
       else if (!s.tmp_11.fn.isGetter) { s.retval = bind(s.tmp_11); }
-     else { s.callLocIdx = 402; s.pc = 11; return s.tmp_11; }
+     else { s.callLocIdx = 404; s.pc = 11; return s.tmp_11; }
     }
   case 11:
     r0 = s.retval;
@@ -50260,13 +50323,13 @@ switch (step) {
   case 6:
     s.tmp_12 = GameController_handleStabilizationNode__P8407_mk(s);
     s.tmp_12.arg0 = s.arg1;
-    s.callLocIdx = 403; s.pc = 12; return s.tmp_12;
+    s.callLocIdx = 405; s.pc = 12; return s.tmp_12;
   case 12:
     r0 = s.retval;
     s.tmp_0 = if_lastOverlapTime_2_mk(s);
     s.tmp_0.arg0 = globals.state___5156;
     s.tmp_1 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 404; s.pc = 14; return s.tmp_1;
+    s.callLocIdx = 406; s.pc = 14; return s.tmp_1;
   case 14:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
@@ -50276,7 +50339,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/lastOverlapTime"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["lastOverlapTime"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 405; s.pc = 13; return s.tmp_0; }
+     else { s.callLocIdx = 407; s.pc = 13; return s.tmp_0; }
     }
   case 13:
     r0 = s.retval;
@@ -50335,7 +50398,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 407; s.pc = 6; return s.tmp_2; }
+     else { s.callLocIdx = 409; s.pc = 6; return s.tmp_2; }
     }
   case 6:
     r0 = s.retval;
@@ -50355,7 +50418,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 408; s.pc = 7; return s.tmp_5; }
+     else { s.callLocIdx = 410; s.pc = 7; return s.tmp_5; }
     }
   case 7:
     r0 = s.retval;
@@ -50370,7 +50433,7 @@ switch (step) {
     s.tmp_6 = GameController_handleBallPaddleBounce__P8401_mk(s);
     s.tmp_6.arg0 = s.arg0;
     s.tmp_6.arg1 = s.arg1;
-    s.callLocIdx = 409; s.pc = 8; return s.tmp_6;
+    s.callLocIdx = 411; s.pc = 8; return s.tmp_6;
   case 8:
     r0 = s.retval;
   case 5:
@@ -50422,7 +50485,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 411; s.pc = 6; return s.tmp_2; }
+     else { s.callLocIdx = 413; s.pc = 6; return s.tmp_2; }
     }
   case 6:
     r0 = s.retval;
@@ -50442,7 +50505,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 412; s.pc = 7; return s.tmp_5; }
+     else { s.callLocIdx = 414; s.pc = 7; return s.tmp_5; }
     }
   case 7:
     r0 = s.retval;
@@ -50457,7 +50520,7 @@ switch (step) {
     s.tmp_6 = GameController_handleBallTargetHit__P8402_mk(s);
     s.tmp_6.arg0 = s.arg0;
     s.tmp_6.arg1 = s.arg1;
-    s.callLocIdx = 413; s.pc = 8; return s.tmp_6;
+    s.callLocIdx = 415; s.pc = 8; return s.tmp_6;
   case 8:
     r0 = s.retval;
   case 5:
@@ -50505,7 +50568,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_3 = GameController_deferredInit__P5405_mk(s);
-    s.callLocIdx = 415; s.pc = 5; return s.tmp_3;
+    s.callLocIdx = 417; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
     r0 = pxsim_pxtrt_stlocRef(s.caps[0], true);
@@ -50520,14 +50583,14 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     s.tmp_3 = initHUD__P5278_mk(s);
-    s.callLocIdx = 416; s.pc = 6; return s.tmp_3;
+    s.callLocIdx = 418; s.pc = 6; return s.tmp_3;
   case 6:
     r0 = s.retval;
     r0 = pxsim_pxtrt_stlocRef(s.caps[1], true);
   case 3:
   case 4:
     s.tmp_0 = GameController_updateGameLoop__P8409_mk(s);
-    s.callLocIdx = 417; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 419; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     r0 = undefined;
@@ -50568,7 +50631,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["gameMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["gameMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 488; s.pc = 19; return s.tmp_2; }
+     else { s.callLocIdx = 490; s.pc = 19; return s.tmp_2; }
     }
   case 19:
     r0 = s.retval;
@@ -50588,7 +50651,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["gameMode"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["gameMode"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 489; s.pc = 20; return s.tmp_4; }
+     else { s.callLocIdx = 491; s.pc = 20; return s.tmp_4; }
     }
   case 20:
     r0 = s.retval;
@@ -50600,7 +50663,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 3; continue; }
     s.tmp_6 = updateHUD__P5279_mk(s);
-    s.callLocIdx = 490; s.pc = 21; return s.tmp_6;
+    s.callLocIdx = 492; s.pc = 21; return s.tmp_6;
   case 21:
     r0 = s.retval;
   case 3:
@@ -50613,7 +50676,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 491; s.pc = 22; return s.tmp_2; }
+     else { s.callLocIdx = 493; s.pc = 22; return s.tmp_2; }
     }
   case 22:
     r0 = s.retval;
@@ -50623,7 +50686,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 5; continue; }
     s.tmp_3 = GameController_HubMode_update__P5370_mk(s);
-    s.callLocIdx = 492; s.pc = 23; return s.tmp_3;
+    s.callLocIdx = 494; s.pc = 23; return s.tmp_3;
   case 23:
     r0 = s.retval;
     { step = 18; continue; }
@@ -50636,7 +50699,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 493; s.pc = 24; return s.tmp_2; }
+     else { s.callLocIdx = 495; s.pc = 24; return s.tmp_2; }
     }
   case 24:
     r0 = s.retval;
@@ -50646,7 +50709,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
     s.tmp_3 = GameController_updatePlatformMode__P8410_mk(s);
-    s.callLocIdx = 494; s.pc = 25; return s.tmp_3;
+    s.callLocIdx = 496; s.pc = 25; return s.tmp_3;
   case 25:
     r0 = s.retval;
     { step = 17; continue; }
@@ -50659,7 +50722,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 495; s.pc = 26; return s.tmp_2; }
+     else { s.callLocIdx = 497; s.pc = 26; return s.tmp_2; }
     }
   case 26:
     r0 = s.retval;
@@ -50669,7 +50732,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
     s.tmp_3 = GameController_updateShooterMode__P8411_mk(s);
-    s.callLocIdx = 496; s.pc = 27; return s.tmp_3;
+    s.callLocIdx = 498; s.pc = 27; return s.tmp_3;
   case 27:
     r0 = s.retval;
     { step = 16; continue; }
@@ -50682,7 +50745,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 497; s.pc = 28; return s.tmp_2; }
+     else { s.callLocIdx = 499; s.pc = 28; return s.tmp_2; }
     }
   case 28:
     r0 = s.retval;
@@ -50692,7 +50755,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
     s.tmp_3 = GameController_updateAsteroidsMode__P8412_mk(s);
-    s.callLocIdx = 498; s.pc = 29; return s.tmp_3;
+    s.callLocIdx = 500; s.pc = 29; return s.tmp_3;
   case 29:
     r0 = s.retval;
     { step = 15; continue; }
@@ -50705,7 +50768,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 499; s.pc = 30; return s.tmp_2; }
+     else { s.callLocIdx = 501; s.pc = 30; return s.tmp_2; }
     }
   case 30:
     r0 = s.retval;
@@ -50715,7 +50778,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_3 = GameController_updateRhythmMode__P8413_mk(s);
-    s.callLocIdx = 500; s.pc = 31; return s.tmp_3;
+    s.callLocIdx = 502; s.pc = 31; return s.tmp_3;
   case 31:
     r0 = s.retval;
     { step = 14; continue; }
@@ -50728,7 +50791,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 501; s.pc = 32; return s.tmp_2; }
+     else { s.callLocIdx = 503; s.pc = 32; return s.tmp_2; }
     }
   case 32:
     r0 = s.retval;
@@ -50738,7 +50801,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 10; continue; }
     s.tmp_3 = GameController_updatePuzzleMode__P8414_mk(s);
-    s.callLocIdx = 502; s.pc = 33; return s.tmp_3;
+    s.callLocIdx = 504; s.pc = 33; return s.tmp_3;
   case 33:
     r0 = s.retval;
     { step = 13; continue; }
@@ -50751,7 +50814,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 503; s.pc = 34; return s.tmp_2; }
+     else { s.callLocIdx = 505; s.pc = 34; return s.tmp_2; }
     }
   case 34:
     r0 = s.retval;
@@ -50761,7 +50824,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
     s.tmp_3 = GameController_updateMetaMode__P8415_mk(s);
-    s.callLocIdx = 504; s.pc = 35; return s.tmp_3;
+    s.callLocIdx = 506; s.pc = 35; return s.tmp_3;
   case 35:
     r0 = s.retval;
   case 11:
@@ -50806,7 +50869,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = GameController_MetaMode_update__P5398_mk(s);
-    s.callLocIdx = 519; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 521; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -50863,7 +50926,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = GameController_PuzzleMode_update__P5390_mk(s);
-    s.callLocIdx = 518; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 520; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -50912,7 +50975,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 776; s.pc = 18; return s.tmp_5; }
+     else { s.callLocIdx = 778; s.pc = 18; return s.tmp_5; }
     }
   case 18:
     r0 = s.retval;
@@ -50937,7 +51000,7 @@ switch (step) {
       s.tmp_9.fn = s.tmp_9.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_9.fn == null) { s.retval = s.tmp_9.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_9.fn.isGetter) { s.retval = bind(s.tmp_9); }
-     else { s.callLocIdx = 777; s.pc = 20; return s.tmp_9; }
+     else { s.callLocIdx = 779; s.pc = 20; return s.tmp_9; }
     }
   case 20:
     r0 = s.retval;
@@ -50948,7 +51011,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["stageComplete"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["stageComplete"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 778; s.pc = 19; return s.tmp_8; }
+     else { s.callLocIdx = 780; s.pc = 19; return s.tmp_8; }
     }
   case 19:
     r0 = s.retval;
@@ -50959,7 +51022,7 @@ switch (step) {
   case 5:
   case 6:
     s.tmp_10 = GameController_PuzzleMode_updateGhostBotPatrol__P8425_mk(s);
-    s.callLocIdx = 779; s.pc = 21; return s.tmp_10;
+    s.callLocIdx = 781; s.pc = 21; return s.tmp_10;
   case 21:
     r0 = s.retval;
     s.tmp_2 = if_currentDungeonId_1_mk(s);
@@ -50970,7 +51033,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 780; s.pc = 22; return s.tmp_2; }
+     else { s.callLocIdx = 782; s.pc = 22; return s.tmp_2; }
     }
   case 22:
     r0 = s.retval;
@@ -50980,7 +51043,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
     s.tmp_3 = GameController_PuzzleMode_updateMovingCrates__P8436_mk(s);
-    s.callLocIdx = 781; s.pc = 23; return s.tmp_3;
+    s.callLocIdx = 783; s.pc = 23; return s.tmp_3;
   case 23:
     r0 = s.retval;
   case 7:
@@ -50993,7 +51056,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 782; s.pc = 24; return s.tmp_2; }
+     else { s.callLocIdx = 784; s.pc = 24; return s.tmp_2; }
     }
   case 24:
     r0 = s.retval;
@@ -51003,7 +51066,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_3 = GameController_PuzzleMode_updateDungeon05Balls__P8439_mk(s);
-    s.callLocIdx = 783; s.pc = 25; return s.tmp_3;
+    s.callLocIdx = 785; s.pc = 25; return s.tmp_3;
   case 25:
     r0 = s.retval;
   case 9:
@@ -51016,7 +51079,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 784; s.pc = 26; return s.tmp_2; }
+     else { s.callLocIdx = 786; s.pc = 26; return s.tmp_2; }
     }
   case 26:
     r0 = s.retval;
@@ -51026,7 +51089,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 11; continue; }
     s.tmp_3 = GameController_PuzzleMode_checkDungeon01StageComplete__P8426_mk(s);
-    s.callLocIdx = 785; s.pc = 27; return s.tmp_3;
+    s.callLocIdx = 787; s.pc = 27; return s.tmp_3;
   case 27:
     r0 = s.retval;
     { step = 16; continue; }
@@ -51039,7 +51102,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 786; s.pc = 28; return s.tmp_2; }
+     else { s.callLocIdx = 788; s.pc = 28; return s.tmp_2; }
     }
   case 28:
     r0 = s.retval;
@@ -51049,7 +51112,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 12; continue; }
     s.tmp_3 = GameController_PuzzleMode_checkDungeon03StageComplete__P8427_mk(s);
-    s.callLocIdx = 787; s.pc = 29; return s.tmp_3;
+    s.callLocIdx = 789; s.pc = 29; return s.tmp_3;
   case 29:
     r0 = s.retval;
     { step = 15; continue; }
@@ -51062,7 +51125,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 788; s.pc = 30; return s.tmp_2; }
+     else { s.callLocIdx = 790; s.pc = 30; return s.tmp_2; }
     }
   case 30:
     r0 = s.retval;
@@ -51072,7 +51135,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
     s.tmp_3 = GameController_PuzzleMode_checkDungeon05StageComplete__P8428_mk(s);
-    s.callLocIdx = 789; s.pc = 31; return s.tmp_3;
+    s.callLocIdx = 791; s.pc = 31; return s.tmp_3;
   case 31:
     r0 = s.retval;
   case 13:
@@ -51126,7 +51189,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 826; s.pc = 3; return s.tmp_0; }
+     else { s.callLocIdx = 828; s.pc = 3; return s.tmp_0; }
     }
   case 3:
     r0 = s.retval;
@@ -51139,7 +51202,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["targetsDestroyed"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["targetsDestroyed"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 827; s.pc = 4; return s.tmp_2; }
+     else { s.callLocIdx = 829; s.pc = 4; return s.tmp_2; }
     }
   case 4:
     r0 = s.retval;
@@ -51152,7 +51215,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["targetsRequired"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["targetsRequired"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 828; s.pc = 5; return s.tmp_4; }
+     else { s.callLocIdx = 830; s.pc = 5; return s.tmp_4; }
     }
   case 5:
     r0 = s.retval;
@@ -51162,7 +51225,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_5 = GameController_PuzzleMode_markStageComplete__P8430_mk(s);
-    s.callLocIdx = 829; s.pc = 6; return s.tmp_5;
+    s.callLocIdx = 831; s.pc = 6; return s.tmp_5;
   case 6:
     r0 = s.retval;
   case 1:
@@ -51208,7 +51271,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 835; s.pc = 4; return s.tmp_3; }
+     else { s.callLocIdx = 837; s.pc = 4; return s.tmp_3; }
     }
   case 4:
     r0 = s.retval;
@@ -51231,7 +51294,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 836; s.pc = 6; return s.tmp_5; }
+     else { s.callLocIdx = 838; s.pc = 6; return s.tmp_5; }
     }
   case 6:
     r0 = s.retval;
@@ -51243,23 +51306,23 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["set/stageComplete"];
       if (s.tmp_4.fn === null) { s.tmp_4.arg0.fields["stageComplete"] = s.tmp_4.arg1; }
       else if (s.tmp_4.fn === undefined) { failedCast(s.tmp_4.arg0) } 
-     else { s.callLocIdx = 837; s.pc = 5; return s.tmp_4; }
+     else { s.callLocIdx = 839; s.pc = 5; return s.tmp_4; }
     }
   case 5:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[STAGE_COMPLETE]";
     s.tmp_0.arg1 = 2000;
-    s.callLocIdx = 838; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 840; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     s.tmp_0 = pause__P415_mk(s);
     s.tmp_0.arg0 = 500;
-    s.callLocIdx = 839; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 841; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = GameController_onStageComplete__P5410_mk(s);
-    s.callLocIdx = 840; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 842; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
   case 3:
@@ -51305,7 +51368,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 813; s.pc = 23; return s.tmp_0; }
+     else { s.callLocIdx = 815; s.pc = 23; return s.tmp_0; }
     }
   case 23:
     r0 = s.retval;
@@ -51318,7 +51381,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 814; s.pc = 24; return s.tmp_0; }
+     else { s.callLocIdx = 816; s.pc = 24; return s.tmp_0; }
     }
   case 24:
     r0 = s.retval;
@@ -51335,7 +51398,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["switchesActivated"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["switchesActivated"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 815; s.pc = 25; return s.tmp_3; }
+     else { s.callLocIdx = 817; s.pc = 25; return s.tmp_3; }
     }
   case 25:
     r0 = s.retval;
@@ -51348,7 +51411,7 @@ switch (step) {
     { step = 2; continue; }
   case 1:
     s.tmp_4 = GameController_PuzzleMode_checkPlayerOnGoal__P8429_mk(s);
-    s.callLocIdx = 816; s.pc = 26; return s.tmp_4;
+    s.callLocIdx = 818; s.pc = 26; return s.tmp_4;
   case 26:
     r0 = s.retval;
   case 2:
@@ -51357,7 +51420,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 3; continue; }
     s.tmp_6 = GameController_PuzzleMode_markStageComplete__P8430_mk(s);
-    s.callLocIdx = 817; s.pc = 27; return s.tmp_6;
+    s.callLocIdx = 819; s.pc = 27; return s.tmp_6;
   case 27:
     r0 = s.retval;
   case 3:
@@ -51376,7 +51439,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["switchesActivated"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["switchesActivated"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 818; s.pc = 28; return s.tmp_3; }
+     else { s.callLocIdx = 820; s.pc = 28; return s.tmp_3; }
     }
   case 28:
     r0 = s.retval;
@@ -51389,7 +51452,7 @@ switch (step) {
     { step = 7; continue; }
   case 6:
     s.tmp_4 = GameController_PuzzleMode_checkPlayerOnGoal__P8429_mk(s);
-    s.callLocIdx = 819; s.pc = 29; return s.tmp_4;
+    s.callLocIdx = 821; s.pc = 29; return s.tmp_4;
   case 29:
     r0 = s.retval;
   case 7:
@@ -51398,7 +51461,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 8; continue; }
     s.tmp_6 = GameController_PuzzleMode_markStageComplete__P8430_mk(s);
-    s.callLocIdx = 820; s.pc = 30; return s.tmp_6;
+    s.callLocIdx = 822; s.pc = 30; return s.tmp_6;
   case 30:
     r0 = s.retval;
   case 8:
@@ -51410,14 +51473,14 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 13; continue; }
     s.tmp_2 = GameController_PuzzleMode_checkPlayerOnGoal__P8429_mk(s);
-    s.callLocIdx = 821; s.pc = 31; return s.tmp_2;
+    s.callLocIdx = 823; s.pc = 31; return s.tmp_2;
   case 31:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 11; continue; }
     s.tmp_3 = GameController_PuzzleMode_markStageComplete__P8430_mk(s);
-    s.callLocIdx = 822; s.pc = 32; return s.tmp_3;
+    s.callLocIdx = 824; s.pc = 32; return s.tmp_3;
   case 32:
     r0 = s.retval;
   case 11:
@@ -51436,7 +51499,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["switchesActivated"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["switchesActivated"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 823; s.pc = 33; return s.tmp_3; }
+     else { s.callLocIdx = 825; s.pc = 33; return s.tmp_3; }
     }
   case 33:
     r0 = s.retval;
@@ -51449,7 +51512,7 @@ switch (step) {
     { step = 15; continue; }
   case 14:
     s.tmp_4 = GameController_PuzzleMode_checkPlayerOnGoal__P8429_mk(s);
-    s.callLocIdx = 824; s.pc = 34; return s.tmp_4;
+    s.callLocIdx = 826; s.pc = 34; return s.tmp_4;
   case 34:
     r0 = s.retval;
   case 15:
@@ -51458,7 +51521,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 16; continue; }
     s.tmp_6 = GameController_PuzzleMode_markStageComplete__P8430_mk(s);
-    s.callLocIdx = 825; s.pc = 35; return s.tmp_6;
+    s.callLocIdx = 827; s.pc = 35; return s.tmp_6;
   case 35:
     r0 = s.retval;
   case 16:
@@ -51518,7 +51581,7 @@ switch (step) {
     { step = 2; continue; }
   case 1:
     s.tmp_4 = game_currentScene__P3061_mk(s);
-    s.callLocIdx = 831; s.pc = 10; return s.tmp_4;
+    s.callLocIdx = 833; s.pc = 10; return s.tmp_4;
   case 10:
     r0 = s.retval;
     r0 = r0.fields["tileMap"];
@@ -51537,7 +51600,7 @@ switch (step) {
   case 4:
     s.tmp_6 = Sprite_tilemapLocation__P2466_mk(s);
     s.tmp_6.arg0 = s.playerSprite___21469;
-    s.callLocIdx = 832; s.pc = 11; return s.tmp_6;
+    s.callLocIdx = 834; s.pc = 11; return s.tmp_6;
   case 11:
     r0 = s.retval;
     s.loc___21479 = (r0);
@@ -51553,7 +51616,7 @@ switch (step) {
   case 6:
     s.tmp_2 = tiles_getTileImage__P2813_mk(s);
     s.tmp_2.arg0 = 7;
-    s.callLocIdx = 833; s.pc = 12; return s.tmp_2;
+    s.callLocIdx = 835; s.pc = 12; return s.tmp_2;
   case 12:
     r0 = s.retval;
     s.goalTile___21485 = (r0);
@@ -51566,7 +51629,7 @@ switch (step) {
     s.tmp_1 = tiles_tileAtLocationEquals__P2815_mk(s);
     s.tmp_1.arg0 = s.loc___21479;
     s.tmp_1.arg1 = s.goalTile___21485;
-    s.callLocIdx = 834; s.pc = 13; return s.tmp_1;
+    s.callLocIdx = 836; s.pc = 13; return s.tmp_1;
   case 13:
     r0 = s.retval;
   case 8:
@@ -51619,7 +51682,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 799; s.pc = 23; return s.tmp_0; }
+     else { s.callLocIdx = 801; s.pc = 23; return s.tmp_0; }
     }
   case 23:
     r0 = s.retval;
@@ -51632,7 +51695,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 800; s.pc = 24; return s.tmp_0; }
+     else { s.callLocIdx = 802; s.pc = 24; return s.tmp_0; }
     }
   case 24:
     r0 = s.retval;
@@ -51649,7 +51712,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["switchesActivated"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["switchesActivated"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 801; s.pc = 25; return s.tmp_3; }
+     else { s.callLocIdx = 803; s.pc = 25; return s.tmp_3; }
     }
   case 25:
     r0 = s.retval;
@@ -51662,7 +51725,7 @@ switch (step) {
     { step = 2; continue; }
   case 1:
     s.tmp_4 = GameController_PuzzleMode_checkPlayerOnGoal__P8429_mk(s);
-    s.callLocIdx = 802; s.pc = 26; return s.tmp_4;
+    s.callLocIdx = 804; s.pc = 26; return s.tmp_4;
   case 26:
     r0 = s.retval;
   case 2:
@@ -51671,7 +51734,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 3; continue; }
     s.tmp_6 = GameController_PuzzleMode_markStageComplete__P8430_mk(s);
-    s.callLocIdx = 803; s.pc = 27; return s.tmp_6;
+    s.callLocIdx = 805; s.pc = 27; return s.tmp_6;
   case 27:
     r0 = s.retval;
   case 3:
@@ -51683,14 +51746,14 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
     s.tmp_2 = GameController_PuzzleMode_checkPlayerOnGoal__P8429_mk(s);
-    s.callLocIdx = 804; s.pc = 28; return s.tmp_2;
+    s.callLocIdx = 806; s.pc = 28; return s.tmp_2;
   case 28:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_1);
     if (!r0) { step = 6; continue; }
     s.tmp_3 = GameController_PuzzleMode_markStageComplete__P8430_mk(s);
-    s.callLocIdx = 805; s.pc = 29; return s.tmp_3;
+    s.callLocIdx = 807; s.pc = 29; return s.tmp_3;
   case 29:
     r0 = s.retval;
   case 6:
@@ -51709,7 +51772,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["tokensCollected"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["tokensCollected"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 806; s.pc = 30; return s.tmp_3; }
+     else { s.callLocIdx = 808; s.pc = 30; return s.tmp_3; }
     }
   case 30:
     r0 = s.retval;
@@ -51722,7 +51785,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["tokensRequired"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["tokensRequired"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 807; s.pc = 31; return s.tmp_5; }
+     else { s.callLocIdx = 809; s.pc = 31; return s.tmp_5; }
     }
   case 31:
     r0 = s.retval;
@@ -51735,7 +51798,7 @@ switch (step) {
     { step = 10; continue; }
   case 9:
     s.tmp_6 = GameController_PuzzleMode_checkPlayerOnGoal__P8429_mk(s);
-    s.callLocIdx = 808; s.pc = 32; return s.tmp_6;
+    s.callLocIdx = 810; s.pc = 32; return s.tmp_6;
   case 32:
     r0 = s.retval;
   case 10:
@@ -51744,7 +51807,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_7);
     if (!r0) { step = 11; continue; }
     s.tmp_8 = GameController_PuzzleMode_markStageComplete__P8430_mk(s);
-    s.callLocIdx = 809; s.pc = 33; return s.tmp_8;
+    s.callLocIdx = 811; s.pc = 33; return s.tmp_8;
   case 33:
     r0 = s.retval;
   case 11:
@@ -51763,7 +51826,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["switchesActivated"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["switchesActivated"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 810; s.pc = 34; return s.tmp_3; }
+     else { s.callLocIdx = 812; s.pc = 34; return s.tmp_3; }
     }
   case 34:
     r0 = s.retval;
@@ -51776,7 +51839,7 @@ switch (step) {
     { step = 15; continue; }
   case 14:
     s.tmp_4 = GameController_PuzzleMode_checkPlayerOnGoal__P8429_mk(s);
-    s.callLocIdx = 811; s.pc = 35; return s.tmp_4;
+    s.callLocIdx = 813; s.pc = 35; return s.tmp_4;
   case 35:
     r0 = s.retval;
   case 15:
@@ -51785,7 +51848,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 16; continue; }
     s.tmp_6 = GameController_PuzzleMode_markStageComplete__P8430_mk(s);
-    s.callLocIdx = 812; s.pc = 36; return s.tmp_6;
+    s.callLocIdx = 814; s.pc = 36; return s.tmp_6;
   case 36:
     r0 = s.retval;
   case 16:
@@ -51834,8 +51897,8 @@ switch (step) {
 
     s.balls___21535 = undefined;
     s.ball___21540 = undefined;
-    s.unnamed406___U2 = undefined;
-    s.unnamed407___U3 = undefined;
+    s.unnamed586___U2 = undefined;
+    s.unnamed587___U3 = undefined;
     s.tmp_3 = if_dungeonStageData_1_mk(s);
     s.tmp_3.arg0 = globals.state___5156;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -51844,7 +51907,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 915; s.pc = 13; return s.tmp_3; }
+     else { s.callLocIdx = 917; s.pc = 13; return s.tmp_3; }
     }
   case 13:
     r0 = s.retval;
@@ -51859,21 +51922,21 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_4 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_4.arg0 = globals.KIND_BALL___8163;
-    s.callLocIdx = 916; s.pc = 14; return s.tmp_4;
+    s.tmp_4.arg0 = globals.KIND_BALL___36345;
+    s.callLocIdx = 918; s.pc = 14; return s.tmp_4;
   case 14:
     r0 = s.retval;
     s.balls___21535 = (r0);
     s.ball___21540 = (undefined);
-    s.unnamed406___U2 = (s.balls___21535);
-    s.unnamed407___U3 = (0);
+    s.unnamed586___U2 = (s.balls___21535);
+    s.unnamed587___U3 = (0);
   case 3:
-    s.tmp_0 = r0 = s.unnamed407___U3;
-    r0 = pxsim_Array__length(s.unnamed406___U2);
+    s.tmp_0 = r0 = s.unnamed587___U3;
+    r0 = pxsim_Array__length(s.unnamed586___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed406___U2, s.unnamed407___U3);
+    r0 = pxsim_Array__getAt(s.unnamed586___U2, s.unnamed587___U3);
     s.ball___21540 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.ball___21540);
     s.tmp_3 = r0;
@@ -51897,7 +51960,7 @@ switch (step) {
   case 7:
     s.tmp_8 = Sprite_y__P2393_mk(s);
     s.tmp_8.arg0 = s.ball___21540;
-    s.callLocIdx = 917; s.pc = 15; return s.tmp_8;
+    s.callLocIdx = 919; s.pc = 15; return s.tmp_8;
   case 15:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -51913,17 +51976,17 @@ switch (step) {
     s.tmp_11.arg0 = s.ball___21540;
     s.tmp_11.arg1 = undefined;
     s.tmp_11.arg2 = undefined;
-    s.callLocIdx = 919; s.pc = 16; return s.tmp_11;
+    s.callLocIdx = 921; s.pc = 16; return s.tmp_11;
   case 16:
     r0 = s.retval;
   case 8:
   case 9:
   case 10:
-    r0 = (s.unnamed407___U3 + 1);
-    s.unnamed407___U3 = (r0);
+    r0 = (s.unnamed587___U3 + 1);
+    s.unnamed587___U3 = (r0);
     { step = 3; continue; }
   case 11:
-    s.unnamed406___U2 = (undefined);
+    s.unnamed586___U2 = (undefined);
   case 12:
     r0 = undefined;
     return leave(s, r0)
@@ -51950,8 +52013,8 @@ function GameController_PuzzleMode_updateDungeon05Balls__P8439_mk(s) {
   tmp_11: undefined,
   balls___21535: undefined,
   ball___21540: undefined,
-  unnamed406___U2: undefined,
-  unnamed407___U3: undefined,
+  unnamed586___U2: undefined,
+  unnamed587___U3: undefined,
 } }
 
 
@@ -51969,24 +52032,24 @@ switch (step) {
 
     s.crates___21560 = undefined;
     s.crate___21565 = undefined;
-    s.unnamed404___U2 = undefined;
-    s.unnamed405___U3 = undefined;
+    s.unnamed584___U2 = undefined;
+    s.unnamed585___U3 = undefined;
     s.tmp_0 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_0.arg0 = globals.KIND_HAZARD___8157;
-    s.callLocIdx = 870; s.pc = 16; return s.tmp_0;
+    s.tmp_0.arg0 = globals.KIND_HAZARD___36339;
+    s.callLocIdx = 872; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
     s.crates___21560 = (r0);
     s.crate___21565 = (undefined);
-    s.unnamed404___U2 = (s.crates___21560);
-    s.unnamed405___U3 = (0);
+    s.unnamed584___U2 = (s.crates___21560);
+    s.unnamed585___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed405___U3;
-    r0 = pxsim_Array__length(s.unnamed404___U2);
+    s.tmp_0 = r0 = s.unnamed585___U3;
+    r0 = pxsim_Array__length(s.unnamed584___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 15; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed404___U2, s.unnamed405___U3);
+    r0 = pxsim_Array__getAt(s.unnamed584___U2, s.unnamed585___U3);
     s.crate___21565 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.crate___21565);
     s.tmp_3 = r0;
@@ -52010,7 +52073,7 @@ switch (step) {
   case 5:
     s.tmp_8 = Sprite_x__P2391_mk(s);
     s.tmp_8.arg0 = s.crate___21565;
-    s.callLocIdx = 871; s.pc = 17; return s.tmp_8;
+    s.callLocIdx = 873; s.pc = 17; return s.tmp_8;
   case 17:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -52023,7 +52086,7 @@ switch (step) {
   case 6:
     s.tmp_10 = Sprite_x__P2391_mk(s);
     s.tmp_10.arg0 = s.crate___21565;
-    s.callLocIdx = 872; s.pc = 18; return s.tmp_10;
+    s.callLocIdx = 874; s.pc = 18; return s.tmp_10;
   case 18:
     r0 = s.retval;
     s.tmp_9 = r0;
@@ -52041,20 +52104,20 @@ switch (step) {
     s.tmp_14.arg0 = s.crate___21565;
     s.tmp_16 = Sprite_vx__P2395_mk(s);
     s.tmp_16.arg0 = s.crate___21565;
-    s.callLocIdx = 874; s.pc = 20; return s.tmp_16;
+    s.callLocIdx = 876; s.pc = 20; return s.tmp_16;
   case 20:
     r0 = s.retval;
     s.tmp_15 = r0;
     r0 = (0 - s.tmp_15);
     s.tmp_14.arg1 = r0;
-    s.callLocIdx = 875; s.pc = 19; return s.tmp_14;
+    s.callLocIdx = 877; s.pc = 19; return s.tmp_14;
   case 19:
     r0 = s.retval;
   case 8:
   case 9:
     s.tmp_2 = Sprite_y__P2393_mk(s);
     s.tmp_2.arg0 = s.crate___21565;
-    s.callLocIdx = 876; s.pc = 21; return s.tmp_2;
+    s.callLocIdx = 878; s.pc = 21; return s.tmp_2;
   case 21:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -52067,7 +52130,7 @@ switch (step) {
   case 10:
     s.tmp_4 = Sprite_y__P2393_mk(s);
     s.tmp_4.arg0 = s.crate___21565;
-    s.callLocIdx = 877; s.pc = 22; return s.tmp_4;
+    s.callLocIdx = 879; s.pc = 22; return s.tmp_4;
   case 22:
     r0 = s.retval;
     s.tmp_3 = r0;
@@ -52085,23 +52148,23 @@ switch (step) {
     s.tmp_8.arg0 = s.crate___21565;
     s.tmp_10 = Sprite_vy__P2397_mk(s);
     s.tmp_10.arg0 = s.crate___21565;
-    s.callLocIdx = 879; s.pc = 24; return s.tmp_10;
+    s.callLocIdx = 881; s.pc = 24; return s.tmp_10;
   case 24:
     r0 = s.retval;
     s.tmp_9 = r0;
     r0 = (0 - s.tmp_9);
     s.tmp_8.arg1 = r0;
-    s.callLocIdx = 880; s.pc = 23; return s.tmp_8;
+    s.callLocIdx = 882; s.pc = 23; return s.tmp_8;
   case 23:
     r0 = s.retval;
   case 12:
   case 13:
   case 14:
-    r0 = (s.unnamed405___U3 + 1);
-    s.unnamed405___U3 = (r0);
+    r0 = (s.unnamed585___U3 + 1);
+    s.unnamed585___U3 = (r0);
     { step = 1; continue; }
   case 15:
-    s.unnamed404___U2 = (undefined);
+    s.unnamed584___U2 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -52132,8 +52195,8 @@ function GameController_PuzzleMode_updateMovingCrates__P8436_mk(s) {
   tmp_16: undefined,
   crates___21560: undefined,
   crate___21565: undefined,
-  unnamed404___U2: undefined,
-  unnamed405___U3: undefined,
+  unnamed584___U2: undefined,
+  unnamed585___U3: undefined,
 } }
 
 
@@ -52151,24 +52214,24 @@ switch (step) {
 
     s.ghostBots___21604 = undefined;
     s.ghostBot___21609 = undefined;
-    s.unnamed402___U2 = undefined;
-    s.unnamed403___U3 = undefined;
+    s.unnamed582___U2 = undefined;
+    s.unnamed583___U3 = undefined;
     s.tmp_0 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_0.arg0 = globals.KIND_ENEMY___8151;
-    s.callLocIdx = 793; s.pc = 12; return s.tmp_0;
+    s.tmp_0.arg0 = globals.KIND_ENEMY___36333;
+    s.callLocIdx = 795; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
     s.ghostBots___21604 = (r0);
     s.ghostBot___21609 = (undefined);
-    s.unnamed402___U2 = (s.ghostBots___21604);
-    s.unnamed403___U3 = (0);
+    s.unnamed582___U2 = (s.ghostBots___21604);
+    s.unnamed583___U3 = (0);
   case 1:
-    s.tmp_0 = r0 = s.unnamed403___U3;
-    r0 = pxsim_Array__length(s.unnamed402___U2);
+    s.tmp_0 = r0 = s.unnamed583___U3;
+    r0 = pxsim_Array__length(s.unnamed582___U2);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 11; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed402___U2, s.unnamed403___U3);
+    r0 = pxsim_Array__getAt(s.unnamed582___U2, s.unnamed583___U3);
     s.ghostBot___21609 = (r0);
     r0 = pxsim_numops_toBoolDecr(s.ghostBot___21609);
     s.tmp_3 = r0;
@@ -52192,7 +52255,7 @@ switch (step) {
   case 5:
     s.tmp_8 = Sprite_x__P2391_mk(s);
     s.tmp_8.arg0 = s.ghostBot___21609;
-    s.callLocIdx = 794; s.pc = 13; return s.tmp_8;
+    s.callLocIdx = 796; s.pc = 13; return s.tmp_8;
   case 13:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -52205,7 +52268,7 @@ switch (step) {
   case 6:
     s.tmp_10 = Sprite_x__P2391_mk(s);
     s.tmp_10.arg0 = s.ghostBot___21609;
-    s.callLocIdx = 795; s.pc = 14; return s.tmp_10;
+    s.callLocIdx = 797; s.pc = 14; return s.tmp_10;
   case 14:
     r0 = s.retval;
     s.tmp_9 = r0;
@@ -52223,23 +52286,23 @@ switch (step) {
     s.tmp_14.arg0 = s.ghostBot___21609;
     s.tmp_16 = Sprite_vx__P2395_mk(s);
     s.tmp_16.arg0 = s.ghostBot___21609;
-    s.callLocIdx = 797; s.pc = 16; return s.tmp_16;
+    s.callLocIdx = 799; s.pc = 16; return s.tmp_16;
   case 16:
     r0 = s.retval;
     s.tmp_15 = r0;
     r0 = (0 - s.tmp_15);
     s.tmp_14.arg1 = r0;
-    s.callLocIdx = 798; s.pc = 15; return s.tmp_14;
+    s.callLocIdx = 800; s.pc = 15; return s.tmp_14;
   case 15:
     r0 = s.retval;
   case 8:
   case 9:
   case 10:
-    r0 = (s.unnamed403___U3 + 1);
-    s.unnamed403___U3 = (r0);
+    r0 = (s.unnamed583___U3 + 1);
+    s.unnamed583___U3 = (r0);
     { step = 1; continue; }
   case 11:
-    s.unnamed402___U2 = (undefined);
+    s.unnamed582___U2 = (undefined);
     r0 = undefined;
     return leave(s, r0)
   default: oops()
@@ -52270,8 +52333,8 @@ function GameController_PuzzleMode_updateGhostBotPatrol__P8425_mk(s) {
   tmp_16: undefined,
   ghostBots___21604: undefined,
   ghostBot___21609: undefined,
-  unnamed402___U2: undefined,
-  unnamed403___U3: undefined,
+  unnamed582___U2: undefined,
+  unnamed583___U3: undefined,
 } }
 
 
@@ -52300,7 +52363,7 @@ switch (step) {
     s.tmp_2 = signalFailure__P5440_mk(s);
     s.tmp_2.arg0 = 4;
     s.tmp_2.arg1 = "updateRhythmMode";
-    s.callLocIdx = 506; s.pc = 10; return s.tmp_2;
+    s.callLocIdx = 508; s.pc = 10; return s.tmp_2;
   case 10:
     r0 = s.retval;
     { step = 9; continue; }
@@ -52314,7 +52377,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 507; s.pc = 11; return s.tmp_3; }
+     else { s.callLocIdx = 509; s.pc = 11; return s.tmp_3; }
     }
   case 11:
     r0 = s.retval;
@@ -52328,14 +52391,14 @@ switch (step) {
     s.tmp_4 = signalFailure__P5440_mk(s);
     s.tmp_4.arg0 = 3;
     s.tmp_4.arg1 = "updateRhythmMode";
-    s.callLocIdx = 508; s.pc = 12; return s.tmp_4;
+    s.callLocIdx = 510; s.pc = 12; return s.tmp_4;
   case 12:
     r0 = s.retval;
     { step = 9; continue; }
   case 3:
   case 4:
     s.tmp_0 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 509; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 511; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     s.now___21642 = (r0);
@@ -52347,7 +52410,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 510; s.pc = 14; return s.tmp_0; }
+     else { s.callLocIdx = 512; s.pc = 14; return s.tmp_0; }
     }
   case 14:
     r0 = s.retval;
@@ -52360,7 +52423,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["beatIntervalMs"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["beatIntervalMs"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 511; s.pc = 15; return s.tmp_2; }
+     else { s.callLocIdx = 513; s.pc = 15; return s.tmp_2; }
     }
   case 15:
     r0 = s.retval;
@@ -52381,7 +52444,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["nextBeatTime"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["nextBeatTime"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 512; s.pc = 16; return s.tmp_5; }
+     else { s.callLocIdx = 514; s.pc = 16; return s.tmp_5; }
     }
   case 16:
     r0 = s.retval;
@@ -52401,7 +52464,7 @@ switch (step) {
       s.tmp_9.fn = s.tmp_9.arg0.vtable.iface["nextBeatTime"];
       if (s.tmp_9.fn == null) { s.retval = s.tmp_9.arg0.fields["nextBeatTime"]; }
       else if (!s.tmp_9.fn.isGetter) { s.retval = bind(s.tmp_9); }
-     else { s.callLocIdx = 513; s.pc = 17; return s.tmp_9; }
+     else { s.callLocIdx = 515; s.pc = 17; return s.tmp_9; }
     }
   case 17:
     r0 = s.retval;
@@ -52417,7 +52480,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["beatIntervalMs"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["beatIntervalMs"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 514; s.pc = 18; return s.tmp_4; }
+     else { s.callLocIdx = 516; s.pc = 18; return s.tmp_4; }
     }
   case 18:
     r0 = s.retval;
@@ -52439,7 +52502,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["nextBeatTime"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["nextBeatTime"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 516; s.pc = 20; return s.tmp_3; }
+     else { s.callLocIdx = 518; s.pc = 20; return s.tmp_3; }
     }
   case 20:
     r0 = s.retval;
@@ -52453,7 +52516,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["beatIntervalMs"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["beatIntervalMs"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 515; s.pc = 21; return s.tmp_7; }
+     else { s.callLocIdx = 517; s.pc = 21; return s.tmp_7; }
     }
   case 21:
     r0 = s.retval;
@@ -52468,7 +52531,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/nextBeatTime"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["nextBeatTime"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 517; s.pc = 19; return s.tmp_0; }
+     else { s.callLocIdx = 519; s.pc = 19; return s.tmp_0; }
     }
   case 19:
     r0 = s.retval;
@@ -52568,7 +52631,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = GameController_PlatformMode_update__P5375_mk(s);
-    s.callLocIdx = 505; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 507; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -52620,7 +52683,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 631; s.pc = 26; return s.tmp_4; }
+     else { s.callLocIdx = 633; s.pc = 26; return s.tmp_4; }
     }
   case 26:
     r0 = s.retval;
@@ -52637,7 +52700,7 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_9 = game_currentScene__P3061_mk(s);
-    s.callLocIdx = 632; s.pc = 27; return s.tmp_9;
+    s.callLocIdx = 634; s.pc = 27; return s.tmp_9;
   case 27:
     r0 = s.retval;
     r0 = r0.fields["tileMap"];
@@ -52653,7 +52716,7 @@ switch (step) {
   case 6:
     s.tmp_10 = Sprite_tilemapLocation__P2466_mk(s);
     s.tmp_10.arg0 = s.playerSprite___21680;
-    s.callLocIdx = 633; s.pc = 28; return s.tmp_10;
+    s.callLocIdx = 635; s.pc = 28; return s.tmp_10;
   case 28:
     r0 = s.retval;
     s.loc___21693 = (r0);
@@ -52666,9 +52729,9 @@ switch (step) {
     { step = 25; continue; }
   case 7:
   case 8:
-    s.tmp_2 = tileImg__P8268_mk(s);
+    s.tmp_2 = tileImg__P36450_mk(s);
     s.tmp_2.arg0 = 7;
-    s.callLocIdx = 634; s.pc = 29; return s.tmp_2;
+    s.callLocIdx = 636; s.pc = 29; return s.tmp_2;
   case 29:
     r0 = s.retval;
     s.goalTile___21699 = (r0);
@@ -52681,7 +52744,7 @@ switch (step) {
     s.tmp_1 = tiles_tileAtLocationEquals__P2815_mk(s);
     s.tmp_1.arg0 = s.loc___21693;
     s.tmp_1.arg1 = s.goalTile___21699;
-    s.callLocIdx = 635; s.pc = 30; return s.tmp_1;
+    s.callLocIdx = 637; s.pc = 30; return s.tmp_1;
   case 30:
     r0 = s.retval;
   case 10:
@@ -52701,7 +52764,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 636; s.pc = 32; return s.tmp_6; }
+     else { s.callLocIdx = 638; s.pc = 32; return s.tmp_6; }
     }
   case 32:
     r0 = s.retval;
@@ -52712,7 +52775,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["reachedGoal"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["reachedGoal"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 637; s.pc = 31; return s.tmp_5; }
+     else { s.callLocIdx = 639; s.pc = 31; return s.tmp_5; }
     }
   case 31:
     r0 = s.retval;
@@ -52734,7 +52797,7 @@ switch (step) {
       s.tmp_9.fn = s.tmp_9.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_9.fn == null) { s.retval = s.tmp_9.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_9.fn.isGetter) { s.retval = bind(s.tmp_9); }
-     else { s.callLocIdx = 638; s.pc = 34; return s.tmp_9; }
+     else { s.callLocIdx = 640; s.pc = 34; return s.tmp_9; }
     }
   case 34:
     r0 = s.retval;
@@ -52746,7 +52809,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["set/reachedGoal"];
       if (s.tmp_8.fn === null) { s.tmp_8.arg0.fields["reachedGoal"] = s.tmp_8.arg1; }
       else if (s.tmp_8.fn === undefined) { failedCast(s.tmp_8.arg0) } 
-     else { s.callLocIdx = 639; s.pc = 33; return s.tmp_8; }
+     else { s.callLocIdx = 641; s.pc = 33; return s.tmp_8; }
     }
   case 33:
     r0 = s.retval;
@@ -52758,7 +52821,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 640; s.pc = 35; return s.tmp_2; }
+     else { s.callLocIdx = 642; s.pc = 35; return s.tmp_2; }
     }
   case 35:
     r0 = s.retval;
@@ -52778,7 +52841,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 641; s.pc = 36; return s.tmp_4; }
+     else { s.callLocIdx = 643; s.pc = 36; return s.tmp_4; }
     }
   case 36:
     r0 = s.retval;
@@ -52790,13 +52853,13 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 15; continue; }
     s.tmp_6 = GameController_completeDungeon__P5409_mk(s);
-    s.callLocIdx = 642; s.pc = 37; return s.tmp_6;
+    s.callLocIdx = 644; s.pc = 37; return s.tmp_6;
   case 37:
     r0 = s.retval;
     { step = 16; continue; }
   case 15:
     s.tmp_0 = GameController_onStageComplete__P5410_mk(s);
-    s.callLocIdx = 643; s.pc = 38; return s.tmp_0;
+    s.callLocIdx = 645; s.pc = 38; return s.tmp_0;
   case 38:
     r0 = s.retval;
   case 16:
@@ -52810,7 +52873,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 644; s.pc = 39; return s.tmp_2; }
+     else { s.callLocIdx = 646; s.pc = 39; return s.tmp_2; }
     }
   case 39:
     r0 = s.retval;
@@ -52830,7 +52893,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 645; s.pc = 40; return s.tmp_4; }
+     else { s.callLocIdx = 647; s.pc = 40; return s.tmp_4; }
     }
   case 40:
     r0 = s.retval;
@@ -52842,7 +52905,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_5);
     if (!r0) { step = 21; continue; }
     s.tmp_6 = GameController_PlatformMode_checkPlatformSwitchInteraction__P8419_mk(s);
-    s.callLocIdx = 646; s.pc = 41; return s.tmp_6;
+    s.callLocIdx = 648; s.pc = 41; return s.tmp_6;
   case 41:
     r0 = s.retval;
   case 21:
@@ -52855,7 +52918,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentDungeonId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentDungeonId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 647; s.pc = 42; return s.tmp_2; }
+     else { s.callLocIdx = 649; s.pc = 42; return s.tmp_2; }
     }
   case 42:
     r0 = s.retval;
@@ -52865,7 +52928,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 23; continue; }
     s.tmp_3 = GameController_PlatformMode_updateBarrelSpawning__P8421_mk(s);
-    s.callLocIdx = 648; s.pc = 43; return s.tmp_3;
+    s.callLocIdx = 650; s.pc = 43; return s.tmp_3;
   case 43:
     r0 = s.retval;
   case 23:
@@ -52923,7 +52986,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 704; s.pc = 14; return s.tmp_3; }
+     else { s.callLocIdx = 706; s.pc = 14; return s.tmp_3; }
     }
   case 14:
     r0 = s.retval;
@@ -52945,13 +53008,13 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 705; s.pc = 15; return s.tmp_4; }
+     else { s.callLocIdx = 707; s.pc = 15; return s.tmp_4; }
     }
   case 15:
     r0 = s.retval;
     s.data___21741 = (r0);
     s.tmp_0 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 706; s.pc = 16; return s.tmp_0;
+    s.callLocIdx = 708; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
     s.now___21744 = (r0);
@@ -52963,7 +53026,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 707; s.pc = 17; return s.tmp_0; }
+     else { s.callLocIdx = 709; s.pc = 17; return s.tmp_0; }
     }
   case 17:
     r0 = s.retval;
@@ -52976,8 +53039,8 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_2 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_2.arg0 = globals.KIND_HAZARD___8157;
-    s.callLocIdx = 708; s.pc = 18; return s.tmp_2;
+    s.tmp_2.arg0 = globals.KIND_HAZARD___36339;
+    s.callLocIdx = 710; s.pc = 18; return s.tmp_2;
   case 18:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -52991,7 +53054,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["barrelSpawnCap"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["barrelSpawnCap"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 709; s.pc = 19; return s.tmp_1; }
+     else { s.callLocIdx = 711; s.pc = 19; return s.tmp_1; }
     }
   case 19:
     r0 = s.retval;
@@ -53020,7 +53083,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["lastBarrelSpawn"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["lastBarrelSpawn"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 710; s.pc = 20; return s.tmp_5; }
+     else { s.callLocIdx = 712; s.pc = 20; return s.tmp_5; }
     }
   case 20:
     r0 = s.retval;
@@ -53044,7 +53107,7 @@ switch (step) {
   case 11:
   case 12:
     s.tmp_9 = GameController_PlatformMode_spawnBarrel__P8422_mk(s);
-    s.callLocIdx = 711; s.pc = 21; return s.tmp_9;
+    s.callLocIdx = 713; s.pc = 21; return s.tmp_9;
   case 21:
     r0 = s.retval;
     s.tmp_0 = if_lastBarrelSpawn_2_mk(s);
@@ -53056,7 +53119,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/lastBarrelSpawn"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["lastBarrelSpawn"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 712; s.pc = 22; return s.tmp_0; }
+     else { s.callLocIdx = 714; s.pc = 22; return s.tmp_0; }
     }
   case 22:
     r0 = s.retval;
@@ -53105,8 +53168,8 @@ switch (step) {
     s.tmp_0 = sprites_create__P2311_mk(s);
     r0 = pxsim.image.create(16, 16);
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_HAZARD___8157;
-    s.callLocIdx = 714; s.pc = 1; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_HAZARD___36339;
+    s.callLocIdx = 716; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.barrel___21777 = (r0);
@@ -53114,19 +53177,19 @@ switch (step) {
     s.tmp_0.arg0 = s.barrel___21777;
     s.tmp_0.arg1 = 20;
     s.tmp_0.arg2 = 20;
-    s.callLocIdx = 715; s.pc = 2; return s.tmp_0;
+    s.callLocIdx = 717; s.pc = 2; return s.tmp_0;
   case 2:
     r0 = s.retval;
     s.tmp_0 = Sprite_vx__P2396_mk(s);
     s.tmp_0.arg0 = s.barrel___21777;
     s.tmp_0.arg1 = 30;
-    s.callLocIdx = 716; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 718; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = Sprite_ay__P2402_mk(s);
     s.tmp_0.arg0 = s.barrel___21777;
     s.tmp_0.arg1 = 300;
-    s.callLocIdx = 717; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 719; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     r0 = (s.barrel___21777).fields["lifespan"] = (10000);
@@ -53134,7 +53197,7 @@ switch (step) {
     s.tmp_0.arg0 = s.barrel___21777;
     s.tmp_0.arg1 = 32;
     s.tmp_0.arg2 = true;
-    s.callLocIdx = 718; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 720; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     r0 = undefined;
@@ -53187,7 +53250,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 674; s.pc = 16; return s.tmp_4; }
+     else { s.callLocIdx = 676; s.pc = 16; return s.tmp_4; }
     }
   case 16:
     r0 = s.retval;
@@ -53204,7 +53267,7 @@ switch (step) {
   case 3:
   case 4:
     s.tmp_8 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 675; s.pc = 17; return s.tmp_8;
+    s.callLocIdx = 677; s.pc = 17; return s.tmp_8;
   case 17:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -53216,7 +53279,7 @@ switch (step) {
       s.tmp_11.fn = s.tmp_11.arg0.vtable.iface["lastInteractTime"];
       if (s.tmp_11.fn == null) { s.retval = s.tmp_11.arg0.fields["lastInteractTime"]; }
       else if (!s.tmp_11.fn.isGetter) { s.retval = bind(s.tmp_11); }
-     else { s.callLocIdx = 676; s.pc = 18; return s.tmp_11; }
+     else { s.callLocIdx = 678; s.pc = 18; return s.tmp_11; }
     }
   case 18:
     r0 = s.retval;
@@ -53232,7 +53295,7 @@ switch (step) {
   case 6:
     s.tmp_12 = Sprite_tilemapLocation__P2466_mk(s);
     s.tmp_12.arg0 = s.playerSprite___21794;
-    s.callLocIdx = 677; s.pc = 19; return s.tmp_12;
+    s.callLocIdx = 679; s.pc = 19; return s.tmp_12;
   case 19:
     r0 = s.retval;
     s.loc___21810 = (r0);
@@ -53245,9 +53308,9 @@ switch (step) {
     { step = 15; continue; }
   case 7:
   case 8:
-    s.tmp_2 = tileImg__P8268_mk(s);
+    s.tmp_2 = tileImg__P36450_mk(s);
     s.tmp_2.arg0 = 9;
-    s.callLocIdx = 678; s.pc = 20; return s.tmp_2;
+    s.callLocIdx = 680; s.pc = 20; return s.tmp_2;
   case 20:
     r0 = s.retval;
     s.switchTile___21816 = (r0);
@@ -53260,7 +53323,7 @@ switch (step) {
     s.tmp_1 = tiles_tileAtLocationEquals__P2815_mk(s);
     s.tmp_1.arg0 = s.loc___21810;
     s.tmp_1.arg1 = s.switchTile___21816;
-    s.callLocIdx = 679; s.pc = 21; return s.tmp_1;
+    s.callLocIdx = 681; s.pc = 21; return s.tmp_1;
   case 21:
     r0 = s.retval;
   case 10:
@@ -53281,7 +53344,7 @@ switch (step) {
     s.tmp_5 = if_lastInteractTime_2_mk(s);
     s.tmp_5.arg0 = globals.state___5156;
     s.tmp_6 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 680; s.pc = 24; return s.tmp_6;
+    s.callLocIdx = 682; s.pc = 24; return s.tmp_6;
   case 24:
     r0 = s.retval;
     s.tmp_5.arg1 = r0;
@@ -53291,12 +53354,12 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["set/lastInteractTime"];
       if (s.tmp_5.fn === null) { s.tmp_5.arg0.fields["lastInteractTime"] = s.tmp_5.arg1; }
       else if (s.tmp_5.fn === undefined) { failedCast(s.tmp_5.arg0) } 
-     else { s.callLocIdx = 681; s.pc = 23; return s.tmp_5; }
+     else { s.callLocIdx = 683; s.pc = 23; return s.tmp_5; }
     }
   case 23:
     r0 = s.retval;
     s.tmp_0 = GameController_PlatformMode_togglePlatformGates__P8420_mk(s);
-    s.callLocIdx = 682; s.pc = 25; return s.tmp_0;
+    s.callLocIdx = 684; s.pc = 25; return s.tmp_0;
   case 25:
     r0 = s.retval;
   case 11:
@@ -53349,8 +53412,8 @@ switch (step) {
     s.stageData___21834 = undefined;
     s.gateLocations___21860 = undefined;
     s.gateLoc___21866 = undefined;
-    s.unnamed400___U3 = undefined;
-    s.unnamed401___U4 = undefined;
+    s.unnamed580___U3 = undefined;
+    s.unnamed581___U4 = undefined;
     s.tmp_3 = if_dungeonStageData_1_mk(s);
     s.tmp_3.arg0 = globals.state___5156;
     if (!s.tmp_3.arg0.vtable.iface) {
@@ -53359,7 +53422,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 683; s.pc = 16; return s.tmp_3; }
+     else { s.callLocIdx = 685; s.pc = 16; return s.tmp_3; }
     }
   case 16:
     r0 = s.retval;
@@ -53381,7 +53444,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 684; s.pc = 17; return s.tmp_4; }
+     else { s.callLocIdx = 686; s.pc = 17; return s.tmp_4; }
     }
   case 17:
     r0 = s.retval;
@@ -53394,7 +53457,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["switchesActivated"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["switchesActivated"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 685; s.pc = 18; return s.tmp_1; }
+     else { s.callLocIdx = 687; s.pc = 18; return s.tmp_1; }
     }
   case 18:
     r0 = s.retval;
@@ -53418,7 +53481,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["set/switchesActivated"];
       if (s.tmp_3.fn === null) { s.tmp_3.arg0.fields["switchesActivated"] = s.tmp_3.arg1; }
       else if (s.tmp_3.fn === undefined) { failedCast(s.tmp_3.arg0) } 
-     else { s.callLocIdx = 686; s.pc = 19; return s.tmp_3; }
+     else { s.callLocIdx = 688; s.pc = 19; return s.tmp_3; }
     }
   case 19:
     r0 = s.retval;
@@ -53432,7 +53495,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["gatesOpen"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["gatesOpen"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 687; s.pc = 21; return s.tmp_3; }
+     else { s.callLocIdx = 689; s.pc = 21; return s.tmp_3; }
     }
   case 21:
     r0 = s.retval;
@@ -53447,7 +53510,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/gatesOpen"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["gatesOpen"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 688; s.pc = 20; return s.tmp_0; }
+     else { s.callLocIdx = 690; s.pc = 20; return s.tmp_0; }
     }
   case 20:
     r0 = s.retval;
@@ -53459,7 +53522,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["gateLocations"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["gateLocations"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 689; s.pc = 22; return s.tmp_3; }
+     else { s.callLocIdx = 691; s.pc = 22; return s.tmp_3; }
     }
   case 22:
     r0 = s.retval;
@@ -53473,13 +53536,13 @@ switch (step) {
     s.tmp_4 = if_gateLocations_2_mk(s);
     s.tmp_4.arg0 = s.stageData___21834;
     s.tmp_5 = tiles_getTilesByType__P2820_mk(s);
-    s.tmp_6 = tileImg__P8268_mk(s);
+    s.tmp_6 = tileImg__P36450_mk(s);
     s.tmp_6.arg0 = 10;
-    s.callLocIdx = 690; s.pc = 25; return s.tmp_6;
+    s.callLocIdx = 692; s.pc = 25; return s.tmp_6;
   case 25:
     r0 = s.retval;
     s.tmp_5.arg0 = r0;
-    s.callLocIdx = 691; s.pc = 24; return s.tmp_5;
+    s.callLocIdx = 693; s.pc = 24; return s.tmp_5;
   case 24:
     r0 = s.retval;
     s.tmp_4.arg1 = r0;
@@ -53489,7 +53552,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["set/gateLocations"];
       if (s.tmp_4.fn === null) { s.tmp_4.arg0.fields["gateLocations"] = s.tmp_4.arg1; }
       else if (s.tmp_4.fn === undefined) { failedCast(s.tmp_4.arg0) } 
-     else { s.callLocIdx = 692; s.pc = 23; return s.tmp_4; }
+     else { s.callLocIdx = 694; s.pc = 23; return s.tmp_4; }
     }
   case 23:
     r0 = s.retval;
@@ -53503,7 +53566,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["gateLocations"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["gateLocations"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 693; s.pc = 26; return s.tmp_1; }
+     else { s.callLocIdx = 695; s.pc = 26; return s.tmp_1; }
     }
   case 26:
     r0 = s.retval;
@@ -53519,15 +53582,15 @@ switch (step) {
     s.tmp_2 = r0;
     s.gateLocations___21860 = (s.tmp_2);
     s.gateLoc___21866 = (undefined);
-    s.unnamed400___U3 = (s.gateLocations___21860);
-    s.unnamed401___U4 = (0);
+    s.unnamed580___U3 = (s.gateLocations___21860);
+    s.unnamed581___U4 = (0);
   case 9:
-    s.tmp_0 = r0 = s.unnamed401___U4;
-    r0 = pxsim_Array__length(s.unnamed400___U3);
+    s.tmp_0 = r0 = s.unnamed581___U4;
+    r0 = pxsim_Array__length(s.unnamed580___U3);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed400___U3, s.unnamed401___U4);
+    r0 = pxsim_Array__getAt(s.unnamed580___U3, s.unnamed581___U4);
     s.gateLoc___21866 = (r0);
     s.tmp_3 = if_gatesOpen_1_mk(s);
     s.tmp_3.arg0 = s.stageData___21834;
@@ -53537,7 +53600,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["gatesOpen"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["gatesOpen"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 694; s.pc = 27; return s.tmp_3; }
+     else { s.callLocIdx = 696; s.pc = 27; return s.tmp_3; }
     }
   case 27:
     r0 = s.retval;
@@ -53546,26 +53609,26 @@ switch (step) {
     if (!r0) { step = 10; continue; }
     s.tmp_4 = tiles_setTileAt__P2810_mk(s);
     s.tmp_4.arg0 = s.gateLoc___21866;
-    s.tmp_5 = tileImg__P8268_mk(s);
+    s.tmp_5 = tileImg__P36450_mk(s);
     s.tmp_5.arg0 = 0;
-    s.callLocIdx = 695; s.pc = 29; return s.tmp_5;
+    s.callLocIdx = 697; s.pc = 29; return s.tmp_5;
   case 29:
     r0 = s.retval;
     s.tmp_4.arg1 = r0;
-    s.callLocIdx = 696; s.pc = 28; return s.tmp_4;
+    s.callLocIdx = 698; s.pc = 28; return s.tmp_4;
   case 28:
     r0 = s.retval;
     { step = 11; continue; }
   case 10:
     s.tmp_0 = tiles_setTileAt__P2810_mk(s);
     s.tmp_0.arg0 = s.gateLoc___21866;
-    s.tmp_1 = tileImg__P8268_mk(s);
+    s.tmp_1 = tileImg__P36450_mk(s);
     s.tmp_1.arg0 = 10;
-    s.callLocIdx = 697; s.pc = 31; return s.tmp_1;
+    s.callLocIdx = 699; s.pc = 31; return s.tmp_1;
   case 31:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 698; s.pc = 30; return s.tmp_0;
+    s.callLocIdx = 700; s.pc = 30; return s.tmp_0;
   case 30:
     r0 = s.retval;
   case 11:
@@ -53579,7 +53642,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["gatesOpen"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["gatesOpen"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 699; s.pc = 33; return s.tmp_3; }
+     else { s.callLocIdx = 701; s.pc = 33; return s.tmp_3; }
     }
   case 33:
     r0 = s.retval;
@@ -53588,14 +53651,14 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_Boolean__bang(s.tmp_1);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 700; s.pc = 32; return s.tmp_0;
+    s.callLocIdx = 702; s.pc = 32; return s.tmp_0;
   case 32:
     r0 = s.retval;
-    r0 = (s.unnamed401___U4 + 1);
-    s.unnamed401___U4 = (r0);
+    r0 = (s.unnamed581___U4 + 1);
+    s.unnamed581___U4 = (r0);
     { step = 9; continue; }
   case 12:
-    s.unnamed400___U3 = (undefined);
+    s.unnamed580___U3 = (undefined);
     s.tmp_1 = if_gatesOpen_1_mk(s);
     s.tmp_1.arg0 = s.stageData___21834;
     if (!s.tmp_1.arg0.vtable.iface) {
@@ -53604,7 +53667,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["gatesOpen"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["gatesOpen"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 701; s.pc = 34; return s.tmp_1; }
+     else { s.callLocIdx = 703; s.pc = 34; return s.tmp_1; }
     }
   case 34:
     r0 = s.retval;
@@ -53621,11 +53684,11 @@ switch (step) {
     s.tmp_3 = showHint__P5280_mk(s);
     s.tmp_3.arg0 = s.tmp_2;
     s.tmp_3.arg1 = 1000;
-    s.callLocIdx = 702; s.pc = 35; return s.tmp_3;
+    s.callLocIdx = 704; s.pc = 35; return s.tmp_3;
   case 35:
     r0 = s.retval;
     s.tmp_0 = sfxInteract__P5252_mk(s);
-    s.callLocIdx = 703; s.pc = 36; return s.tmp_0;
+    s.callLocIdx = 705; s.pc = 36; return s.tmp_0;
   case 36:
     r0 = s.retval;
   case 15:
@@ -53650,8 +53713,8 @@ function GameController_PlatformMode_togglePlatformGates__P8420_mk(s) {
   stageData___21834: undefined,
   gateLocations___21860: undefined,
   gateLoc___21866: undefined,
-  unnamed400___U3: undefined,
-  unnamed401___U4: undefined,
+  unnamed580___U3: undefined,
+  unnamed581___U4: undefined,
 } }
 
 
@@ -54240,7 +54303,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["gameMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["gameMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 568; s.pc = 34; return s.tmp_2; }
+     else { s.callLocIdx = 570; s.pc = 34; return s.tmp_2; }
     }
   case 34:
     r0 = s.retval;
@@ -54260,7 +54323,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["playMode"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["playMode"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 569; s.pc = 35; return s.tmp_4; }
+     else { s.callLocIdx = 571; s.pc = 35; return s.tmp_4; }
     }
   case 35:
     r0 = s.retval;
@@ -54282,7 +54345,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["transitionLock"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["transitionLock"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 570; s.pc = 36; return s.tmp_6; }
+     else { s.callLocIdx = 572; s.pc = 36; return s.tmp_6; }
     }
   case 36:
     r0 = s.retval;
@@ -54314,7 +54377,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["hubRoom"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["hubRoom"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 572; s.pc = 38; return s.tmp_5; }
+     else { s.callLocIdx = 574; s.pc = 38; return s.tmp_5; }
     }
   case 38:
     r0 = s.retval;
@@ -54325,7 +54388,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["row"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["row"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 573; s.pc = 37; return s.tmp_4; }
+     else { s.callLocIdx = 575; s.pc = 37; return s.tmp_4; }
     }
   case 37:
     r0 = s.retval;
@@ -54346,7 +54409,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["hubRoom"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["hubRoom"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 574; s.pc = 40; return s.tmp_8; }
+     else { s.callLocIdx = 576; s.pc = 40; return s.tmp_8; }
     }
   case 40:
     r0 = s.retval;
@@ -54357,7 +54420,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["col"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["col"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 575; s.pc = 39; return s.tmp_7; }
+     else { s.callLocIdx = 577; s.pc = 39; return s.tmp_7; }
     }
   case 39:
     r0 = s.retval;
@@ -54387,7 +54450,7 @@ switch (step) {
   case 12:
     s.tmp_16 = Sprite_x__P2391_mk(s);
     s.tmp_16.arg0 = s.playerSprite___22049;
-    s.callLocIdx = 576; s.pc = 42; return s.tmp_16;
+    s.callLocIdx = 578; s.pc = 42; return s.tmp_16;
   case 42:
     r0 = s.retval;
     s.tmp_15 = r0;
@@ -54400,7 +54463,7 @@ switch (step) {
   case 13:
     s.tmp_18 = Sprite_x__P2391_mk(s);
     s.tmp_18.arg0 = s.playerSprite___22049;
-    s.callLocIdx = 577; s.pc = 43; return s.tmp_18;
+    s.callLocIdx = 579; s.pc = 43; return s.tmp_18;
   case 43:
     r0 = s.retval;
     s.tmp_17 = r0;
@@ -54415,7 +54478,7 @@ switch (step) {
   case 15:
     s.tmp_21 = Sprite_y__P2393_mk(s);
     s.tmp_21.arg0 = s.playerSprite___22049;
-    s.callLocIdx = 578; s.pc = 44; return s.tmp_21;
+    s.callLocIdx = 580; s.pc = 44; return s.tmp_21;
   case 44:
     r0 = s.retval;
     s.tmp_20 = r0;
@@ -54441,17 +54504,17 @@ switch (step) {
       s.tmp_24.fn = s.tmp_24.arg0.vtable.iface["set/hubRoom"];
       if (s.tmp_24.fn === null) { s.tmp_24.arg0.fields["hubRoom"] = s.tmp_24.arg1; }
       else if (s.tmp_24.fn === undefined) { failedCast(s.tmp_24.arg0) } 
-     else { s.callLocIdx = 579; s.pc = 45; return s.tmp_24; }
+     else { s.callLocIdx = 581; s.pc = 45; return s.tmp_24; }
     }
   case 45:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "spawnTag", globals.SPAWN_HUB_21_FROM_NORTH___8203);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "spawnTag", globals.SPAWN_HUB_21_FROM_NORTH___36385);
     s.tmp_1 = GameController_switchPlayMode__P5406_mk(s);
     s.tmp_1.arg0 = 0;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 580; s.pc = 46; return s.tmp_1;
+    s.callLocIdx = 582; s.pc = 46; return s.tmp_1;
   case 46:
     r0 = s.retval;
     { step = 33; continue; }
@@ -54466,7 +54529,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["hubRoom"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["hubRoom"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 581; s.pc = 48; return s.tmp_3; }
+     else { s.callLocIdx = 583; s.pc = 48; return s.tmp_3; }
     }
   case 48:
     r0 = s.retval;
@@ -54477,7 +54540,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["row"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["row"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 582; s.pc = 47; return s.tmp_2; }
+     else { s.callLocIdx = 584; s.pc = 47; return s.tmp_2; }
     }
   case 47:
     r0 = s.retval;
@@ -54498,7 +54561,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["hubRoom"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["hubRoom"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 583; s.pc = 50; return s.tmp_6; }
+     else { s.callLocIdx = 585; s.pc = 50; return s.tmp_6; }
     }
   case 50:
     r0 = s.retval;
@@ -54509,7 +54572,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["col"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["col"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 584; s.pc = 49; return s.tmp_5; }
+     else { s.callLocIdx = 586; s.pc = 49; return s.tmp_5; }
     }
   case 49:
     r0 = s.retval;
@@ -54542,7 +54605,7 @@ switch (step) {
   case 26:
     s.tmp_14 = Sprite_x__P2391_mk(s);
     s.tmp_14.arg0 = s.playerSprite___22049;
-    s.callLocIdx = 585; s.pc = 52; return s.tmp_14;
+    s.callLocIdx = 587; s.pc = 52; return s.tmp_14;
   case 52:
     r0 = s.retval;
     s.tmp_13 = r0;
@@ -54555,7 +54618,7 @@ switch (step) {
   case 27:
     s.tmp_16 = Sprite_x__P2391_mk(s);
     s.tmp_16.arg0 = s.playerSprite___22049;
-    s.callLocIdx = 586; s.pc = 53; return s.tmp_16;
+    s.callLocIdx = 588; s.pc = 53; return s.tmp_16;
   case 53:
     r0 = s.retval;
     s.tmp_15 = r0;
@@ -54570,7 +54633,7 @@ switch (step) {
   case 29:
     s.tmp_19 = Sprite_y__P2393_mk(s);
     s.tmp_19.arg0 = s.playerSprite___22049;
-    s.callLocIdx = 587; s.pc = 54; return s.tmp_19;
+    s.callLocIdx = 589; s.pc = 54; return s.tmp_19;
   case 54:
     r0 = s.retval;
     s.tmp_18 = r0;
@@ -54596,17 +54659,17 @@ switch (step) {
       s.tmp_22.fn = s.tmp_22.arg0.vtable.iface["set/hubRoom"];
       if (s.tmp_22.fn === null) { s.tmp_22.arg0.fields["hubRoom"] = s.tmp_22.arg1; }
       else if (s.tmp_22.fn === undefined) { failedCast(s.tmp_22.arg0) } 
-     else { s.callLocIdx = 588; s.pc = 55; return s.tmp_22; }
+     else { s.callLocIdx = 590; s.pc = 55; return s.tmp_22; }
     }
   case 55:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
     s.tmp_0 = r0;
-    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "spawnTag", globals.SPAWN_HUB_11_FROM_SOUTH___8210);
+    r0 = pxsim_pxtrt.mapSetByString(s.tmp_0, "spawnTag", globals.SPAWN_HUB_11_FROM_SOUTH___36392);
     s.tmp_1 = GameController_switchPlayMode__P5406_mk(s);
     s.tmp_1.arg0 = 0;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 589; s.pc = 56; return s.tmp_1;
+    s.callLocIdx = 591; s.pc = 56; return s.tmp_1;
   case 56:
     r0 = s.retval;
   case 33:
@@ -54666,12 +54729,12 @@ switch (step) {
     s.tmp_1 = createTextImage__P5277_mk(s);
     s.tmp_1.arg0 = "♥♥♥";
     s.tmp_1.arg1 = 2;
-    s.callLocIdx = 1215; s.pc = 2; return s.tmp_1;
+    s.callLocIdx = 1217; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_HUD___8164;
-    s.callLocIdx = 1216; s.pc = 1; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_HUD___36346;
+    s.callLocIdx = 1218; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     globals.hudHearts___5273 = (r0);
@@ -54679,19 +54742,19 @@ switch (step) {
     s.tmp_0.arg0 = globals.hudHearts___5273;
     s.tmp_0.arg1 = 512;
     s.tmp_0.arg2 = true;
-    s.callLocIdx = 1217; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1219; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_0 = Sprite_left__P2442_mk(s);
     s.tmp_0.arg0 = globals.hudHearts___5273;
     s.tmp_0.arg1 = 2;
-    s.callLocIdx = 1218; s.pc = 4; return s.tmp_0;
+    s.callLocIdx = 1220; s.pc = 4; return s.tmp_0;
   case 4:
     r0 = s.retval;
     s.tmp_0 = Sprite_top__P2446_mk(s);
     s.tmp_0.arg0 = globals.hudHearts___5273;
     s.tmp_0.arg1 = 2;
-    s.callLocIdx = 1219; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 1221; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.tmp_0 = sprites_create__P2311_mk(s);
@@ -54699,12 +54762,12 @@ switch (step) {
     r0 = pxsim_String_.mkEmpty();
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 7;
-    s.callLocIdx = 1220; s.pc = 7; return s.tmp_1;
+    s.callLocIdx = 1222; s.pc = 7; return s.tmp_1;
   case 7:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_HUD___8164;
-    s.callLocIdx = 1221; s.pc = 6; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_HUD___36346;
+    s.callLocIdx = 1223; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
     globals.hudEnergy___5274 = (r0);
@@ -54712,19 +54775,19 @@ switch (step) {
     s.tmp_0.arg0 = globals.hudEnergy___5274;
     s.tmp_0.arg1 = 512;
     s.tmp_0.arg2 = true;
-    s.callLocIdx = 1222; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 1224; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = Sprite_left__P2442_mk(s);
     s.tmp_0.arg0 = globals.hudEnergy___5274;
     s.tmp_0.arg1 = 2;
-    s.callLocIdx = 1223; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 1225; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     s.tmp_0 = Sprite_top__P2446_mk(s);
     s.tmp_0.arg0 = globals.hudEnergy___5274;
     s.tmp_0.arg1 = 12;
-    s.callLocIdx = 1224; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 1226; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
     s.tmp_0 = sprites_create__P2311_mk(s);
@@ -54732,12 +54795,12 @@ switch (step) {
     r0 = pxsim_String_.mkEmpty();
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 1;
-    s.callLocIdx = 1225; s.pc = 12; return s.tmp_1;
+    s.callLocIdx = 1227; s.pc = 12; return s.tmp_1;
   case 12:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_HUD___8164;
-    s.callLocIdx = 1226; s.pc = 11; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_HUD___36346;
+    s.callLocIdx = 1228; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
     globals.hudTool___5275 = (r0);
@@ -54745,7 +54808,7 @@ switch (step) {
     s.tmp_0.arg0 = globals.hudTool___5275;
     s.tmp_0.arg1 = 512;
     s.tmp_0.arg2 = true;
-    s.callLocIdx = 1227; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 1229; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     s.tmp_0 = Sprite_right__P2444_mk(s);
@@ -54754,13 +54817,13 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = (s.tmp_1 - 2);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1229; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 1231; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.tmp_0 = Sprite_top__P2446_mk(s);
     s.tmp_0.arg0 = globals.hudTool___5275;
     s.tmp_0.arg1 = 2;
-    s.callLocIdx = 1230; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 1232; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
     s.tmp_0 = sprites_create__P2311_mk(s);
@@ -54768,12 +54831,12 @@ switch (step) {
     r0 = pxsim_String_.mkEmpty();
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = 5;
-    s.callLocIdx = 1231; s.pc = 17; return s.tmp_1;
+    s.callLocIdx = 1233; s.pc = 17; return s.tmp_1;
   case 17:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
-    s.tmp_0.arg1 = globals.KIND_HUD___8164;
-    s.callLocIdx = 1232; s.pc = 16; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_HUD___36346;
+    s.callLocIdx = 1234; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
     globals.hudHint___5276 = (r0);
@@ -54781,13 +54844,13 @@ switch (step) {
     s.tmp_0.arg0 = globals.hudHint___5276;
     s.tmp_0.arg1 = 512;
     s.tmp_0.arg2 = true;
-    s.callLocIdx = 1233; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 1235; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
     s.tmp_0 = Sprite_left__P2442_mk(s);
     s.tmp_0.arg0 = globals.hudHint___5276;
     s.tmp_0.arg1 = 2;
-    s.callLocIdx = 1234; s.pc = 19; return s.tmp_0;
+    s.callLocIdx = 1236; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
     s.tmp_0 = Sprite_bottom__P2448_mk(s);
@@ -54796,7 +54859,7 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = (s.tmp_1 - 2);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1236; s.pc = 20; return s.tmp_0;
+    s.callLocIdx = 1238; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
     r0 = undefined;
@@ -54827,8 +54890,8 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    s.tmp_0 = deferredInitSpriteKinds__P8168_mk(s);
-    s.callLocIdx = 309; s.pc = 1; return s.tmp_0;
+    s.tmp_0 = deferredInitSpriteKinds__P36350_mk(s);
+    s.callLocIdx = 311; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -54848,7 +54911,7 @@ function GameController_deferredInit__P5405_mk(s) {
 
 
 
-function deferredInitSpriteKinds__P8168(s) {
+function deferredInitSpriteKinds__P36350(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -54858,7 +54921,7 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = (globals.kindInitPhase___8166 >= 2);
+    r0 = (globals.kindInitPhase___36348 >= 2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
@@ -54869,74 +54932,74 @@ switch (step) {
     s.callLocIdx = 71; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
-    globals.KIND_NPC___8153 = (r0);
+    globals.KIND_NPC___36335 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 72; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
-    globals.KIND_DOOR___8154 = (r0);
+    globals.KIND_DOOR___36336 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 73; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
-    globals.KIND_INTERACTABLE___8155 = (r0);
+    globals.KIND_INTERACTABLE___36337 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 74; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
-    globals.KIND_COLLECTIBLE___8156 = (r0);
+    globals.KIND_COLLECTIBLE___36338 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 75; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
-    globals.KIND_HAZARD___8157 = (r0);
+    globals.KIND_HAZARD___36339 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 76; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
-    globals.KIND_DEBRIS___8158 = (r0);
+    globals.KIND_DEBRIS___36340 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 77; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
-    globals.KIND_PLATFORM_MOVING___8159 = (r0);
+    globals.KIND_PLATFORM_MOVING___36341 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 78; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
-    globals.KIND_TARGET___8160 = (r0);
+    globals.KIND_TARGET___36342 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 79; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
-    globals.KIND_TOOL_EFFECT___8161 = (r0);
+    globals.KIND_TOOL_EFFECT___36343 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 80; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
-    globals.KIND_PADDLE___8162 = (r0);
+    globals.KIND_PADDLE___36344 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 81; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
-    globals.KIND_BALL___8163 = (r0);
+    globals.KIND_BALL___36345 = (r0);
     s.tmp_0 = SpriteKind_create__P2523_mk(s);
     s.callLocIdx = 82; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
-    globals.KIND_HUD___8164 = (r0);
-    globals.kindInitPhase___8166 = (2);
+    globals.KIND_HUD___36346 = (r0);
+    globals.kindInitPhase___36348 = (2);
   case 3:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-deferredInitSpriteKinds__P8168.info = {"start":1751,"length":639,"line":68,"column":0,"endLine":86,"endColumn":1,"fileName":"constants.ts","functionName":"deferredInitSpriteKinds","argumentNames":[]}
+deferredInitSpriteKinds__P36350.info = {"start":1751,"length":639,"line":68,"column":0,"endLine":86,"endColumn":1,"fileName":"constants.ts","functionName":"deferredInitSpriteKinds","argumentNames":[]}
 
-function deferredInitSpriteKinds__P8168_mk(s) {
+function deferredInitSpriteKinds__P36350_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: deferredInitSpriteKinds__P8168, depth: s.depth + 1,
+        parent: s, fn: deferredInitSpriteKinds__P36350, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
   tmp_1: undefined,
@@ -54963,7 +55026,7 @@ switch (step) {
     s.tmp_0 = GameController_PuzzleMode_handleBallTargetHit__P5394_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.callLocIdx = 426; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 428; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -55008,7 +55071,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 946; s.pc = 6; return s.tmp_3; }
+     else { s.callLocIdx = 948; s.pc = 6; return s.tmp_3; }
     }
   case 6:
     r0 = s.retval;
@@ -55024,7 +55087,7 @@ switch (step) {
   case 2:
     r0 = s.arg1.fields["_kind"];
     s.tmp_5 = r0;
-    r0 = (s.tmp_5 !== globals.KIND_TARGET___8160);
+    r0 = (s.tmp_5 !== globals.KIND_TARGET___36342);
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 3; continue; }
@@ -55035,7 +55098,7 @@ switch (step) {
     s.tmp_6.arg0 = s.arg1;
     s.tmp_6.arg1 = undefined;
     s.tmp_6.arg2 = undefined;
-    s.callLocIdx = 948; s.pc = 7; return s.tmp_6;
+    s.callLocIdx = 950; s.pc = 7; return s.tmp_6;
   case 7:
     r0 = s.retval;
     s.tmp_0 = Sprite_vy__P2398_mk(s);
@@ -55043,23 +55106,23 @@ switch (step) {
     s.tmp_1 = Math_abs__P129_mk(s);
     s.tmp_2 = Sprite_vy__P2397_mk(s);
     s.tmp_2.arg0 = s.arg0;
-    s.callLocIdx = 949; s.pc = 10; return s.tmp_2;
+    s.callLocIdx = 951; s.pc = 10; return s.tmp_2;
   case 10:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
-    s.callLocIdx = 950; s.pc = 9; return s.tmp_1;
+    s.callLocIdx = 952; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 951; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 953; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = GameController_PuzzleMode_incrementTargetCounter__P8440_mk(s);
-    s.callLocIdx = 952; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 954; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
     s.tmp_0 = sfxInteract__P5252_mk(s);
-    s.callLocIdx = 953; s.pc = 12; return s.tmp_0;
+    s.callLocIdx = 955; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
   case 5:
@@ -55106,7 +55169,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 954; s.pc = 6; return s.tmp_3; }
+     else { s.callLocIdx = 956; s.pc = 6; return s.tmp_3; }
     }
   case 6:
     r0 = s.retval;
@@ -55129,7 +55192,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 955; s.pc = 8; return s.tmp_7; }
+     else { s.callLocIdx = 957; s.pc = 8; return s.tmp_7; }
     }
   case 8:
     r0 = s.retval;
@@ -55140,7 +55203,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["targetsDestroyed"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["targetsDestroyed"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 956; s.pc = 7; return s.tmp_6; }
+     else { s.callLocIdx = 958; s.pc = 7; return s.tmp_6; }
     }
   case 7:
     r0 = s.retval;
@@ -55158,7 +55221,7 @@ switch (step) {
       s.tmp_10.fn = s.tmp_10.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_10.fn == null) { s.retval = s.tmp_10.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_10.fn.isGetter) { s.retval = bind(s.tmp_10); }
-     else { s.callLocIdx = 957; s.pc = 10; return s.tmp_10; }
+     else { s.callLocIdx = 959; s.pc = 10; return s.tmp_10; }
     }
   case 10:
     r0 = s.retval;
@@ -55172,7 +55235,7 @@ switch (step) {
       s.tmp_12.fn = s.tmp_12.arg0.vtable.iface["targetsDestroyed"];
       if (s.tmp_12.fn == null) { s.retval = s.tmp_12.arg0.fields["targetsDestroyed"]; }
       else if (!s.tmp_12.fn.isGetter) { s.retval = bind(s.tmp_12); }
-     else { s.callLocIdx = 958; s.pc = 11; return s.tmp_12; }
+     else { s.callLocIdx = 960; s.pc = 11; return s.tmp_12; }
     }
   case 11:
     r0 = s.retval;
@@ -55185,7 +55248,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["set/targetsDestroyed"];
       if (s.tmp_8.fn === null) { s.tmp_8.arg0.fields["targetsDestroyed"] = s.tmp_8.arg1; }
       else if (s.tmp_8.fn === undefined) { failedCast(s.tmp_8.arg0) } 
-     else { s.callLocIdx = 959; s.pc = 9; return s.tmp_8; }
+     else { s.callLocIdx = 961; s.pc = 9; return s.tmp_8; }
     }
   case 9:
     r0 = s.retval;
@@ -55239,7 +55302,7 @@ switch (step) {
     s.tmp_0 = GameController_PuzzleMode_handleBallPaddleBounce__P5393_mk(s);
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = s.arg1;
-    s.callLocIdx = 425; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 427; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -55279,7 +55342,7 @@ switch (step) {
     }
     s.tmp_2 = Sprite_vy__P2397_mk(s);
     s.tmp_2.arg0 = s.arg0;
-    s.callLocIdx = 933; s.pc = 8; return s.tmp_2;
+    s.callLocIdx = 935; s.pc = 8; return s.tmp_2;
   case 8:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -55292,13 +55355,13 @@ switch (step) {
   case 2:
     s.tmp_4 = Sprite_x__P2391_mk(s);
     s.tmp_4.arg0 = s.arg0;
-    s.callLocIdx = 934; s.pc = 9; return s.tmp_4;
+    s.callLocIdx = 936; s.pc = 9; return s.tmp_4;
   case 9:
     r0 = s.retval;
     s.tmp_3 = r0;
     s.tmp_6 = Sprite_x__P2391_mk(s);
     s.tmp_6.arg0 = s.arg1;
-    s.callLocIdx = 935; s.pc = 10; return s.tmp_6;
+    s.callLocIdx = 937; s.pc = 10; return s.tmp_6;
   case 10:
     r0 = s.retval;
     s.tmp_5 = r0;
@@ -55309,17 +55372,17 @@ switch (step) {
     s.tmp_2 = Math_abs__P129_mk(s);
     s.tmp_3 = Sprite_vy__P2397_mk(s);
     s.tmp_3.arg0 = s.arg0;
-    s.callLocIdx = 936; s.pc = 13; return s.tmp_3;
+    s.callLocIdx = 938; s.pc = 13; return s.tmp_3;
   case 13:
     r0 = s.retval;
     s.tmp_2.arg0 = r0;
-    s.callLocIdx = 937; s.pc = 12; return s.tmp_2;
+    s.callLocIdx = 939; s.pc = 12; return s.tmp_2;
   case 12:
     r0 = s.retval;
     s.tmp_1 = r0;
     r0 = (0 - s.tmp_1);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 938; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 940; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
     s.tmp_0 = Sprite_vx__P2396_mk(s);
@@ -55327,7 +55390,7 @@ switch (step) {
     s.tmp_0.arg0 = r0;
     s.tmp_3 = Sprite_vx__P2395_mk(s);
     s.tmp_3.arg0 = s.tmp_1;
-    s.callLocIdx = 939; s.pc = 15; return s.tmp_3;
+    s.callLocIdx = 941; s.pc = 15; return s.tmp_3;
   case 15:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -55335,12 +55398,12 @@ switch (step) {
     s.tmp_4 = r0;
     r0 = (s.tmp_2 + s.tmp_4);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 940; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 942; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.tmp_2 = Sprite_vx__P2395_mk(s);
     s.tmp_2.arg0 = s.arg0;
-    s.callLocIdx = 941; s.pc = 16; return s.tmp_2;
+    s.callLocIdx = 943; s.pc = 16; return s.tmp_2;
   case 16:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -55351,14 +55414,14 @@ switch (step) {
     s.tmp_3 = Sprite_vx__P2396_mk(s);
     s.tmp_3.arg0 = s.arg0;
     s.tmp_3.arg1 = 80;
-    s.callLocIdx = 942; s.pc = 17; return s.tmp_3;
+    s.callLocIdx = 944; s.pc = 17; return s.tmp_3;
   case 17:
     r0 = s.retval;
   case 3:
   case 4:
     s.tmp_2 = Sprite_vx__P2395_mk(s);
     s.tmp_2.arg0 = s.arg0;
-    s.callLocIdx = 943; s.pc = 18; return s.tmp_2;
+    s.callLocIdx = 945; s.pc = 18; return s.tmp_2;
   case 18:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -55369,13 +55432,13 @@ switch (step) {
     s.tmp_3 = Sprite_vx__P2396_mk(s);
     s.tmp_3.arg0 = s.arg0;
     s.tmp_3.arg1 = -80;
-    s.callLocIdx = 944; s.pc = 19; return s.tmp_3;
+    s.callLocIdx = 946; s.pc = 19; return s.tmp_3;
   case 19:
     r0 = s.retval;
   case 5:
   case 6:
     s.tmp_0 = sfxInteract__P5252_mk(s);
-    s.callLocIdx = 945; s.pc = 20; return s.tmp_0;
+    s.callLocIdx = 947; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
   case 7:
@@ -55421,7 +55484,7 @@ switch (step) {
     }
     s.tmp_0 = GameController_MetaMode_handleStabilizationNode__P5402_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 430; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 432; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -55467,7 +55530,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 998; s.pc = 8; return s.tmp_3; }
+     else { s.callLocIdx = 1000; s.pc = 8; return s.tmp_3; }
     }
   case 8:
     r0 = s.retval;
@@ -55490,7 +55553,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["isStabilizationNode"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["isStabilizationNode"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 999; s.pc = 9; return s.tmp_3; }
+     else { s.callLocIdx = 1001; s.pc = 9; return s.tmp_3; }
     }
   case 9:
     r0 = s.retval;
@@ -55512,7 +55575,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["nodeIndex"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["nodeIndex"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 1000; s.pc = 10; return s.tmp_4; }
+     else { s.callLocIdx = 1002; s.pc = 10; return s.tmp_4; }
     }
   case 10:
     r0 = s.retval;
@@ -55525,7 +55588,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 1001; s.pc = 11; return s.tmp_0; }
+     else { s.callLocIdx = 1003; s.pc = 11; return s.tmp_0; }
     }
   case 11:
     r0 = s.retval;
@@ -55539,7 +55602,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["currentNodeIndex"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["currentNodeIndex"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1002; s.pc = 12; return s.tmp_3; }
+     else { s.callLocIdx = 1004; s.pc = 12; return s.tmp_3; }
     }
   case 12:
     r0 = s.retval;
@@ -55551,7 +55614,7 @@ switch (step) {
     s.tmp_4 = showHint__P5280_mk(s);
     s.tmp_4.arg0 = "[WRONG_NODE_ORDER]";
     s.tmp_4.arg1 = 1000;
-    s.callLocIdx = 1003; s.pc = 13; return s.tmp_4;
+    s.callLocIdx = 1005; s.pc = 13; return s.tmp_4;
   case 13:
     r0 = s.retval;
     { step = 7; continue; }
@@ -55561,7 +55624,7 @@ switch (step) {
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = undefined;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 1004; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 1006; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.tmp_0 = if_nodesStabilized_2_mk(s);
@@ -55574,7 +55637,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["nodesStabilized"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["nodesStabilized"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1005; s.pc = 16; return s.tmp_2; }
+     else { s.callLocIdx = 1007; s.pc = 16; return s.tmp_2; }
     }
   case 16:
     r0 = s.retval;
@@ -55587,7 +55650,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/nodesStabilized"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["nodesStabilized"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 1006; s.pc = 15; return s.tmp_0; }
+     else { s.callLocIdx = 1008; s.pc = 15; return s.tmp_0; }
     }
   case 15:
     r0 = s.retval;
@@ -55601,7 +55664,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["currentNodeIndex"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["currentNodeIndex"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 1007; s.pc = 18; return s.tmp_2; }
+     else { s.callLocIdx = 1009; s.pc = 18; return s.tmp_2; }
     }
   case 18:
     r0 = s.retval;
@@ -55614,7 +55677,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/currentNodeIndex"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["currentNodeIndex"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 1008; s.pc = 17; return s.tmp_0; }
+     else { s.callLocIdx = 1010; s.pc = 17; return s.tmp_0; }
     }
   case 17:
     r0 = s.retval;
@@ -55642,11 +55705,11 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_1, "]");
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = 1000;
-    s.callLocIdx = 1009; s.pc = 19; return s.tmp_0;
+    s.callLocIdx = 1011; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
     s.tmp_0 = sfxInteract__P5252_mk(s);
-    s.callLocIdx = 1010; s.pc = 22; return s.tmp_0;
+    s.callLocIdx = 1012; s.pc = 22; return s.tmp_0;
   case 22:
     r0 = s.retval;
   case 7:
@@ -55698,7 +55761,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 419; s.pc = 6; return s.tmp_3; }
+     else { s.callLocIdx = 421; s.pc = 6; return s.tmp_3; }
     }
   case 6:
     r0 = s.retval;
@@ -55714,7 +55777,7 @@ switch (step) {
   case 2:
     r0 = s.arg1.fields["_kind"];
     s.tmp_5 = r0;
-    r0 = (s.tmp_5 !== globals.KIND_TARGET___8160);
+    r0 = (s.tmp_5 !== globals.KIND_TARGET___36342);
     s.tmp_4 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_4);
     if (!r0) { step = 3; continue; }
@@ -55725,22 +55788,22 @@ switch (step) {
     s.tmp_6.arg0 = s.arg0;
     s.tmp_6.arg1 = undefined;
     s.tmp_6.arg2 = undefined;
-    s.callLocIdx = 421; s.pc = 7; return s.tmp_6;
+    s.callLocIdx = 423; s.pc = 7; return s.tmp_6;
   case 7:
     r0 = s.retval;
     s.tmp_0 = Sprite_destroy__P2470_mk(s);
     s.tmp_0.arg0 = s.arg1;
     s.tmp_0.arg1 = undefined;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 422; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 424; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = GameController_incrementTargetCounter__P8403_mk(s);
-    s.callLocIdx = 423; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 425; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     s.tmp_0 = sfxInteract__P5252_mk(s);
-    s.callLocIdx = 424; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 426; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
   case 5:
@@ -55815,18 +55878,18 @@ switch (step) {
     }
     s.tmp_0 = damagePlayer__P5166_mk(s);
     s.tmp_0.arg0 = 0;
-    s.callLocIdx = 1186; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1188; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     s.tmp_1 = Sprite_x__P2391_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.callLocIdx = 1187; s.pc = 4; return s.tmp_1;
+    s.callLocIdx = 1189; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
     s.tmp_0 = r0;
     s.tmp_3 = Sprite_x__P2391_mk(s);
     s.tmp_3.arg0 = s.arg1;
-    s.callLocIdx = 1188; s.pc = 5; return s.tmp_3;
+    s.callLocIdx = 1190; s.pc = 5; return s.tmp_3;
   case 5:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -55834,13 +55897,13 @@ switch (step) {
     s.dx___22358 = (r0);
     s.tmp_1 = Sprite_y__P2393_mk(s);
     s.tmp_1.arg0 = s.arg0;
-    s.callLocIdx = 1189; s.pc = 6; return s.tmp_1;
+    s.callLocIdx = 1191; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
     s.tmp_0 = r0;
     s.tmp_3 = Sprite_y__P2393_mk(s);
     s.tmp_3.arg0 = s.arg1;
-    s.callLocIdx = 1190; s.pc = 7; return s.tmp_3;
+    s.callLocIdx = 1192; s.pc = 7; return s.tmp_3;
   case 7:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -55864,7 +55927,7 @@ switch (step) {
     s.tmp_2 = r0;
     r0 = (s.tmp_2 * 50);
     s.tmp_1.arg1 = r0;
-    s.callLocIdx = 1191; s.pc = 8; return s.tmp_1;
+    s.callLocIdx = 1193; s.pc = 8; return s.tmp_1;
   case 8:
     r0 = s.retval;
     s.tmp_0 = Sprite_vy__P2398_mk(s);
@@ -55873,7 +55936,7 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = (s.tmp_1 * 50);
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 1192; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 1194; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
   case 1:
@@ -55881,7 +55944,7 @@ switch (step) {
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[GHOST_BOT_BUMPED]";
     s.tmp_0.arg1 = 500;
-    s.callLocIdx = 1193; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 1195; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
     r0 = undefined;
@@ -55924,7 +55987,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     s.tmp_2 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 130; s.pc = 6; return s.tmp_2;
+    s.callLocIdx = 132; s.pc = 6; return s.tmp_2;
   case 6:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -55936,7 +55999,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["invincibleUntil"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["invincibleUntil"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 131; s.pc = 7; return s.tmp_4; }
+     else { s.callLocIdx = 133; s.pc = 7; return s.tmp_4; }
     }
   case 7:
     r0 = s.retval;
@@ -55959,7 +56022,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["hearts"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["hearts"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 132; s.pc = 9; return s.tmp_8; }
+     else { s.callLocIdx = 134; s.pc = 9; return s.tmp_8; }
     }
   case 9:
     r0 = s.retval;
@@ -55972,7 +56035,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["set/hearts"];
       if (s.tmp_5.fn === null) { s.tmp_5.arg0.fields["hearts"] = s.tmp_5.arg1; }
       else if (s.tmp_5.fn === undefined) { failedCast(s.tmp_5.arg0) } 
-     else { s.callLocIdx = 133; s.pc = 8; return s.tmp_5; }
+     else { s.callLocIdx = 135; s.pc = 8; return s.tmp_5; }
     }
   case 8:
     r0 = s.retval;
@@ -55984,7 +56047,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["hearts"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["hearts"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 134; s.pc = 10; return s.tmp_2; }
+     else { s.callLocIdx = 136; s.pc = 10; return s.tmp_2; }
     }
   case 10:
     r0 = s.retval;
@@ -56002,7 +56065,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["set/hearts"];
       if (s.tmp_3.fn === null) { s.tmp_3.arg0.fields["hearts"] = s.tmp_3.arg1; }
       else if (s.tmp_3.fn === undefined) { failedCast(s.tmp_3.arg0) } 
-     else { s.callLocIdx = 135; s.pc = 11; return s.tmp_3; }
+     else { s.callLocIdx = 137; s.pc = 11; return s.tmp_3; }
     }
   case 11:
     r0 = s.retval;
@@ -56011,7 +56074,7 @@ switch (step) {
     s.tmp_0 = if_invincibleUntil_2_mk(s);
     s.tmp_0.arg0 = globals.state___5156;
     s.tmp_2 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 136; s.pc = 13; return s.tmp_2;
+    s.callLocIdx = 138; s.pc = 13; return s.tmp_2;
   case 13:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -56023,7 +56086,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/invincibleUntil"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["invincibleUntil"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 137; s.pc = 12; return s.tmp_0; }
+     else { s.callLocIdx = 139; s.pc = 12; return s.tmp_0; }
     }
   case 12:
     r0 = s.retval;
@@ -56076,7 +56139,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1179; s.pc = 4; return s.tmp_3; }
+     else { s.callLocIdx = 1181; s.pc = 4; return s.tmp_3; }
     }
   case 4:
     r0 = s.retval;
@@ -56099,7 +56162,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 1180; s.pc = 6; return s.tmp_6; }
+     else { s.callLocIdx = 1182; s.pc = 6; return s.tmp_6; }
     }
   case 6:
     r0 = s.retval;
@@ -56113,7 +56176,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["tokensCollected"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["tokensCollected"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 1181; s.pc = 7; return s.tmp_8; }
+     else { s.callLocIdx = 1183; s.pc = 7; return s.tmp_8; }
     }
   case 7:
     r0 = s.retval;
@@ -56126,7 +56189,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["set/tokensCollected"];
       if (s.tmp_4.fn === null) { s.tmp_4.arg0.fields["tokensCollected"] = s.tmp_4.arg1; }
       else if (s.tmp_4.fn === undefined) { failedCast(s.tmp_4.arg0) } 
-     else { s.callLocIdx = 1182; s.pc = 5; return s.tmp_4; }
+     else { s.callLocIdx = 1184; s.pc = 5; return s.tmp_4; }
     }
   case 5:
     r0 = s.retval;
@@ -56134,17 +56197,17 @@ switch (step) {
     s.tmp_0.arg0 = s.arg0;
     s.tmp_0.arg1 = undefined;
     s.tmp_0.arg2 = undefined;
-    s.callLocIdx = 1183; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 1185; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = sfxCollect__P5256_mk(s);
-    s.callLocIdx = 1184; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 1186; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[TOKEN_COLLECTED]";
     s.tmp_0.arg1 = 1000;
-    s.callLocIdx = 1185; s.pc = 10; return s.tmp_0;
+    s.callLocIdx = 1187; s.pc = 10; return s.tmp_0;
   case 10:
     r0 = s.retval;
   case 3:
@@ -56434,7 +56497,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 431; s.pc = 10; return s.tmp_2; }
+     else { s.callLocIdx = 433; s.pc = 10; return s.tmp_2; }
     }
   case 10:
     r0 = s.retval;
@@ -56451,7 +56514,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["currentStageIndex"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["currentStageIndex"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 432; s.pc = 11; return s.tmp_3; }
+     else { s.callLocIdx = 434; s.pc = 11; return s.tmp_3; }
     }
   case 11:
     r0 = s.retval;
@@ -56461,7 +56524,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_1 = GameController_handleMicroPlatformJump__P8404_mk(s);
-    s.callLocIdx = 433; s.pc = 12; return s.tmp_1;
+    s.callLocIdx = 435; s.pc = 12; return s.tmp_1;
   case 12:
     r0 = s.retval;
     { step = 6; continue; }
@@ -56471,7 +56534,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
     s.tmp_1 = GameController_handleMicroShooterShoot__P8405_mk(s);
-    s.callLocIdx = 434; s.pc = 13; return s.tmp_1;
+    s.callLocIdx = 436; s.pc = 13; return s.tmp_1;
   case 13:
     r0 = s.retval;
     { step = 5; continue; }
@@ -56481,7 +56544,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 3; continue; }
     s.tmp_1 = GameController_handleMicroRhythmTap__P8406_mk(s);
-    s.callLocIdx = 435; s.pc = 14; return s.tmp_1;
+    s.callLocIdx = 437; s.pc = 14; return s.tmp_1;
   case 14:
     r0 = s.retval;
   case 3:
@@ -56492,7 +56555,7 @@ switch (step) {
   case 7:
   case 8:
     s.tmp_0 = GameController_HubMode_handleInteract__P5371_mk(s);
-    s.callLocIdx = 436; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 438; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
   case 9:
@@ -56530,8 +56593,8 @@ switch (step) {
     s.playerSprite___22519 = undefined;
     s.nearby___22526 = undefined;
     s.s___22535 = undefined;
-    s.unnamed398___U3 = undefined;
-    s.unnamed399___U4 = undefined;
+    s.unnamed578___U3 = undefined;
+    s.unnamed579___U4 = undefined;
     s.tmp_2 = if_playMode_1_mk(s);
     s.tmp_2.arg0 = globals.state___5156;
     if (!s.tmp_2.arg0.vtable.iface) {
@@ -56540,7 +56603,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 590; s.pc = 14; return s.tmp_2; }
+     else { s.callLocIdx = 592; s.pc = 14; return s.tmp_2; }
     }
   case 14:
     r0 = s.retval;
@@ -56552,14 +56615,14 @@ switch (step) {
     s.tmp_3 = signalFailure__P5440_mk(s);
     s.tmp_3.arg0 = 5;
     s.tmp_3.arg1 = "HubMode.handleInteract";
-    s.callLocIdx = 591; s.pc = 15; return s.tmp_3;
+    s.callLocIdx = 593; s.pc = 15; return s.tmp_3;
   case 15:
     r0 = s.retval;
     { step = 13; continue; }
   case 1:
   case 2:
     s.tmp_3 = canInteract__P5168_mk(s);
-    s.callLocIdx = 592; s.pc = 16; return s.tmp_3;
+    s.callLocIdx = 594; s.pc = 16; return s.tmp_3;
   case 16:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -56572,7 +56635,7 @@ switch (step) {
     s.tmp_4 = signalFailure__P5440_mk(s);
     s.tmp_4.arg0 = 6;
     s.tmp_4.arg1 = "HubMode.handleInteract";
-    s.callLocIdx = 593; s.pc = 17; return s.tmp_4;
+    s.callLocIdx = 595; s.pc = 17; return s.tmp_4;
   case 17:
     r0 = s.retval;
     { step = 13; continue; }
@@ -56589,7 +56652,7 @@ switch (step) {
     s.tmp_2 = signalFailure__P5440_mk(s);
     s.tmp_2.arg0 = 4;
     s.tmp_2.arg1 = "HubMode.handleInteract";
-    s.callLocIdx = 595; s.pc = 18; return s.tmp_2;
+    s.callLocIdx = 597; s.pc = 18; return s.tmp_2;
   case 18:
     r0 = s.retval;
     { step = 13; continue; }
@@ -56597,48 +56660,48 @@ switch (step) {
   case 6:
     s.tmp_0 = helpers_arrayConcat__P114_mk(s);
     s.tmp_1 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_1.arg0 = globals.KIND_DOOR___8154;
-    s.callLocIdx = 596; s.pc = 20; return s.tmp_1;
+    s.tmp_1.arg0 = globals.KIND_DOOR___36336;
+    s.callLocIdx = 598; s.pc = 20; return s.tmp_1;
   case 20:
     r0 = s.retval;
     s.tmp_0.arg0 = r0;
     s.tmp_2 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_2.arg0 = globals.KIND_NPC___8153;
-    s.callLocIdx = 597; s.pc = 21; return s.tmp_2;
+    s.tmp_2.arg0 = globals.KIND_NPC___36335;
+    s.callLocIdx = 599; s.pc = 21; return s.tmp_2;
   case 21:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
-    s.callLocIdx = 598; s.pc = 19; return s.tmp_0;
+    s.callLocIdx = 600; s.pc = 19; return s.tmp_0;
   case 19:
     r0 = s.retval;
     s.nearby___22526 = (r0);
     s.s___22535 = (undefined);
-    s.unnamed398___U3 = (s.nearby___22526);
-    s.unnamed399___U4 = (0);
+    s.unnamed578___U3 = (s.nearby___22526);
+    s.unnamed579___U4 = (0);
   case 7:
-    s.tmp_0 = r0 = s.unnamed399___U4;
-    r0 = pxsim_Array__length(s.unnamed398___U3);
+    s.tmp_0 = r0 = s.unnamed579___U4;
+    r0 = pxsim_Array__length(s.unnamed578___U3);
     s.tmp_1 = r0;
     r0 = (s.tmp_0 < s.tmp_1);
     if (!r0) { step = 12; continue; }
-    r0 = pxsim_Array__getAt(s.unnamed398___U3, s.unnamed399___U4);
+    r0 = pxsim_Array__getAt(s.unnamed578___U3, s.unnamed579___U4);
     s.s___22535 = (r0);
     s.tmp_4 = Math_abs__P129_mk(s);
     s.tmp_6 = Sprite_x__P2391_mk(s);
     s.tmp_6.arg0 = s.playerSprite___22519;
-    s.callLocIdx = 599; s.pc = 23; return s.tmp_6;
+    s.callLocIdx = 601; s.pc = 23; return s.tmp_6;
   case 23:
     r0 = s.retval;
     s.tmp_5 = r0;
     s.tmp_8 = Sprite_x__P2391_mk(s);
     s.tmp_8.arg0 = s.s___22535;
-    s.callLocIdx = 600; s.pc = 24; return s.tmp_8;
+    s.callLocIdx = 602; s.pc = 24; return s.tmp_8;
   case 24:
     r0 = s.retval;
     s.tmp_7 = r0;
     r0 = (s.tmp_5 - s.tmp_7);
     s.tmp_4.arg0 = r0;
-    s.callLocIdx = 601; s.pc = 22; return s.tmp_4;
+    s.callLocIdx = 603; s.pc = 22; return s.tmp_4;
   case 22:
     r0 = s.retval;
     s.tmp_3 = r0;
@@ -56652,19 +56715,19 @@ switch (step) {
     s.tmp_10 = Math_abs__P129_mk(s);
     s.tmp_12 = Sprite_y__P2393_mk(s);
     s.tmp_12.arg0 = s.playerSprite___22519;
-    s.callLocIdx = 602; s.pc = 26; return s.tmp_12;
+    s.callLocIdx = 604; s.pc = 26; return s.tmp_12;
   case 26:
     r0 = s.retval;
     s.tmp_11 = r0;
     s.tmp_14 = Sprite_y__P2393_mk(s);
     s.tmp_14.arg0 = s.s___22535;
-    s.callLocIdx = 603; s.pc = 27; return s.tmp_14;
+    s.callLocIdx = 605; s.pc = 27; return s.tmp_14;
   case 27:
     r0 = s.retval;
     s.tmp_13 = r0;
     r0 = (s.tmp_11 - s.tmp_13);
     s.tmp_10.arg0 = r0;
-    s.callLocIdx = 604; s.pc = 25; return s.tmp_10;
+    s.callLocIdx = 606; s.pc = 25; return s.tmp_10;
   case 25:
     r0 = s.retval;
     s.tmp_9 = r0;
@@ -56675,22 +56738,22 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_15);
     if (!r0) { step = 10; continue; }
     s.tmp_16 = markInteract__P5169_mk(s);
-    s.callLocIdx = 605; s.pc = 28; return s.tmp_16;
+    s.callLocIdx = 607; s.pc = 28; return s.tmp_16;
   case 28:
     r0 = s.retval;
     s.tmp_0 = GameController_HubMode_handleInteractable__P8416_mk(s);
     s.tmp_0.arg0 = s.s___22535;
-    s.callLocIdx = 606; s.pc = 29; return s.tmp_0;
+    s.callLocIdx = 608; s.pc = 29; return s.tmp_0;
   case 29:
     r0 = s.retval;
     { step = 13; continue; }
   case 10:
   case 11:
-    r0 = (s.unnamed399___U4 + 1);
-    s.unnamed399___U4 = (r0);
+    r0 = (s.unnamed579___U4 + 1);
+    s.unnamed579___U4 = (r0);
     { step = 7; continue; }
   case 12:
-    s.unnamed398___U3 = (undefined);
+    s.unnamed578___U3 = (undefined);
   case 13:
     r0 = undefined;
     return leave(s, r0)
@@ -56723,8 +56786,8 @@ function GameController_HubMode_handleInteract__P5371_mk(s) {
   playerSprite___22519: undefined,
   nearby___22526: undefined,
   s___22535: undefined,
-  unnamed398___U3: undefined,
-  unnamed399___U4: undefined,
+  unnamed578___U3: undefined,
+  unnamed579___U4: undefined,
 } }
 
 
@@ -56749,7 +56812,7 @@ switch (step) {
     s.tmp_1 = readHubSpriteData__P5314_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = globals.HUB_SPRITE_DATA_IS_DOOR___5311;
-    s.callLocIdx = 607; s.pc = 9; return s.tmp_1;
+    s.callLocIdx = 609; s.pc = 9; return s.tmp_1;
   case 9:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -56758,7 +56821,7 @@ switch (step) {
     s.tmp_2 = readHubSpriteData__P5314_mk(s);
     s.tmp_2.arg0 = s.arg0;
     s.tmp_2.arg1 = globals.HUB_SPRITE_DATA_DUNGEON_ID___5312;
-    s.callLocIdx = 608; s.pc = 10; return s.tmp_2;
+    s.callLocIdx = 610; s.pc = 10; return s.tmp_2;
   case 10:
     r0 = s.retval;
     s.dungeonId___22563 = (r0);
@@ -56766,7 +56829,7 @@ switch (step) {
     if (!r0) { step = 1; continue; }
     s.tmp_0 = GameController_enterDungeon__P5407_mk(s);
     s.tmp_0.arg0 = s.dungeonId___22563;
-    s.callLocIdx = 609; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 611; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
   case 1:
@@ -56776,7 +56839,7 @@ switch (step) {
     s.tmp_1 = readHubSpriteData__P5314_mk(s);
     s.tmp_1.arg0 = s.arg0;
     s.tmp_1.arg1 = globals.HUB_SPRITE_DATA_IS_NPC___5309;
-    s.callLocIdx = 610; s.pc = 12; return s.tmp_1;
+    s.callLocIdx = 612; s.pc = 12; return s.tmp_1;
   case 12:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -56785,7 +56848,7 @@ switch (step) {
     s.tmp_2 = readHubSpriteData__P5314_mk(s);
     s.tmp_2.arg0 = s.arg0;
     s.tmp_2.arg1 = globals.HUB_SPRITE_DATA_DIALOG_ID___5310;
-    s.callLocIdx = 611; s.pc = 13; return s.tmp_2;
+    s.callLocIdx = 613; s.pc = 13; return s.tmp_2;
   case 13:
     r0 = s.retval;
     s.dialogId___22575 = (r0);
@@ -56794,7 +56857,7 @@ switch (step) {
     s.tmp_0 = showDialog__P5271_mk(s);
     s.tmp_0.arg0 = s.dialogId___22575;
     s.tmp_0.arg1 = undefined;
-    s.callLocIdx = 612; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 614; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
   case 4:
@@ -56863,7 +56926,7 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_1, "]");
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = 0;
-    s.callLocIdx = 1261; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1263; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     r0 = pxsim_numops_toBoolDecr(s.arg1);
@@ -56871,7 +56934,7 @@ switch (step) {
     s.tmp_0 = lambda_1_mk(s);
     s.tmp_0.argL = s.arg1;
     setupLambda(s.tmp_0, s.tmp_0.argL);
-    s.callLocIdx = 1262; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 1264; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
   case 1:
@@ -58555,9 +58618,9 @@ switch (step) {
     s.tmp_0 = r0;
     r0 = pxsim_pxtrt_stclo(s.tmp_0, 0, s.arg0);
     s.tmp_1 = helpers_arrayFind__P112_mk(s);
-    s.tmp_1.arg0 = globals.DUNGEON_SPECS___8270;
+    s.tmp_1.arg0 = globals.DUNGEON_SPECS___36452;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 438; s.pc = 4; return s.tmp_1;
+    s.callLocIdx = 440; s.pc = 4; return s.tmp_1;
   case 4:
     r0 = s.retval;
     s.spec___23147 = (r0);
@@ -58580,7 +58643,7 @@ switch (step) {
     s.tmp_3 = r0;
     r0 = pxsim_String__concat("enterDungeon:", s.tmp_3);
     s.tmp_2.arg1 = r0;
-    s.callLocIdx = 439; s.pc = 5; return s.tmp_2;
+    s.callLocIdx = 441; s.pc = 5; return s.tmp_2;
   case 5:
     r0 = s.retval;
     { step = 3; continue; }
@@ -58588,17 +58651,17 @@ switch (step) {
   case 2:
     s.tmp_0 = setGameMode__P5158_mk(s);
     s.tmp_0.arg0 = 6;
-    s.callLocIdx = 440; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 442; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     s.tmp_0 = pause__P415_mk(s);
     s.tmp_0.arg0 = 100;
-    s.callLocIdx = 441; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 443; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = setGameMode__P5158_mk(s);
     s.tmp_0.arg0 = 4;
-    s.callLocIdx = 442; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 444; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     r0 = pxsim_pxtcore_mkAction(2, GameController_enterDungeon_inline__P23178);
@@ -58614,13 +58677,13 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["introCutsceneId"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["introCutsceneId"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 443; s.pc = 11; return s.tmp_2; }
+     else { s.callLocIdx = 445; s.pc = 11; return s.tmp_2; }
     }
   case 11:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 447; s.pc = 10; return s.tmp_1;
+    s.callLocIdx = 449; s.pc = 10; return s.tmp_1;
   case 10:
     r0 = s.retval;
   case 3:
@@ -58668,7 +58731,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["id"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["id"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 437; s.pc = 1; return s.tmp_1; }
+     else { s.callLocIdx = 439; s.pc = 1; return s.tmp_1; }
     }
   case 1:
     r0 = s.retval;
@@ -58704,7 +58767,7 @@ switch (step) {
 
     s.tmp_0 = setGameMode__P5158_mk(s);
     s.tmp_0.arg0 = 3;
-    s.callLocIdx = 444; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 446; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = pxsim_pxtrt.mkMap();
@@ -58720,13 +58783,13 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["playMode"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["playMode"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 445; s.pc = 3; return s.tmp_2; }
+     else { s.callLocIdx = 447; s.pc = 3; return s.tmp_2; }
     }
   case 3:
     r0 = s.retval;
     s.tmp_1.arg0 = r0;
     s.tmp_1.arg1 = s.tmp_0;
-    s.callLocIdx = 446; s.pc = 2; return s.tmp_1;
+    s.callLocIdx = 448; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
     r0 = undefined;
@@ -58787,7 +58850,7 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_1, "]");
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = 0;
-    s.callLocIdx = 1259; s.pc = 3; return s.tmp_0;
+    s.callLocIdx = 1261; s.pc = 3; return s.tmp_0;
   case 3:
     r0 = s.retval;
     r0 = pxsim_numops_toBoolDecr(s.arg1);
@@ -58795,7 +58858,7 @@ switch (step) {
     s.tmp_0 = lambda_1_mk(s);
     s.tmp_0.argL = s.arg1;
     setupLambda(s.tmp_0, s.tmp_0.argL);
-    s.callLocIdx = 1260; s.pc = 6; return s.tmp_0;
+    s.callLocIdx = 1262; s.pc = 6; return s.tmp_0;
   case 6:
     r0 = s.retval;
   case 1:
@@ -58840,7 +58903,7 @@ switch (step) {
     }
     s.tmp_0 = Sprite_data__P2417_mk(s);
     s.tmp_0.arg0 = s.arg0;
-    s.callLocIdx = 1264; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1266; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     s.data___23203 = (r0);
@@ -58877,7 +58940,7 @@ switch (step) {
     s.tmp_0 = if_lastInteractTime_2_mk(s);
     s.tmp_0.arg0 = globals.state___5156;
     s.tmp_1 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 140; s.pc = 2; return s.tmp_1;
+    s.callLocIdx = 142; s.pc = 2; return s.tmp_1;
   case 2:
     r0 = s.retval;
     s.tmp_0.arg1 = r0;
@@ -58887,7 +58950,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/lastInteractTime"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["lastInteractTime"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 141; s.pc = 1; return s.tmp_0; }
+     else { s.callLocIdx = 143; s.pc = 1; return s.tmp_0; }
     }
   case 1:
     r0 = s.retval;
@@ -59005,7 +59068,7 @@ switch (step) {
   case 0:
 
     s.tmp_1 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 138; s.pc = 1; return s.tmp_1;
+    s.callLocIdx = 140; s.pc = 1; return s.tmp_1;
   case 1:
     r0 = s.retval;
     s.tmp_0 = r0;
@@ -59017,7 +59080,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["lastInteractTime"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["lastInteractTime"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 139; s.pc = 2; return s.tmp_4; }
+     else { s.callLocIdx = 141; s.pc = 2; return s.tmp_4; }
     }
   case 2:
     r0 = s.retval;
@@ -59056,7 +59119,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = GameController_MetaMode_handleMicroRhythmTap__P5401_mk(s);
-    s.callLocIdx = 429; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 431; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -59096,7 +59159,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 983; s.pc = 6; return s.tmp_3; }
+     else { s.callLocIdx = 985; s.pc = 6; return s.tmp_3; }
     }
   case 6:
     r0 = s.retval;
@@ -59111,7 +59174,7 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_4 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 984; s.pc = 7; return s.tmp_4;
+    s.callLocIdx = 986; s.pc = 7; return s.tmp_4;
   case 7:
     r0 = s.retval;
     s.now___23241 = (r0);
@@ -59124,7 +59187,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 985; s.pc = 9; return s.tmp_1; }
+     else { s.callLocIdx = 987; s.pc = 9; return s.tmp_1; }
     }
   case 9:
     r0 = s.retval;
@@ -59135,7 +59198,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["nextBeatTime"];
       if (s.tmp_0.fn == null) { s.retval = s.tmp_0.arg0.fields["nextBeatTime"]; }
       else if (!s.tmp_0.fn.isGetter) { s.retval = bind(s.tmp_0); }
-     else { s.callLocIdx = 986; s.pc = 8; return s.tmp_0; }
+     else { s.callLocIdx = 988; s.pc = 8; return s.tmp_0; }
     }
   case 8:
     r0 = s.retval;
@@ -59143,7 +59206,7 @@ switch (step) {
     s.tmp_2 = Math_abs__P129_mk(s);
     r0 = (s.now___23241 - s.nextBeat___23244);
     s.tmp_2.arg0 = r0;
-    s.callLocIdx = 987; s.pc = 10; return s.tmp_2;
+    s.callLocIdx = 989; s.pc = 10; return s.tmp_2;
   case 10:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -59160,7 +59223,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 988; s.pc = 12; return s.tmp_5; }
+     else { s.callLocIdx = 990; s.pc = 12; return s.tmp_5; }
     }
   case 12:
     r0 = s.retval;
@@ -59174,7 +59237,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["streak"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["streak"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 989; s.pc = 13; return s.tmp_7; }
+     else { s.callLocIdx = 991; s.pc = 13; return s.tmp_7; }
     }
   case 13:
     r0 = s.retval;
@@ -59187,14 +59250,14 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["set/streak"];
       if (s.tmp_3.fn === null) { s.tmp_3.arg0.fields["streak"] = s.tmp_3.arg1; }
       else if (s.tmp_3.fn === undefined) { failedCast(s.tmp_3.arg0) } 
-     else { s.callLocIdx = 990; s.pc = 11; return s.tmp_3; }
+     else { s.callLocIdx = 992; s.pc = 11; return s.tmp_3; }
     }
   case 11:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[RHYTHM_GOOD]";
     s.tmp_0.arg1 = 500;
-    s.callLocIdx = 991; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 993; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     { step = 4; continue; }
@@ -59208,7 +59271,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 992; s.pc = 16; return s.tmp_2; }
+     else { s.callLocIdx = 994; s.pc = 16; return s.tmp_2; }
     }
   case 16:
     r0 = s.retval;
@@ -59222,7 +59285,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["misses"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["misses"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 993; s.pc = 17; return s.tmp_4; }
+     else { s.callLocIdx = 995; s.pc = 17; return s.tmp_4; }
     }
   case 17:
     r0 = s.retval;
@@ -59235,7 +59298,7 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/misses"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["misses"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 994; s.pc = 15; return s.tmp_0; }
+     else { s.callLocIdx = 996; s.pc = 15; return s.tmp_0; }
     }
   case 15:
     r0 = s.retval;
@@ -59248,7 +59311,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["dungeonStageData"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["dungeonStageData"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 995; s.pc = 19; return s.tmp_1; }
+     else { s.callLocIdx = 997; s.pc = 19; return s.tmp_1; }
     }
   case 19:
     r0 = s.retval;
@@ -59260,14 +59323,14 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/streak"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["streak"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 996; s.pc = 18; return s.tmp_0; }
+     else { s.callLocIdx = 998; s.pc = 18; return s.tmp_0; }
     }
   case 18:
     r0 = s.retval;
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[RHYTHM_MISS]";
     s.tmp_0.arg1 = 500;
-    s.callLocIdx = 997; s.pc = 20; return s.tmp_0;
+    s.callLocIdx = 999; s.pc = 20; return s.tmp_0;
   case 20:
     r0 = s.retval;
   case 4:
@@ -59309,7 +59372,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = GameController_MetaMode_handleMicroShooterShoot__P5400_mk(s);
-    s.callLocIdx = 428; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 430; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -59353,8 +59416,8 @@ switch (step) {
   case 1:
   case 2:
     s.tmp_5 = sprites_allOfKind__P2314_mk(s);
-    s.tmp_5.arg0 = globals.KIND_PROJECTILE___8152;
-    s.callLocIdx = 978; s.pc = 6; return s.tmp_5;
+    s.tmp_5.arg0 = globals.KIND_PROJECTILE___36334;
+    s.callLocIdx = 980; s.pc = 6; return s.tmp_5;
   case 6:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -59373,19 +59436,19 @@ switch (step) {
     s.tmp_6.arg1 = s.plyr___23275;
     s.tmp_6.arg2 = 0;
     s.tmp_6.arg3 = -100;
-    s.callLocIdx = 980; s.pc = 7; return s.tmp_6;
+    s.callLocIdx = 982; s.pc = 7; return s.tmp_6;
   case 7:
     r0 = s.retval;
     s.bullet___23285 = (r0);
     s.tmp_0 = Sprite_setKind__P2450_mk(s);
     s.tmp_0.arg0 = s.bullet___23285;
-    s.tmp_0.arg1 = globals.KIND_PROJECTILE___8152;
-    s.callLocIdx = 981; s.pc = 8; return s.tmp_0;
+    s.tmp_0.arg1 = globals.KIND_PROJECTILE___36334;
+    s.callLocIdx = 983; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     r0 = (s.bullet___23285).fields["lifespan"] = (2000);
     s.tmp_0 = sfxShoot__P5255_mk(s);
-    s.callLocIdx = 982; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 984; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
   case 5:
@@ -59425,7 +59488,7 @@ switch (step) {
   case 0:
 
     s.tmp_0 = GameController_MetaMode_handleMicroPlatformJump__P5399_mk(s);
-    s.callLocIdx = 427; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 429; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -59470,7 +59533,7 @@ switch (step) {
     s.tmp_3 = Sprite_isHittingTile__P2463_mk(s);
     s.tmp_3.arg0 = s.plyr___23298;
     s.tmp_3.arg1 = 3;
-    s.callLocIdx = 972; s.pc = 8; return s.tmp_3;
+    s.callLocIdx = 974; s.pc = 8; return s.tmp_3;
   case 8:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -59482,11 +59545,11 @@ switch (step) {
     s.tmp_5 = Math_abs__P129_mk(s);
     s.tmp_6 = Sprite_vy__P2397_mk(s);
     s.tmp_6.arg0 = s.plyr___23298;
-    s.callLocIdx = 973; s.pc = 10; return s.tmp_6;
+    s.callLocIdx = 975; s.pc = 10; return s.tmp_6;
   case 10:
     r0 = s.retval;
     s.tmp_5.arg0 = r0;
-    s.callLocIdx = 974; s.pc = 9; return s.tmp_5;
+    s.callLocIdx = 976; s.pc = 9; return s.tmp_5;
   case 9:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -59499,11 +59562,11 @@ switch (step) {
     s.tmp_8 = Sprite_vy__P2398_mk(s);
     s.tmp_8.arg0 = s.plyr___23298;
     s.tmp_8.arg1 = -150;
-    s.callLocIdx = 975; s.pc = 11; return s.tmp_8;
+    s.callLocIdx = 977; s.pc = 11; return s.tmp_8;
   case 11:
     r0 = s.retval;
     s.tmp_0 = sfxJump__P5254_mk(s);
-    s.callLocIdx = 976; s.pc = 12; return s.tmp_0;
+    s.callLocIdx = 978; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
   case 5:
@@ -59550,7 +59613,7 @@ switch (step) {
       s.lambdaArgs = null;
     }
     s.tmp_2 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 1194; s.pc = 16; return s.tmp_2;
+    s.callLocIdx = 1196; s.pc = 16; return s.tmp_2;
   case 16:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -59562,7 +59625,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["toolCooldownUntil"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["toolCooldownUntil"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 1195; s.pc = 17; return s.tmp_4; }
+     else { s.callLocIdx = 1197; s.pc = 17; return s.tmp_4; }
     }
   case 17:
     r0 = s.retval;
@@ -59576,7 +59639,7 @@ switch (step) {
   case 2:
     s.tmp_8 = hasTool__P5163_mk(s);
     s.tmp_8.arg0 = s.arg0;
-    s.callLocIdx = 1196; s.pc = 18; return s.tmp_8;
+    s.callLocIdx = 1198; s.pc = 18; return s.tmp_8;
   case 18:
     r0 = s.retval;
     s.tmp_7 = r0;
@@ -59589,52 +59652,52 @@ switch (step) {
     { step = 15; continue; }
   case 3:
   case 4:
-    r0 = (s.arg0 === globals.TOOL_FREEZECAM___8348);
+    r0 = (s.arg0 === globals.TOOL_FREEZECAM___36530);
     s.tmp_9 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_9);
     if (!r0) { step = 5; continue; }
     s.tmp_10 = useFreezeCam__P5288_mk(s);
-    s.callLocIdx = 1197; s.pc = 19; return s.tmp_10;
+    s.callLocIdx = 1199; s.pc = 19; return s.tmp_10;
   case 19:
     r0 = s.retval;
     { step = 14; continue; }
   case 5:
-    r0 = (s.arg0 === globals.TOOL_CONFETTI_BOMB___8349);
+    r0 = (s.arg0 === globals.TOOL_CONFETTI_BOMB___36531);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 6; continue; }
     s.tmp_1 = useConfettiBomb__P5289_mk(s);
-    s.callLocIdx = 1198; s.pc = 20; return s.tmp_1;
+    s.callLocIdx = 1200; s.pc = 20; return s.tmp_1;
   case 20:
     r0 = s.retval;
     { step = 13; continue; }
   case 6:
-    r0 = (s.arg0 === globals.TOOL_SOAP_SLIDE___8350);
+    r0 = (s.arg0 === globals.TOOL_SOAP_SLIDE___36532);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 7; continue; }
     s.tmp_1 = useSoapSlide__P5290_mk(s);
-    s.callLocIdx = 1199; s.pc = 21; return s.tmp_1;
+    s.callLocIdx = 1201; s.pc = 21; return s.tmp_1;
   case 21:
     r0 = s.retval;
     { step = 12; continue; }
   case 7:
-    r0 = (s.arg0 === globals.TOOL_DECOY_TOY___8351);
+    r0 = (s.arg0 === globals.TOOL_DECOY_TOY___36533);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 8; continue; }
     s.tmp_1 = useDecoyToy__P5291_mk(s);
-    s.callLocIdx = 1200; s.pc = 22; return s.tmp_1;
+    s.callLocIdx = 1202; s.pc = 22; return s.tmp_1;
   case 22:
     r0 = s.retval;
     { step = 11; continue; }
   case 8:
-    r0 = (s.arg0 === globals.TOOL_TAGGER___8352);
+    r0 = (s.arg0 === globals.TOOL_TAGGER___36534);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 9; continue; }
     s.tmp_1 = useTagger__P5292_mk(s);
-    s.callLocIdx = 1201; s.pc = 23; return s.tmp_1;
+    s.callLocIdx = 1203; s.pc = 23; return s.tmp_1;
   case 23:
     r0 = s.retval;
   case 9:
@@ -59646,7 +59709,7 @@ switch (step) {
     s.tmp_0 = if_toolCooldownUntil_2_mk(s);
     s.tmp_0.arg0 = globals.state___5156;
     s.tmp_2 = game_runtime__P3087_mk(s);
-    s.callLocIdx = 1202; s.pc = 25; return s.tmp_2;
+    s.callLocIdx = 1204; s.pc = 25; return s.tmp_2;
   case 25:
     r0 = s.retval;
     s.tmp_1 = r0;
@@ -59658,12 +59721,12 @@ switch (step) {
       s.tmp_0.fn = s.tmp_0.arg0.vtable.iface["set/toolCooldownUntil"];
       if (s.tmp_0.fn === null) { s.tmp_0.arg0.fields["toolCooldownUntil"] = s.tmp_0.arg1; }
       else if (s.tmp_0.fn === undefined) { failedCast(s.tmp_0.arg0) } 
-     else { s.callLocIdx = 1203; s.pc = 24; return s.tmp_0; }
+     else { s.callLocIdx = 1205; s.pc = 24; return s.tmp_0; }
     }
   case 24:
     r0 = s.retval;
     s.tmp_0 = sfxToolUse__P5258_mk(s);
-    s.callLocIdx = 1204; s.pc = 26; return s.tmp_0;
+    s.callLocIdx = 1206; s.pc = 26; return s.tmp_0;
   case 26:
     r0 = s.retval;
   case 15:
@@ -59734,7 +59797,7 @@ switch (step) {
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[TOOL_TAGGER_USED]";
     s.tmp_0.arg1 = 1000;
-    s.callLocIdx = 1209; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1211; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -59767,7 +59830,7 @@ switch (step) {
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[TOOL_DECOY_TOY_USED]";
     s.tmp_0.arg1 = 1000;
-    s.callLocIdx = 1208; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1210; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -59800,7 +59863,7 @@ switch (step) {
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[TOOL_SOAP_SLIDE_USED]";
     s.tmp_0.arg1 = 1000;
-    s.callLocIdx = 1207; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1209; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -59833,7 +59896,7 @@ switch (step) {
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[TOOL_CONFETTI_BOMB_USED]";
     s.tmp_0.arg1 = 1000;
-    s.callLocIdx = 1206; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1208; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -59866,7 +59929,7 @@ switch (step) {
     s.tmp_0 = showHint__P5280_mk(s);
     s.tmp_0.arg0 = "[TOOL_FREEZECAM_USED]";
     s.tmp_0.arg1 = 1000;
-    s.callLocIdx = 1205; s.pc = 1; return s.tmp_0;
+    s.callLocIdx = 1207; s.pc = 1; return s.tmp_0;
   case 1:
     r0 = s.retval;
     r0 = undefined;
@@ -59908,7 +59971,7 @@ switch (step) {
       s.tmp_2.fn = s.tmp_2.arg0.vtable.iface["unlockedTools"];
       if (s.tmp_2.fn == null) { s.retval = s.tmp_2.arg0.fields["unlockedTools"]; }
       else if (!s.tmp_2.fn.isGetter) { s.retval = bind(s.tmp_2); }
-     else { s.callLocIdx = 126; s.pc = 1; return s.tmp_2; }
+     else { s.callLocIdx = 128; s.pc = 1; return s.tmp_2; }
     }
   case 1:
     r0 = s.retval;
@@ -59950,7 +60013,7 @@ switch (step) {
     s.tmp_0.arg0 = "PAUSE 0=Continue 1=Save 2=Exit";
     s.tmp_0.arg1 = 0;
     s.tmp_0.arg2 = false;
-    s.callLocIdx = 1255; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 1257; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.choice___23373 = (r0);
@@ -59959,7 +60022,7 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_1 = saveGame__P34889_mk(s);
-    s.callLocIdx = 1256; s.pc = 6; return s.tmp_1;
+    s.callLocIdx = 1258; s.pc = 6; return s.tmp_1;
   case 6:
     r0 = s.retval;
     { step = 4; continue; }
@@ -59969,11 +60032,11 @@ switch (step) {
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 2; continue; }
     s.tmp_1 = saveGame__P34889_mk(s);
-    s.callLocIdx = 1257; s.pc = 7; return s.tmp_1;
+    s.callLocIdx = 1259; s.pc = 7; return s.tmp_1;
   case 7:
     r0 = s.retval;
     s.tmp_0 = game_reset__P3572_mk(s);
-    s.callLocIdx = 1258; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 1260; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
   case 2:
@@ -60043,7 +60106,7 @@ switch (step) {
     s.errors___23385 = undefined;
     s.i___23418 = undefined;
     s.tmp_0 = validateDungeonRegistry__P5324_mk(s);
-    s.callLocIdx = 1317; s.pc = 5; return s.tmp_0;
+    s.callLocIdx = 1319; s.pc = 5; return s.tmp_0;
   case 5:
     r0 = s.retval;
     s.errors___23385 = (r0);
@@ -60056,21 +60119,21 @@ switch (step) {
     s.tmp_2 = game_splash__P3010_mk(s);
     s.tmp_2.arg0 = "✅ DUNGEON REGISTRY VALIDATION PASSED";
     s.tmp_2.arg1 = undefined;
-    s.callLocIdx = 1318; s.pc = 6; return s.tmp_2;
+    s.callLocIdx = 1320; s.pc = 6; return s.tmp_2;
   case 6:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "=== DUNGEON REGISTRY VALIDATION ===";
-    s.callLocIdx = 1319; s.pc = 7; return s.tmp_0;
+    s.callLocIdx = 1321; s.pc = 7; return s.tmp_0;
   case 7:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "✅ All checks passed:";
-    s.callLocIdx = 1320; s.pc = 8; return s.tmp_0;
+    s.callLocIdx = 1322; s.pc = 8; return s.tmp_0;
   case 8:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
-    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___8270);
+    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___36452);
     s.tmp_3 = r0;
     if ((s.tmp_3) && (s.tmp_3).vtable) {
     setupResume(s, 10);
@@ -60085,44 +60148,44 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_1, " dungeons present");
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 1321; s.pc = 9; return s.tmp_0;
+    s.callLocIdx = 1323; s.pc = 9; return s.tmp_0;
   case 9:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "  - All introCutsceneIds set";
-    s.callLocIdx = 1322; s.pc = 11; return s.tmp_0;
+    s.callLocIdx = 1324; s.pc = 11; return s.tmp_0;
   case 11:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "  - All stages arrays complete (4-5 stages)";
-    s.callLocIdx = 1323; s.pc = 12; return s.tmp_0;
+    s.callLocIdx = 1325; s.pc = 12; return s.tmp_0;
   case 12:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "  - All rewards/flags unique";
-    s.callLocIdx = 1324; s.pc = 13; return s.tmp_0;
+    s.callLocIdx = 1326; s.pc = 13; return s.tmp_0;
   case 13:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "  - No missing stage IDs";
-    s.callLocIdx = 1325; s.pc = 14; return s.tmp_0;
+    s.callLocIdx = 1327; s.pc = 14; return s.tmp_0;
   case 14:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "  - No null-refs at entry/exit";
-    s.callLocIdx = 1326; s.pc = 15; return s.tmp_0;
+    s.callLocIdx = 1328; s.pc = 15; return s.tmp_0;
   case 15:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "===================================";
-    s.callLocIdx = 1327; s.pc = 16; return s.tmp_0;
+    s.callLocIdx = 1329; s.pc = 16; return s.tmp_0;
   case 16:
     r0 = s.retval;
     { step = 4; continue; }
   case 1:
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "=== DUNGEON REGISTRY VALIDATION ===";
-    s.callLocIdx = 1328; s.pc = 17; return s.tmp_0;
+    s.callLocIdx = 1330; s.pc = 17; return s.tmp_0;
   case 17:
     r0 = s.retval;
     s.tmp_0 = console_log__P382_mk(s);
@@ -60141,7 +60204,7 @@ switch (step) {
     s.tmp_1 = r0;
     r0 = pxsim_String__concat(s.tmp_1, " validation error(s) found:");
     s.tmp_0.arg0 = r0;
-    s.callLocIdx = 1329; s.pc = 18; return s.tmp_0;
+    s.callLocIdx = 1331; s.pc = 18; return s.tmp_0;
   case 18:
     r0 = s.retval;
     s.i___23418 = (0);
@@ -60182,7 +60245,7 @@ switch (step) {
     s.tmp_8 = r0;
     r0 = pxsim_String__concat(s.tmp_4, s.tmp_8);
     s.tmp_3.arg0 = r0;
-    s.callLocIdx = 1330; s.pc = 20; return s.tmp_3;
+    s.callLocIdx = 1332; s.pc = 20; return s.tmp_3;
   case 20:
     r0 = s.retval;
     r0 = (s.i___23418 + 1);
@@ -60191,7 +60254,7 @@ switch (step) {
   case 3:
     s.tmp_0 = console_log__P382_mk(s);
     s.tmp_0.arg0 = "===================================";
-    s.callLocIdx = 1331; s.pc = 23; return s.tmp_0;
+    s.callLocIdx = 1333; s.pc = 23; return s.tmp_0;
   case 23:
     r0 = s.retval;
     s.tmp_0 = game_splash__P3010_mk(s);
@@ -60211,7 +60274,7 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_1, " errors");
     s.tmp_0.arg0 = r0;
     s.tmp_0.arg1 = undefined;
-    s.callLocIdx = 1332; s.pc = 24; return s.tmp_0;
+    s.callLocIdx = 1334; s.pc = 24; return s.tmp_0;
   case 24:
     r0 = s.retval;
   case 4:
@@ -60279,14 +60342,14 @@ switch (step) {
     s.allFlags___23451 = (r0);
     r0 = pxsim_Array__mk();
     s.allStageIds___23453 = (r0);
-    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___8270);
+    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___36452);
     s.tmp_1 = r0;
     r0 = (s.tmp_1 !== 9);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     s.tmp_2 = r0 = s.errors___23449;
-    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___8270);
+    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___36452);
     s.tmp_5 = r0;
     if ((s.tmp_5) && (s.tmp_5).vtable) {
     setupResume(s, 49);
@@ -60305,13 +60368,13 @@ switch (step) {
     s.i___23466 = (0);
   case 3:
     s.tmp_1 = r0 = s.i___23466;
-    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___8270);
+    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___36452);
     s.tmp_2 = r0;
     r0 = (s.tmp_1 < s.tmp_2);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 40; continue; }
-    r0 = pxsim_Array__getAt(globals.DUNGEON_SPECS___8270, s.i___23466);
+    r0 = pxsim_Array__getAt(globals.DUNGEON_SPECS___36452, s.i___23466);
     s.spec___23472 = (r0);
     r0 = (s.i___23466 + 1);
     s.tmp_4 = r0;
@@ -60336,7 +60399,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["id"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["id"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 1290; s.pc = 51; return s.tmp_7; }
+     else { s.callLocIdx = 1292; s.pc = 51; return s.tmp_7; }
     }
   case 51:
     r0 = s.retval;
@@ -60355,7 +60418,7 @@ switch (step) {
     r0 = pxsim_String__concat(s.tmp_0, ")");
     s.dungeonLabel___23476 = (r0);
     s.tmp_0 = r0 = s.i___23466;
-    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___8270);
+    r0 = pxsim_Array__length(globals.DUNGEON_SPECS___36452);
     s.tmp_2 = r0;
     r0 = (s.tmp_2 - 1);
     s.tmp_1 = r0;
@@ -60369,7 +60432,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["introCutsceneId"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["introCutsceneId"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1291; s.pc = 53; return s.tmp_3; }
+     else { s.callLocIdx = 1293; s.pc = 53; return s.tmp_3; }
     }
   case 53:
     r0 = s.retval;
@@ -60392,12 +60455,12 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["introCutsceneId"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["introCutsceneId"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 1292; s.pc = 55; return s.tmp_6; }
+     else { s.callLocIdx = 1294; s.pc = 55; return s.tmp_6; }
     }
   case 55:
     r0 = s.retval;
     s.tmp_5.arg0 = r0;
-    s.callLocIdx = 1293; s.pc = 54; return s.tmp_5;
+    s.callLocIdx = 1295; s.pc = 54; return s.tmp_5;
   case 54:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -60444,7 +60507,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["stages"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["stages"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1294; s.pc = 57; return s.tmp_3; }
+     else { s.callLocIdx = 1296; s.pc = 57; return s.tmp_3; }
     }
   case 57:
     r0 = s.retval;
@@ -60466,7 +60529,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["stages"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["stages"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 1295; s.pc = 58; return s.tmp_6; }
+     else { s.callLocIdx = 1297; s.pc = 58; return s.tmp_6; }
     }
   case 58:
     r0 = s.retval;
@@ -60487,7 +60550,7 @@ switch (step) {
       s.tmp_9.fn = s.tmp_9.arg0.vtable.iface["stages"];
       if (s.tmp_9.fn == null) { s.retval = s.tmp_9.arg0.fields["stages"]; }
       else if (!s.tmp_9.fn.isGetter) { s.retval = bind(s.tmp_9); }
-     else { s.callLocIdx = 1296; s.pc = 59; return s.tmp_9; }
+     else { s.callLocIdx = 1298; s.pc = 59; return s.tmp_9; }
     }
   case 59:
     r0 = s.retval;
@@ -60502,7 +60565,7 @@ switch (step) {
       s.tmp_11.fn = s.tmp_11.arg0.vtable.iface["stages"];
       if (s.tmp_11.fn == null) { s.retval = s.tmp_11.arg0.fields["stages"]; }
       else if (!s.tmp_11.fn.isGetter) { s.retval = bind(s.tmp_11); }
-     else { s.callLocIdx = 1297; s.pc = 60; return s.tmp_11; }
+     else { s.callLocIdx = 1299; s.pc = 60; return s.tmp_11; }
     }
   case 60:
     r0 = s.retval;
@@ -60563,7 +60626,7 @@ switch (step) {
       s.tmp_1.fn = s.tmp_1.arg0.vtable.iface["stages"];
       if (s.tmp_1.fn == null) { s.retval = s.tmp_1.arg0.fields["stages"]; }
       else if (!s.tmp_1.fn.isGetter) { s.retval = bind(s.tmp_1); }
-     else { s.callLocIdx = 1298; s.pc = 64; return s.tmp_1; }
+     else { s.callLocIdx = 1300; s.pc = 64; return s.tmp_1; }
     }
   case 64:
     r0 = s.retval;
@@ -60581,7 +60644,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["stages"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["stages"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 1299; s.pc = 65; return s.tmp_4; }
+     else { s.callLocIdx = 1301; s.pc = 65; return s.tmp_4; }
     }
   case 65:
     r0 = s.retval;
@@ -60600,7 +60663,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["stages"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["stages"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 1300; s.pc = 66; return s.tmp_6; }
+     else { s.callLocIdx = 1302; s.pc = 66; return s.tmp_6; }
     }
   case 66:
     r0 = s.retval;
@@ -60618,7 +60681,7 @@ switch (step) {
   case 17:
     s.tmp_3 = helpers_stringTrim__P124_mk(s);
     s.tmp_3.arg0 = s.stageId___23558;
-    s.callLocIdx = 1301; s.pc = 67; return s.tmp_3;
+    s.callLocIdx = 1303; s.pc = 67; return s.tmp_3;
   case 67:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -60676,7 +60739,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["hubReturnSpawnTag"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["hubReturnSpawnTag"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1302; s.pc = 70; return s.tmp_3; }
+     else { s.callLocIdx = 1304; s.pc = 70; return s.tmp_3; }
     }
   case 70:
     r0 = s.retval;
@@ -60699,12 +60762,12 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["hubReturnSpawnTag"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["hubReturnSpawnTag"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 1303; s.pc = 72; return s.tmp_6; }
+     else { s.callLocIdx = 1305; s.pc = 72; return s.tmp_6; }
     }
   case 72:
     r0 = s.retval;
     s.tmp_5.arg0 = r0;
-    s.callLocIdx = 1304; s.pc = 71; return s.tmp_5;
+    s.callLocIdx = 1306; s.pc = 71; return s.tmp_5;
   case 71:
     r0 = s.retval;
     s.tmp_4 = r0;
@@ -60741,7 +60804,7 @@ switch (step) {
       s.tmp_3.fn = s.tmp_3.arg0.vtable.iface["rewards"];
       if (s.tmp_3.fn == null) { s.retval = s.tmp_3.arg0.fields["rewards"]; }
       else if (!s.tmp_3.fn.isGetter) { s.retval = bind(s.tmp_3); }
-     else { s.callLocIdx = 1305; s.pc = 74; return s.tmp_3; }
+     else { s.callLocIdx = 1307; s.pc = 74; return s.tmp_3; }
     }
   case 74:
     r0 = s.retval;
@@ -60764,7 +60827,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["rewards"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["rewards"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 1306; s.pc = 76; return s.tmp_7; }
+     else { s.callLocIdx = 1308; s.pc = 76; return s.tmp_7; }
     }
   case 76:
     r0 = s.retval;
@@ -60775,7 +60838,7 @@ switch (step) {
       s.tmp_6.fn = s.tmp_6.arg0.vtable.iface["flagsSet"];
       if (s.tmp_6.fn == null) { s.retval = s.tmp_6.arg0.fields["flagsSet"]; }
       else if (!s.tmp_6.fn.isGetter) { s.retval = bind(s.tmp_6); }
-     else { s.callLocIdx = 1307; s.pc = 75; return s.tmp_6; }
+     else { s.callLocIdx = 1309; s.pc = 75; return s.tmp_6; }
     }
   case 75:
     r0 = s.retval;
@@ -60800,7 +60863,7 @@ switch (step) {
       s.tmp_12.fn = s.tmp_12.arg0.vtable.iface["rewards"];
       if (s.tmp_12.fn == null) { s.retval = s.tmp_12.arg0.fields["rewards"]; }
       else if (!s.tmp_12.fn.isGetter) { s.retval = bind(s.tmp_12); }
-     else { s.callLocIdx = 1308; s.pc = 78; return s.tmp_12; }
+     else { s.callLocIdx = 1310; s.pc = 78; return s.tmp_12; }
     }
   case 78:
     r0 = s.retval;
@@ -60811,7 +60874,7 @@ switch (step) {
       s.tmp_11.fn = s.tmp_11.arg0.vtable.iface["flagsSet"];
       if (s.tmp_11.fn == null) { s.retval = s.tmp_11.arg0.fields["flagsSet"]; }
       else if (!s.tmp_11.fn.isGetter) { s.retval = bind(s.tmp_11); }
-     else { s.callLocIdx = 1309; s.pc = 77; return s.tmp_11; }
+     else { s.callLocIdx = 1311; s.pc = 77; return s.tmp_11; }
     }
   case 77:
     r0 = s.retval;
@@ -60853,7 +60916,7 @@ switch (step) {
       s.tmp_5.fn = s.tmp_5.arg0.vtable.iface["rewards"];
       if (s.tmp_5.fn == null) { s.retval = s.tmp_5.arg0.fields["rewards"]; }
       else if (!s.tmp_5.fn.isGetter) { s.retval = bind(s.tmp_5); }
-     else { s.callLocIdx = 1310; s.pc = 81; return s.tmp_5; }
+     else { s.callLocIdx = 1312; s.pc = 81; return s.tmp_5; }
     }
   case 81:
     r0 = s.retval;
@@ -60864,7 +60927,7 @@ switch (step) {
       s.tmp_4.fn = s.tmp_4.arg0.vtable.iface["flagsSet"];
       if (s.tmp_4.fn == null) { s.retval = s.tmp_4.arg0.fields["flagsSet"]; }
       else if (!s.tmp_4.fn.isGetter) { s.retval = bind(s.tmp_4); }
-     else { s.callLocIdx = 1311; s.pc = 80; return s.tmp_4; }
+     else { s.callLocIdx = 1313; s.pc = 80; return s.tmp_4; }
     }
   case 80:
     r0 = s.retval;
@@ -60884,7 +60947,7 @@ switch (step) {
       s.tmp_8.fn = s.tmp_8.arg0.vtable.iface["rewards"];
       if (s.tmp_8.fn == null) { s.retval = s.tmp_8.arg0.fields["rewards"]; }
       else if (!s.tmp_8.fn.isGetter) { s.retval = bind(s.tmp_8); }
-     else { s.callLocIdx = 1312; s.pc = 83; return s.tmp_8; }
+     else { s.callLocIdx = 1314; s.pc = 83; return s.tmp_8; }
     }
   case 83:
     r0 = s.retval;
@@ -60895,7 +60958,7 @@ switch (step) {
       s.tmp_7.fn = s.tmp_7.arg0.vtable.iface["flagsSet"];
       if (s.tmp_7.fn == null) { s.retval = s.tmp_7.arg0.fields["flagsSet"]; }
       else if (!s.tmp_7.fn.isGetter) { s.retval = bind(s.tmp_7); }
-     else { s.callLocIdx = 1313; s.pc = 82; return s.tmp_7; }
+     else { s.callLocIdx = 1315; s.pc = 82; return s.tmp_7; }
     }
   case 82:
     r0 = s.retval;
@@ -60913,7 +60976,7 @@ switch (step) {
   case 34:
     s.tmp_3 = helpers_stringTrim__P124_mk(s);
     s.tmp_3.arg0 = s.flag___23639;
-    s.callLocIdx = 1314; s.pc = 84; return s.tmp_3;
+    s.callLocIdx = 1316; s.pc = 84; return s.tmp_3;
   case 84:
     r0 = s.retval;
     s.tmp_2 = r0;
@@ -60955,7 +61018,7 @@ switch (step) {
   case 40:
     s.tmp_0 = findDuplicates__P5323_mk(s);
     s.tmp_0.arg0 = s.allFlags___23451;
-    s.callLocIdx = 1315; s.pc = 86; return s.tmp_0;
+    s.callLocIdx = 1317; s.pc = 86; return s.tmp_0;
   case 86:
     r0 = s.retval;
     s.flagCounts___23669 = (r0);
@@ -61016,7 +61079,7 @@ switch (step) {
   case 44:
     s.tmp_0 = findDuplicates__P5323_mk(s);
     s.tmp_0.arg0 = s.allStageIds___23453;
-    s.callLocIdx = 1316; s.pc = 89; return s.tmp_0;
+    s.callLocIdx = 1318; s.pc = 89; return s.tmp_0;
   case 89:
     r0 = s.retval;
     s.stageIdCounts___23710 = (r0);
@@ -61437,7 +61500,7 @@ function initState__P5157_mk(s) {
 
 
 
-function initSpriteKinds__P8167(s) {
+function initSpriteKinds__P36349(s) {
 let r0 = s.r0, step = s.pc;
 s.pc = -1;
 
@@ -61447,40 +61510,40 @@ if (yieldSteps-- < 0 && maybeYield(s, step, r0) || runtime !== pxsim.runtime) re
 switch (step) {
   case 0:
 
-    r0 = (globals.kindInitPhase___8166 >= 1);
+    r0 = (globals.kindInitPhase___36348 >= 1);
     s.tmp_0 = r0;
     r0 = pxsim_numops_toBoolDecr(s.tmp_0);
     if (!r0) { step = 1; continue; }
     { step = 3; continue; }
   case 1:
   case 2:
-    globals.KIND_PLAYER___8150 = (globals.Player___2524);
-    globals.KIND_ENEMY___8151 = (globals.Enemy___2527);
-    globals.KIND_PROJECTILE___8152 = (1);
-    globals.KIND_NPC___8153 = (globals.Player___2524);
-    globals.KIND_DOOR___8154 = (globals.Food___2526);
-    globals.KIND_INTERACTABLE___8155 = (globals.Food___2526);
-    globals.KIND_COLLECTIBLE___8156 = (globals.Food___2526);
-    globals.KIND_HAZARD___8157 = (globals.Enemy___2527);
-    globals.KIND_DEBRIS___8158 = (1);
-    globals.KIND_PLATFORM_MOVING___8159 = (globals.Enemy___2527);
-    globals.KIND_TARGET___8160 = (globals.Food___2526);
-    globals.KIND_TOOL_EFFECT___8161 = (1);
-    globals.KIND_PADDLE___8162 = (globals.Player___2524);
-    globals.KIND_BALL___8163 = (1);
-    globals.KIND_HUD___8164 = (globals.Player___2524);
-    globals.kindInitPhase___8166 = (1);
+    globals.KIND_PLAYER___36332 = (globals.Player___2524);
+    globals.KIND_ENEMY___36333 = (globals.Enemy___2527);
+    globals.KIND_PROJECTILE___36334 = (1);
+    globals.KIND_NPC___36335 = (globals.Player___2524);
+    globals.KIND_DOOR___36336 = (globals.Food___2526);
+    globals.KIND_INTERACTABLE___36337 = (globals.Food___2526);
+    globals.KIND_COLLECTIBLE___36338 = (globals.Food___2526);
+    globals.KIND_HAZARD___36339 = (globals.Enemy___2527);
+    globals.KIND_DEBRIS___36340 = (1);
+    globals.KIND_PLATFORM_MOVING___36341 = (globals.Enemy___2527);
+    globals.KIND_TARGET___36342 = (globals.Food___2526);
+    globals.KIND_TOOL_EFFECT___36343 = (1);
+    globals.KIND_PADDLE___36344 = (globals.Player___2524);
+    globals.KIND_BALL___36345 = (1);
+    globals.KIND_HUD___36346 = (globals.Player___2524);
+    globals.kindInitPhase___36348 = (1);
   case 3:
     r0 = undefined;
     return leave(s, r0)
   default: oops()
 } } }
-initSpriteKinds__P8167.info = {"start":964,"length":785,"line":43,"column":0,"endLine":66,"endColumn":1,"fileName":"constants.ts","functionName":"initSpriteKinds","argumentNames":[]}
+initSpriteKinds__P36349.info = {"start":964,"length":785,"line":43,"column":0,"endLine":66,"endColumn":1,"fileName":"constants.ts","functionName":"initSpriteKinds","argumentNames":[]}
 
-function initSpriteKinds__P8167_mk(s) {
+function initSpriteKinds__P36349_mk(s) {
     checkStack(s.depth);
     return {
-        parent: s, fn: initSpriteKinds__P8167, depth: s.depth + 1,
+        parent: s, fn: initSpriteKinds__P36349, depth: s.depth + 1,
         pc: 0, retval: undefined, r0: undefined, overwrittenPC: false, lambdaArgs: null,
   tmp_0: undefined,
 } }
@@ -88204,7 +88267,7 @@ const sprites_BaseSpriteSayRenderer__C2276_VT = mkVTable({
   },
 });
 
-const breakpoints = setupDebugger(1, ["DUNGEON_SPECS___8270","HUB_START_ROOM___8340","HUB_SPAWN_POINTS___8343","state___5156","QUESTS___5301","hudHearts___5273","hudTool___5275","KIND_PLAYER___8150","playerSprite___8383","KIND_INTERACTABLE___8155","hudHint___5276","rpgUrbanPavement0036___5420","rpgUrbanSavehouseFacade0365___5421","rpgUrbanRoad0441___5422","KIND_TARGET___8160","KIND_PADDLE___8162","KIND_BALL___8163","KIND_HAZARD___8157","KIND_ENEMY___8151","KIND_COLLECTIBLE___8156","asteroidRotation___5349","asteroidVx___5350","asteroidVy___5351","KIND_PROJECTILE___8152","KIND_PLATFORM_MOVING___8159","isOnLadder___5342","HUB_ROOM_IDS___8338","KIND_DOOR___8154","HUB_SPRITE_DATA_DUNGEON_ID___5312","HUB_SPRITE_DATA_IS_DOOR___5311","KIND_NPC___8153","HUB_SPRITE_DATA_IS_NPC___5309","HUB_SPRITE_DATA_DIALOG_ID___5310","lastFailureReason___5433","lastFailureContext___5434","failureSignalsDebugMode___5432","SPAWN_HUB_21_FROM_NORTH___8203","SPAWN_HUB_11_FROM_SOUTH___8210","KIND_HUD___8164","hudEnergy___5274","kindInitPhase___8166","KIND_DEBRIS___8158","KIND_TOOL_EFFECT___8161","TOOL_FREEZECAM___8348","TOOL_CONFETTI_BOMB___8349","TOOL_SOAP_SLIDE___8350","TOOL_DECOY_TOY___8351","TOOL_TAGGER___8352"])
+const breakpoints = setupDebugger(1, ["DUNGEON_SPECS___36452","HUB_START_ROOM___36522","HUB_SPAWN_POINTS___36525","state___5156","QUESTS___5301","hudHearts___5273","hudTool___5275","KIND_PLAYER___36332","playerSprite___8383","KIND_INTERACTABLE___36337","hudHint___5276","rpgUrbanPavement0036___5420","rpgUrbanSavehouseFacade0365___5421","rpgUrbanRoad0441___5422","KIND_TARGET___36342","KIND_PADDLE___36344","KIND_BALL___36345","KIND_HAZARD___36339","KIND_ENEMY___36333","KIND_COLLECTIBLE___36338","asteroidRotation___5349","asteroidVx___5350","asteroidVy___5351","KIND_PROJECTILE___36334","KIND_PLATFORM_MOVING___36341","isOnLadder___37923","HUB_ROOM_IDS___36520","KIND_DOOR___36336","HUB_SPRITE_DATA_DUNGEON_ID___5312","HUB_SPRITE_DATA_IS_DOOR___5311","KIND_NPC___36335","HUB_SPRITE_DATA_IS_NPC___5309","HUB_SPRITE_DATA_DIALOG_ID___5310","lastFailureReason___5433","lastFailureContext___5434","failureSignalsDebugMode___5432","SPAWN_HUB_21_FROM_NORTH___36385","SPAWN_HUB_11_FROM_SOUTH___36392","KIND_HUD___36346","hudEnergy___5274","kindInitPhase___36348","KIND_DEBRIS___36340","KIND_TOOL_EFFECT___36343","TOOL_FREEZECAM___36530","TOOL_CONFETTI_BOMB___36531","TOOL_SOAP_SLIDE___36532","TOOL_DECOY_TOY___36533","TOOL_TAGGER___36534"])
 
-return _main___P34877
+return _main___P38537
 })
