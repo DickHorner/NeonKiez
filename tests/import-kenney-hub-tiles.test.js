@@ -3,7 +3,7 @@
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
 const {
-  DEFAULT_PALETTE,
+  HUB_URBAN_PALETTE,
   buildJres,
   encodeF4,
   getTileGroup,
@@ -20,14 +20,17 @@ test("encodes MakeCode F4 images column-first with four-byte column padding", ()
   );
 });
 
-test("maps transparent and exact palette pixels to MakeCode palette indices", () => {
+test("maps transparent and exact hub-palette pixels to MakeCode palette indices", () => {
   const rgba = Uint8Array.from([
     255, 255, 255, 0,
-    ...DEFAULT_PALETTE[1], 255,
-    ...DEFAULT_PALETTE[4], 255,
+    ...HUB_URBAN_PALETTE[1], 255,
+    ...HUB_URBAN_PALETTE[5], 255,
+    ...HUB_URBAN_PALETTE[7], 255,
+    ...HUB_URBAN_PALETTE[8], 255,
   ]);
 
-  assert.deepEqual(Array.from(quantizeRgba(rgba, 3, 1)), [0, 1, 4]);
+  assert.equal(HUB_URBAN_PALETTE.length, 16);
+  assert.deepEqual(Array.from(quantizeRgba(rgba, 5, 1)), [0, 1, 5, 7, 8]);
 });
 
 test("rejects semi-transparent source pixels", () => {
