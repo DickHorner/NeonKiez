@@ -12,6 +12,7 @@
         "main.ts",
         "constants.ts",
         "arcade_shims.ts",
+        "hub_palette.ts",
         "state.ts",
         "save.ts",
         "assets_stub.ts",

@@ -7,23 +7,25 @@ const path = require("node:path");
 const repoRoot = path.resolve(__dirname, "..");
 const tileSize = 16;
 
-const DEFAULT_PALETTE = [
+// Reviewed palette derived from the 88 selected RPG Urban hub tiles.
+// Index 0 remains transparent; indices 5/7/8 keep door/player/NPC placeholders distinct.
+const HUB_URBAN_PALETTE = [
   "#000000",
-  "#ffffff",
-  "#ff2121",
-  "#ff93c4",
-  "#ff8135",
-  "#fff609",
-  "#249ca3",
-  "#78dc52",
-  "#003fad",
-  "#87f2ff",
-  "#8e2ec4",
-  "#a4839f",
-  "#5c406c",
-  "#e5cdc4",
-  "#91463d",
-  "#000000",
+  "#e6eef8",
+  "#5c6278",
+  "#aaa8bd",
+  "#a09cca",
+  "#f5aa57",
+  "#beb8cd",
+  "#38cbab",
+  "#576cb6",
+  "#b2acc1",
+  "#69717b",
+  "#836a62",
+  "#c6bc9f",
+  "#296360",
+  "#39a077",
+  "#7a77a4",
 ].map(parseHexColor);
 
 function parseHexColor(value) {
@@ -79,7 +81,7 @@ function readPng(filePath) {
   return image;
 }
 
-function nearestPaletteIndex(red, green, blue, palette = DEFAULT_PALETTE) {
+function nearestPaletteIndex(red, green, blue, palette = HUB_URBAN_PALETTE) {
   let bestIndex = 1;
   let bestDistance = Number.POSITIVE_INFINITY;
 
@@ -99,7 +101,7 @@ function nearestPaletteIndex(red, green, blue, palette = DEFAULT_PALETTE) {
   return bestIndex;
 }
 
-function quantizeRgba(rgba, width, height, palette = DEFAULT_PALETTE) {
+function quantizeRgba(rgba, width, height, palette = HUB_URBAN_PALETTE) {
   if (rgba.length !== width * height * 4) {
     throw new Error("RGBA buffer length does not match image dimensions");
   }
@@ -265,7 +267,7 @@ if (require.main === module) {
 }
 
 module.exports = {
-  DEFAULT_PALETTE,
+  HUB_URBAN_PALETTE,
   buildJres,
   encodeF4,
   getTileGroup,
