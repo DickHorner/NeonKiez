@@ -11,6 +11,39 @@ function readRepoFile(relativePath) {
   return fs.readFileSync(path.join(repoRoot, relativePath), "utf8");
 }
 
+function readTilemapAsset(assetId) {
+  const jres = JSON.parse(readRepoFile("tilemap.g.jres"));
+  const entry = jres[assetId];
+  if (!entry || entry.mimeType !== "application/mkcd-tilemap") {
+    throw new Error("Tilemap asset not found: " + assetId);
+  }
+
+  const hex = Buffer.from(entry.data, "base64").toString("utf8");
+  const data = Buffer.from(hex, "hex");
+  const tileWidth = data[0];
+  const width = data.readUInt16LE(1);
+  const height = data.readUInt16LE(3);
+  const cellCount = width * height;
+  const tileIndices = data.subarray(5, 5 + cellCount);
+  const layerData = data.subarray(5 + cellCount);
+
+  function wallAt(x, y) {
+    const pixel = y * width + x;
+    const packed = layerData[pixel >> 1];
+    return pixel & 1 ? (packed >> 4) & 0x0f : packed & 0x0f;
+  }
+
+  return {
+    entry,
+    tileWidth,
+    width,
+    height,
+    tileIndices,
+    layerData,
+    wallAt,
+  };
+}
+
 function findMatchingIndex(source, startIndex, openChar, closeChar) {
   let depth = 0;
   let inSingle = false;
@@ -177,4 +210,5 @@ module.exports = {
   extractFunctionSource,
   loadFunctionsFromFile,
   readRepoFile,
+  readTilemapAsset,
 };
