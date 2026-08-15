@@ -21,7 +21,7 @@ function readPalette(source, name) {
   return colors.map((color) => color.toLowerCase());
 }
 
-test("hub palette matches the importer palette and switches with game mode", () => {
+test("hub palette matches importer, editor project palette, and game-mode switching", () => {
   const pxtJson = JSON.parse(read("pxt.json"));
   const paletteSource = read("hub_palette.ts");
   const stateSource = read("state.ts");
@@ -31,10 +31,13 @@ test("hub palette matches the importer palette and switches with game mode", () 
       .map((value) => value.toString(16).padStart(2, "0"))
       .join("")
   );
+  const editorPalette = pxtJson.palette.map((color) => color.slice(1).toLowerCase());
 
   assert.ok(pxtJson.files.includes("hub_palette.ts"));
   assert.ok(pxtJson.files.indexOf("hub_palette.ts") < pxtJson.files.indexOf("state.ts"));
+  assert.equal(editorPalette.length, 16);
   assert.deepEqual(runtimePalette, importerPalette);
+  assert.deepEqual(editorPalette, importerPalette);
   readPalette(paletteSource, "DEFAULT_ARCADE_PALETTE");
   assert.match(
     stateSource,

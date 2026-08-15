@@ -19,19 +19,19 @@ const DEFAULT_ARCADE_PALETTE = hex`
 
 const HUB_URBAN_PALETTE = hex`
   000000
-  e6eef8
   5c6278
-  aaa8bd
   a09cca
-  f5aa57
-  beb8cd
-  38cbab
-  576cb6
   b2acc1
-  69717b
   836a62
+  dc8652
   c6bc9f
+  d1ddef
+  38cbab
   296360
   39a077
   7a77a4
+  2e8864
+  3f4488
+  ae5242
+  793445
 `;
