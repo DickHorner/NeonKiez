@@ -16,6 +16,7 @@
         "state.ts",
         "save.ts",
         "assets_stub.ts",
+        "hub_tiles.ts",
         "hub_tiles_door_candidates.jres",
         "hub_tiles_pavement.jres",
         "hub_tiles_road.jres",
