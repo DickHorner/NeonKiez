@@ -15,7 +15,7 @@ test("south hub room is a native editable MakeCode tilemap asset", () => {
   assert.equal(tilemap.tileIndices.length, 16 * 12);
   assert.equal(tilemap.layerData.length, (16 * 12) / 2);
   assert.deepEqual(tilemap.entry.tileset, [
-    "myTiles.transparency16",
+    "myTiles.hubTransparency16",
     "myTiles.rpgUrbanPavement0036",
     "myTiles.rpgUrbanSavehouseFacade0365",
     "myTiles.rpgUrbanRoad0441",
