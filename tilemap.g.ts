@@ -2,44 +2,6 @@
 namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
     export const transparency16 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanPavement0036 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanPavement0066 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanRoad0441 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanRoad0433 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanRoad0460 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanSavehouseFacade0329 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanSavehouseFacade0360 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanSavehouseFacade0365 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanPavement0035 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanPavement0037 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanRoad0461 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanRoad0463 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanRoad0442 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanRoad0469 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanSavehouseFacade0328 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanSavehouseFacade0330 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanSavehouseFacade0359 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanSavehouseFacade0361 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const rpgUrbanSavehouseFacade0366 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -78,25 +40,6 @@ namespace myTiles {
     helpers._registerFactory("tile", function(name: string) {
         switch(helpers.stringTrim(name)) {
             case "transparency16":return transparency16;
-            case "rpgUrbanPavement0036":return rpgUrbanPavement0036;
-            case "rpgUrbanPavement0066":return rpgUrbanPavement0066;
-            case "rpgUrbanRoad0441":return rpgUrbanRoad0441;
-            case "rpgUrbanRoad0433":return rpgUrbanRoad0433;
-            case "rpgUrbanRoad0460":return rpgUrbanRoad0460;
-            case "rpgUrbanSavehouseFacade0329":return rpgUrbanSavehouseFacade0329;
-            case "rpgUrbanSavehouseFacade0360":return rpgUrbanSavehouseFacade0360;
-            case "rpgUrbanSavehouseFacade0365":return rpgUrbanSavehouseFacade0365;
-            case "rpgUrbanPavement0035":return rpgUrbanPavement0035;
-            case "rpgUrbanPavement0037":return rpgUrbanPavement0037;
-            case "rpgUrbanRoad0461":return rpgUrbanRoad0461;
-            case "rpgUrbanRoad0463":return rpgUrbanRoad0463;
-            case "rpgUrbanRoad0442":return rpgUrbanRoad0442;
-            case "rpgUrbanRoad0469":return rpgUrbanRoad0469;
-            case "rpgUrbanSavehouseFacade0328":return rpgUrbanSavehouseFacade0328;
-            case "rpgUrbanSavehouseFacade0330":return rpgUrbanSavehouseFacade0330;
-            case "rpgUrbanSavehouseFacade0359":return rpgUrbanSavehouseFacade0359;
-            case "rpgUrbanSavehouseFacade0361":return rpgUrbanSavehouseFacade0361;
-            case "rpgUrbanSavehouseFacade0366":return rpgUrbanSavehouseFacade0366;
         }
         return null;
     })
