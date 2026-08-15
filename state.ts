@@ -85,6 +85,9 @@ function initState() {
 
 function setGameMode(mode: number) {
   state.gameMode = mode;
+  image.setPalette(
+    mode === GameMode.Hub ? HUB_URBAN_PALETTE : DEFAULT_ARCADE_PALETTE,
+  );
 }
 
 function setPlayMode(mode: number) {
