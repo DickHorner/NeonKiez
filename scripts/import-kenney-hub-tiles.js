@@ -8,24 +8,25 @@ const repoRoot = path.resolve(__dirname, "..");
 const tileSize = 16;
 
 // Reviewed palette derived from the 88 selected RPG Urban hub tiles.
-// Index 0 remains transparent; indices 5/7/8 keep door/player/NPC placeholders distinct.
+// Every visible color is taken verbatim from the Kenney source tiles; indices
+// 5/7/8 keep door/player/NPC placeholders distinct while assets are unfinished.
 const HUB_URBAN_PALETTE = [
   "#000000",
-  "#e6eef8",
   "#5c6278",
-  "#aaa8bd",
   "#a09cca",
-  "#f5aa57",
-  "#beb8cd",
-  "#38cbab",
-  "#576cb6",
   "#b2acc1",
-  "#69717b",
   "#836a62",
+  "#dc8652",
   "#c6bc9f",
+  "#d1ddef",
+  "#38cbab",
   "#296360",
   "#39a077",
   "#7a77a4",
+  "#2e8864",
+  "#3f4488",
+  "#ae5242",
+  "#793445",
 ].map(parseHexColor);
 
 function parseHexColor(value) {
