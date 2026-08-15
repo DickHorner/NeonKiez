@@ -15,7 +15,9 @@ test("center hub composes pavement, storefront, and detailed road tiles", () => 
   assert.match(tilemap, /namespace myTiles/);
 
   assert.match(tilemap, /rpgUrbanPavement0036/);
+  assert.match(tilemap, /rpgUrbanPavement0035/);
   assert.match(tilemap, /rpgUrbanPavement0066/);
+  assert.match(tilemap, /rpgUrbanPavement0037/);
   assert.match(tilemap, /rpgUrbanSavehouseFacade0329/);
   assert.match(tilemap, /rpgUrbanSavehouseFacade0360/);
   assert.match(tilemap, /rpgUrbanSavehouseFacade0365/);
@@ -23,6 +25,8 @@ test("center hub composes pavement, storefront, and detailed road tiles", () => 
   assert.match(tilemap, /rpgUrbanRoad0441/);
   assert.match(tilemap, /rpgUrbanRoad0442/);
   assert.match(tilemap, /rpgUrbanRoad0460/);
+  assert.match(tilemap, /rpgUrbanRoad0461/);
+  assert.match(tilemap, /rpgUrbanRoad0463/);
   assert.match(tilemap, /rpgUrbanRoad0469/);
 
   assert.doesNotMatch(tilemap, /assets\.tile`rpgUrban/);
