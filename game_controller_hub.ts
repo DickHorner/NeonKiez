@@ -22,9 +22,16 @@ namespace GameController {
       state.hubRoom = getSafeHubRoom(state.hubRoom, "pre-load");
       const roomId = HUB_ROOM_IDS[state.hubRoom.row][state.hubRoom.col];
       scene.setBackgroundColor(1);
-      const tm = roomId === "TM_HUB_11"
-        ? tmHub11Playable()
-        : getTilemapByID(roomId);
+
+      let tm: tiles.TileMapData;
+      if (roomId === "TM_HUB_11") {
+        tm = assets.tilemap`TM_HUB_11`;
+      } else if (roomId === "TM_HUB_21") {
+        tm = assets.tilemap`TM_HUB_21`;
+      } else {
+        tm = getTilemapByID(roomId);
+      }
+
       if (tm) {
         tiles.setCurrentTilemap(tm);
       }
