@@ -1,0 +1,52 @@
+{
+    "hubTransparency16": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true
+    },
+    "TM_HUB_11": {
+        "id": "TM_HUB_11",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAxMDAwMGMwMDA5MGYwNjA2MDYwNjA2MDYwNjA2MDYwNjA2MDYxMDBhMDkxMTA3MDcwNzA3MDcwNzEzMTMwNzA3MDcwNzA3MTIwYTA5MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTBhMDkwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMGEwOTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwYTA5MDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTBhMDkwMjAyMDIwMjAyMDIwMjAyMDIwMjAyMDIwMjAyMGEwYjAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwYzBiMDMwNDAzMDQwMzA0MDMwNDAzMDQwMzA0MDMwNDBjMGIwMzAzMDMwZDAzMDMwMzAzMDMwZTAzMDMwMzAzMGMwYjAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwYzAyMDIwMjAyMDIwMjAyMDMwMzAyMDIwMjAyMDIwMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMDIwMDAwMDAwMDAwMDAyMDAyMDAwMDAwMDAwMDAwMjAwMjAwMDAwMDAwMDAwMDIwMDIwMDAwMDAwMDAwMDAyMDAyMDAwMDAwMDAwMDAwMjAwMjAwMDAwMDAwMDAwMDIwMDIwMDAwMDAwMDAwMDAyMDAyMDAwMDAwMDAwMDAwMjAwMjAwMDAwMDAwMDAwMDIwMjIyMjIyMDIyMDIyMjIyMg==",
+        "tileset": [
+            "myTiles.hubTransparency16",
+            "myTiles.rpgUrbanPavement0036",
+            "myTiles.rpgUrbanPavement0066",
+            "myTiles.rpgUrbanRoad0441",
+            "myTiles.rpgUrbanRoad0433",
+            "myTiles.rpgUrbanRoad0460",
+            "myTiles.rpgUrbanSavehouseFacade0329",
+            "myTiles.rpgUrbanSavehouseFacade0360",
+            "myTiles.rpgUrbanSavehouseFacade0365",
+            "myTiles.rpgUrbanPavement0035",
+            "myTiles.rpgUrbanPavement0037",
+            "myTiles.rpgUrbanRoad0461",
+            "myTiles.rpgUrbanRoad0463",
+            "myTiles.rpgUrbanRoad0442",
+            "myTiles.rpgUrbanRoad0469",
+            "myTiles.rpgUrbanSavehouseFacade0328",
+            "myTiles.rpgUrbanSavehouseFacade0330",
+            "myTiles.rpgUrbanSavehouseFacade0359",
+            "myTiles.rpgUrbanSavehouseFacade0361",
+            "myTiles.rpgUrbanSavehouseFacade0366"
+        ],
+        "displayName": "TM_HUB_11"
+    },
+    "TM_HUB_21": {
+        "id": "TM_HUB_21",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAxMDAwMGMwMDAyMDIwMjAyMDIwMjAyMDEwMTAyMDIwMjAyMDIwMjAyMDIwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDIwMjAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMjAyMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAyMDIwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDIwMjAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMjAyMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAyMDIwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDIwMjAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMjAyMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAyMDIwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDIwMjAyMDIwMjAyMDIwMjAyMDIwMjAyMDIwMjAyMDIwMjIyMjIyMjAyMjAyMjIyMjIwMjAwMDAwMDAwMDAwMDIwMDIwMDAwMDAwMDAwMDAyMDAyMDAwMDAwMDAwMDAwMjAwMjAwMDAwMDAwMDAwMDIwMDIwMDAwMDAwMDAwMDAyMDAyMDAwMDAwMDAwMDAwMjAwMjAwMDAwMDAwMDAwMDIwMDIwMDAwMDAwMDAwMDAyMDAyMDAwMDAwMDAwMDAwMjAwMjAwMDAwMDAwMDAwMDIwMjIyMjIyMjIyMjIyMjIyMg==",
+        "tileset": [
+            "myTiles.hubTransparency16",
+            "myTiles.rpgUrbanPavement0036",
+            "myTiles.rpgUrbanSavehouseFacade0365",
+            "myTiles.rpgUrbanRoad0441"
+        ],
+        "displayName": "TM_HUB_21"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myTiles"
+    }
+}
