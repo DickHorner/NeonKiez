@@ -27,13 +27,13 @@ test("center hub composes pavement, storefront, and detailed road tiles", () => 
   assert.match(tilemap, /rpgUrbanSavehouseFacade0361/);
   assert.match(tilemap, /rpgUrbanSavehouseFacade0366/);
 
-  assert.match(tilemap, /rpgUrbanRoad0432/);
   assert.match(tilemap, /rpgUrbanRoad0433/);
   assert.match(tilemap, /rpgUrbanRoad0441/);
   assert.match(tilemap, /rpgUrbanRoad0442/);
   assert.match(tilemap, /rpgUrbanRoad0461/);
   assert.match(tilemap, /rpgUrbanRoad0463/);
   assert.match(tilemap, /rpgUrbanRoad0469/);
+  assert.doesNotMatch(tilemap, /rpgUrbanRoad0432/);
 
   assert.doesNotMatch(tilemap, /assets\.tile`rpgUrban/);
   assert.match(tilemap, /TileScale\.Sixteen/);
@@ -42,7 +42,7 @@ test("center hub composes pavement, storefront, and detailed road tiles", () => 
     /2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2\s+2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2/,
   );
   assert.match(tilemap, /2 2 2 2 2 2 2 \. \. 2 2 2 2 2 2 2/);
-  assert.match(tilemap, /13131313131313020213131313131313/);
+  assert.match(tilemap, /01010101010101020201010101010101/);
 
   assert.match(hubController, /scene\.setBackgroundColor\(1\)/);
   assert.match(
