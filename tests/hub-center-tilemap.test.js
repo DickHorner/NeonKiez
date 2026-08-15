@@ -18,7 +18,7 @@ test("center hub is a native editable MakeCode tilemap asset", () => {
   assert.equal(tilemap.height, 12);
   assert.equal(tilemap.tileIndices.length, 16 * 12);
   assert.equal(tilemap.layerData.length, (16 * 12) / 2);
-  assert.equal(tilemap.entry.tileset[0], "myTiles.transparency16");
+  assert.equal(tilemap.entry.tileset[0], "myTiles.hubTransparency16");
 
   for (const tileId of [
     "myTiles.rpgUrbanPavement0036",
