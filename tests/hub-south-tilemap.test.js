@@ -2,22 +2,35 @@
 
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
-const { extractFunctionSource, readRepoFile } = require("./source-utils.js");
+const { readRepoFile, readTilemapAsset } = require("./source-utils.js");
 
-test("south hub room uses imported tiles with a 16x12 wall boundary", () => {
-  const assets = readRepoFile("assets_stub.ts");
+test("south hub room is a native editable MakeCode tilemap asset", () => {
+  const hubController = readRepoFile("game_controller_hub.ts");
   const worldHub = readRepoFile("world_hub.ts");
-  const tilemap = extractFunctionSource(assets, "tmHub21");
+  const tilemap = readTilemapAsset("TM_HUB_21");
 
-  assert.match(tilemap, /hex`10000c00/);
-  assert.match(tilemap, /myTiles\.rpgUrbanPavement0036/);
-  assert.match(tilemap, /myTiles\.rpgUrbanSavehouseFacade0365/);
-  assert.match(tilemap, /myTiles\.rpgUrbanRoad0441/);
-  assert.doesNotMatch(tilemap, /assets\.tile`rpgUrban/);
-  assert.match(tilemap, /TileScale\.Sixteen/);
-  assert.match(tilemap, /2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2/);
+  assert.equal(tilemap.tileWidth, 16);
+  assert.equal(tilemap.width, 16);
+  assert.equal(tilemap.height, 12);
+  assert.equal(tilemap.tileIndices.length, 16 * 12);
+  assert.equal(tilemap.layerData.length, (16 * 12) / 2);
+  assert.deepEqual(tilemap.entry.tileset, [
+    "myTiles.transparency16",
+    "myTiles.rpgUrbanPavement0036",
+    "myTiles.rpgUrbanSavehouseFacade0365",
+    "myTiles.rpgUrbanRoad0441",
+  ]);
 
-  assert.match(assets, /if \(id === "TM_HUB_21"\) return tmHub21\(\)/);
+  const openTopColumns = [];
+  for (let x = 0; x < tilemap.width; x += 1) {
+    if (tilemap.wallAt(x, 0) === 0) {
+      openTopColumns.push(x);
+    }
+    assert.equal(tilemap.wallAt(x, tilemap.height - 1), 2);
+  }
+  assert.deepEqual(openTopColumns, [7, 8]);
+
+  assert.match(hubController, /assets\.tilemap`TM_HUB_21`/);
   assert.match(worldHub, /"DUN_VIDEO_STORE_PLATFORM_TRIAL"/);
   assert.match(worldHub, /spawnDoor\(dungeonId, HUB_DOOR_X, HUB_DOOR_Y\)/);
 });
