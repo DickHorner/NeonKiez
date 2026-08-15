@@ -43,15 +43,17 @@ function assertValidF4(data, assetId) {
   assert.equal(data.length, expectedLength, `${assetId} has an invalid F4 payload length`);
 }
 
-test("hub tile assets are registered as MakeCode project tiles", () => {
+test("hub tile assets are registered and declared for editable tilemaps", () => {
   const pxtJson = readJson("pxt.json");
   const packageJson = readJson("package.json");
+  const declarations = fs.readFileSync(path.join(repoRoot, "hub_tiles.ts"), "utf8");
   let assetCount = 0;
 
   assert.equal(
     packageJson.scripts["assets:hub"],
     "node scripts/import-kenney-hub-tiles.js"
   );
+  assert.ok(pxtJson.files.includes("hub_tiles.ts"));
 
   for (const assetFile of assetFiles) {
     assert.ok(pxtJson.files.includes(assetFile));
@@ -71,6 +73,11 @@ test("hub tile assets are registered as MakeCode project tiles", () => {
 
       assert.equal(entry.tilemapTile, true, `${assetId} is not marked as a tile`);
       assertValidF4(data, assetId);
+      assert.match(
+        declarations,
+        new RegExp(`export const ${assetId} = image\\.ofBuffer`),
+        `${assetId} is not declared for generated tilemap code`,
+      );
     }
   }
 
