@@ -1,7 +1,7 @@
 // Auto-generated code. Do not edit.
 namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
-    export const transparency16 = image.ofBuffer(hex``);
+    export const hubTransparency16 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -18,7 +18,7 @@ namespace myTiles {
 2 . . . . . . . . . . . . . . 2
 2 . . . . . . . . . . . . . . 2
 2 2 2 2 2 2 2 . . 2 2 2 2 2 2 2
-`, [myTiles.transparency16,myTiles.rpgUrbanPavement0036,myTiles.rpgUrbanPavement0066,myTiles.rpgUrbanRoad0441,myTiles.rpgUrbanRoad0433,myTiles.rpgUrbanRoad0460,myTiles.rpgUrbanSavehouseFacade0329,myTiles.rpgUrbanSavehouseFacade0360,myTiles.rpgUrbanSavehouseFacade0365,myTiles.rpgUrbanPavement0035,myTiles.rpgUrbanPavement0037,myTiles.rpgUrbanRoad0461,myTiles.rpgUrbanRoad0463,myTiles.rpgUrbanRoad0442,myTiles.rpgUrbanRoad0469,myTiles.rpgUrbanSavehouseFacade0328,myTiles.rpgUrbanSavehouseFacade0330,myTiles.rpgUrbanSavehouseFacade0359,myTiles.rpgUrbanSavehouseFacade0361,myTiles.rpgUrbanSavehouseFacade0366], TileScale.Sixteen);
+`, [myTiles.hubTransparency16,myTiles.rpgUrbanPavement0036,myTiles.rpgUrbanPavement0066,myTiles.rpgUrbanRoad0441,myTiles.rpgUrbanRoad0433,myTiles.rpgUrbanRoad0460,myTiles.rpgUrbanSavehouseFacade0329,myTiles.rpgUrbanSavehouseFacade0360,myTiles.rpgUrbanSavehouseFacade0365,myTiles.rpgUrbanPavement0035,myTiles.rpgUrbanPavement0037,myTiles.rpgUrbanRoad0461,myTiles.rpgUrbanRoad0463,myTiles.rpgUrbanRoad0442,myTiles.rpgUrbanRoad0469,myTiles.rpgUrbanSavehouseFacade0328,myTiles.rpgUrbanSavehouseFacade0330,myTiles.rpgUrbanSavehouseFacade0359,myTiles.rpgUrbanSavehouseFacade0361,myTiles.rpgUrbanSavehouseFacade0366], TileScale.Sixteen);
             case "TM_HUB_21":return tiles.createTilemap(hex`10000c00020202020202020101020202020202020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202010101010101010101010101010102020101010101010101010101010101020201010101010101010101010101010202030303030303030303030303030302020303030303030303030303030303020201010101010101010101010101010202020202020202020202020202020202`, img`
 2 2 2 2 2 2 2 . . 2 2 2 2 2 2 2
 2 . . . . . . . . . . . . . . 2
@@ -32,14 +32,14 @@ namespace myTiles {
 2 . . . . . . . . . . . . . . 2
 2 . . . . . . . . . . . . . . 2
 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-`, [myTiles.transparency16,myTiles.rpgUrbanPavement0036,myTiles.rpgUrbanSavehouseFacade0365,myTiles.rpgUrbanRoad0441], TileScale.Sixteen);
+`, [myTiles.hubTransparency16,myTiles.rpgUrbanPavement0036,myTiles.rpgUrbanSavehouseFacade0365,myTiles.rpgUrbanRoad0441], TileScale.Sixteen);
         }
         return null;
     })
 
     helpers._registerFactory("tile", function(name: string) {
         switch(helpers.stringTrim(name)) {
-            case "transparency16":return transparency16;
+            case "hubTransparency16":return hubTransparency16;
         }
         return null;
     })
