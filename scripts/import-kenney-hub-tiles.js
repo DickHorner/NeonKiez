@@ -191,7 +191,7 @@ function buildJres(tiles) {
   };
 
   for (const tile of tiles) {
-    const assetId = makeAssetId(tile.group, tile.fileName);
+    const assetId = tile.assetId || makeAssetId(tile.group, tile.fileName);
     if (jres[assetId]) {
       throw new Error(`Duplicate asset id: ${assetId}`);
     }
@@ -200,7 +200,7 @@ function buildJres(tiles) {
     jres[assetId] = {
       data: encodeF4(indexedPixels, tile.width, tile.height).toString("base64"),
       tilemapTile: true,
-      displayName: makeDisplayName(tile.group, tile.fileName),
+      displayName: tile.displayName || makeDisplayName(tile.group, tile.fileName),
     };
   }
 
@@ -230,6 +230,117 @@ function loadTiles(batchRoot) {
   });
 }
 
+function findTile(tiles, group, sourceIndex) {
+  const fileName = `tile_${String(sourceIndex).padStart(4, "0")}.png`;
+  const tile = tiles.find((candidate) =>
+    candidate.group === group && candidate.fileName === fileName
+  );
+
+  if (!tile) {
+    throw new Error(`Missing source tile for composite: ${group}/${fileName}`);
+  }
+
+  return tile;
+}
+
+function compositeRgba(layers) {
+  if (!layers.length) {
+    throw new Error("Composite requires at least one layer");
+  }
+
+  const length = layers[0].rgba.length;
+  const result = new Uint8Array(length);
+
+  for (const layer of layers) {
+    if (layer.rgba.length !== length) {
+      throw new Error("Composite layers must have matching dimensions");
+    }
+
+    for (let offset = 0; offset < length; offset += 4) {
+      const alpha = layer.rgba[offset + 3];
+      if (alpha === 0) continue;
+      if (alpha !== 255) {
+        throw new Error("Composite layers must use only fully transparent or opaque pixels");
+      }
+
+      result[offset] = layer.rgba[offset];
+      result[offset + 1] = layer.rgba[offset + 1];
+      result[offset + 2] = layer.rgba[offset + 2];
+      result[offset + 3] = 255;
+    }
+  }
+
+  return result;
+}
+
+function makeReadyTile(assetId, displayName, layers) {
+  return {
+    group: "ready",
+    fileName: assetId,
+    assetId,
+    displayName,
+    width: tileSize,
+    height: tileSize,
+    rgba: compositeRgba(layers),
+  };
+}
+
+function buildReadyTiles(tiles) {
+  const pavement = findTile(tiles, "pavement", 36);
+  const road = findTile(tiles, "road", 441);
+  const storefrontMiddle = findTile(tiles, "savehouse_facade", 360);
+  const ready = [];
+
+  const pavementProps = [164, 165, 166, 168, 169, 190, 223, 250, 254, 279, 280, 305, 306];
+  for (const sourceIndex of pavementProps) {
+    ready.push(makeReadyTile(
+      `rpgUrbanReadyStreetProps${String(sourceIndex).padStart(4, "0")}Pavement`,
+      `RPG Urban / READY / pavement prop / ${String(sourceIndex).padStart(4, "0")}`,
+      [pavement, findTile(tiles, "street_props", sourceIndex)],
+    ));
+  }
+
+  const roadProps = [221, 222, 307];
+  for (const sourceIndex of roadProps) {
+    ready.push(makeReadyTile(
+      `rpgUrbanReadyStreetProps${String(sourceIndex).padStart(4, "0")}Road`,
+      `RPG Urban / READY / road prop / ${String(sourceIndex).padStart(4, "0")}`,
+      [road, findTile(tiles, "street_props", sourceIndex)],
+    ));
+  }
+
+  const vegetation = [259, 260, 265, 286, 287];
+  for (const sourceIndex of vegetation) {
+    ready.push(makeReadyTile(
+      `rpgUrbanReadyVegetation${String(sourceIndex).padStart(4, "0")}Pavement`,
+      `RPG Urban / READY / pavement vegetation / ${String(sourceIndex).padStart(4, "0")}`,
+      [pavement, findTile(tiles, "vegetation", sourceIndex)],
+    ));
+  }
+
+  const storefronts = [
+    { awning: 328, frame: 359, suffix: "Left" },
+    { awning: 329, frame: null, suffix: "Middle" },
+    { awning: 330, frame: 361, suffix: "Right" },
+    { awning: 331, frame: null, suffix: "NarrowLeft" },
+    { awning: 332, frame: null, suffix: "NarrowRight" },
+  ];
+  for (const storefront of storefronts) {
+    const layers = [storefrontMiddle];
+    if (storefront.frame) {
+      layers.push(findTile(tiles, "savehouse_facade", storefront.frame));
+    }
+    layers.push(findTile(tiles, "savehouse_facade", storefront.awning));
+    ready.push(makeReadyTile(
+      `rpgUrbanReadyStorefront${storefront.suffix}`,
+      `RPG Urban / READY / storefront / ${storefront.suffix}`,
+      layers,
+    ));
+  }
+
+  return ready;
+}
+
 function main(args) {
   if (args.length !== 1) {
     throw new Error(
@@ -256,6 +367,15 @@ function main(args) {
     );
     console.log(`Wrote ${groupTiles.length} ${group} tiles to ${outputPath}`);
   }
+
+  const readyTiles = buildReadyTiles(tiles);
+  const readyOutputPath = path.join(repoRoot, "hub_tiles_ready.jres");
+  fs.writeFileSync(
+    readyOutputPath,
+    JSON.stringify(buildJres(readyTiles), null, 4) + "\n",
+    "utf8"
+  );
+  console.log(`Wrote ${readyTiles.length} ready tiles to ${readyOutputPath}`);
 }
 
 if (require.main === module) {
@@ -270,6 +390,8 @@ if (require.main === module) {
 module.exports = {
   HUB_URBAN_PALETTE,
   buildJres,
+  buildReadyTiles,
+  compositeRgba,
   encodeF4,
   getTileGroup,
   makeAssetId,
