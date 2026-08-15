@@ -14,11 +14,21 @@ namespace myTiles {
   //% fixedInstance jres blockIdentity=images._tile
   export const rpgUrbanPavement0066 = image.ofBuffer(hex``);
   //% fixedInstance jres blockIdentity=images._tile
+  export const rpgUrbanSavehouseFacade0328 = image.ofBuffer(hex``);
+  //% fixedInstance jres blockIdentity=images._tile
   export const rpgUrbanSavehouseFacade0329 = image.ofBuffer(hex``);
+  //% fixedInstance jres blockIdentity=images._tile
+  export const rpgUrbanSavehouseFacade0330 = image.ofBuffer(hex``);
+  //% fixedInstance jres blockIdentity=images._tile
+  export const rpgUrbanSavehouseFacade0359 = image.ofBuffer(hex``);
   //% fixedInstance jres blockIdentity=images._tile
   export const rpgUrbanSavehouseFacade0360 = image.ofBuffer(hex``);
   //% fixedInstance jres blockIdentity=images._tile
+  export const rpgUrbanSavehouseFacade0361 = image.ofBuffer(hex``);
+  //% fixedInstance jres blockIdentity=images._tile
   export const rpgUrbanSavehouseFacade0365 = image.ofBuffer(hex``);
+  //% fixedInstance jres blockIdentity=images._tile
+  export const rpgUrbanSavehouseFacade0366 = image.ofBuffer(hex``);
   //% fixedInstance jres blockIdentity=images._tile
   export const rpgUrbanRoad0433 = image.ofBuffer(hex``);
   //% fixedInstance jres blockIdentity=images._tile
@@ -37,10 +47,10 @@ namespace myTiles {
 
 function tmHub11Playable(): tiles.TileMapData {
   return tiles.createTilemap(
-    hex`10000c00080505050505050505050505050505090806060606060607070606060606060908000000000000000000000000000009080000000000000000000000000000090800000000000000000000000000000908000000000000000000000000000009080101010101010101010101010101090a02020202020202020202020202020b0a02030203020302030203020302030b0a0202020c02020202020d020202020b0a02020202020202020202020202020b04040404040404020204040404040404`,
+    hex`10000c00080e0505050505050505050505050f09081006060606060612120606060606110908000000000000000000000000000009080000000000000000000000000000090800000000000000000000000000000908000000000000000000000000000009080101010101010101010101010101090a02020202020202020202020202020b0a02030203020302030203020302030b0a0202020c02020202020d020202020b0a02020202020202020202020202020b01010101010101020201010101010101`,
     img`
       2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
-      2 . . . . . . . . . . . . . . 2
+      2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
       2 . . . . . . . . . . . . . . 2
       2 . . . . . . . . . . . . . . 2
       2 . . . . . . . . . . . . . . 2
@@ -67,6 +77,11 @@ function tmHub11Playable(): tiles.TileMapData {
       myTiles.rpgUrbanRoad0463,
       myTiles.rpgUrbanRoad0442,
       myTiles.rpgUrbanRoad0469,
+      myTiles.rpgUrbanSavehouseFacade0328,
+      myTiles.rpgUrbanSavehouseFacade0330,
+      myTiles.rpgUrbanSavehouseFacade0359,
+      myTiles.rpgUrbanSavehouseFacade0361,
+      myTiles.rpgUrbanSavehouseFacade0366,
     ],
     TileScale.Sixteen,
   );
