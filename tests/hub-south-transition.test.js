@@ -2,34 +2,32 @@
 
 const { test } = require("node:test");
 const assert = require("node:assert/strict");
-const { extractFunctionSource, readRepoFile } = require("./source-utils.js");
+const { readRepoFile, readTilemapAsset } = require("./source-utils.js");
 
 test("center south exit and south north entry remain narrow passable openings", () => {
-  const center = extractFunctionSource(readRepoFile("hub_center_tilemap.ts"), "tmHub11Playable");
-  const south = extractFunctionSource(readRepoFile("assets_stub.ts"), "tmHub21");
-  const opening = "2 2 2 2 2 2 2 . . 2 2 2 2 2 2 2";
+  const center = readTilemapAsset("TM_HUB_11");
+  const south = readTilemapAsset("TM_HUB_21");
   const openingColumns = [7, 8];
 
-  const centerRows = center.match(/^\s*2.*$/gm);
-  const southRows = south.match(/^\s*2.*$/gm);
-  const centerOpeningTiles = centerRows[centerRows.length - 1].trim().split(/\s+/);
-  const southOpeningTiles = southRows[0].trim().split(/\s+/);
-  assert.equal(centerRows[0].trim(), "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2");
-  assert.equal(centerRows[centerRows.length - 1].trim(), opening);
-  assert.equal(southRows[0].trim(), opening);
-  assert.equal(southRows[southRows.length - 1].trim(), "2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2");
-  assert.deepEqual(
-    centerOpeningTiles
-      .map((tile, index) => tile === "." ? index : -1)
-      .filter((index) => index >= 0),
-    openingColumns,
-  );
-  assert.deepEqual(
-    southOpeningTiles
-      .map((tile, index) => tile === "." ? index : -1)
-      .filter((index) => index >= 0),
-    openingColumns,
-  );
+  const centerOpeningColumns = [];
+  const southOpeningColumns = [];
+
+  for (let x = 0; x < center.width; x += 1) {
+    assert.equal(center.wallAt(x, 0), 2);
+    if (center.wallAt(x, center.height - 1) === 0) {
+      centerOpeningColumns.push(x);
+    }
+  }
+
+  for (let x = 0; x < south.width; x += 1) {
+    if (south.wallAt(x, 0) === 0) {
+      southOpeningColumns.push(x);
+    }
+    assert.equal(south.wallAt(x, south.height - 1), 2);
+  }
+
+  assert.deepEqual(centerOpeningColumns, openingColumns);
+  assert.deepEqual(southOpeningColumns, openingColumns);
 });
 
 test("center and south transitions are guarded and spawn inside their destination rooms", () => {
@@ -53,6 +51,8 @@ test("center and south transitions are guarded and spawn inside their destinatio
   assert.match(hub, /playerSprite\.y > HUB_SOUTH_NORTH_EXIT_TRIGGER_Y/);
   assert.match(hub, /state\.hubRoom = \{ row: 1, col: 1 \}/);
   assert.match(hub, /spawnTag: SPAWN_HUB_11_FROM_SOUTH/);
+  assert.match(hub, /assets\.tilemap`TM_HUB_11`/);
+  assert.match(hub, /assets\.tilemap`TM_HUB_21`/);
   assert.match(hub, /GameController\.switchPlayMode\(PlayMode\.HUB_TOPDOWN/g);
   assert.match(controller, /state\.playMode === PlayMode\.HUB_TOPDOWN[\s\S]*HubMode\.update\(\)/);
 });
