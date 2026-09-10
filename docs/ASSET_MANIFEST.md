@@ -4,22 +4,34 @@ Tracks curated assets selected from the Kenney bundle and imported into MakeCode
 
 ## Imported hub-tile baseline
 
-The six groups below are the approved baseline for hub-room work. Each JRES entry is a registered 16×16 `myTiles` MakeCode Arcade tile; `tests/hub-tile-assets.test.js` validates all 88 imported tiles and their registration in `pxt.json`.
+The six source groups below remain the 88-tile Kenney hub baseline. `hub_tiles_ready.jres` adds 26 generated, placement-ready composites for MakeCode's single-layer tilemap editor. Each JRES entry is a registered 16×16 `myTiles` MakeCode Arcade tile; `tests/hub-tile-assets.test.js` validates all 114 project tiles and their registration in `pxt.json`.
 
 | Group | JRES file | Approved representative | Intended baseline use |
 |---|---|---|---|
 | Pavement | `hub_tiles_pavement.jres` | `rpgUrbanPavement0036` | Walkable hub floor |
 | Road | `hub_tiles_road.jres` | `rpgUrbanRoad0441` | Street/outer boundary surface |
-| Savehouse facade | `hub_tiles_savehouse_facade.jres` | `rpgUrbanSavehouseFacade0365` | Savehouse exterior |
-| Street props | `hub_tiles_street_props.jres` | `rpgUrbanStreetProps0250` | Non-blocking scene dressing until a room marks it otherwise |
-| Vegetation | `hub_tiles_vegetation.jres` | `rpgUrbanVegetation0259` | Decorative green-space edge |
+| Savehouse facade | `hub_tiles_savehouse_facade.jres` | `rpgUrbanSavehouseFacade0365` | Raw savehouse exterior modules |
+| Street props | `hub_tiles_street_props.jres` | `rpgUrbanStreetProps0250` | Raw transparent prop overlays |
+| Vegetation | `hub_tiles_vegetation.jres` | `rpgUrbanVegetation0259` | Raw transparent vegetation overlays |
 | Door candidates | `hub_tiles_door_candidates.jres` | `rpgUrbanDoorCandidates0283` | Door-tile candidate; gameplay doors remain sprite placeholders |
+| READY composites | `hub_tiles_ready.jres` | `rpgUrbanReadyStreetProps0250Pavement` | Opaque, one-cell tiles for direct placement in the MakeCode tilemap editor |
+
+## Placement-ready composites
+
+MakeCode Arcade tilemaps store one visible tile per cell. Transparent Kenney prop and awning tiles therefore cannot reveal another tile beneath them when placed directly in the tilemap editor. The READY group flattens the selected overlay against an existing imported base tile so the result is visually complete in one cell.
+
+The generated READY set contains:
+
+- 13 street props on `rpgUrbanPavement0036`;
+- 3 road props on `rpgUrbanRoad0441`;
+- 5 vegetation tiles on `rpgUrbanPavement0036`;
+- 5 storefront/awning composites built from the existing savehouse facade modules.
+
+All 26 READY tiles are intentionally opaque. The raw source overlays remain imported because they preserve the original Kenney artwork and may still be useful outside a single-layer tilemap.
 
 ## Palette baseline
 
-The approved pavement and road representatives are solid palette indices 11 and 12 respectively. The current placeholder player, NPC, and door sprites use indices 7, 8, and 5, so each remains distinguishable on either approved floor. Facade, prop, vegetation, and door-candidate representatives also contain multiple contrasting palette indices and are suitable for the MakeCode tile picker.
-
-No misleading IDs are excluded at this time. The representatives above are approved for use; other IDs in the same six groups remain imported but have not been individually designated as baseline choices.
+The project palette in `pxt.json`, the importer palette, and the Hub runtime palette are the same 16-entry palette. READY composites are quantized only after their source layers are flattened, so transparent source pixels inherit the intended pavement, road, or storefront pixels instead of becoming empty map background.
 
 ## Scope boundary
 

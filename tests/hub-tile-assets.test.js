@@ -13,6 +13,7 @@ const assetFiles = [
   "hub_tiles_savehouse_facade.jres",
   "hub_tiles_street_props.jres",
   "hub_tiles_vegetation.jres",
+  "hub_tiles_ready.jres",
 ];
 
 const approvedRepresentatives = [
@@ -22,6 +23,7 @@ const approvedRepresentatives = [
   "rpgUrbanStreetProps0250",
   "rpgUrbanVegetation0259",
   "rpgUrbanDoorCandidates0283",
+  "rpgUrbanReadyStreetProps0250Pavement",
 ];
 
 function readJson(relativePath) {
@@ -43,23 +45,46 @@ function assertValidF4(data, assetId) {
   assert.equal(data.length, expectedLength, `${assetId} has an invalid F4 payload length`);
 }
 
+function assertOpaqueF4(data, assetId) {
+  const width = data.readUInt16LE(2);
+  const height = data.readUInt16LE(4);
+  const bytesPerColumn = Math.ceil(height / 2);
+  const paddedBytesPerColumn = Math.ceil(bytesPerColumn / 4) * 4;
+
+  for (let x = 0; x < width; x += 1) {
+    for (let y = 0; y < height; y += 1) {
+      const packed = data[8 + x * paddedBytesPerColumn + Math.floor(y / 2)];
+      const color = y % 2 === 0 ? packed & 0x0f : (packed >> 4) & 0x0f;
+      assert.notEqual(color, 0, `${assetId} contains a transparent pixel at ${x},${y}`);
+    }
+  }
+}
+
 test("hub tile assets are registered and declared for editable tilemaps", () => {
   const pxtJson = readJson("pxt.json");
   const packageJson = readJson("package.json");
-  const declarations = fs.readFileSync(path.join(repoRoot, "hub_tiles.ts"), "utf8");
+  const declarations = ["hub_tiles.ts", "hub_tiles_ready.ts"]
+    .map((file) => fs.readFileSync(path.join(repoRoot, file), "utf8"))
+    .join("\n");
   let assetCount = 0;
+  let readyCount = 0;
 
   assert.equal(
     packageJson.scripts["assets:hub"],
     "node scripts/import-kenney-hub-tiles.js"
   );
   assert.ok(pxtJson.files.includes("hub_tiles.ts"));
+  assert.ok(pxtJson.files.includes("hub_tiles_ready.ts"));
 
   for (const assetFile of assetFiles) {
     assert.ok(pxtJson.files.includes(assetFile));
     const jres = readJson(assetFile);
     const assetIds = Object.keys(jres).filter((id) => id !== "*");
     assetCount += assetIds.length;
+
+    if (assetFile === "hub_tiles_ready.jres") {
+      readyCount = assetIds.length;
+    }
 
     assert.deepEqual(jres["*"], {
       namespace: "myTiles",
@@ -73,6 +98,9 @@ test("hub tile assets are registered and declared for editable tilemaps", () => 
 
       assert.equal(entry.tilemapTile, true, `${assetId} is not marked as a tile`);
       assertValidF4(data, assetId);
+      if (assetFile === "hub_tiles_ready.jres") {
+        assertOpaqueF4(data, assetId);
+      }
       assert.match(
         declarations,
         new RegExp(`export const ${assetId} = image\\.ofBuffer`),
@@ -81,7 +109,8 @@ test("hub tile assets are registered and declared for editable tilemaps", () => 
     }
   }
 
-  assert.equal(assetCount, 88);
+  assert.equal(assetCount, 114);
+  assert.equal(readyCount, 26);
 });
 
 test("F4 validation rejects truncated and dimensionally inconsistent payloads", () => {

@@ -5,6 +5,7 @@ const assert = require("node:assert/strict");
 const {
   HUB_URBAN_PALETTE,
   buildJres,
+  compositeRgba,
   encodeF4,
   getTileGroup,
   makeAssetId,
@@ -39,6 +40,26 @@ test("rejects semi-transparent source pixels", () => {
   assert.throws(
     () => quantizeRgba(rgba, 1, 1),
     /Semi-transparent pixels are not supported/
+  );
+});
+
+test("composites opaque overlay pixels while preserving the base under transparency", () => {
+  const base = {
+    rgba: Uint8Array.from([
+      10, 20, 30, 255,
+      40, 50, 60, 255,
+    ]),
+  };
+  const overlay = {
+    rgba: Uint8Array.from([
+      100, 110, 120, 0,
+      130, 140, 150, 255,
+    ]),
+  };
+
+  assert.deepEqual(
+    Array.from(compositeRgba([base, overlay])),
+    [10, 20, 30, 255, 130, 140, 150, 255],
   );
 });
 
